@@ -44,7 +44,7 @@ class RotaryEvaporator:
         蒸发。
 
         Args:
-            mode[运行模式设置]: 运行模式编号。
+            mode[运行模式设置]: 运行模式设置。
         """
         pass
 
@@ -54,7 +54,7 @@ class RotaryEvaporator:
         旋转。
 
         Args:
-            mode[运行模式设置]: 运行模式编号。
+            mode[运行模式设置]: 运行模式设置。
         """
         pass
 
@@ -67,7 +67,7 @@ class RotaryEvaporator:
     @property
     @topic_config()
     def fault(self) -> bool:
-        """故障标志。"""
+        """故障。"""
         return self.data.get("fault", False)
 
     @property
@@ -78,6 +78,6 @@ class RotaryEvaporator:
 
     @property
     @topic_config()
-    def current_bath_temperature(self) -> int:
-        """当前水浴温度。"""
-        return self.data.get("current_bath_temperature", 0)
+    def current_water_bath_temp(self) -> int:
+        """实际水浴温度。"""
+        return self.data.get("current_water_bath_temp", 0)

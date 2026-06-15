@@ -44,7 +44,7 @@ class SyringePump:
         绝对控制。
 
         Args:
-            position[绝对位置设置]: 绝对位置。
+            position[绝对位置设置]: 绝对位置设置。
         """
         pass
 
@@ -54,7 +54,7 @@ class SyringePump:
         抽液。
 
         Args:
-            aspirate_position[抽液位置设置]: 抽液目标位置。
+            aspirate_position[抽液位置设置]: 抽液位置设置。
         """
         pass
 
@@ -64,7 +64,7 @@ class SyringePump:
         排液。
 
         Args:
-            dispense_position[排液位置设置]: 排液目标位置。
+            dispense_position[排液位置设置]: 排液位置设置。
         """
         pass
 
@@ -77,7 +77,7 @@ class SyringePump:
     @property
     @topic_config()
     def fault(self) -> bool:
-        """故障标志。"""
+        """故障。"""
         return self.data.get("fault", False)
 
     @property
@@ -89,5 +89,5 @@ class SyringePump:
     @property
     @topic_config()
     def current_position(self) -> int:
-        """当前位置。"""
+        """当前位置显示。"""
         return self.data.get("current_position", 0)

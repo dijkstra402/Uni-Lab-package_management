@@ -44,8 +44,8 @@ class PhotochemicalReactor:
         光源开启。
 
         Args:
-            mode[运行模式设置]: 运行模式编号。
-            light_intensity[光源强度设置]: 光源强度。
+            mode[运行模式设置]: 运行模式设置。
+            light_intensity[光源强度设置]: 光源强度设置。
         """
         pass
 
@@ -58,7 +58,7 @@ class PhotochemicalReactor:
     @property
     @topic_config()
     def fault(self) -> bool:
-        """故障标志。"""
+        """故障。"""
         return self.data.get("fault", False)
 
     @property
@@ -70,5 +70,5 @@ class PhotochemicalReactor:
     @property
     @topic_config()
     def current_light_intensity(self) -> int:
-        """当前光源强度。"""
+        """实际光强监测。"""
         return self.data.get("current_light_intensity", 0)

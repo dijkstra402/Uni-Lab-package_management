@@ -44,7 +44,7 @@ class PreparativeChromatograph:
         制备。
 
         Args:
-            mode[运行模式设置]: 运行模式编号。
+            mode[运行模式设置]: 运行模式设置。
         """
         pass
 
@@ -54,8 +54,8 @@ class PreparativeChromatograph:
         进样。
 
         Args:
-            mode[运行模式设置]: 运行模式编号。
-            injection_volume[进样量设置]: 进样量。
+            mode[运行模式设置]: 运行模式设置。
+            injection_volume[进样量设置]: 进样量设置。
         """
         pass
 
@@ -68,7 +68,7 @@ class PreparativeChromatograph:
     @property
     @topic_config()
     def fault(self) -> bool:
-        """故障标志。"""
+        """故障。"""
         return self.data.get("fault", False)
 
     @property

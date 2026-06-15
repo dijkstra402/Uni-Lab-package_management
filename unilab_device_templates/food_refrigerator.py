@@ -39,13 +39,8 @@ class FoodRefrigerator:
         pass
 
     @action(description="运行")
-    def run(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        运行。
-
-        Args:
-            mode[运行模式设置]: 运行模式编号。
-        """
+    def run(self) -> Dict[str, Any]:
+        """运行。"""
         pass
 
     @property
@@ -57,26 +52,26 @@ class FoodRefrigerator:
     @property
     @topic_config()
     def fault(self) -> bool:
-        """故障标志。"""
+        """故障。"""
         return self.data.get("fault", False)
 
     @property
     @topic_config()
-    def door_open(self) -> bool:
+    def door_open_state(self) -> bool:
         """门打开状态。"""
-        return self.data.get("door_open", False)
+        return self.data.get("door_open_state", False)
 
     @property
     @topic_config()
-    def humidity_monitor_state(self) -> bool:
+    def humidity_state(self) -> bool:
         """湿度监控状态。"""
-        return self.data.get("humidity_monitor_state", False)
+        return self.data.get("humidity_state", False)
 
     @property
     @topic_config()
-    def sterilization_state(self) -> bool:
+    def sterilization_function_state(self) -> bool:
         """杀菌功能状态。"""
-        return self.data.get("sterilization_state", False)
+        return self.data.get("sterilization_function_state", False)
 
     @property
     @topic_config()
@@ -87,11 +82,11 @@ class FoodRefrigerator:
     @property
     @topic_config()
     def current_temperature(self) -> int:
-        """当前温度。"""
+        """实际温度。"""
         return self.data.get("current_temperature", 0)
 
     @property
     @topic_config()
     def current_humidity(self) -> int:
-        """当前湿度。"""
+        """实际湿度。"""
         return self.data.get("current_humidity", 0)

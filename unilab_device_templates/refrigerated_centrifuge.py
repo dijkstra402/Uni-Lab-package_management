@@ -44,7 +44,7 @@ class RefrigeratedCentrifuge:
         离心。
 
         Args:
-            mode[运行模式设置]: 运行模式编号。
+            mode[运行模式设置]: 运行模式设置。
         """
         pass
 
@@ -54,7 +54,7 @@ class RefrigeratedCentrifuge:
         制冷。
 
         Args:
-            mode[运行模式设置]: 运行模式编号。
+            mode[运行模式设置]: 运行模式设置。
         """
         pass
 
@@ -67,7 +67,7 @@ class RefrigeratedCentrifuge:
     @property
     @topic_config()
     def fault(self) -> bool:
-        """故障标志。"""
+        """故障。"""
         return self.data.get("fault", False)
 
     @property
@@ -79,11 +79,11 @@ class RefrigeratedCentrifuge:
     @property
     @topic_config()
     def current_speed(self) -> int:
-        """当前转速。"""
+        """实际转速。"""
         return self.data.get("current_speed", 0)
 
     @property
     @topic_config()
     def current_temperature(self) -> int:
-        """当前温度。"""
+        """实际温度。"""
         return self.data.get("current_temperature", 0)

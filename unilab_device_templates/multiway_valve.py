@@ -44,7 +44,7 @@ class MultiwayValve:
         切换阀位。
 
         Args:
-            position[绝对位置设置]: 绝对位置。
+            position[绝对位置设置]: 绝对位置设置。
         """
         pass
 
@@ -57,7 +57,7 @@ class MultiwayValve:
     @property
     @topic_config()
     def fault(self) -> bool:
-        """故障标志。"""
+        """故障。"""
         return self.data.get("fault", False)
 
     @property
@@ -69,5 +69,5 @@ class MultiwayValve:
     @property
     @topic_config()
     def current_position(self) -> int:
-        """当前位置。"""
+        """当前位置显示。"""
         return self.data.get("current_position", 0)

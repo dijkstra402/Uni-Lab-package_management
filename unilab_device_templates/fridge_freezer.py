@@ -38,19 +38,19 @@ class FridgeFreezer:
         """初始化。"""
         pass
 
-    @action(description="运行")
-    def run(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="除霜")
+    def defrost(self, mode: int = 0) -> Dict[str, Any]:
         """
-        运行。
+        除霜。
 
         Args:
-            mode[运行模式设置]: 运行模式编号。
+            mode[运行模式设置]: 运行模式设置。
         """
         pass
 
-    @action(description="除霜")
-    def defrost(self) -> Dict[str, Any]:
-        """除霜。"""
+    @action(description="运行")
+    def run(self) -> Dict[str, Any]:
+        """运行。"""
         pass
 
     @action(description="停止")
@@ -67,7 +67,7 @@ class FridgeFreezer:
     @property
     @topic_config()
     def fault(self) -> bool:
-        """故障标志。"""
+        """故障。"""
         return self.data.get("fault", False)
 
     @property
@@ -78,9 +78,9 @@ class FridgeFreezer:
 
     @property
     @topic_config()
-    def door_open(self) -> bool:
+    def door_open_state(self) -> bool:
         """门打开状态。"""
-        return self.data.get("door_open", False)
+        return self.data.get("door_open_state", False)
 
     @property
     @topic_config()
@@ -91,5 +91,5 @@ class FridgeFreezer:
     @property
     @topic_config()
     def current_temperature(self) -> int:
-        """当前温度。"""
+        """实际温度。"""
         return self.data.get("current_temperature", 0)

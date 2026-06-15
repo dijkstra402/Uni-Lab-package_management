@@ -39,18 +39,18 @@ class TemperatureControlledMagneticStirrer:
         pass
 
     @action(description="搅拌")
-    def stir(self, stir_speed: int = 0, temperature: int = 0, duration: int = 0, work_mode: int = 0, heat_mode: int = 0, temperature_unit: int = 0, safety_temperature: int = 0) -> Dict[str, Any]:
+    def stir(self, stir_speed: int = 0, heating_temperature: int = 0, time: int = 0, work_mode: int = 0, heating_mode: int = 0, temperature_unit: int = 0, safety_temperature: int = 0) -> Dict[str, Any]:
         """
         搅拌。
 
         Args:
-            stir_speed[搅拌速度设置]: 搅拌转速 (rpm)。
-            temperature[加热温度设置]: 目标加热温度。
-            duration[时间设置]: 运行时长 (s)。
-            work_mode[工作模式设置]: 工作模式编号。
-            heat_mode[加热模式设置]: 加热模式编号。
-            temperature_unit[温度单位设置]: 温度单位 (0=°C,1=°F)。
-            safety_temperature[安全温度设置]: 安全保护温度上限。
+            stir_speed[搅拌速度设置]: 搅拌速度设置。
+            heating_temperature[加热温度设置]: 加热温度设置。
+            time[时间设置]: 时间设置。
+            work_mode[工作模式设置]: 工作模式设置。
+            heating_mode[加热模式设置]: 加热模式设置。
+            temperature_unit[温度单位设置]: 温度单位设置。
+            safety_temperature[安全温度设置]: 安全温度设置。
         """
         pass
 
@@ -63,7 +63,7 @@ class TemperatureControlledMagneticStirrer:
     @property
     @topic_config()
     def fault(self) -> bool:
-        """故障标志。"""
+        """故障。"""
         return self.data.get("fault", False)
 
     @property
@@ -75,17 +75,17 @@ class TemperatureControlledMagneticStirrer:
     @property
     @topic_config()
     def current_speed(self) -> int:
-        """当前转速。"""
+        """当前速度显示。"""
         return self.data.get("current_speed", 0)
 
     @property
     @topic_config()
     def current_temperature(self) -> int:
-        """当前温度。"""
+        """当前温度显示。"""
         return self.data.get("current_temperature", 0)
 
     @property
     @topic_config()
     def current_time(self) -> int:
-        """当前计时。"""
+        """当前时间显示。"""
         return self.data.get("current_time", 0)

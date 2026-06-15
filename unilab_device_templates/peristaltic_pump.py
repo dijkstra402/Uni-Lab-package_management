@@ -44,8 +44,8 @@ class PeristalticPump:
         正转。
 
         Args:
-            speed[转动速度设置]: 转速 (rpm)。
-            duration[转动时间设置]: 运行时长 (s)。
+            speed[转动速度设置]: 转动速度设置。
+            duration[转动时间设置]: 转动时间设置。
         """
         pass
 
@@ -55,8 +55,8 @@ class PeristalticPump:
         反转。
 
         Args:
-            speed[转动速度设置]: 转速 (rpm)。
-            duration[转动时间设置]: 运行时长 (s)。
+            speed[转动速度设置]: 转动速度设置。
+            duration[转动时间设置]: 转动时间设置。
         """
         pass
 
@@ -69,7 +69,7 @@ class PeristalticPump:
     @property
     @topic_config()
     def fault(self) -> bool:
-        """故障标志。"""
+        """故障。"""
         return self.data.get("fault", False)
 
     @property
