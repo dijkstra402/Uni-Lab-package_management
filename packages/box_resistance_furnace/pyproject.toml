@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "box_resistance_furnace"
+version = "0.1.0"
+description = "Uni-Lab-OS 箱式电阻炉标准设备类模板 (box_resistance_furnace device class template)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["unilabos"]
+
+[tool.setuptools.packages.find]
+include = ["box_resistance_furnace*"]

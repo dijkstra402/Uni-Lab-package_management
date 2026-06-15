@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synthesis_reactor"
+version = "0.1.0"
+description = "Uni-Lab-OS 合成反应仪标准设备类模板 (synthesis_reactor device class template)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["unilabos"]
+
+[tool.setuptools.packages.find]
+include = ["synthesis_reactor*"]

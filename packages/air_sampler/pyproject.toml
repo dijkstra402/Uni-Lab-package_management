@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "air_sampler"
+version = "0.1.0"
+description = "Uni-Lab-OS 大气采样器标准设备类模板 (air_sampler device class template)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["unilabos"]
+
+[tool.setuptools.packages.find]
+include = ["air_sampler*"]

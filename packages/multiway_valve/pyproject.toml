@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multiway_valve"
+version = "0.1.0"
+description = "Uni-Lab-OS 多通阀标准设备类模板 (multiway_valve device class template)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["unilabos"]
+
+[tool.setuptools.packages.find]
+include = ["multiway_valve*"]

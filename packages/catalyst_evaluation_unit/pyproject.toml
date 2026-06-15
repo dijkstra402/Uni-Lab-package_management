@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "catalyst_evaluation_unit"
+version = "0.1.0"
+description = "Uni-Lab-OS 催化剂评价装置标准设备类模板 (catalyst_evaluation_unit device class template)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["unilabos"]
+
+[tool.setuptools.packages.find]
+include = ["catalyst_evaluation_unit*"]

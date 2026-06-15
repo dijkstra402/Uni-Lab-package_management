@@ -1,0 +1,2 @@
+"""模具电池组装工站 标准设备类模板。"""
+from . import mold_cell_assembly_station  # noqa: F401

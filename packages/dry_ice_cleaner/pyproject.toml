@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dry_ice_cleaner"
+version = "0.1.0"
+description = "Uni-Lab-OS 干冰清洗机标准设备类模板 (dry_ice_cleaner device class template)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["unilabos"]
+
+[tool.setuptools.packages.find]
+include = ["dry_ice_cleaner*"]

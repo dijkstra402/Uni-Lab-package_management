@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pouch_cell_assembly_station"
+version = "0.1.0"
+description = "Uni-Lab-OS 软包电池组装工站标准设备类模板 (pouch_cell_assembly_station device class template)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["unilabos"]
+
+[tool.setuptools.packages.find]
+include = ["pouch_cell_assembly_station*"]

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vacuum_drying_oven"
+version = "0.1.0"
+description = "Uni-Lab-OS 真空干燥箱标准设备类模板 (vacuum_drying_oven device class template)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["unilabos"]
+
+[tool.setuptools.packages.find]
+include = ["vacuum_drying_oven*"]

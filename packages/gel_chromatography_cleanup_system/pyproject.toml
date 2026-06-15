@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gel_chromatography_cleanup_system"
+version = "0.1.0"
+description = "Uni-Lab-OS 凝胶色谱净化系统标准设备类模板 (gel_chromatography_cleanup_system device class template)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["unilabos"]
+
+[tool.setuptools.packages.find]
+include = ["gel_chromatography_cleanup_system*"]

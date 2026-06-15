@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solenoid_on_off_valve"
+version = "0.1.0"
+description = "Uni-Lab-OS 电磁开关阀标准设备类模板 (solenoid_on_off_valve device class template)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["unilabos"]
+
+[tool.setuptools.packages.find]
+include = ["solenoid_on_off_valve*"]
