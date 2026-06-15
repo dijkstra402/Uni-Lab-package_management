@@ -38,26 +38,34 @@ class MicrochannelReactor:
         """初始化。"""
         pass
 
-    @action(description="泵A启动")
-    def start_pump_a(self, mode: int = 0, mix_ratio: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        泵A启动。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            mix_ratio[混合比例设置]: 混合比例设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="泵B启动")
-    def start_pump_b(self, mode: int = 0, mix_ratio: int = 0) -> Dict[str, Any]:
+    @action(description="设置混合比例")
+    def set_mix_ratio(self, mix_ratio: int = 0) -> Dict[str, Any]:
         """
-        泵B启动。
+        设置混合比例。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            mix_ratio[混合比例设置]: 混合比例设置。
+            mix_ratio[设置混合比例]: 设置混合比例。
         """
+        pass
+
+    @action(description="泵A启动")
+    def start_pump_a(self) -> Dict[str, Any]:
+        """泵A启动。"""
+        pass
+
+    @action(description="泵B启动")
+    def start_pump_b(self) -> Dict[str, Any]:
+        """泵B启动。"""
         pass
 
     @property

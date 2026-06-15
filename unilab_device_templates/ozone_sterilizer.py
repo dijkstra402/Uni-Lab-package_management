@@ -38,34 +38,49 @@ class OzoneSterilizer:
         """初始化。"""
         pass
 
-    @action(description="消毒")
-    def disinfect(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        消毒。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置臭氧浓度")
+    def set_ozone_concentration(self, ozone_concentration: int = 0) -> Dict[str, Any]:
+        """
+        设置臭氧浓度。
+
+        Args:
+            ozone_concentration[设置臭氧浓度]: 设置臭氧浓度。
+        """
+        pass
+
+    @action(description="设置消毒时间")
+    def set_disinfection_time(self, disinfection_time: int = 0) -> Dict[str, Any]:
+        """
+        设置消毒时间。
+
+        Args:
+            disinfection_time[设置消毒时间]: 设置消毒时间。
+        """
+        pass
+
+    @action(description="消毒")
+    def disinfect(self) -> Dict[str, Any]:
+        """消毒。"""
         pass
 
     @action(description="消毒准备")
-    def prepare_disinfection(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        消毒准备。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def prepare_disinfection(self) -> Dict[str, Any]:
+        """消毒准备。"""
         pass
 
     @action(description="消毒结束")
-    def finish_disinfection(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        消毒结束。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def finish_disinfection(self) -> Dict[str, Any]:
+        """消毒结束。"""
         pass
 
     @property

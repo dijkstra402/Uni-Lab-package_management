@@ -38,6 +38,16 @@ class VacuumPump:
         """初始化。"""
         pass
 
+    @action(description="设置目标真空度")
+    def set_target_vacuum(self, target_vacuum: int = 0) -> Dict[str, Any]:
+        """
+        设置目标真空度。
+
+        Args:
+            target_vacuum[设置目标真空度]: 设置目标真空度。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

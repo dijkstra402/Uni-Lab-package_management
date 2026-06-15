@@ -38,6 +38,56 @@ class MicrowaveExtractor:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置运行时间")
+    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+        """
+        设置运行时间。
+
+        Args:
+            run_time[设置运行时间]: 设置运行时间。
+        """
+        pass
+
+    @action(description="设置微波功率")
+    def set_microwave_power(self, microwave_power: int = 0) -> Dict[str, Any]:
+        """
+        设置微波功率。
+
+        Args:
+            microwave_power[设置微波功率]: 设置微波功率。
+        """
+        pass
+
+    @action(description="设置萃取温度")
+    def set_extraction_temperature(self, extraction_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置萃取温度。
+
+        Args:
+            extraction_temperature[设置萃取温度]: 设置萃取温度。
+        """
+        pass
+
+    @action(description="设置搅拌速度")
+    def set_stir_speed(self, stir_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置搅拌速度。
+
+        Args:
+            stir_speed[设置搅拌速度]: 设置搅拌速度。
+        """
+        pass
+
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""

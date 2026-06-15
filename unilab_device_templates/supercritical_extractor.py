@@ -38,6 +38,66 @@ class SupercriticalExtractor:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置运行时间")
+    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+        """
+        设置运行时间。
+
+        Args:
+            run_time[设置运行时间]: 设置运行时间。
+        """
+        pass
+
+    @action(description="设置萃取压力")
+    def set_extraction_pressure(self, extraction_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置萃取压力。
+
+        Args:
+            extraction_pressure[设置萃取压力]: 设置萃取压力。
+        """
+        pass
+
+    @action(description="设置萃取温度")
+    def set_extraction_temperature(self, extraction_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置萃取温度。
+
+        Args:
+            extraction_temperature[设置萃取温度]: 设置萃取温度。
+        """
+        pass
+
+    @action(description="设置CO2流量")
+    def set_co2_flow(self, co2_flow: int = 0) -> Dict[str, Any]:
+        """
+        设置CO2流量。
+
+        Args:
+            co2_flow[设置CO2流量]: 设置CO2流量。
+        """
+        pass
+
+    @action(description="设置分离压力")
+    def set_separation_pressure(self, separation_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置分离压力。
+
+        Args:
+            separation_pressure[设置分离压力]: 设置分离压力。
+        """
+        pass
+
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""

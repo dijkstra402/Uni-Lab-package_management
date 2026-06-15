@@ -33,6 +33,86 @@ class MoldCellAssemblyStation:
         self.config = config or {}
         self.data: Dict[str, Any] = {"status": "idle"}
 
+    @action(description="设置模具温度设定")
+    def set_mold_temperature(self, mold_temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置模具温度设定。
+
+        Args:
+            mold_temperature[设置模具温度设定]: 设置模具温度设定。
+        """
+        pass
+
+    @action(description="设置注塑压力设定")
+    def set_injection_pressure(self, injection_pressure: float = 0.0) -> Dict[str, Any]:
+        """
+        设置注塑压力设定。
+
+        Args:
+            injection_pressure[设置注塑压力设定]: 设置注塑压力设定。
+        """
+        pass
+
+    @action(description="设置注塑速度设定")
+    def set_injection_speed(self, injection_speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置注塑速度设定。
+
+        Args:
+            injection_speed[设置注塑速度设定]: 设置注塑速度设定。
+        """
+        pass
+
+    @action(description="设置保压压力设定")
+    def set_holding_pressure(self, holding_pressure: float = 0.0) -> Dict[str, Any]:
+        """
+        设置保压压力设定。
+
+        Args:
+            holding_pressure[设置保压压力设定]: 设置保压压力设定。
+        """
+        pass
+
+    @action(description="设置保压时间设定")
+    def set_holding_time(self, holding_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置保压时间设定。
+
+        Args:
+            holding_time[设置保压时间设定]: 设置保压时间设定。
+        """
+        pass
+
+    @action(description="设置冷却时间设定")
+    def set_cooling_time(self, cooling_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置冷却时间设定。
+
+        Args:
+            cooling_time[设置冷却时间设定]: 设置冷却时间设定。
+        """
+        pass
+
+    @action(description="设置预热温度设定")
+    def set_preheat_temperature(self, preheat_temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置预热温度设定。
+
+        Args:
+            preheat_temperature[设置预热温度设定]: 设置预热温度设定。
+        """
+        pass
+
+    @action(description="设置加热功率设定")
+    def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
+        """
+        设置加热功率设定。
+
+        Args:
+            heating_power[设置加热功率设定]: 设置加热功率设定。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

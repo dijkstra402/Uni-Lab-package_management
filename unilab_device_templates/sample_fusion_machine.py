@@ -38,6 +38,96 @@ class SampleFusionMachine:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置目标温度")
+    def set_target_temperature(self, target_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置目标温度。
+
+        Args:
+            target_temperature[设置目标温度]: 设置目标温度。
+        """
+        pass
+
+    @action(description="设置升温速率")
+    def set_ramp_rate(self, ramp_rate: int = 0) -> Dict[str, Any]:
+        """
+        设置升温速率。
+
+        Args:
+            ramp_rate[设置升温速率]: 设置升温速率。
+        """
+        pass
+
+    @action(description="设置保温时间")
+    def set_holding_time(self, holding_time: int = 0) -> Dict[str, Any]:
+        """
+        设置保温时间。
+
+        Args:
+            holding_time[设置保温时间]: 设置保温时间。
+        """
+        pass
+
+    @action(description="设置冷却速率")
+    def set_cooling_rate(self, cooling_rate: int = 0) -> Dict[str, Any]:
+        """
+        设置冷却速率。
+
+        Args:
+            cooling_rate[设置冷却速率]: 设置冷却速率。
+        """
+        pass
+
+    @action(description="设置加热功率")
+    def set_heating_power(self, heating_power: int = 0) -> Dict[str, Any]:
+        """
+        设置加热功率。
+
+        Args:
+            heating_power[设置加热功率]: 设置加热功率。
+        """
+        pass
+
+    @action(description="设置搅拌速度")
+    def set_stir_speed(self, stir_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置搅拌速度。
+
+        Args:
+            stir_speed[设置搅拌速度]: 设置搅拌速度。
+        """
+        pass
+
+    @action(description="设置样品重量")
+    def set_sample_weight(self, sample_weight: int = 0) -> Dict[str, Any]:
+        """
+        设置样品重量。
+
+        Args:
+            sample_weight[设置样品重量]: 设置样品重量。
+        """
+        pass
+
+    @action(description="设置熔样时间")
+    def set_fusion_time(self, fusion_time: int = 0) -> Dict[str, Any]:
+        """
+        设置熔样时间。
+
+        Args:
+            fusion_time[设置熔样时间]: 设置熔样时间。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

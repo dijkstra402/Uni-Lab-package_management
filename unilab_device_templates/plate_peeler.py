@@ -38,39 +38,63 @@ class PlatePeeler:
         """初始化。"""
         pass
 
-    @action(description="撕膜启动")
-    def start_peeling(self, mode: int = 0, peeling_speed: int = 0, peeling_height: int = 0, container_position: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        撕膜启动。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            peeling_speed[撕膜速度设置]: 撕膜速度设置。
-            peeling_height[撕膜高度设置]: 撕膜高度设置。
-            container_position[容器位置设置]: 容器位置设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置撕膜速度")
+    def set_peeling_speed(self, peeling_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置撕膜速度。
+
+        Args:
+            peeling_speed[设置撕膜速度]: 设置撕膜速度。
+        """
+        pass
+
+    @action(description="设置撕膜高度")
+    def set_peeling_height(self, peeling_height: int = 0) -> Dict[str, Any]:
+        """
+        设置撕膜高度。
+
+        Args:
+            peeling_height[设置撕膜高度]: 设置撕膜高度。
+        """
+        pass
+
+    @action(description="设置容器位置")
+    def set_container_position(self, container_position: int = 0) -> Dict[str, Any]:
+        """
+        设置容器位置。
+
+        Args:
+            container_position[设置容器位置]: 设置容器位置。
+        """
+        pass
+
+    @action(description="撕膜启动")
+    def start_peeling(self) -> Dict[str, Any]:
+        """撕膜启动。"""
         pass
 
     @action(description="定位")
-    def position(self, mode: int = 0, container_position: int = 0) -> Dict[str, Any]:
-        """
-        定位。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            container_position[容器位置设置]: 容器位置设置。
-        """
+    def position(self) -> Dict[str, Any]:
+        """定位。"""
         pass
 
     @action(description="抓取")
-    def grip(self, mode: int = 0, grip_pressure: int = 0, container_position: int = 0) -> Dict[str, Any]:
+    def grip(self, grip_pressure: int = 0) -> Dict[str, Any]:
         """
         抓取。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             grip_pressure[抓取压力设置]: 抓取压力设置。
-            container_position[容器位置设置]: 容器位置设置。
         """
         pass
 

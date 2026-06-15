@@ -38,51 +38,59 @@ class LiquidHandlingWorkstation:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置目标孔位")
+    def set_target_well(self, target_well: int = 0) -> Dict[str, Any]:
+        """
+        设置目标孔位。
+
+        Args:
+            target_well[设置目标孔位]: 设置目标孔位。
+        """
+        pass
+
     @action(description="吸液")
-    def draw_liquid(self, mode: int = 0, aspirate_volume: int = 0, target_well: int = 0) -> Dict[str, Any]:
+    def draw_liquid(self, aspirate_volume: int = 0) -> Dict[str, Any]:
         """
         吸液。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             aspirate_volume[吸液体积设置]: 吸液体积设置。
-            target_well[目标孔位设置]: 目标孔位设置。
         """
         pass
 
     @action(description="排液")
-    def dispense(self, mode: int = 0, dispense_volume: int = 0, target_well: int = 0) -> Dict[str, Any]:
+    def dispense(self, dispense_volume: int = 0) -> Dict[str, Any]:
         """
         排液。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             dispense_volume[排液体积设置]: 排液体积设置。
-            target_well[目标孔位设置]: 目标孔位设置。
         """
         pass
 
     @action(description="移液路径")
-    def pipette_path(self, mode: int = 0, pipette_speed: int = 0, target_well: int = 0) -> Dict[str, Any]:
+    def pipette_path(self, pipette_speed: int = 0) -> Dict[str, Any]:
         """
         移液路径。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             pipette_speed[移液速度设置]: 移液速度设置。
-            target_well[目标孔位设置]: 目标孔位设置。
         """
         pass
 
     @action(description="枪头更换")
-    def change_tip(self, mode: int = 0, target_well: int = 0) -> Dict[str, Any]:
-        """
-        枪头更换。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_well[目标孔位设置]: 目标孔位设置。
-        """
+    def change_tip(self) -> Dict[str, Any]:
+        """枪头更换。"""
         pass
 
     @property

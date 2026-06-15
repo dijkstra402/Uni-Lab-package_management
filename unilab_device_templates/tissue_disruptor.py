@@ -38,14 +38,19 @@ class TissueDisruptor:
         """初始化。"""
         pass
 
-    @action(description="破碎")
-    def disrupt(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        破碎。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="破碎")
+    def disrupt(self) -> Dict[str, Any]:
+        """破碎。"""
         pass
 
     @property

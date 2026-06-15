@@ -38,24 +38,24 @@ class VacuumCentrifugalConcentrator:
         """初始化。"""
         pass
 
-    @action(description="浓缩")
-    def concentrate(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        浓缩。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="真空")
-    def vacuum(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        真空。
+    @action(description="浓缩")
+    def concentrate(self) -> Dict[str, Any]:
+        """浓缩。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="真空")
+    def vacuum(self) -> Dict[str, Any]:
+        """真空。"""
         pass
 
     @property

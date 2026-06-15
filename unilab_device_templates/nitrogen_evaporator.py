@@ -38,24 +38,24 @@ class NitrogenEvaporator:
         """初始化。"""
         pass
 
-    @action(description="氮吹")
-    def nitrogen_blow(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        氮吹。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="加热")
-    def heat(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        加热。
+    @action(description="氮吹")
+    def nitrogen_blow(self) -> Dict[str, Any]:
+        """氮吹。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="加热")
+    def heat(self) -> Dict[str, Any]:
+        """加热。"""
         pass
 
     @property

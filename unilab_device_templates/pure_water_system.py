@@ -38,25 +38,29 @@ class PureWaterSystem:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
     @action(description="制水")
-    def produce_water(self, mode: int = 0, water_production_flow: int = 0) -> Dict[str, Any]:
+    def produce_water(self, water_production_flow: int = 0) -> Dict[str, Any]:
         """
         制水。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             water_production_flow[制水流量设置]: 制水流量设置。
         """
         pass
 
     @action(description="冲洗")
-    def rinse(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        冲洗。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def rinse(self) -> Dict[str, Any]:
+        """冲洗。"""
         pass
 
     @property

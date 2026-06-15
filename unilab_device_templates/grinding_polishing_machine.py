@@ -38,6 +38,86 @@ class GrindingPolishingMachine:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置研磨转速")
+    def set_grinding_speed(self, grinding_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置研磨转速。
+
+        Args:
+            grinding_speed[设置研磨转速]: 设置研磨转速。
+        """
+        pass
+
+    @action(description="设置抛光转速")
+    def set_polishing_speed(self, polishing_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置抛光转速。
+
+        Args:
+            polishing_speed[设置抛光转速]: 设置抛光转速。
+        """
+        pass
+
+    @action(description="设置研磨时间")
+    def set_grinding_time(self, grinding_time: int = 0) -> Dict[str, Any]:
+        """
+        设置研磨时间。
+
+        Args:
+            grinding_time[设置研磨时间]: 设置研磨时间。
+        """
+        pass
+
+    @action(description="设置抛光时间")
+    def set_polishing_time(self, polishing_time: int = 0) -> Dict[str, Any]:
+        """
+        设置抛光时间。
+
+        Args:
+            polishing_time[设置抛光时间]: 设置抛光时间。
+        """
+        pass
+
+    @action(description="设置磨抛压力")
+    def set_polishing_pressure(self, polishing_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置磨抛压力。
+
+        Args:
+            polishing_pressure[设置磨抛压力]: 设置磨抛压力。
+        """
+        pass
+
+    @action(description="设置样品夹持力")
+    def set_sample_clamp_force(self, sample_clamp_force: int = 0) -> Dict[str, Any]:
+        """
+        设置样品夹持力。
+
+        Args:
+            sample_clamp_force[设置样品夹持力]: 设置样品夹持力。
+        """
+        pass
+
+    @action(description="设置磨抛精度")
+    def set_polishing_precision(self, polishing_precision: int = 0) -> Dict[str, Any]:
+        """
+        设置磨抛精度。
+
+        Args:
+            polishing_precision[设置磨抛精度]: 设置磨抛精度。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

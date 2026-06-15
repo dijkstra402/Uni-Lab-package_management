@@ -38,6 +38,56 @@ class SolventExtractor:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置运行时间")
+    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+        """
+        设置运行时间。
+
+        Args:
+            run_time[设置运行时间]: 设置运行时间。
+        """
+        pass
+
+    @action(description="设置加热温度")
+    def set_heating_temperature(self, heating_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置加热温度。
+
+        Args:
+            heating_temperature[设置加热温度]: 设置加热温度。
+        """
+        pass
+
+    @action(description="设置冷凝水流量")
+    def set_condensate_flow(self, condensate_flow: int = 0) -> Dict[str, Any]:
+        """
+        设置冷凝水流量。
+
+        Args:
+            condensate_flow[设置冷凝水流量]: 设置冷凝水流量。
+        """
+        pass
+
+    @action(description="设置回流时间")
+    def set_reflux_time(self, reflux_time: int = 0) -> Dict[str, Any]:
+        """
+        设置回流时间。
+
+        Args:
+            reflux_time[设置回流时间]: 设置回流时间。
+        """
+        pass
+
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""

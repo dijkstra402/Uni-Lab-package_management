@@ -38,16 +38,39 @@ class PlungerPump:
         """初始化。"""
         pass
 
-    @action(description="泵送")
-    def pump(self, reciprocating_frequency: int = 0, stroke_length: int = 0, stroke_count: int = 0) -> Dict[str, Any]:
+    @action(description="设置往复频率")
+    def set_reciprocating_frequency(self, reciprocating_frequency: int = 0) -> Dict[str, Any]:
         """
-        泵送。
+        设置往复频率。
 
         Args:
-            reciprocating_frequency[往复频率设置]: 往复频率设置。
-            stroke_length[行程长度设置]: 行程长度设置。
-            stroke_count[冲程数设置]: 冲程数设置。
+            reciprocating_frequency[设置往复频率]: 设置往复频率。
         """
+        pass
+
+    @action(description="设置行程长度")
+    def set_stroke_length(self, stroke_length: int = 0) -> Dict[str, Any]:
+        """
+        设置行程长度。
+
+        Args:
+            stroke_length[设置行程长度]: 设置行程长度。
+        """
+        pass
+
+    @action(description="设置冲程数")
+    def set_stroke_count(self, stroke_count: int = 0) -> Dict[str, Any]:
+        """
+        设置冲程数。
+
+        Args:
+            stroke_count[设置冲程数]: 设置冲程数。
+        """
+        pass
+
+    @action(description="泵送")
+    def pump(self) -> Dict[str, Any]:
+        """泵送。"""
         pass
 
     @property

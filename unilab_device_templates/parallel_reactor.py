@@ -38,25 +38,33 @@ class ParallelReactor:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
     @action(description="通道1加热")
-    def heat_channel1(self, mode: int = 0, channel1_temperature: int = 0, channel2_temperature: int = 0) -> Dict[str, Any]:
+    def heat_channel1(self, channel1_temperature: int = 0, channel2_temperature: int = 0) -> Dict[str, Any]:
         """
         通道1加热。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             channel1_temperature[通道1温度设置]: 通道1温度设置。
             channel2_temperature[通道2温度设置]: 通道2温度设置。
         """
         pass
 
     @action(description="通道2加热")
-    def heat_channel2(self, mode: int = 0, channel1_temperature: int = 0, channel2_temperature: int = 0) -> Dict[str, Any]:
+    def heat_channel2(self, channel1_temperature: int = 0, channel2_temperature: int = 0) -> Dict[str, Any]:
         """
         通道2加热。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             channel1_temperature[通道1温度设置]: 通道1温度设置。
             channel2_temperature[通道2温度设置]: 通道2温度设置。
         """

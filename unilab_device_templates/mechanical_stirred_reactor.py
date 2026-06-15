@@ -38,14 +38,29 @@ class MechanicalStirredReactor:
         """初始化。"""
         pass
 
-    @action(description="变频")
-    def set_frequency(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        变频。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置频率")
+    def set_frequency(self, frequency: int = 0) -> Dict[str, Any]:
+        """
+        设置频率。
+
+        Args:
+            frequency[设置频率]: 设置频率。
+        """
+        pass
+
+    @action(description="变频")
+    def set_frequency_2(self) -> Dict[str, Any]:
+        """变频。"""
         pass
 
     @property

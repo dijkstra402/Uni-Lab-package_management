@@ -38,6 +38,46 @@ class SolidPhaseExtractor:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置运行时间")
+    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+        """
+        设置运行时间。
+
+        Args:
+            run_time[设置运行时间]: 设置运行时间。
+        """
+        pass
+
+    @action(description="设置萃取柱压力")
+    def set_extraction_column_pressure(self, extraction_column_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置萃取柱压力。
+
+        Args:
+            extraction_column_pressure[设置萃取柱压力]: 设置萃取柱压力。
+        """
+        pass
+
+    @action(description="设置洗脱液流量")
+    def set_eluent_flow(self, eluent_flow: int = 0) -> Dict[str, Any]:
+        """
+        设置洗脱液流量。
+
+        Args:
+            eluent_flow[设置洗脱液流量]: 设置洗脱液流量。
+        """
+        pass
+
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""

@@ -38,34 +38,89 @@ class SprayWasher:
         """初始化。"""
         pass
 
-    @action(description="清洗")
-    def clean(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        清洗。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置清洗温度")
+    def set_cleaning_temperature(self, cleaning_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置清洗温度。
+
+        Args:
+            cleaning_temperature[设置清洗温度]: 设置清洗温度。
+        """
+        pass
+
+    @action(description="设置清洗压力")
+    def set_qing_xi_pressure(self, qing_xi_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置清洗压力。
+
+        Args:
+            qing_xi_pressure[设置清洗压力]: 设置清洗压力。
+        """
+        pass
+
+    @action(description="设置喷淋压力")
+    def set_spray_pressure(self, spray_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置喷淋压力。
+
+        Args:
+            spray_pressure[设置喷淋压力]: 设置喷淋压力。
+        """
+        pass
+
+    @action(description="设置喷淋温度")
+    def set_spray_temperature(self, spray_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置喷淋温度。
+
+        Args:
+            spray_temperature[设置喷淋温度]: 设置喷淋温度。
+        """
+        pass
+
+    @action(description="设置喷淋时间")
+    def set_spray_time(self, spray_time: int = 0) -> Dict[str, Any]:
+        """
+        设置喷淋时间。
+
+        Args:
+            spray_time[设置喷淋时间]: 设置喷淋时间。
+        """
+        pass
+
+    @action(description="设置洗涤剂浓度")
+    def set_detergent_concentration(self, detergent_concentration: int = 0) -> Dict[str, Any]:
+        """
+        设置洗涤剂浓度。
+
+        Args:
+            detergent_concentration[设置洗涤剂浓度]: 设置洗涤剂浓度。
+        """
+        pass
+
+    @action(description="清洗")
+    def clean(self) -> Dict[str, Any]:
+        """清洗。"""
         pass
 
     @action(description="清洗准备")
-    def prepare_cleaning(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        清洗准备。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def prepare_cleaning(self) -> Dict[str, Any]:
+        """清洗准备。"""
         pass
 
     @action(description="清洗结束")
-    def finish_cleaning(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        清洗结束。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def finish_cleaning(self) -> Dict[str, Any]:
+        """清洗结束。"""
         pass
 
     @property

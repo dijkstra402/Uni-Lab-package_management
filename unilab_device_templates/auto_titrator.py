@@ -38,46 +38,54 @@ class AutoTitrator:
         """初始化。"""
         pass
 
-    @action(description="滴定启动")
-    def start_titration(self, mode: int = 0, titration_endpoint: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        滴定启动。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            titration_endpoint[滴定终点设置]: 滴定终点设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置滴定终点")
+    def set_titration_endpoint(self, titration_endpoint: int = 0) -> Dict[str, Any]:
+        """
+        设置滴定终点。
+
+        Args:
+            titration_endpoint[设置滴定终点]: 设置滴定终点。
+        """
+        pass
+
+    @action(description="设置搅拌速度")
+    def set_stir_speed(self, stir_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置搅拌速度。
+
+        Args:
+            stir_speed[设置搅拌速度]: 设置搅拌速度。
+        """
+        pass
+
+    @action(description="滴定启动")
+    def start_titration(self) -> Dict[str, Any]:
+        """滴定启动。"""
         pass
 
     @action(description="加液启动")
-    def start_add_liquid(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        加液启动。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def start_add_liquid(self) -> Dict[str, Any]:
+        """加液启动。"""
         pass
 
     @action(description="搅拌启动")
-    def start_stirring(self, mode: int = 0, stir_speed: int = 0) -> Dict[str, Any]:
-        """
-        搅拌启动。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            stir_speed[搅拌速度设置]: 搅拌速度设置。
-        """
+    def start_stirring(self) -> Dict[str, Any]:
+        """搅拌启动。"""
         pass
 
     @action(description="清洗")
-    def clean(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        清洗。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def clean(self) -> Dict[str, Any]:
+        """清洗。"""
         pass
 
     @property

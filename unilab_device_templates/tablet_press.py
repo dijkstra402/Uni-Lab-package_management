@@ -38,6 +38,86 @@ class TabletPress:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置压制压力")
+    def set_pressing_pressure(self, pressing_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置压制压力。
+
+        Args:
+            pressing_pressure[设置压制压力]: 设置压制压力。
+        """
+        pass
+
+    @action(description="设置压制时间")
+    def set_pressing_time(self, pressing_time: int = 0) -> Dict[str, Any]:
+        """
+        设置压制时间。
+
+        Args:
+            pressing_time[设置压制时间]: 设置压制时间。
+        """
+        pass
+
+    @action(description="设置保压时间")
+    def set_holding_time(self, holding_time: int = 0) -> Dict[str, Any]:
+        """
+        设置保压时间。
+
+        Args:
+            holding_time[设置保压时间]: 设置保压时间。
+        """
+        pass
+
+    @action(description="设置泄压速率")
+    def set_depressurize_rate(self, depressurize_rate: int = 0) -> Dict[str, Any]:
+        """
+        设置泄压速率。
+
+        Args:
+            depressurize_rate[设置泄压速率]: 设置泄压速率。
+        """
+        pass
+
+    @action(description="设置压模温度")
+    def set_mold_temperature(self, mold_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置压模温度。
+
+        Args:
+            mold_temperature[设置压模温度]: 设置压模温度。
+        """
+        pass
+
+    @action(description="设置样品直径")
+    def set_sample_diameter(self, sample_diameter: int = 0) -> Dict[str, Any]:
+        """
+        设置样品直径。
+
+        Args:
+            sample_diameter[设置样品直径]: 设置样品直径。
+        """
+        pass
+
+    @action(description="设置压制次数")
+    def set_pressing_count(self, pressing_count: int = 0) -> Dict[str, Any]:
+        """
+        设置压制次数。
+
+        Args:
+            pressing_count[设置压制次数]: 设置压制次数。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

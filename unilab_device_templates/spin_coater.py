@@ -38,6 +38,66 @@ class SpinCoater:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置低速时间")
+    def set_low_speed_time(self, low_speed_time: int = 0) -> Dict[str, Any]:
+        """
+        设置低速时间。
+
+        Args:
+            low_speed_time[设置低速时间]: 设置低速时间。
+        """
+        pass
+
+    @action(description="设置高速时间")
+    def set_high_speed_time(self, high_speed_time: int = 0) -> Dict[str, Any]:
+        """
+        设置高速时间。
+
+        Args:
+            high_speed_time[设置高速时间]: 设置高速时间。
+        """
+        pass
+
+    @action(description="设置加速度")
+    def set_acceleration(self, acceleration: int = 0) -> Dict[str, Any]:
+        """
+        设置加速度。
+
+        Args:
+            acceleration[设置加速度]: 设置加速度。
+        """
+        pass
+
+    @action(description="设置减速度")
+    def set_deceleration(self, deceleration: int = 0) -> Dict[str, Any]:
+        """
+        设置减速度。
+
+        Args:
+            deceleration[设置减速度]: 设置减速度。
+        """
+        pass
+
+    @action(description="设置样品尺寸")
+    def set_sample_size(self, sample_size: int = 0) -> Dict[str, Any]:
+        """
+        设置样品尺寸。
+
+        Args:
+            sample_size[设置样品尺寸]: 设置样品尺寸。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

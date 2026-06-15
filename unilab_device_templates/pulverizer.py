@@ -38,14 +38,19 @@ class Pulverizer:
         """初始化。"""
         pass
 
-    @action(description="打粉")
-    def pulverize(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        打粉。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="打粉")
+    def pulverize(self) -> Dict[str, Any]:
+        """打粉。"""
         pass
 
     @property

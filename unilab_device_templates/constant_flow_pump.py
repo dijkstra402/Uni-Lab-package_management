@@ -38,14 +38,23 @@ class ConstantFlowPump:
         """初始化。"""
         pass
 
+    @action(description="设置运行时间")
+    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+        """
+        设置运行时间。
+
+        Args:
+            run_time[设置运行时间]: 设置运行时间。
+        """
+        pass
+
     @action(description="流量校准")
-    def calibrate_flow(self, flow: int = 0, run_time: int = 0) -> Dict[str, Any]:
+    def calibrate_flow(self, flow: int = 0) -> Dict[str, Any]:
         """
         流量校准。
 
         Args:
             flow[流量设置]: 流量设置。
-            run_time[运行时间设置]: 运行时间设置。
         """
         pass
 

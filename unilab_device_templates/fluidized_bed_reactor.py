@@ -38,26 +38,34 @@ class FluidizedBedReactor:
         """初始化。"""
         pass
 
-    @action(description="预热气")
-    def preheat_gas(self, mode: int = 0, fluidization_wind_speed: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        预热气。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            fluidization_wind_speed[流化风速设置]: 流化风速设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="加料")
-    def feed(self, mode: int = 0, fluidization_wind_speed: int = 0) -> Dict[str, Any]:
+    @action(description="设置流化风速")
+    def set_fluidization_wind_speed(self, fluidization_wind_speed: int = 0) -> Dict[str, Any]:
         """
-        加料。
+        设置流化风速。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            fluidization_wind_speed[流化风速设置]: 流化风速设置。
+            fluidization_wind_speed[设置流化风速]: 设置流化风速。
         """
+        pass
+
+    @action(description="预热气")
+    def preheat_gas(self) -> Dict[str, Any]:
+        """预热气。"""
+        pass
+
+    @action(description="加料")
+    def feed(self) -> Dict[str, Any]:
+        """加料。"""
         pass
 
     @property

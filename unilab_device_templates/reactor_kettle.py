@@ -38,26 +38,34 @@ class ReactorKettle:
         """初始化。"""
         pass
 
-    @action(description="搅拌启动")
-    def start_stirring(self, mode: int = 0, target_internal_temp: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        搅拌启动。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_internal_temp[目标内温设置]: 目标内温设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="控温")
-    def control_temperature(self, mode: int = 0, target_internal_temp: int = 0) -> Dict[str, Any]:
+    @action(description="设置目标内温")
+    def set_target_internal_temp(self, target_internal_temp: int = 0) -> Dict[str, Any]:
         """
-        控温。
+        设置目标内温。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_internal_temp[目标内温设置]: 目标内温设置。
+            target_internal_temp[设置目标内温]: 设置目标内温。
         """
+        pass
+
+    @action(description="搅拌启动")
+    def start_stirring(self) -> Dict[str, Any]:
+        """搅拌启动。"""
+        pass
+
+    @action(description="控温")
+    def control_temperature(self) -> Dict[str, Any]:
+        """控温。"""
         pass
 
     @property
@@ -86,6 +94,6 @@ class ReactorKettle:
 
     @property
     @topic_config()
-    def current_nei_wen(self) -> int:
+    def current_internal_temp(self) -> int:
         """实际内温监测。"""
-        return self.data.get("current_nei_wen", 0)
+        return self.data.get("current_internal_temp", 0)

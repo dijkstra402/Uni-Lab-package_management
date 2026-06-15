@@ -38,48 +38,54 @@ class Pipette:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
     @action(description="吸液")
-    def draw_liquid(self, mode: int = 0, aspirate_volume: int = 0, aspirate_speed: int = 0) -> Dict[str, Any]:
+    def draw_liquid(self, aspirate_volume: int = 0, aspirate_speed: int = 0) -> Dict[str, Any]:
         """
         吸液。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             aspirate_volume[吸液体积设置]: 吸液体积设置。
             aspirate_speed[吸液速度设置]: 吸液速度设置。
         """
         pass
 
     @action(description="排液")
-    def dispense(self, mode: int = 0, dispense_volume: int = 0, dispense_speed: int = 0) -> Dict[str, Any]:
+    def dispense(self, dispense_volume: int = 0, dispense_speed: int = 0) -> Dict[str, Any]:
         """
         排液。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             dispense_volume[排液体积设置]: 排液体积设置。
             dispense_speed[排液速度设置]: 排液速度设置。
         """
         pass
 
     @action(description="枪头安装")
-    def attach_tip(self, mode: int = 0, tip_position: int = 0) -> Dict[str, Any]:
+    def attach_tip(self, tip_position: int = 0) -> Dict[str, Any]:
         """
         枪头安装。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             tip_position[枪头位置设置]: 枪头位置设置。
         """
         pass
 
     @action(description="枪头丢弃")
-    def discard_tip(self, mode: int = 0, tip_position: int = 0) -> Dict[str, Any]:
+    def discard_tip(self, tip_position: int = 0) -> Dict[str, Any]:
         """
         枪头丢弃。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             tip_position[枪头位置设置]: 枪头位置设置。
         """
         pass

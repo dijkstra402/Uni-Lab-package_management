@@ -38,6 +38,26 @@ class SolenoidOnOffValve:
         """初始化。"""
         pass
 
+    @action(description="设置打开时间")
+    def set_open_time(self, open_time: int = 0) -> Dict[str, Any]:
+        """
+        设置打开时间。
+
+        Args:
+            open_time[设置打开时间]: 设置打开时间。
+        """
+        pass
+
+    @action(description="设置关闭时间")
+    def set_close_time(self, close_time: int = 0) -> Dict[str, Any]:
+        """
+        设置关闭时间。
+
+        Args:
+            close_time[设置关闭时间]: 设置关闭时间。
+        """
+        pass
+
     @action(description="打开")
     def open(self) -> Dict[str, Any]:
         """打开。"""

@@ -38,6 +38,66 @@ class PolishingMachine:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置抛光轮转速")
+    def set_polishing_wheel_speed(self, polishing_wheel_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置抛光轮转速。
+
+        Args:
+            polishing_wheel_speed[设置抛光轮转速]: 设置抛光轮转速。
+        """
+        pass
+
+    @action(description="设置抛光压力")
+    def set_polishing_pressure(self, polishing_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置抛光压力。
+
+        Args:
+            polishing_pressure[设置抛光压力]: 设置抛光压力。
+        """
+        pass
+
+    @action(description="设置抛光时间")
+    def set_polishing_time(self, polishing_time: int = 0) -> Dict[str, Any]:
+        """
+        设置抛光时间。
+
+        Args:
+            polishing_time[设置抛光时间]: 设置抛光时间。
+        """
+        pass
+
+    @action(description="设置抛光液流量")
+    def set_polishing_fluid_flow(self, polishing_fluid_flow: int = 0) -> Dict[str, Any]:
+        """
+        设置抛光液流量。
+
+        Args:
+            polishing_fluid_flow[设置抛光液流量]: 设置抛光液流量。
+        """
+        pass
+
+    @action(description="设置样品转速")
+    def set_sample_speed(self, sample_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置样品转速。
+
+        Args:
+            sample_speed[设置样品转速]: 设置样品转速。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

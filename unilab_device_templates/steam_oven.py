@@ -38,6 +38,46 @@ class SteamOven:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置蒸煮时间")
+    def set_steaming_time(self, steaming_time: int = 0) -> Dict[str, Any]:
+        """
+        设置蒸煮时间。
+
+        Args:
+            steaming_time[设置蒸煮时间]: 设置蒸煮时间。
+        """
+        pass
+
+    @action(description="设置蒸汽量")
+    def set_steam_volume(self, steam_volume: int = 0) -> Dict[str, Any]:
+        """
+        设置蒸汽量。
+
+        Args:
+            steam_volume[设置蒸汽量]: 设置蒸汽量。
+        """
+        pass
+
+    @action(description="设置加热功率")
+    def set_heating_power(self, heating_power: int = 0) -> Dict[str, Any]:
+        """
+        设置加热功率。
+
+        Args:
+            heating_power[设置加热功率]: 设置加热功率。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

@@ -38,6 +38,26 @@ class BloodBankRefrigerator:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置温度")
+    def set_temperature(self, temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[设置温度]: 设置温度。
+        """
+        pass
+
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""

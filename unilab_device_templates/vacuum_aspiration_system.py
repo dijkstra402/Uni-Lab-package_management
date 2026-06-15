@@ -38,47 +38,64 @@ class VacuumAspirationSystem:
         """初始化。"""
         pass
 
-    @action(description="吸液启动")
-    def start_draw_liquid(self, mode: int = 0, aspirate_time: int = 0, aspirate_volume: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        吸液启动。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            aspirate_time[吸液时间设置]: 吸液时间设置。
-            aspirate_volume[吸液体积设置]: 吸液体积设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置真空度")
+    def set_vacuum(self, vacuum: int = 0) -> Dict[str, Any]:
+        """
+        设置真空度。
+
+        Args:
+            vacuum[设置真空度]: 设置真空度。
+        """
+        pass
+
+    @action(description="设置吸液时间")
+    def set_aspirate_time(self, aspirate_time: int = 0) -> Dict[str, Any]:
+        """
+        设置吸液时间。
+
+        Args:
+            aspirate_time[设置吸液时间]: 设置吸液时间。
+        """
+        pass
+
+    @action(description="设置吸液体积")
+    def set_aspirate_volume(self, aspirate_volume: int = 0) -> Dict[str, Any]:
+        """
+        设置吸液体积。
+
+        Args:
+            aspirate_volume[设置吸液体积]: 设置吸液体积。
+        """
+        pass
+
+    @action(description="吸液启动")
+    def start_draw_liquid(self) -> Dict[str, Any]:
+        """吸液启动。"""
         pass
 
     @action(description="真空启动")
-    def start_vacuum(self, mode: int = 0, vacuum: int = 0) -> Dict[str, Any]:
-        """
-        真空启动。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            vacuum[真空度设置]: 真空度设置。
-        """
+    def start_vacuum(self) -> Dict[str, Any]:
+        """真空启动。"""
         pass
 
     @action(description="排液")
-    def dispense(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        排液。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def dispense(self) -> Dict[str, Any]:
+        """排液。"""
         pass
 
     @action(description="清洗")
-    def clean(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        清洗。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def clean(self) -> Dict[str, Any]:
+        """清洗。"""
         pass
 
     @property

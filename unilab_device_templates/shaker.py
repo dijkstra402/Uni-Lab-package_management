@@ -38,15 +38,29 @@ class Shaker:
         """初始化。"""
         pass
 
-    @action(description="超声")
-    def ultrasonicate(self, mode: int = 0, amplitude: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        超声。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            amplitude[振幅设置]: 振幅设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置振幅")
+    def set_amplitude(self, amplitude: int = 0) -> Dict[str, Any]:
+        """
+        设置振幅。
+
+        Args:
+            amplitude[设置振幅]: 设置振幅。
+        """
+        pass
+
+    @action(description="超声")
+    def ultrasonicate(self) -> Dict[str, Any]:
+        """超声。"""
         pass
 
     @property

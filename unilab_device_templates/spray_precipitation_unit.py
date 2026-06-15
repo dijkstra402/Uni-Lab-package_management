@@ -38,24 +38,24 @@ class SprayPrecipitationUnit:
         """初始化。"""
         pass
 
-    @action(description="沉淀")
-    def precipitate(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        沉淀。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="喷雾")
-    def spray(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        喷雾。
+    @action(description="沉淀")
+    def precipitate(self) -> Dict[str, Any]:
+        """沉淀。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="喷雾")
+    def spray(self) -> Dict[str, Any]:
+        """喷雾。"""
         pass
 
     @property

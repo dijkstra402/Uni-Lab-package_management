@@ -38,19 +38,73 @@ class TemperatureControlledMagneticStirrer:
         """初始化。"""
         pass
 
+    @action(description="设置加热温度")
+    def set_heating_temperature(self, heating_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置加热温度。
+
+        Args:
+            heating_temperature[设置加热温度]: 设置加热温度。
+        """
+        pass
+
+    @action(description="设置时间")
+    def set_time(self, time: int = 0) -> Dict[str, Any]:
+        """
+        设置时间。
+
+        Args:
+            time[设置时间]: 设置时间。
+        """
+        pass
+
+    @action(description="设置工作模式")
+    def set_work_mode(self, work_mode: int = 0) -> Dict[str, Any]:
+        """
+        设置工作模式。
+
+        Args:
+            work_mode[设置工作模式]: 设置工作模式。
+        """
+        pass
+
+    @action(description="设置加热模式")
+    def set_heating_mode(self, heating_mode: int = 0) -> Dict[str, Any]:
+        """
+        设置加热模式。
+
+        Args:
+            heating_mode[设置加热模式]: 设置加热模式。
+        """
+        pass
+
+    @action(description="设置温度单位")
+    def set_temperature_unit(self, temperature_unit: int = 0) -> Dict[str, Any]:
+        """
+        设置温度单位。
+
+        Args:
+            temperature_unit[设置温度单位]: 设置温度单位。
+        """
+        pass
+
+    @action(description="设置安全温度")
+    def set_safety_temperature(self, safety_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置安全温度。
+
+        Args:
+            safety_temperature[设置安全温度]: 设置安全温度。
+        """
+        pass
+
     @action(description="搅拌")
-    def stir(self, stir_speed: int = 0, heating_temperature: int = 0, time: int = 0, work_mode: int = 0, heating_mode: int = 0, temperature_unit: int = 0, safety_temperature: int = 0) -> Dict[str, Any]:
+    def stir(self, stir_speed: int = 0) -> Dict[str, Any]:
         """
         搅拌。
 
         Args:
             stir_speed[搅拌速度设置]: 搅拌速度设置。
-            heating_temperature[加热温度设置]: 加热温度设置。
-            time[时间设置]: 时间设置。
-            work_mode[工作模式设置]: 工作模式设置。
-            heating_mode[加热模式设置]: 加热模式设置。
-            temperature_unit[温度单位设置]: 温度单位设置。
-            safety_temperature[安全温度设置]: 安全温度设置。
         """
         pass
 

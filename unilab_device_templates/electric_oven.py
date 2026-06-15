@@ -38,6 +38,66 @@ class ElectricOven:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置烘烤时间")
+    def set_baking_time(self, baking_time: int = 0) -> Dict[str, Any]:
+        """
+        设置烘烤时间。
+
+        Args:
+            baking_time[设置烘烤时间]: 设置烘烤时间。
+        """
+        pass
+
+    @action(description="设置加热模式")
+    def set_heating_mode(self, heating_mode: int = 0) -> Dict[str, Any]:
+        """
+        设置加热模式。
+
+        Args:
+            heating_mode[设置加热模式]: 设置加热模式。
+        """
+        pass
+
+    @action(description="设置加热功率")
+    def set_heating_power(self, heating_power: int = 0) -> Dict[str, Any]:
+        """
+        设置加热功率。
+
+        Args:
+            heating_power[设置加热功率]: 设置加热功率。
+        """
+        pass
+
+    @action(description="设置旋转速度")
+    def set_rotation_speed(self, rotation_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置旋转速度。
+
+        Args:
+            rotation_speed[设置旋转速度]: 设置旋转速度。
+        """
+        pass
+
+    @action(description="设置热风转速")
+    def set_hot_air_speed(self, hot_air_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置热风转速。
+
+        Args:
+            hot_air_speed[设置热风转速]: 设置热风转速。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

@@ -38,6 +38,86 @@ class CuttingMachine:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置切割速度")
+    def set_cutting_speed(self, cutting_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置切割速度。
+
+        Args:
+            cutting_speed[设置切割速度]: 设置切割速度。
+        """
+        pass
+
+    @action(description="设置切割深度")
+    def set_cutting_depth(self, cutting_depth: int = 0) -> Dict[str, Any]:
+        """
+        设置切割深度。
+
+        Args:
+            cutting_depth[设置切割深度]: 设置切割深度。
+        """
+        pass
+
+    @action(description="设置进给速率")
+    def set_feed_rate(self, feed_rate: int = 0) -> Dict[str, Any]:
+        """
+        设置进给速率。
+
+        Args:
+            feed_rate[设置进给速率]: 设置进给速率。
+        """
+        pass
+
+    @action(description="设置切割压力")
+    def set_cutting_pressure(self, cutting_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置切割压力。
+
+        Args:
+            cutting_pressure[设置切割压力]: 设置切割压力。
+        """
+        pass
+
+    @action(description="设置冷却液流量")
+    def set_coolant_flow(self, coolant_flow: int = 0) -> Dict[str, Any]:
+        """
+        设置冷却液流量。
+
+        Args:
+            coolant_flow[设置冷却液流量]: 设置冷却液流量。
+        """
+        pass
+
+    @action(description="设置刀片转速")
+    def set_blade_speed(self, blade_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置刀片转速。
+
+        Args:
+            blade_speed[设置刀片转速]: 设置刀片转速。
+        """
+        pass
+
+    @action(description="设置切割精度")
+    def set_cutting_precision(self, cutting_precision: int = 0) -> Dict[str, Any]:
+        """
+        设置切割精度。
+
+        Args:
+            cutting_precision[设置切割精度]: 设置切割精度。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

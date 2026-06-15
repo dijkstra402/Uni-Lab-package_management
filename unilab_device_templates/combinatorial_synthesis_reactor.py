@@ -38,24 +38,24 @@ class CombinatorialSynthesisReactor:
         """初始化。"""
         pass
 
-    @action(description="工位定位")
-    def locate_station(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        工位定位。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="多通道加料")
-    def multichannel_feed(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        多通道加料。
+    @action(description="工位定位")
+    def locate_station(self) -> Dict[str, Any]:
+        """工位定位。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="多通道加料")
+    def multichannel_feed(self) -> Dict[str, Any]:
+        """多通道加料。"""
         pass
 
     @property

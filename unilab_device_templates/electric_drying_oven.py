@@ -38,6 +38,66 @@ class ElectricDryingOven:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置升温速率")
+    def set_ramp_rate(self, ramp_rate: int = 0) -> Dict[str, Any]:
+        """
+        设置升温速率。
+
+        Args:
+            ramp_rate[设置升温速率]: 设置升温速率。
+        """
+        pass
+
+    @action(description="设置恒温时间")
+    def set_hold_time(self, hold_time: int = 0) -> Dict[str, Any]:
+        """
+        设置恒温时间。
+
+        Args:
+            hold_time[设置恒温时间]: 设置恒温时间。
+        """
+        pass
+
+    @action(description="设置加热功率")
+    def set_heating_power(self, heating_power: int = 0) -> Dict[str, Any]:
+        """
+        设置加热功率。
+
+        Args:
+            heating_power[设置加热功率]: 设置加热功率。
+        """
+        pass
+
+    @action(description="设置风机转速")
+    def set_fan_speed(self, fan_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置风机转速。
+
+        Args:
+            fan_speed[设置风机转速]: 设置风机转速。
+        """
+        pass
+
+    @action(description="设置风门开度")
+    def set_damper_opening(self, damper_opening: int = 0) -> Dict[str, Any]:
+        """
+        设置风门开度。
+
+        Args:
+            damper_opening[设置风门开度]: 设置风门开度。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

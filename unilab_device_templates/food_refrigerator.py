@@ -38,6 +38,56 @@ class FoodRefrigerator:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置温度")
+    def set_temperature(self, temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[设置温度]: 设置温度。
+        """
+        pass
+
+    @action(description="设置湿度")
+    def set_humidity(self, humidity: int = 0) -> Dict[str, Any]:
+        """
+        设置湿度。
+
+        Args:
+            humidity[设置湿度]: 设置湿度。
+        """
+        pass
+
+    @action(description="设置杀菌时间")
+    def set_sterilization_time(self, sterilization_time: int = 0) -> Dict[str, Any]:
+        """
+        设置杀菌时间。
+
+        Args:
+            sterilization_time[设置杀菌时间]: 设置杀菌时间。
+        """
+        pass
+
+    @action(description="设置保鲜周期")
+    def set_fresh_keeping_cycle(self, fresh_keeping_cycle: int = 0) -> Dict[str, Any]:
+        """
+        设置保鲜周期。
+
+        Args:
+            fresh_keeping_cycle[设置保鲜周期]: 设置保鲜周期。
+        """
+        pass
+
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""

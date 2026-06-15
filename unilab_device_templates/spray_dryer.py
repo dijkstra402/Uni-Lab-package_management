@@ -38,24 +38,24 @@ class SprayDryer:
         """初始化。"""
         pass
 
-    @action(description="干燥")
-    def dry(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        干燥。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="进料")
-    def feed_in(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        进料。
+    @action(description="干燥")
+    def dry(self) -> Dict[str, Any]:
+        """干燥。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="进料")
+    def feed_in(self) -> Dict[str, Any]:
+        """进料。"""
         pass
 
     @property

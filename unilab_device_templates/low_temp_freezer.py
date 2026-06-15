@@ -38,14 +38,59 @@ class LowTempFreezer:
         """初始化。"""
         pass
 
-    @action(description="除霜")
-    def defrost(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        除霜。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置温度")
+    def set_temperature(self, temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[设置温度]: 设置温度。
+        """
+        pass
+
+    @action(description="设置降温速率")
+    def set_cooldown_rate(self, cooldown_rate: int = 0) -> Dict[str, Any]:
+        """
+        设置降温速率。
+
+        Args:
+            cooldown_rate[设置降温速率]: 设置降温速率。
+        """
+        pass
+
+    @action(description="设置真空度")
+    def set_vacuum(self, vacuum: int = 0) -> Dict[str, Any]:
+        """
+        设置真空度。
+
+        Args:
+            vacuum[设置真空度]: 设置真空度。
+        """
+        pass
+
+    @action(description="设置保温时间")
+    def set_holding_time(self, holding_time: int = 0) -> Dict[str, Any]:
+        """
+        设置保温时间。
+
+        Args:
+            holding_time[设置保温时间]: 设置保温时间。
+        """
+        pass
+
+    @action(description="除霜")
+    def defrost(self) -> Dict[str, Any]:
+        """除霜。"""
         pass
 
     @action(description="运行")

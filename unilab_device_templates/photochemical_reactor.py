@@ -38,13 +38,22 @@ class PhotochemicalReactor:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
     @action(description="光源开启")
-    def turn_on_light(self, mode: int = 0, light_intensity: int = 0) -> Dict[str, Any]:
+    def turn_on_light(self, light_intensity: int = 0) -> Dict[str, Any]:
         """
         光源开启。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             light_intensity[光源强度设置]: 光源强度设置。
         """
         pass

@@ -38,24 +38,24 @@ class CatalystEvaluationUnit:
         """初始化。"""
         pass
 
-    @action(description="进样")
-    def inject(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        进样。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="采样")
-    def sample(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        采样。
+    @action(description="进样")
+    def inject(self) -> Dict[str, Any]:
+        """进样。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="采样")
+    def sample(self) -> Dict[str, Any]:
+        """采样。"""
         pass
 
     @property

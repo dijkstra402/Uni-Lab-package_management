@@ -38,6 +38,16 @@ class BlackbodyRadiationSource:
         """初始化。"""
         pass
 
+    @action(description="设置辐射强度")
+    def set_radiation_intensity(self, radiation_intensity: int = 0) -> Dict[str, Any]:
+        """
+        设置辐射强度。
+
+        Args:
+            radiation_intensity[设置辐射强度]: 设置辐射强度。
+        """
+        pass
+
     @action(description="运行倒计时")
     def run_countdown(self) -> Dict[str, Any]:
         """运行倒计时。"""

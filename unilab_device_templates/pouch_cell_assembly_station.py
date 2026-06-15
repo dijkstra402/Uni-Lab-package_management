@@ -33,6 +33,106 @@ class PouchCellAssemblyStation:
         self.config = config or {}
         self.data: Dict[str, Any] = {"status": "idle"}
 
+    @action(description="设置封装温度设定")
+    def set_packaging_temperature(self, packaging_temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置封装温度设定。
+
+        Args:
+            packaging_temperature[设置封装温度设定]: 设置封装温度设定。
+        """
+        pass
+
+    @action(description="设置封装压力设定")
+    def set_packaging_pressure(self, packaging_pressure: float = 0.0) -> Dict[str, Any]:
+        """
+        设置封装压力设定。
+
+        Args:
+            packaging_pressure[设置封装压力设定]: 设置封装压力设定。
+        """
+        pass
+
+    @action(description="设置封装时间设定")
+    def set_packaging_time(self, packaging_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置封装时间设定。
+
+        Args:
+            packaging_time[设置封装时间设定]: 设置封装时间设定。
+        """
+        pass
+
+    @action(description="设置热压温度设定")
+    def set_hot_press_temperature(self, hot_press_temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置热压温度设定。
+
+        Args:
+            hot_press_temperature[设置热压温度设定]: 设置热压温度设定。
+        """
+        pass
+
+    @action(description="设置热压压力设定")
+    def set_hot_press_pressure(self, hot_press_pressure: float = 0.0) -> Dict[str, Any]:
+        """
+        设置热压压力设定。
+
+        Args:
+            hot_press_pressure[设置热压压力设定]: 设置热压压力设定。
+        """
+        pass
+
+    @action(description="设置热压时间设定")
+    def set_hot_press_time(self, hot_press_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置热压时间设定。
+
+        Args:
+            hot_press_time[设置热压时间设定]: 设置热压时间设定。
+        """
+        pass
+
+    @action(description="设置裁切速度设定")
+    def set_cutting_speed(self, cutting_speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置裁切速度设定。
+
+        Args:
+            cutting_speed[设置裁切速度设定]: 设置裁切速度设定。
+        """
+        pass
+
+    @action(description="设置真空度设定")
+    def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
+        """
+        设置真空度设定。
+
+        Args:
+            vacuum[设置真空度设定]: 设置真空度设定。
+        """
+        pass
+
+    @action(description="设置冷却水温设定")
+    def set_cooling_water_temp(self, cooling_water_temp: float = 0.0) -> Dict[str, Any]:
+        """
+        设置冷却水温设定。
+
+        Args:
+            cooling_water_temp[设置冷却水温设定]: 设置冷却水温设定。
+        """
+        pass
+
+    @action(description="设置加热功率设定")
+    def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
+        """
+        设置加热功率设定。
+
+        Args:
+            heating_power[设置加热功率设定]: 设置加热功率设定。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

@@ -38,36 +38,39 @@ class SolidWeighingStation:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
     @action(description="称量")
-    def weigh(self, mode: int = 0, weighing_precision: int = 0) -> Dict[str, Any]:
+    def weigh(self, weighing_precision: int = 0) -> Dict[str, Any]:
         """
         称量。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             weighing_precision[称量精度设置]: 称量精度设置。
         """
         pass
 
     @action(description="卸料")
-    def discharge(self, mode: int = 0, discharge_speed: int = 0) -> Dict[str, Any]:
+    def discharge(self, discharge_speed: int = 0) -> Dict[str, Any]:
         """
         卸料。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             discharge_speed[卸料速度设置]: 卸料速度设置。
         """
         pass
 
     @action(description="校准")
-    def calibrate(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        校准。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def calibrate(self) -> Dict[str, Any]:
+        """校准。"""
         pass
 
     @action(description="去皮")

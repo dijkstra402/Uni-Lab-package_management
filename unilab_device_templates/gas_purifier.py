@@ -38,26 +38,34 @@ class GasPurifier:
         """初始化。"""
         pass
 
-    @action(description="净化")
-    def purify(self, mode: int = 0, output_flow: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        净化。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            output_flow[输出流量设置]: 输出流量设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="吹扫")
-    def purge(self, mode: int = 0, output_flow: int = 0) -> Dict[str, Any]:
+    @action(description="设置输出流量")
+    def set_output_flow(self, output_flow: int = 0) -> Dict[str, Any]:
         """
-        吹扫。
+        设置输出流量。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            output_flow[输出流量设置]: 输出流量设置。
+            output_flow[设置输出流量]: 设置输出流量。
         """
+        pass
+
+    @action(description="净化")
+    def purify(self) -> Dict[str, Any]:
+        """净化。"""
+        pass
+
+    @action(description="吹扫")
+    def purge(self) -> Dict[str, Any]:
+        """吹扫。"""
         pass
 
     @property

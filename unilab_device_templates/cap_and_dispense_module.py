@@ -38,51 +38,59 @@ class CapAndDispenseModule:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置容器位置")
+    def set_container_position(self, container_position: int = 0) -> Dict[str, Any]:
+        """
+        设置容器位置。
+
+        Args:
+            container_position[设置容器位置]: 设置容器位置。
+        """
+        pass
+
     @action(description="开盖")
-    def open_cap(self, mode: int = 0, cap_height: int = 0, container_position: int = 0) -> Dict[str, Any]:
+    def open_cap(self, cap_height: int = 0) -> Dict[str, Any]:
         """
         开盖。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             cap_height[开盖高度设置]: 开盖高度设置。
-            container_position[容器位置设置]: 容器位置设置。
         """
         pass
 
     @action(description="关盖")
-    def close_cap(self, mode: int = 0, cap_torque: int = 0, container_position: int = 0) -> Dict[str, Any]:
+    def close_cap(self, cap_torque: int = 0) -> Dict[str, Any]:
         """
         关盖。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             cap_torque[关盖扭矩设置]: 关盖扭矩设置。
-            container_position[容器位置设置]: 容器位置设置。
         """
         pass
 
     @action(description="加液")
-    def add_liquid(self, mode: int = 0, add_volume: int = 0, container_position: int = 0) -> Dict[str, Any]:
+    def add_liquid(self, add_volume: int = 0) -> Dict[str, Any]:
         """
         加液。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             add_volume[加液体积设置]: 加液体积设置。
-            container_position[容器位置设置]: 容器位置设置。
         """
         pass
 
     @action(description="定位")
-    def position(self, mode: int = 0, container_position: int = 0) -> Dict[str, Any]:
-        """
-        定位。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            container_position[容器位置设置]: 容器位置设置。
-        """
+    def position(self) -> Dict[str, Any]:
+        """定位。"""
         pass
 
     @property

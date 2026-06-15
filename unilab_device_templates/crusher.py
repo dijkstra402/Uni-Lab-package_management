@@ -38,24 +38,24 @@ class Crusher:
         """初始化。"""
         pass
 
-    @action(description="粉碎")
-    def crush(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        粉碎。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="清料")
-    def clear_material(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        清料。
+    @action(description="粉碎")
+    def crush(self) -> Dict[str, Any]:
+        """粉碎。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="清料")
+    def clear_material(self) -> Dict[str, Any]:
+        """清料。"""
         pass
 
     @property

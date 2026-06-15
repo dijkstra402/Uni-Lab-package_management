@@ -38,24 +38,24 @@ class Filter:
         """初始化。"""
         pass
 
-    @action(description="过滤")
-    def filter(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        过滤。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="反冲洗")
-    def backwash(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        反冲洗。
+    @action(description="过滤")
+    def filter(self) -> Dict[str, Any]:
+        """过滤。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="反冲洗")
+    def backwash(self) -> Dict[str, Any]:
+        """反冲洗。"""
         pass
 
     @property

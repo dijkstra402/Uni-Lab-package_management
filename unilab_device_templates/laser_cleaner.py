@@ -38,34 +38,79 @@ class LaserCleaner:
         """初始化。"""
         pass
 
-    @action(description="清洗")
-    def clean(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        清洗。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置清洗温度")
+    def set_cleaning_temperature(self, cleaning_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置清洗温度。
+
+        Args:
+            cleaning_temperature[设置清洗温度]: 设置清洗温度。
+        """
+        pass
+
+    @action(description="设置清洗压力")
+    def set_qing_xi_pressure(self, qing_xi_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置清洗压力。
+
+        Args:
+            qing_xi_pressure[设置清洗压力]: 设置清洗压力。
+        """
+        pass
+
+    @action(description="设置激光功率")
+    def set_laser_power(self, laser_power: int = 0) -> Dict[str, Any]:
+        """
+        设置激光功率。
+
+        Args:
+            laser_power[设置激光功率]: 设置激光功率。
+        """
+        pass
+
+    @action(description="设置扫描速度")
+    def set_scan_speed(self, scan_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置扫描速度。
+
+        Args:
+            scan_speed[设置扫描速度]: 设置扫描速度。
+        """
+        pass
+
+    @action(description="设置聚焦距离")
+    def set_focus_distance(self, focus_distance: int = 0) -> Dict[str, Any]:
+        """
+        设置聚焦距离。
+
+        Args:
+            focus_distance[设置聚焦距离]: 设置聚焦距离。
+        """
+        pass
+
+    @action(description="清洗")
+    def clean(self) -> Dict[str, Any]:
+        """清洗。"""
         pass
 
     @action(description="清洗准备")
-    def prepare_cleaning(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        清洗准备。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def prepare_cleaning(self) -> Dict[str, Any]:
+        """清洗准备。"""
         pass
 
     @action(description="清洗结束")
-    def finish_cleaning(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        清洗结束。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def finish_cleaning(self) -> Dict[str, Any]:
+        """清洗结束。"""
         pass
 
     @property

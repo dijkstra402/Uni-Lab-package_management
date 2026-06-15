@@ -38,15 +38,29 @@ class ElectrochemicalReactor:
         """初始化。"""
         pass
 
-    @action(description="极性反转")
-    def reverse_polarity(self, mode: int = 0, target_current: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        极性反转。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_current[目标电流设置]: 目标电流设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置目标电流")
+    def set_target_current(self, target_current: int = 0) -> Dict[str, Any]:
+        """
+        设置目标电流。
+
+        Args:
+            target_current[设置目标电流]: 设置目标电流。
+        """
+        pass
+
+    @action(description="极性反转")
+    def reverse_polarity(self) -> Dict[str, Any]:
+        """极性反转。"""
         pass
 
     @action(description="通电")

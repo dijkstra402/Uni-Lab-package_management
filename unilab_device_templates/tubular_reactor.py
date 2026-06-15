@@ -38,45 +38,47 @@ class TubularReactor:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
     @action(description="段1控温")
-    def control_temp_zone1(self, mode: int = 0, zone1_target_temp: int = 0) -> Dict[str, Any]:
+    def control_temp_zone1(self, zone1_target_temp: int = 0) -> Dict[str, Any]:
         """
         段1控温。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             zone1_target_temp[段1目标温度设置]: 段1目标温度设置。
         """
         pass
 
     @action(description="段2控温")
-    def control_temp_zone2(self, mode: int = 0, zone2_target_temp: int = 0) -> Dict[str, Any]:
+    def control_temp_zone2(self, zone2_target_temp: int = 0) -> Dict[str, Any]:
         """
         段2控温。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             zone2_target_temp[段2目标温度设置]: 段2目标温度设置。
         """
         pass
 
     @action(description="进料泵")
-    def feed_pump(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        进料泵。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def feed_pump(self) -> Dict[str, Any]:
+        """进料泵。"""
         pass
 
     @action(description="背压阀调节")
-    def adjust_backpressure_valve(self, mode: int = 0, system_backpressure: int = 0) -> Dict[str, Any]:
+    def adjust_backpressure_valve(self, system_backpressure: int = 0) -> Dict[str, Any]:
         """
         背压阀调节。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             system_backpressure[系统背压设置]: 系统背压设置。
         """
         pass

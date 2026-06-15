@@ -38,17 +38,44 @@ class BallMill:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置球料比")
+    def set_ball_to_powder_ratio(self, ball_to_powder_ratio: int = 0) -> Dict[str, Any]:
+        """
+        设置球料比。
+
+        Args:
+            ball_to_powder_ratio[设置球料比]: 设置球料比。
+        """
+        pass
+
+    @action(description="设置正反转间隔")
+    def set_fwd_rev_interval(self, fwd_rev_interval: int = 0) -> Dict[str, Any]:
+        """
+        设置正反转间隔。
+
+        Args:
+            fwd_rev_interval[设置正反转间隔]: 设置正反转间隔。
+        """
+        pass
+
     @action(description="研磨")
-    def grind(self, mode: int = 0, grinding_time: int = 0, ball_to_powder_ratio: int = 0, grinding_temperature: int = 0, fwd_rev_interval: int = 0) -> Dict[str, Any]:
+    def grind(self, grinding_time: int = 0, grinding_temperature: int = 0) -> Dict[str, Any]:
         """
         研磨。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             grinding_time[研磨时间设置]: 研磨时间设置。
-            ball_to_powder_ratio[球料比设置]: 球料比设置。
             grinding_temperature[研磨温度设置]: 研磨温度设置。
-            fwd_rev_interval[正反转间隔设置]: 正反转间隔设置。
         """
         pass
 

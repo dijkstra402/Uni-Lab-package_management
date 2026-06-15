@@ -38,6 +38,56 @@ class HighFreqInductionFurnace:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置感应功率")
+    def set_induction_power(self, induction_power: int = 0) -> Dict[str, Any]:
+        """
+        设置感应功率。
+
+        Args:
+            induction_power[设置感应功率]: 设置感应功率。
+        """
+        pass
+
+    @action(description="设置振荡频率")
+    def set_oscillation_frequency(self, oscillation_frequency: int = 0) -> Dict[str, Any]:
+        """
+        设置振荡频率。
+
+        Args:
+            oscillation_frequency[设置振荡频率]: 设置振荡频率。
+        """
+        pass
+
+    @action(description="设置加热时间")
+    def set_heating_time(self, heating_time: int = 0) -> Dict[str, Any]:
+        """
+        设置加热时间。
+
+        Args:
+            heating_time[设置加热时间]: 设置加热时间。
+        """
+        pass
+
+    @action(description="设置冷却水流速")
+    def set_cooling_water_velocity(self, cooling_water_velocity: int = 0) -> Dict[str, Any]:
+        """
+        设置冷却水流速。
+
+        Args:
+            cooling_water_velocity[设置冷却水流速]: 设置冷却水流速。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

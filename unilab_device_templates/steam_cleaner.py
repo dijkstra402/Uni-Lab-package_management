@@ -38,34 +38,79 @@ class SteamCleaner:
         """初始化。"""
         pass
 
-    @action(description="清洗")
-    def clean(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        清洗。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置清洗温度")
+    def set_cleaning_temperature(self, cleaning_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置清洗温度。
+
+        Args:
+            cleaning_temperature[设置清洗温度]: 设置清洗温度。
+        """
+        pass
+
+    @action(description="设置清洗压力")
+    def set_qing_xi_pressure(self, qing_xi_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置清洗压力。
+
+        Args:
+            qing_xi_pressure[设置清洗压力]: 设置清洗压力。
+        """
+        pass
+
+    @action(description="设置蒸汽压力")
+    def set_steam_pressure(self, steam_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置蒸汽压力。
+
+        Args:
+            steam_pressure[设置蒸汽压力]: 设置蒸汽压力。
+        """
+        pass
+
+    @action(description="设置蒸汽温度")
+    def set_steam_temperature(self, steam_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置蒸汽温度。
+
+        Args:
+            steam_temperature[设置蒸汽温度]: 设置蒸汽温度。
+        """
+        pass
+
+    @action(description="设置蒸汽时间")
+    def set_steam_time(self, steam_time: int = 0) -> Dict[str, Any]:
+        """
+        设置蒸汽时间。
+
+        Args:
+            steam_time[设置蒸汽时间]: 设置蒸汽时间。
+        """
+        pass
+
+    @action(description="清洗")
+    def clean(self) -> Dict[str, Any]:
+        """清洗。"""
         pass
 
     @action(description="清洗准备")
-    def prepare_cleaning(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        清洗准备。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def prepare_cleaning(self) -> Dict[str, Any]:
+        """清洗准备。"""
         pass
 
     @action(description="清洗结束")
-    def finish_cleaning(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        清洗结束。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def finish_cleaning(self) -> Dict[str, Any]:
+        """清洗结束。"""
         pass
 
     @property

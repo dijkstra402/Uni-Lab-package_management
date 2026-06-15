@@ -38,28 +38,44 @@ class GpcCleanupSystem:
         """初始化。"""
         pass
 
-    @action(description="净化")
-    def purify(self, mode: int = 0, mobile_phase_velocity: int = 0, column_temperature: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        净化。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            mobile_phase_velocity[流动相流速设置]: 流动相流速设置。
-            column_temperature[柱温设置]: 柱温设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="冲洗")
-    def rinse(self, mode: int = 0, mobile_phase_velocity: int = 0, column_temperature: int = 0) -> Dict[str, Any]:
+    @action(description="设置流动相流速")
+    def set_mobile_phase_velocity(self, mobile_phase_velocity: int = 0) -> Dict[str, Any]:
         """
-        冲洗。
+        设置流动相流速。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            mobile_phase_velocity[流动相流速设置]: 流动相流速设置。
-            column_temperature[柱温设置]: 柱温设置。
+            mobile_phase_velocity[设置流动相流速]: 设置流动相流速。
         """
+        pass
+
+    @action(description="设置柱温")
+    def set_column_temperature(self, column_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置柱温。
+
+        Args:
+            column_temperature[设置柱温]: 设置柱温。
+        """
+        pass
+
+    @action(description="净化")
+    def purify(self) -> Dict[str, Any]:
+        """净化。"""
+        pass
+
+    @action(description="冲洗")
+    def rinse(self) -> Dict[str, Any]:
+        """冲洗。"""
         pass
 
     @property

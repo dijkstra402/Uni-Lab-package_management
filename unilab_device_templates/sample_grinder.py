@@ -38,6 +38,96 @@ class SampleGrinder:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置研磨转速")
+    def set_grinding_speed(self, grinding_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置研磨转速。
+
+        Args:
+            grinding_speed[设置研磨转速]: 设置研磨转速。
+        """
+        pass
+
+    @action(description="设置研磨时间")
+    def set_grinding_time(self, grinding_time: int = 0) -> Dict[str, Any]:
+        """
+        设置研磨时间。
+
+        Args:
+            grinding_time[设置研磨时间]: 设置研磨时间。
+        """
+        pass
+
+    @action(description="设置研磨压力")
+    def set_grinding_pressure(self, grinding_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置研磨压力。
+
+        Args:
+            grinding_pressure[设置研磨压力]: 设置研磨压力。
+        """
+        pass
+
+    @action(description="设置磨头选择")
+    def set_grinding_head_select(self, grinding_head_select: int = 0) -> Dict[str, Any]:
+        """
+        设置磨头选择。
+
+        Args:
+            grinding_head_select[设置磨头选择]: 设置磨头选择。
+        """
+        pass
+
+    @action(description="设置粒度控制")
+    def set_particle_size_control(self, particle_size_control: int = 0) -> Dict[str, Any]:
+        """
+        设置粒度控制。
+
+        Args:
+            particle_size_control[设置粒度控制]: 设置粒度控制。
+        """
+        pass
+
+    @action(description="设置冷却水量")
+    def set_cooling_water_volume(self, cooling_water_volume: int = 0) -> Dict[str, Any]:
+        """
+        设置冷却水量。
+
+        Args:
+            cooling_water_volume[设置冷却水量]: 设置冷却水量。
+        """
+        pass
+
+    @action(description="设置振动频率")
+    def set_vibration_frequency(self, vibration_frequency: int = 0) -> Dict[str, Any]:
+        """
+        设置振动频率。
+
+        Args:
+            vibration_frequency[设置振动频率]: 设置振动频率。
+        """
+        pass
+
+    @action(description="设置研磨精度")
+    def set_grinding_precision(self, grinding_precision: int = 0) -> Dict[str, Any]:
+        """
+        设置研磨精度。
+
+        Args:
+            grinding_precision[设置研磨精度]: 设置研磨精度。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

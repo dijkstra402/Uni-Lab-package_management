@@ -38,14 +38,19 @@ class MultiwayValve:
         """初始化。"""
         pass
 
-    @action(description="切换阀位")
-    def switch_position(self, position: int = 0) -> Dict[str, Any]:
+    @action(description="设置绝对位置")
+    def set_position(self, position: int = 0) -> Dict[str, Any]:
         """
-        切换阀位。
+        设置绝对位置。
 
         Args:
-            position[绝对位置设置]: 绝对位置设置。
+            position[设置绝对位置]: 设置绝对位置。
         """
+        pass
+
+    @action(description="切换阀位")
+    def switch_position(self) -> Dict[str, Any]:
+        """切换阀位。"""
         pass
 
     @property

@@ -38,24 +38,24 @@ class MicrowaveSynthesisReactor:
         """初始化。"""
         pass
 
-    @action(description="微波发射")
-    def emit_microwave(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        微波发射。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="搅拌")
-    def stir(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        搅拌。
+    @action(description="微波发射")
+    def emit_microwave(self) -> Dict[str, Any]:
+        """微波发射。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="搅拌")
+    def stir(self) -> Dict[str, Any]:
+        """搅拌。"""
         pass
 
     @property

@@ -38,6 +38,66 @@ class CentrifugalExtractor:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置运行时间")
+    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+        """
+        设置运行时间。
+
+        Args:
+            run_time[设置运行时间]: 设置运行时间。
+        """
+        pass
+
+    @action(description="设置转速")
+    def set_speed(self, speed: int = 0) -> Dict[str, Any]:
+        """
+        设置转速。
+
+        Args:
+            speed[设置转速]: 设置转速。
+        """
+        pass
+
+    @action(description="设置分离时间")
+    def set_separation_time(self, separation_time: int = 0) -> Dict[str, Any]:
+        """
+        设置分离时间。
+
+        Args:
+            separation_time[设置分离时间]: 设置分离时间。
+        """
+        pass
+
+    @action(description="设置进料流量")
+    def set_feed_flow(self, feed_flow: int = 0) -> Dict[str, Any]:
+        """
+        设置进料流量。
+
+        Args:
+            feed_flow[设置进料流量]: 设置进料流量。
+        """
+        pass
+
+    @action(description="设置轻重相界面")
+    def set_phase_interface(self, phase_interface: int = 0) -> Dict[str, Any]:
+        """
+        设置轻重相界面。
+
+        Args:
+            phase_interface[设置轻重相界面]: 设置轻重相界面。
+        """
+        pass
+
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""

@@ -38,6 +38,86 @@ class Microtome:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置切片厚度")
+    def set_slice_thickness(self, slice_thickness: int = 0) -> Dict[str, Any]:
+        """
+        设置切片厚度。
+
+        Args:
+            slice_thickness[设置切片厚度]: 设置切片厚度。
+        """
+        pass
+
+    @action(description="设置切片速度")
+    def set_slice_speed(self, slice_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置切片速度。
+
+        Args:
+            slice_speed[设置切片速度]: 设置切片速度。
+        """
+        pass
+
+    @action(description="设置进给量")
+    def set_feed_amount(self, feed_amount: int = 0) -> Dict[str, Any]:
+        """
+        设置进给量。
+
+        Args:
+            feed_amount[设置进给量]: 设置进给量。
+        """
+        pass
+
+    @action(description="设置刀架角度")
+    def set_tool_holder_angle(self, tool_holder_angle: int = 0) -> Dict[str, Any]:
+        """
+        设置刀架角度。
+
+        Args:
+            tool_holder_angle[设置刀架角度]: 设置刀架角度。
+        """
+        pass
+
+    @action(description="设置样品转速")
+    def set_sample_speed(self, sample_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置样品转速。
+
+        Args:
+            sample_speed[设置样品转速]: 设置样品转速。
+        """
+        pass
+
+    @action(description="设置切片精度")
+    def set_slice_precision(self, slice_precision: int = 0) -> Dict[str, Any]:
+        """
+        设置切片精度。
+
+        Args:
+            slice_precision[设置切片精度]: 设置切片精度。
+        """
+        pass
+
+    @action(description="设置切片数量")
+    def set_slicing_count(self, slicing_count: int = 0) -> Dict[str, Any]:
+        """
+        设置切片数量。
+
+        Args:
+            slicing_count[设置切片数量]: 设置切片数量。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

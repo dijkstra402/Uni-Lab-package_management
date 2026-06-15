@@ -38,29 +38,53 @@ class ElectricDigester:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置目标温度")
+    def set_target_temperature(self, target_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置目标温度。
+
+        Args:
+            target_temperature[设置目标温度]: 设置目标温度。
+        """
+        pass
+
+    @action(description="设置升温速率")
+    def set_ramp_rate(self, ramp_rate: int = 0) -> Dict[str, Any]:
+        """
+        设置升温速率。
+
+        Args:
+            ramp_rate[设置升温速率]: 设置升温速率。
+        """
+        pass
+
     @action(description="消解")
-    def digest(self, mode: int = 0, target_temperature: int = 0, digestion_time: int = 0, ramp_rate: int = 0) -> Dict[str, Any]:
+    def digest(self, digestion_time: int = 0) -> Dict[str, Any]:
         """
         消解。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_temperature[目标温度设置]: 目标温度设置。
             digestion_time[消解时间设置]: 消解时间设置。
-            ramp_rate[升温速率设置]: 升温速率设置。
         """
         pass
 
     @action(description="加热")
-    def heat(self, mode: int = 0, target_temperature: int = 0, heating_power: int = 0, ramp_rate: int = 0) -> Dict[str, Any]:
+    def heat(self, heating_power: int = 0) -> Dict[str, Any]:
         """
         加热。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_temperature[目标温度设置]: 目标温度设置。
             heating_power[加热功率设置]: 加热功率设置。
-            ramp_rate[升温速率设置]: 升温速率设置。
         """
         pass
 
@@ -78,9 +102,9 @@ class ElectricDigester:
 
     @property
     @topic_config()
-    def heng_wen_state(self) -> bool:
+    def constant_temp_state(self) -> bool:
         """恒温状态。"""
-        return self.data.get("heng_wen_state", False)
+        return self.data.get("constant_temp_state", False)
 
     @property
     @topic_config()

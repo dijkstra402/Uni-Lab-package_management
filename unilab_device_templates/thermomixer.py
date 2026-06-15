@@ -38,19 +38,73 @@ class Thermomixer:
         """初始化。"""
         pass
 
+    @action(description="设置加热温度")
+    def set_heating_temperature(self, heating_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置加热温度。
+
+        Args:
+            heating_temperature[设置加热温度]: 设置加热温度。
+        """
+        pass
+
+    @action(description="设置运行时间")
+    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+        """
+        设置运行时间。
+
+        Args:
+            run_time[设置运行时间]: 设置运行时间。
+        """
+        pass
+
+    @action(description="设置工作模式")
+    def set_work_mode(self, work_mode: int = 0) -> Dict[str, Any]:
+        """
+        设置工作模式。
+
+        Args:
+            work_mode[设置工作模式]: 设置工作模式。
+        """
+        pass
+
+    @action(description="设置温度单位")
+    def set_temperature_unit(self, temperature_unit: int = 0) -> Dict[str, Any]:
+        """
+        设置温度单位。
+
+        Args:
+            temperature_unit[设置温度单位]: 设置温度单位。
+        """
+        pass
+
+    @action(description="设置加热功率")
+    def set_heating_power(self, heating_power: int = 0) -> Dict[str, Any]:
+        """
+        设置加热功率。
+
+        Args:
+            heating_power[设置加热功率]: 设置加热功率。
+        """
+        pass
+
+    @action(description="设置安全温度")
+    def set_safety_temperature(self, safety_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置安全温度。
+
+        Args:
+            safety_temperature[设置安全温度]: 设置安全温度。
+        """
+        pass
+
     @action(description="混匀")
-    def mix(self, heating_temperature: int = 0, mix_speed: int = 0, run_time: int = 0, work_mode: int = 0, temperature_unit: int = 0, heating_power: int = 0, safety_temperature: int = 0) -> Dict[str, Any]:
+    def mix(self, mix_speed: int = 0) -> Dict[str, Any]:
         """
         混匀。
 
         Args:
-            heating_temperature[加热温度设置]: 加热温度设置。
             mix_speed[混匀速度设置]: 混匀速度设置。
-            run_time[运行时间设置]: 运行时间设置。
-            work_mode[工作模式设置]: 工作模式设置。
-            temperature_unit[温度单位设置]: 温度单位设置。
-            heating_power[加热功率设置]: 加热功率设置。
-            safety_temperature[安全温度设置]: 安全温度设置。
         """
         pass
 

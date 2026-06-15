@@ -38,18 +38,63 @@ class MicrowaveDigester:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置目标温度")
+    def set_target_temperature(self, target_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置目标温度。
+
+        Args:
+            target_temperature[设置目标温度]: 设置目标温度。
+        """
+        pass
+
+    @action(description="设置目标压力")
+    def set_target_pressure(self, target_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置目标压力。
+
+        Args:
+            target_pressure[设置目标压力]: 设置目标压力。
+        """
+        pass
+
+    @action(description="设置微波功率")
+    def set_microwave_power(self, microwave_power: int = 0) -> Dict[str, Any]:
+        """
+        设置微波功率。
+
+        Args:
+            microwave_power[设置微波功率]: 设置微波功率。
+        """
+        pass
+
+    @action(description="设置程序段")
+    def set_program_segment(self, program_segment: int = 0) -> Dict[str, Any]:
+        """
+        设置程序段。
+
+        Args:
+            program_segment[设置程序段]: 设置程序段。
+        """
+        pass
+
     @action(description="消解")
-    def digest(self, mode: int = 0, target_temperature: int = 0, target_pressure: int = 0, microwave_power: int = 0, digestion_time: int = 0, program_segment: int = 0) -> Dict[str, Any]:
+    def digest(self, digestion_time: int = 0) -> Dict[str, Any]:
         """
         消解。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_temperature[目标温度设置]: 目标温度设置。
-            target_pressure[目标压力设置]: 目标压力设置。
-            microwave_power[微波功率设置]: 微波功率设置。
             digestion_time[消解时间设置]: 消解时间设置。
-            program_segment[程序段设置]: 程序段设置。
         """
         pass
 

@@ -38,6 +38,66 @@ class AirSampler:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置运行时间")
+    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+        """
+        设置运行时间。
+
+        Args:
+            run_time[设置运行时间]: 设置运行时间。
+        """
+        pass
+
+    @action(description="设置采样流量")
+    def set_sampling_flow(self, sampling_flow: int = 0) -> Dict[str, Any]:
+        """
+        设置采样流量。
+
+        Args:
+            sampling_flow[设置采样流量]: 设置采样流量。
+        """
+        pass
+
+    @action(description="设置采样时间")
+    def set_sampling_time(self, sampling_time: int = 0) -> Dict[str, Any]:
+        """
+        设置采样时间。
+
+        Args:
+            sampling_time[设置采样时间]: 设置采样时间。
+        """
+        pass
+
+    @action(description="设置采样压力")
+    def set_sampling_pressure(self, sampling_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置采样压力。
+
+        Args:
+            sampling_pressure[设置采样压力]: 设置采样压力。
+        """
+        pass
+
+    @action(description="设置采样温度")
+    def set_sampling_temperature(self, sampling_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置采样温度。
+
+        Args:
+            sampling_temperature[设置采样温度]: 设置采样温度。
+        """
+        pass
+
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""

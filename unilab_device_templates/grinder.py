@@ -38,13 +38,22 @@ class Grinder:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
     @action(description="研磨")
-    def grind(self, mode: int = 0, grinding_disc_speed: int = 0, grinding_pressure: int = 0, grinding_time: int = 0, grinding_particle_size: int = 0) -> Dict[str, Any]:
+    def grind(self, grinding_disc_speed: int = 0, grinding_pressure: int = 0, grinding_time: int = 0, grinding_particle_size: int = 0) -> Dict[str, Any]:
         """
         研磨。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             grinding_disc_speed[研磨盘转速设置]: 研磨盘转速设置。
             grinding_pressure[研磨压力设置]: 研磨压力设置。
             grinding_time[研磨时间设置]: 研磨时间设置。
@@ -53,12 +62,11 @@ class Grinder:
         pass
 
     @action(description="自动清洁")
-    def auto_clean(self, mode: int = 0, cleaning_time: int = 0) -> Dict[str, Any]:
+    def auto_clean(self, cleaning_time: int = 0) -> Dict[str, Any]:
         """
         自动清洁。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             cleaning_time[清洁时间设置]: 清洁时间设置。
         """
         pass

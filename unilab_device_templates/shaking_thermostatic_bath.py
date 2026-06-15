@@ -38,6 +38,86 @@ class ShakingThermostaticBath:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置控温精度")
+    def set_temp_control_precision(self, temp_control_precision: int = 0) -> Dict[str, Any]:
+        """
+        设置控温精度。
+
+        Args:
+            temp_control_precision[设置控温精度]: 设置控温精度。
+        """
+        pass
+
+    @action(description="设置加热功率")
+    def set_heating_power(self, heating_power: int = 0) -> Dict[str, Any]:
+        """
+        设置加热功率。
+
+        Args:
+            heating_power[设置加热功率]: 设置加热功率。
+        """
+        pass
+
+    @action(description="设置振荡频率")
+    def set_oscillation_frequency(self, oscillation_frequency: int = 0) -> Dict[str, Any]:
+        """
+        设置振荡频率。
+
+        Args:
+            oscillation_frequency[设置振荡频率]: 设置振荡频率。
+        """
+        pass
+
+    @action(description="设置振荡幅度")
+    def set_oscillation_amplitude(self, oscillation_amplitude: int = 0) -> Dict[str, Any]:
+        """
+        设置振荡幅度。
+
+        Args:
+            oscillation_amplitude[设置振荡幅度]: 设置振荡幅度。
+        """
+        pass
+
+    @action(description="设置振荡时间")
+    def set_oscillation_time(self, oscillation_time: int = 0) -> Dict[str, Any]:
+        """
+        设置振荡时间。
+
+        Args:
+            oscillation_time[设置振荡时间]: 设置振荡时间。
+        """
+        pass
+
+    @action(description="设置循环泵转速")
+    def set_circulation_pump_speed(self, circulation_pump_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置循环泵转速。
+
+        Args:
+            circulation_pump_speed[设置循环泵转速]: 设置循环泵转速。
+        """
+        pass
+
+    @action(description="设置恒温时间")
+    def set_hold_time(self, hold_time: int = 0) -> Dict[str, Any]:
+        """
+        设置恒温时间。
+
+        Args:
+            hold_time[设置恒温时间]: 设置恒温时间。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

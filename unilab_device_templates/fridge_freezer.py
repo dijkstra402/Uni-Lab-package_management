@@ -38,14 +38,29 @@ class FridgeFreezer:
         """初始化。"""
         pass
 
-    @action(description="除霜")
-    def defrost(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        除霜。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置温度")
+    def set_temperature(self, temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[设置温度]: 设置温度。
+        """
+        pass
+
+    @action(description="除霜")
+    def defrost(self) -> Dict[str, Any]:
+        """除霜。"""
         pass
 
     @action(description="运行")

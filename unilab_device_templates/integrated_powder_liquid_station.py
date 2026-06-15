@@ -38,50 +38,64 @@ class IntegratedPowderLiquidStation:
         """初始化。"""
         pass
 
-    @action(description="配粉启动")
-    def start_powder_prep(self, mode: int = 0, recipe_number: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        配粉启动。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            recipe_number[配方编号设置]: 配方编号设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置配方编号")
+    def set_recipe_number(self, recipe_number: int = 0) -> Dict[str, Any]:
+        """
+        设置配方编号。
+
+        Args:
+            recipe_number[设置配方编号]: 设置配方编号。
+        """
+        pass
+
+    @action(description="设置搅拌速度")
+    def set_stir_speed(self, stir_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置搅拌速度。
+
+        Args:
+            stir_speed[设置搅拌速度]: 设置搅拌速度。
+        """
+        pass
+
+    @action(description="设置搅拌时间")
+    def set_stir_time(self, stir_time: int = 0) -> Dict[str, Any]:
+        """
+        设置搅拌时间。
+
+        Args:
+            stir_time[设置搅拌时间]: 设置搅拌时间。
+        """
+        pass
+
+    @action(description="配粉启动")
+    def start_powder_prep(self) -> Dict[str, Any]:
+        """配粉启动。"""
         pass
 
     @action(description="配液启动")
-    def start_liquid_prep(self, mode: int = 0, recipe_number: int = 0) -> Dict[str, Any]:
-        """
-        配液启动。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            recipe_number[配方编号设置]: 配方编号设置。
-        """
+    def start_liquid_prep(self) -> Dict[str, Any]:
+        """配液启动。"""
         pass
 
     @action(description="搅拌启动")
-    def start_stirring(self, mode: int = 0, recipe_number: int = 0, stir_speed: int = 0, stir_time: int = 0) -> Dict[str, Any]:
-        """
-        搅拌启动。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            recipe_number[配方编号设置]: 配方编号设置。
-            stir_speed[搅拌速度设置]: 搅拌速度设置。
-            stir_time[搅拌时间设置]: 搅拌时间设置。
-        """
+    def start_stirring(self) -> Dict[str, Any]:
+        """搅拌启动。"""
         pass
 
     @action(description="排空")
-    def drain(self, mode: int = 0, recipe_number: int = 0) -> Dict[str, Any]:
-        """
-        排空。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            recipe_number[配方编号设置]: 配方编号设置。
-        """
+    def drain(self) -> Dict[str, Any]:
+        """排空。"""
         pass
 
     @property

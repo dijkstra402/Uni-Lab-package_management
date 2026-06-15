@@ -38,24 +38,24 @@ class Distiller:
         """初始化。"""
         pass
 
-    @action(description="蒸馏")
-    def distill(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        蒸馏。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="加热")
-    def heat(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        加热。
+    @action(description="蒸馏")
+    def distill(self) -> Dict[str, Any]:
+        """蒸馏。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="加热")
+    def heat(self) -> Dict[str, Any]:
+        """加热。"""
         pass
 
     @property

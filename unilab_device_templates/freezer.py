@@ -38,6 +38,56 @@ class Freezer:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置温度")
+    def set_temperature(self, temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[设置温度]: 设置温度。
+        """
+        pass
+
+    @action(description="设置除霜间隔")
+    def set_defrost_interval(self, defrost_interval: int = 0) -> Dict[str, Any]:
+        """
+        设置除霜间隔。
+
+        Args:
+            defrost_interval[设置除霜间隔]: 设置除霜间隔。
+        """
+        pass
+
+    @action(description="设置除霜时间")
+    def set_defrost_time(self, defrost_time: int = 0) -> Dict[str, Any]:
+        """
+        设置除霜时间。
+
+        Args:
+            defrost_time[设置除霜时间]: 设置除霜时间。
+        """
+        pass
+
+    @action(description="设置风扇转速")
+    def set_fan_speed(self, fan_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置风扇转速。
+
+        Args:
+            fan_speed[设置风扇转速]: 设置风扇转速。
+        """
+        pass
+
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""

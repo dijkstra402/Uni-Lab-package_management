@@ -38,19 +38,55 @@ class Homogenizer:
         """初始化。"""
         pass
 
+    @action(description="设置运行时间")
+    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+        """
+        设置运行时间。
+
+        Args:
+            run_time[设置运行时间]: 设置运行时间。
+        """
+        pass
+
+    @action(description="设置循环次数")
+    def set_cycle_count(self, cycle_count: int = 0) -> Dict[str, Any]:
+        """
+        设置循环次数。
+
+        Args:
+            cycle_count[设置循环次数]: 设置循环次数。
+        """
+        pass
+
+    @action(description="设置压力上限")
+    def set_pressure_upper_limit(self, pressure_upper_limit: int = 0) -> Dict[str, Any]:
+        """
+        设置压力上限。
+
+        Args:
+            pressure_upper_limit[设置压力上限]: 设置压力上限。
+        """
+        pass
+
+    @action(description="设置流量上限")
+    def set_flow_upper_limit(self, flow_upper_limit: int = 0) -> Dict[str, Any]:
+        """
+        设置流量上限。
+
+        Args:
+            flow_upper_limit[设置流量上限]: 设置流量上限。
+        """
+        pass
+
     @action(description="均质")
-    def homogenize(self, homogenize_pressure: int = 0, homogenize_flow: int = 0, run_time: int = 0, homogenize_level: int = 0, cycle_count: int = 0, pressure_upper_limit: int = 0, flow_upper_limit: int = 0) -> Dict[str, Any]:
+    def homogenize(self, homogenize_pressure: int = 0, homogenize_flow: int = 0, homogenize_level: int = 0) -> Dict[str, Any]:
         """
         均质。
 
         Args:
             homogenize_pressure[均质压力设置]: 均质压力设置。
             homogenize_flow[均质流量设置]: 均质流量设置。
-            run_time[运行时间设置]: 运行时间设置。
             homogenize_level[均质级别设置]: 均质级别设置。
-            cycle_count[循环次数设置]: 循环次数设置。
-            pressure_upper_limit[压力上限设置]: 压力上限设置。
-            flow_upper_limit[流量上限设置]: 流量上限设置。
         """
         pass
 

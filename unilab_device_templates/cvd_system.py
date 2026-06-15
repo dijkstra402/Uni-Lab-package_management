@@ -38,62 +38,74 @@ class CvdSystem:
         """初始化。"""
         pass
 
-    @action(description="沉积启动")
-    def start_deposition(self, mode: int = 0, deposition_temperature: int = 0, process_pressure: int = 0, deposition_time: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        沉积启动。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            deposition_temperature[沉积温度设置]: 沉积温度设置。
-            process_pressure[工艺压力设置]: 工艺压力设置。
-            deposition_time[沉积时间设置]: 沉积时间设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置沉积温度")
+    def set_deposition_temperature(self, deposition_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置沉积温度。
+
+        Args:
+            deposition_temperature[设置沉积温度]: 设置沉积温度。
+        """
+        pass
+
+    @action(description="设置工艺压力")
+    def set_process_pressure(self, process_pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置工艺压力。
+
+        Args:
+            process_pressure[设置工艺压力]: 设置工艺压力。
+        """
+        pass
+
+    @action(description="设置沉积时间")
+    def set_deposition_time(self, deposition_time: int = 0) -> Dict[str, Any]:
+        """
+        设置沉积时间。
+
+        Args:
+            deposition_time[设置沉积时间]: 设置沉积时间。
+        """
+        pass
+
+    @action(description="沉积启动")
+    def start_deposition(self) -> Dict[str, Any]:
+        """沉积启动。"""
         pass
 
     @action(description="抽真空")
-    def evacuate(self, mode: int = 0, process_pressure: int = 0) -> Dict[str, Any]:
-        """
-        抽真空。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            process_pressure[工艺压力设置]: 工艺压力设置。
-        """
+    def evacuate(self) -> Dict[str, Any]:
+        """抽真空。"""
         pass
 
     @action(description="气体切换")
-    def switch_gas(self, mode: int = 0, process_pressure: int = 0, gas_flow_1: int = 0) -> Dict[str, Any]:
+    def switch_gas(self, gas_flow_1: int = 0) -> Dict[str, Any]:
         """
         气体切换。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            process_pressure[工艺压力设置]: 工艺压力设置。
             gas_flow_1[气体流量 1 设置]: 气体流量 1 设置。
         """
         pass
 
     @action(description="降温")
-    def cool_down(self, mode: int = 0, process_pressure: int = 0) -> Dict[str, Any]:
-        """
-        降温。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            process_pressure[工艺压力设置]: 工艺压力设置。
-        """
+    def cool_down(self) -> Dict[str, Any]:
+        """降温。"""
         pass
 
     @action(description="腔室开门")
-    def open_chamber_door(self, mode: int = 0, process_pressure: int = 0) -> Dict[str, Any]:
-        """
-        腔室开门。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            process_pressure[工艺压力设置]: 工艺压力设置。
-        """
+    def open_chamber_door(self) -> Dict[str, Any]:
+        """腔室开门。"""
         pass
 
     @property

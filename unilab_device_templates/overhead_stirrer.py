@@ -38,8 +38,38 @@ class OverheadStirrer:
         """初始化。"""
         pass
 
+    @action(description="设置扭矩限制")
+    def set_torque_limit(self, torque_limit: int = 0) -> Dict[str, Any]:
+        """
+        设置扭矩限制。
+
+        Args:
+            torque_limit[设置扭矩限制]: 设置扭矩限制。
+        """
+        pass
+
+    @action(description="设置转速上限")
+    def set_speed_upper_limit(self, speed_upper_limit: int = 0) -> Dict[str, Any]:
+        """
+        设置转速上限。
+
+        Args:
+            speed_upper_limit[设置转速上限]: 设置转速上限。
+        """
+        pass
+
+    @action(description="设置安全保护")
+    def set_safety_protection(self, safety_protection: int = 0) -> Dict[str, Any]:
+        """
+        设置安全保护。
+
+        Args:
+            safety_protection[设置安全保护]: 设置安全保护。
+        """
+        pass
+
     @action(description="搅拌")
-    def stir(self, stir_speed: int = 0, stir_time: int = 0, stir_mode: int = 0, impeller_height: int = 0, torque_limit: int = 0, speed_upper_limit: int = 0, safety_protection: int = 0) -> Dict[str, Any]:
+    def stir(self, stir_speed: int = 0, stir_time: int = 0, stir_mode: int = 0, impeller_height: int = 0) -> Dict[str, Any]:
         """
         搅拌。
 
@@ -48,9 +78,6 @@ class OverheadStirrer:
             stir_time[搅拌时间设置]: 搅拌时间设置。
             stir_mode[搅拌模式设置]: 搅拌模式设置。
             impeller_height[搅拌桨高度设置]: 搅拌桨高度设置。
-            torque_limit[扭矩限制设置]: 扭矩限制设置。
-            speed_upper_limit[转速上限设置]: 转速上限设置。
-            safety_protection[安全保护设置]: 安全保护设置。
         """
         pass
 

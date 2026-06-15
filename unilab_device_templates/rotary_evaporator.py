@@ -38,24 +38,24 @@ class RotaryEvaporator:
         """初始化。"""
         pass
 
-    @action(description="蒸发")
-    def evaporate(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        蒸发。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="旋转")
-    def rotate(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        旋转。
+    @action(description="蒸发")
+    def evaporate(self) -> Dict[str, Any]:
+        """蒸发。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="旋转")
+    def rotate(self) -> Dict[str, Any]:
+        """旋转。"""
         pass
 
     @property

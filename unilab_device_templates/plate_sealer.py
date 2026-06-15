@@ -38,51 +38,69 @@ class PlateSealer:
         """初始化。"""
         pass
 
-    @action(description="封膜启动")
-    def start_sealing(self, mode: int = 0, sealing_temperature: int = 0, sealing_time: int = 0, pressure: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        封膜启动。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            sealing_temperature[封膜温度设置]: 封膜温度设置。
-            sealing_time[封膜时间设置]: 封膜时间设置。
-            pressure[压力设置]: 压力设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
+    @action(description="设置封膜温度")
+    def set_sealing_temperature(self, sealing_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置封膜温度。
+
+        Args:
+            sealing_temperature[设置封膜温度]: 设置封膜温度。
+        """
+        pass
+
+    @action(description="设置封膜时间")
+    def set_sealing_time(self, sealing_time: int = 0) -> Dict[str, Any]:
+        """
+        设置封膜时间。
+
+        Args:
+            sealing_time[设置封膜时间]: 设置封膜时间。
+        """
+        pass
+
+    @action(description="设置压力")
+    def set_pressure(self, pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置压力。
+
+        Args:
+            pressure[设置压力]: 设置压力。
+        """
+        pass
+
+    @action(description="封膜启动")
+    def start_sealing(self) -> Dict[str, Any]:
+        """封膜启动。"""
+        pass
+
     @action(description="送膜")
-    def feed_film(self, mode: int = 0, film_feed_length: int = 0, pressure: int = 0) -> Dict[str, Any]:
+    def feed_film(self, film_feed_length: int = 0) -> Dict[str, Any]:
         """
         送膜。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             film_feed_length[送膜长度设置]: 送膜长度设置。
-            pressure[压力设置]: 压力设置。
         """
         pass
 
     @action(description="加热启动")
-    def start_heating(self, mode: int = 0, pressure: int = 0) -> Dict[str, Any]:
-        """
-        加热启动。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            pressure[压力设置]: 压力设置。
-        """
+    def start_heating(self) -> Dict[str, Any]:
+        """加热启动。"""
         pass
 
     @action(description="切割")
-    def cut(self, mode: int = 0, pressure: int = 0) -> Dict[str, Any]:
-        """
-        切割。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            pressure[压力设置]: 压力设置。
-        """
+    def cut(self) -> Dict[str, Any]:
+        """切割。"""
         pass
 
     @property

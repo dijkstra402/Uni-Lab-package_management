@@ -38,31 +38,63 @@ class TissueGrinder:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置目标转速")
+    def set_target_speed(self, target_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置目标转速。
+
+        Args:
+            target_speed[设置目标转速]: 设置目标转速。
+        """
+        pass
+
+    @action(description="设置振幅等级")
+    def set_amplitude_level(self, amplitude_level: int = 0) -> Dict[str, Any]:
+        """
+        设置振幅等级。
+
+        Args:
+            amplitude_level[设置振幅等级]: 设置振幅等级。
+        """
+        pass
+
+    @action(description="设置循环次数")
+    def set_cycle_count(self, cycle_count: int = 0) -> Dict[str, Any]:
+        """
+        设置循环次数。
+
+        Args:
+            cycle_count[设置循环次数]: 设置循环次数。
+        """
+        pass
+
     @action(description="研磨")
-    def grind(self, mode: int = 0, target_speed: int = 0, grinding_time: int = 0, amplitude_level: int = 0, cycle_count: int = 0) -> Dict[str, Any]:
+    def grind(self, grinding_time: int = 0) -> Dict[str, Any]:
         """
         研磨。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_speed[目标转速设置]: 目标转速设置。
             grinding_time[研磨时间设置]: 研磨时间设置。
-            amplitude_level[振幅等级设置]: 振幅等级设置。
-            cycle_count[循环次数设置]: 循环次数设置。
         """
         pass
 
     @action(description="制冷")
-    def cool(self, mode: int = 0, target_speed: int = 0, amplitude_level: int = 0, cooling_temperature: int = 0, cycle_count: int = 0) -> Dict[str, Any]:
+    def cool(self, cooling_temperature: int = 0) -> Dict[str, Any]:
         """
         制冷。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_speed[目标转速设置]: 目标转速设置。
-            amplitude_level[振幅等级设置]: 振幅等级设置。
             cooling_temperature[制冷温度设置]: 制冷温度设置。
-            cycle_count[循环次数设置]: 循环次数设置。
         """
         pass
 

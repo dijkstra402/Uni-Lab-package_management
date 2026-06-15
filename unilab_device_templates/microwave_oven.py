@@ -38,6 +38,46 @@ class MicrowaveOven:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置加热时间")
+    def set_heating_time(self, heating_time: int = 0) -> Dict[str, Any]:
+        """
+        设置加热时间。
+
+        Args:
+            heating_time[设置加热时间]: 设置加热时间。
+        """
+        pass
+
+    @action(description="设置加热模式")
+    def set_heating_mode(self, heating_mode: int = 0) -> Dict[str, Any]:
+        """
+        设置加热模式。
+
+        Args:
+            heating_mode[设置加热模式]: 设置加热模式。
+        """
+        pass
+
+    @action(description="设置转盘转速")
+    def set_turntable_speed(self, turntable_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置转盘转速。
+
+        Args:
+            turntable_speed[设置转盘转速]: 设置转盘转速。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

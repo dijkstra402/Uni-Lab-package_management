@@ -38,47 +38,64 @@ class ChargingReactionStation:
         """初始化。"""
         pass
 
-    @action(description="投料启动")
-    def start_charging(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        投料启动。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置反应温度")
+    def set_reaction_temperature(self, reaction_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置反应温度。
+
+        Args:
+            reaction_temperature[设置反应温度]: 设置反应温度。
+        """
+        pass
+
+    @action(description="设置搅拌速度")
+    def set_stir_speed(self, stir_speed: int = 0) -> Dict[str, Any]:
+        """
+        设置搅拌速度。
+
+        Args:
+            stir_speed[设置搅拌速度]: 设置搅拌速度。
+        """
+        pass
+
+    @action(description="设置反应时间")
+    def set_reaction_time(self, reaction_time: int = 0) -> Dict[str, Any]:
+        """
+        设置反应时间。
+
+        Args:
+            reaction_time[设置反应时间]: 设置反应时间。
+        """
+        pass
+
+    @action(description="投料启动")
+    def start_charging(self) -> Dict[str, Any]:
+        """投料启动。"""
         pass
 
     @action(description="反应启动")
-    def start_reaction(self, mode: int = 0, reaction_temperature: int = 0, reaction_time: int = 0) -> Dict[str, Any]:
-        """
-        反应启动。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            reaction_temperature[反应温度设置]: 反应温度设置。
-            reaction_time[反应时间设置]: 反应时间设置。
-        """
+    def start_reaction(self) -> Dict[str, Any]:
+        """反应启动。"""
         pass
 
     @action(description="搅拌启动")
-    def start_stirring(self, mode: int = 0, stir_speed: int = 0) -> Dict[str, Any]:
-        """
-        搅拌启动。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            stir_speed[搅拌速度设置]: 搅拌速度设置。
-        """
+    def start_stirring(self) -> Dict[str, Any]:
+        """搅拌启动。"""
         pass
 
     @action(description="温控启动")
-    def start_temp_control(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        温控启动。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def start_temp_control(self) -> Dict[str, Any]:
+        """温控启动。"""
         pass
 
     @property

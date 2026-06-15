@@ -38,29 +38,49 @@ class VibratorySolidFeeder:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置振动频率")
+    def set_vibration_frequency(self, vibration_frequency: int = 0) -> Dict[str, Any]:
+        """
+        设置振动频率。
+
+        Args:
+            vibration_frequency[设置振动频率]: 设置振动频率。
+        """
+        pass
+
+    @action(description="设置振动振幅")
+    def set_vibration_amplitude(self, vibration_amplitude: int = 0) -> Dict[str, Any]:
+        """
+        设置振动振幅。
+
+        Args:
+            vibration_amplitude[设置振动振幅]: 设置振动振幅。
+        """
+        pass
+
     @action(description="加料")
-    def feed(self, mode: int = 0, vibration_frequency: int = 0, vibration_amplitude: int = 0, feed_time: int = 0) -> Dict[str, Any]:
+    def feed(self, feed_time: int = 0) -> Dict[str, Any]:
         """
         加料。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            vibration_frequency[振动频率设置]: 振动频率设置。
-            vibration_amplitude[振动振幅设置]: 振动振幅设置。
             feed_time[加料时间设置]: 加料时间设置。
         """
         pass
 
     @action(description="清堵")
-    def clear_clog(self, mode: int = 0, vibration_frequency: int = 0, vibration_amplitude: int = 0) -> Dict[str, Any]:
-        """
-        清堵。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            vibration_frequency[振动频率设置]: 振动频率设置。
-            vibration_amplitude[振动振幅设置]: 振动振幅设置。
-        """
+    def clear_clog(self) -> Dict[str, Any]:
+        """清堵。"""
         pass
 
     @property

@@ -38,31 +38,51 @@ class ElectronBeamEtchingSystem:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置真空度")
+    def set_vacuum(self, vacuum: int = 0) -> Dict[str, Any]:
+        """
+        设置真空度。
+
+        Args:
+            vacuum[设置真空度]: 设置真空度。
+        """
+        pass
+
+    @action(description="设置样品台温度")
+    def set_sample_stage_temp(self, sample_stage_temp: int = 0) -> Dict[str, Any]:
+        """
+        设置样品台温度。
+
+        Args:
+            sample_stage_temp[设置样品台温度]: 设置样品台温度。
+        """
+        pass
+
     @action(description="刻蚀")
-    def etch(self, mode: int = 0, etching_power: int = 0, vacuum: int = 0, etching_time: int = 0, sample_stage_temp: int = 0, etching_depth: int = 0) -> Dict[str, Any]:
+    def etch(self, etching_power: int = 0, etching_time: int = 0, etching_depth: int = 0) -> Dict[str, Any]:
         """
         刻蚀。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             etching_power[刻蚀功率设置]: 刻蚀功率设置。
-            vacuum[真空度设置]: 真空度设置。
             etching_time[刻蚀时间设置]: 刻蚀时间设置。
-            sample_stage_temp[样品台温度设置]: 样品台温度设置。
             etching_depth[刻蚀深度设置]: 刻蚀深度设置。
         """
         pass
 
     @action(description="等离子体")
-    def plasma(self, mode: int = 0, vacuum: int = 0, sample_stage_temp: int = 0) -> Dict[str, Any]:
-        """
-        等离子体。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            vacuum[真空度设置]: 真空度设置。
-            sample_stage_temp[样品台温度设置]: 样品台温度设置。
-        """
+    def plasma(self) -> Dict[str, Any]:
+        """等离子体。"""
         pass
 
     @property

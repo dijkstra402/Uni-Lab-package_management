@@ -38,26 +38,34 @@ class FreezeDryer:
         """初始化。"""
         pass
 
-    @action(description="冻干")
-    def freeze_dry(self, mode: int = 0, vacuum: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        冻干。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            vacuum[真空度设置]: 真空度设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="制冷")
-    def cool(self, mode: int = 0, vacuum: int = 0) -> Dict[str, Any]:
+    @action(description="设置真空度")
+    def set_vacuum(self, vacuum: int = 0) -> Dict[str, Any]:
         """
-        制冷。
+        设置真空度。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            vacuum[真空度设置]: 真空度设置。
+            vacuum[设置真空度]: 设置真空度。
         """
+        pass
+
+    @action(description="冻干")
+    def freeze_dry(self) -> Dict[str, Any]:
+        """冻干。"""
+        pass
+
+    @action(description="制冷")
+    def cool(self) -> Dict[str, Any]:
+        """制冷。"""
         pass
 
     @property

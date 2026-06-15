@@ -38,54 +38,69 @@ class EvaporationCoater:
         """初始化。"""
         pass
 
-    @action(description="抽真空")
-    def evacuate(self, mode: int = 0, target_film_thickness: int = 0, substrate_temperature: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        抽真空。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_film_thickness[目标膜厚设置]: 目标膜厚设置。
-            substrate_temperature[基板温度设置]: 基板温度设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="设置蒸镀速率")
+    def set_evaporation_rate(self, evaporation_rate: int = 0) -> Dict[str, Any]:
+        """
+        设置蒸镀速率。
+
+        Args:
+            evaporation_rate[设置蒸镀速率]: 设置蒸镀速率。
+        """
+        pass
+
+    @action(description="设置目标膜厚")
+    def set_target_film_thickness(self, target_film_thickness: int = 0) -> Dict[str, Any]:
+        """
+        设置目标膜厚。
+
+        Args:
+            target_film_thickness[设置目标膜厚]: 设置目标膜厚。
+        """
+        pass
+
+    @action(description="设置基板温度")
+    def set_substrate_temperature(self, substrate_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置基板温度。
+
+        Args:
+            substrate_temperature[设置基板温度]: 设置基板温度。
+        """
+        pass
+
+    @action(description="抽真空")
+    def evacuate(self) -> Dict[str, Any]:
+        """抽真空。"""
         pass
 
     @action(description="蒸镀启动")
-    def start_evaporation_coating(self, mode: int = 0, evaporation_rate: int = 0, target_film_thickness: int = 0, substrate_temperature: int = 0) -> Dict[str, Any]:
-        """
-        蒸镀启动。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            evaporation_rate[蒸镀速率设置]: 蒸镀速率设置。
-            target_film_thickness[目标膜厚设置]: 目标膜厚设置。
-            substrate_temperature[基板温度设置]: 基板温度设置。
-        """
+    def start_evaporation_coating(self) -> Dict[str, Any]:
+        """蒸镀启动。"""
         pass
 
     @action(description="蒸发源停止")
-    def stop_evaporation_source(self, mode: int = 0, evaporation_source_temp: int = 0, target_film_thickness: int = 0, substrate_temperature: int = 0) -> Dict[str, Any]:
+    def stop_evaporation_source(self, evaporation_source_temp: int = 0) -> Dict[str, Any]:
         """
         蒸发源停止。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             evaporation_source_temp[蒸发源温度设置]: 蒸发源温度设置。
-            target_film_thickness[目标膜厚设置]: 目标膜厚设置。
-            substrate_temperature[基板温度设置]: 基板温度设置。
         """
         pass
 
     @action(description="腔室充气")
-    def inflate_chamber(self, mode: int = 0, target_film_thickness: int = 0, substrate_temperature: int = 0) -> Dict[str, Any]:
-        """
-        腔室充气。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_film_thickness[目标膜厚设置]: 目标膜厚设置。
-            substrate_temperature[基板温度设置]: 基板温度设置。
-        """
+    def inflate_chamber(self) -> Dict[str, Any]:
+        """腔室充气。"""
         pass
 
     @property

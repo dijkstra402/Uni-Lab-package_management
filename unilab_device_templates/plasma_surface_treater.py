@@ -38,6 +38,86 @@ class PlasmaSurfaceTreater:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置处理功率")
+    def set_treatment_power(self, treatment_power: int = 0) -> Dict[str, Any]:
+        """
+        设置处理功率。
+
+        Args:
+            treatment_power[设置处理功率]: 设置处理功率。
+        """
+        pass
+
+    @action(description="设置处理时间")
+    def set_treatment_time(self, treatment_time: int = 0) -> Dict[str, Any]:
+        """
+        设置处理时间。
+
+        Args:
+            treatment_time[设置处理时间]: 设置处理时间。
+        """
+        pass
+
+    @action(description="设置真空度")
+    def set_vacuum(self, vacuum: int = 0) -> Dict[str, Any]:
+        """
+        设置真空度。
+
+        Args:
+            vacuum[设置真空度]: 设置真空度。
+        """
+        pass
+
+    @action(description="设置气体流量")
+    def set_gas_flow(self, gas_flow: int = 0) -> Dict[str, Any]:
+        """
+        设置气体流量。
+
+        Args:
+            gas_flow[设置气体流量]: 设置气体流量。
+        """
+        pass
+
+    @action(description="设置电极距离")
+    def set_electrode_distance(self, electrode_distance: int = 0) -> Dict[str, Any]:
+        """
+        设置电极距离。
+
+        Args:
+            electrode_distance[设置电极距离]: 设置电极距离。
+        """
+        pass
+
+    @action(description="设置等离子体密度")
+    def set_plasma_density(self, plasma_density: int = 0) -> Dict[str, Any]:
+        """
+        设置等离子体密度。
+
+        Args:
+            plasma_density[设置等离子体密度]: 设置等离子体密度。
+        """
+        pass
+
+    @action(description="设置处理次数")
+    def set_treatment_count(self, treatment_count: int = 0) -> Dict[str, Any]:
+        """
+        设置处理次数。
+
+        Args:
+            treatment_count[设置处理次数]: 设置处理次数。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

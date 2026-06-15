@@ -38,6 +38,66 @@ class MountingPress:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
+    @action(description="设置加热温度")
+    def set_heating_temperature(self, heating_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置加热温度。
+
+        Args:
+            heating_temperature[设置加热温度]: 设置加热温度。
+        """
+        pass
+
+    @action(description="设置加热时间")
+    def set_heating_time(self, heating_time: int = 0) -> Dict[str, Any]:
+        """
+        设置加热时间。
+
+        Args:
+            heating_time[设置加热时间]: 设置加热时间。
+        """
+        pass
+
+    @action(description="设置冷却时间")
+    def set_cooling_time(self, cooling_time: int = 0) -> Dict[str, Any]:
+        """
+        设置冷却时间。
+
+        Args:
+            cooling_time[设置冷却时间]: 设置冷却时间。
+        """
+        pass
+
+    @action(description="设置压力")
+    def set_pressure(self, pressure: int = 0) -> Dict[str, Any]:
+        """
+        设置压力。
+
+        Args:
+            pressure[设置压力]: 设置压力。
+        """
+        pass
+
+    @action(description="设置保温时间")
+    def set_holding_time(self, holding_time: int = 0) -> Dict[str, Any]:
+        """
+        设置保温时间。
+
+        Args:
+            holding_time[设置保温时间]: 设置保温时间。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

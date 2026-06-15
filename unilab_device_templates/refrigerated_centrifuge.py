@@ -38,24 +38,24 @@ class RefrigeratedCentrifuge:
         """初始化。"""
         pass
 
-    @action(description="离心")
-    def centrifuge(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        离心。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="制冷")
-    def cool(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        制冷。
+    @action(description="离心")
+    def centrifuge(self) -> Dict[str, Any]:
+        """离心。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="制冷")
+    def cool(self) -> Dict[str, Any]:
+        """制冷。"""
         pass
 
     @property

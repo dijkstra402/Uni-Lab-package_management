@@ -38,26 +38,34 @@ class FixedBedReactor:
         """初始化。"""
         pass
 
-    @action(description="气路开启")
-    def open_gas_path(self, mode: int = 0, mfc_flow: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        气路开启。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            mfc_flow[MFC流量设置]: MFC流量设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="吹扫")
-    def purge(self, mode: int = 0, mfc_flow: int = 0) -> Dict[str, Any]:
+    @action(description="设置MFC流量")
+    def set_mfc_flow(self, mfc_flow: int = 0) -> Dict[str, Any]:
         """
-        吹扫。
+        设置MFC流量。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            mfc_flow[MFC流量设置]: MFC流量设置。
+            mfc_flow[设置MFC流量]: 设置MFC流量。
         """
+        pass
+
+    @action(description="气路开启")
+    def open_gas_path(self) -> Dict[str, Any]:
+        """气路开启。"""
+        pass
+
+    @action(description="吹扫")
+    def purge(self) -> Dict[str, Any]:
+        """吹扫。"""
         pass
 
     @property

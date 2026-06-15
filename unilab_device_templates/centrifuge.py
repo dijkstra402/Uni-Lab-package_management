@@ -38,25 +38,29 @@ class Centrifuge:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
     @action(description="离心")
-    def centrifuge(self, mode: int = 0, li_xin_time: int = 0) -> Dict[str, Any]:
+    def centrifuge(self, li_xin_time: int = 0) -> Dict[str, Any]:
         """
         离心。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             li_xin_time[离心时间设置]: 离心时间设置。
         """
         pass
 
     @action(description="开盖")
-    def open_cap(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        开盖。
-
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    def open_cap(self) -> Dict[str, Any]:
+        """开盖。"""
         pass
 
     @property

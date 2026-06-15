@@ -38,26 +38,34 @@ class OverheadLossInWeightFeeder:
         """初始化。"""
         pass
 
-    @action(description="投料")
-    def charge(self, mode: int = 0, stir_speed: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        投料。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            stir_speed[搅拌速度设置]: 搅拌速度设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="补料")
-    def replenish(self, mode: int = 0, stir_speed: int = 0) -> Dict[str, Any]:
+    @action(description="设置搅拌速度")
+    def set_stir_speed(self, stir_speed: int = 0) -> Dict[str, Any]:
         """
-        补料。
+        设置搅拌速度。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            stir_speed[搅拌速度设置]: 搅拌速度设置。
+            stir_speed[设置搅拌速度]: 设置搅拌速度。
         """
+        pass
+
+    @action(description="投料")
+    def charge(self) -> Dict[str, Any]:
+        """投料。"""
+        pass
+
+    @action(description="补料")
+    def replenish(self) -> Dict[str, Any]:
+        """补料。"""
         pass
 
     @property

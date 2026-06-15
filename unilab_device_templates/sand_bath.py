@@ -38,6 +38,16 @@ class SandBath:
         """初始化。"""
         pass
 
+    @action(description="设置升温速率")
+    def set_ramp_rate(self, ramp_rate: int = 0) -> Dict[str, Any]:
+        """
+        设置升温速率。
+
+        Args:
+            ramp_rate[设置升温速率]: 设置升温速率。
+        """
+        pass
+
     @action(description="运行倒计时")
     def run_countdown(self) -> Dict[str, Any]:
         """运行倒计时。"""

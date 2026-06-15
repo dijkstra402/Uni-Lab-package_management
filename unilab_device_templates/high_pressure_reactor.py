@@ -38,14 +38,19 @@ class HighPressureReactor:
         """初始化。"""
         pass
 
-    @action(description="进料泵")
-    def feed_pump(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        进料泵。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
+        pass
+
+    @action(description="进料泵")
+    def feed_pump(self) -> Dict[str, Any]:
+        """进料泵。"""
         pass
 
     @property

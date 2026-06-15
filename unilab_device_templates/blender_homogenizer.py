@@ -38,8 +38,38 @@ class BlenderHomogenizer:
         """初始化。"""
         pass
 
+    @action(description="设置脉冲间隔")
+    def set_pulse_interval(self, pulse_interval: int = 0) -> Dict[str, Any]:
+        """
+        设置脉冲间隔。
+
+        Args:
+            pulse_interval[设置脉冲间隔]: 设置脉冲间隔。
+        """
+        pass
+
+    @action(description="设置脉冲宽度")
+    def set_pulse_width(self, pulse_width: int = 0) -> Dict[str, Any]:
+        """
+        设置脉冲宽度。
+
+        Args:
+            pulse_width[设置脉冲宽度]: 设置脉冲宽度。
+        """
+        pass
+
+    @action(description="设置扭矩限制")
+    def set_torque_limit(self, torque_limit: int = 0) -> Dict[str, Any]:
+        """
+        设置扭矩限制。
+
+        Args:
+            torque_limit[设置扭矩限制]: 设置扭矩限制。
+        """
+        pass
+
     @action(description="匀浆")
-    def blend(self, blend_speed: int = 0, blend_time: int = 0, blend_mode: int = 0, pulse_interval: int = 0, pulse_width: int = 0, torque_limit: int = 0) -> Dict[str, Any]:
+    def blend(self, blend_speed: int = 0, blend_time: int = 0, blend_mode: int = 0) -> Dict[str, Any]:
         """
         匀浆。
 
@@ -47,9 +77,6 @@ class BlenderHomogenizer:
             blend_speed[匀浆转速设置]: 匀浆转速设置。
             blend_time[匀浆时间设置]: 匀浆时间设置。
             blend_mode[匀浆模式设置]: 匀浆模式设置。
-            pulse_interval[脉冲间隔设置]: 脉冲间隔设置。
-            pulse_width[脉冲宽度设置]: 脉冲宽度设置。
-            torque_limit[扭矩限制设置]: 扭矩限制设置。
         """
         pass
 

@@ -38,24 +38,32 @@ class DistilledWaterSystem:
         """初始化。"""
         pass
 
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+        """
+        设置运行模式。
+
+        Args:
+            mode[设置运行模式]: 设置运行模式。
+        """
+        pass
+
     @action(description="蒸馏")
-    def distill(self, mode: int = 0, distillation_flow: int = 0) -> Dict[str, Any]:
+    def distill(self, distillation_flow: int = 0) -> Dict[str, Any]:
         """
         蒸馏。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             distillation_flow[蒸馏流量设置]: 蒸馏流量设置。
         """
         pass
 
     @action(description="加热")
-    def heat(self, mode: int = 0, heating_temperature: int = 0) -> Dict[str, Any]:
+    def heat(self, heating_temperature: int = 0) -> Dict[str, Any]:
         """
         加热。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             heating_temperature[加热温度设置]: 加热温度设置。
         """
         pass

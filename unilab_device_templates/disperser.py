@@ -38,8 +38,38 @@ class Disperser:
         """初始化。"""
         pass
 
+    @action(description="设置转速增量")
+    def set_speed_increment(self, speed_increment: int = 0) -> Dict[str, Any]:
+        """
+        设置转速增量。
+
+        Args:
+            speed_increment[设置转速增量]: 设置转速增量。
+        """
+        pass
+
+    @action(description="设置增量时间")
+    def set_increment_time(self, increment_time: int = 0) -> Dict[str, Any]:
+        """
+        设置增量时间。
+
+        Args:
+            increment_time[设置增量时间]: 设置增量时间。
+        """
+        pass
+
+    @action(description="设置扭矩限制")
+    def set_torque_limit(self, torque_limit: int = 0) -> Dict[str, Any]:
+        """
+        设置扭矩限制。
+
+        Args:
+            torque_limit[设置扭矩限制]: 设置扭矩限制。
+        """
+        pass
+
     @action(description="分散")
-    def disperse(self, dispersion_speed: int = 0, dispersion_time: int = 0, disperser_head_height: int = 0, dispersion_mode: int = 0, speed_increment: int = 0, increment_time: int = 0, torque_limit: int = 0) -> Dict[str, Any]:
+    def disperse(self, dispersion_speed: int = 0, dispersion_time: int = 0, disperser_head_height: int = 0, dispersion_mode: int = 0) -> Dict[str, Any]:
         """
         分散。
 
@@ -48,9 +78,6 @@ class Disperser:
             dispersion_time[分散时间设置]: 分散时间设置。
             disperser_head_height[分散头高度设置]: 分散头高度设置。
             dispersion_mode[分散模式设置]: 分散模式设置。
-            speed_increment[转速增量设置]: 转速增量设置。
-            increment_time[增量时间设置]: 增量时间设置。
-            torque_limit[扭矩限制设置]: 扭矩限制设置。
         """
         pass
 

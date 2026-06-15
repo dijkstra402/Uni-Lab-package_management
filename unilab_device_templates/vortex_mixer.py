@@ -38,30 +38,50 @@ class VortexMixer:
         """初始化。"""
         pass
 
+    @action(description="设置工作模式")
+    def set_work_mode(self, work_mode: int = 0) -> Dict[str, Any]:
+        """
+        设置工作模式。
+
+        Args:
+            work_mode[设置工作模式]: 设置工作模式。
+        """
+        pass
+
+    @action(description="设置速度档位")
+    def set_speed_gear(self, speed_gear: int = 0) -> Dict[str, Any]:
+        """
+        设置速度档位。
+
+        Args:
+            speed_gear[设置速度档位]: 设置速度档位。
+        """
+        pass
+
+    @action(description="设置启动延迟")
+    def set_start_delay(self, start_delay: int = 0) -> Dict[str, Any]:
+        """
+        设置启动延迟。
+
+        Args:
+            start_delay[设置启动延迟]: 设置启动延迟。
+        """
+        pass
+
     @action(description="混匀")
-    def mix(self, mix_speed: int = 0, mix_time: int = 0, work_mode: int = 0, speed_gear: int = 0, start_delay: int = 0) -> Dict[str, Any]:
+    def mix(self, mix_speed: int = 0, mix_time: int = 0) -> Dict[str, Any]:
         """
         混匀。
 
         Args:
             mix_speed[混匀速度设置]: 混匀速度设置。
             mix_time[混匀时间设置]: 混匀时间设置。
-            work_mode[工作模式设置]: 工作模式设置。
-            speed_gear[速度档位设置]: 速度档位设置。
-            start_delay[启动延迟设置]: 启动延迟设置。
         """
         pass
 
     @action(description="脚踏开关")
-    def foot_switch(self, work_mode: int = 0, speed_gear: int = 0, start_delay: int = 0) -> Dict[str, Any]:
-        """
-        脚踏开关。
-
-        Args:
-            work_mode[工作模式设置]: 工作模式设置。
-            speed_gear[速度档位设置]: 速度档位设置。
-            start_delay[启动延迟设置]: 启动延迟设置。
-        """
+    def foot_switch(self) -> Dict[str, Any]:
+        """脚踏开关。"""
         pass
 
     @property

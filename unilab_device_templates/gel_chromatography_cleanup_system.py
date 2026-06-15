@@ -38,24 +38,24 @@ class GelChromatographyCleanupSystem:
         """初始化。"""
         pass
 
-    @action(description="色谱净化")
-    def chromatography_cleanup(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        色谱净化。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
-    @action(description="洗脱")
-    def elute(self, mode: int = 0) -> Dict[str, Any]:
-        """
-        洗脱。
+    @action(description="色谱净化")
+    def chromatography_cleanup(self) -> Dict[str, Any]:
+        """色谱净化。"""
+        pass
 
-        Args:
-            mode[运行模式设置]: 运行模式设置。
-        """
+    @action(description="洗脱")
+    def elute(self) -> Dict[str, Any]:
+        """洗脱。"""
         pass
 
     @property

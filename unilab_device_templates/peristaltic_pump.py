@@ -38,26 +38,34 @@ class PeristalticPump:
         """初始化。"""
         pass
 
-    @action(description="正转")
-    def rotate_forward(self, speed: int = 0, duration: int = 0) -> Dict[str, Any]:
+    @action(description="设置转动速度")
+    def set_speed(self, speed: int = 0) -> Dict[str, Any]:
         """
-        正转。
+        设置转动速度。
 
         Args:
-            speed[转动速度设置]: 转动速度设置。
-            duration[转动时间设置]: 转动时间设置。
+            speed[设置转动速度]: 设置转动速度。
         """
         pass
 
-    @action(description="反转")
-    def rotate_reverse(self, speed: int = 0, duration: int = 0) -> Dict[str, Any]:
+    @action(description="设置转动时间")
+    def set_duration(self, duration: int = 0) -> Dict[str, Any]:
         """
-        反转。
+        设置转动时间。
 
         Args:
-            speed[转动速度设置]: 转动速度设置。
-            duration[转动时间设置]: 转动时间设置。
+            duration[设置转动时间]: 设置转动时间。
         """
+        pass
+
+    @action(description="正转")
+    def rotate_forward(self) -> Dict[str, Any]:
+        """正转。"""
+        pass
+
+    @action(description="反转")
+    def rotate_reverse(self) -> Dict[str, Any]:
+        """反转。"""
         pass
 
     @property

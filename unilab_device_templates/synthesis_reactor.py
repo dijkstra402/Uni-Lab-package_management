@@ -38,25 +38,37 @@ class SynthesisReactor:
         """初始化。"""
         pass
 
-    @action(description="控温")
-    def control_temperature(self, mode: int = 0, target_temperature: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        控温。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_temperature[目标温度设置]: 目标温度设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
+    @action(description="设置目标温度")
+    def set_target_temperature(self, target_temperature: int = 0) -> Dict[str, Any]:
+        """
+        设置目标温度。
+
+        Args:
+            target_temperature[设置目标温度]: 设置目标温度。
+        """
+        pass
+
+    @action(description="控温")
+    def control_temperature(self) -> Dict[str, Any]:
+        """控温。"""
+        pass
+
     @action(description="搅拌")
-    def stir(self, mode: int = 0, target_temperature: int = 0, stir_speed: int = 0) -> Dict[str, Any]:
+    def stir(self, stir_speed: int = 0) -> Dict[str, Any]:
         """
         搅拌。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
-            target_temperature[目标温度设置]: 目标温度设置。
             stir_speed[搅拌转速设置]: 搅拌转速设置。
         """
         pass

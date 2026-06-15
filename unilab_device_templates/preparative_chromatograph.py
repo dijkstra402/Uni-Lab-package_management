@@ -38,23 +38,27 @@ class PreparativeChromatograph:
         """初始化。"""
         pass
 
-    @action(description="制备")
-    def prepare(self, mode: int = 0) -> Dict[str, Any]:
+    @action(description="设置运行模式")
+    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
         """
-        制备。
+        设置运行模式。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
+            mode[设置运行模式]: 设置运行模式。
         """
         pass
 
+    @action(description="制备")
+    def prepare(self) -> Dict[str, Any]:
+        """制备。"""
+        pass
+
     @action(description="进样")
-    def inject(self, mode: int = 0, injection_volume: int = 0) -> Dict[str, Any]:
+    def inject(self, injection_volume: int = 0) -> Dict[str, Any]:
         """
         进样。
 
         Args:
-            mode[运行模式设置]: 运行模式设置。
             injection_volume[进样量设置]: 进样量设置。
         """
         pass
