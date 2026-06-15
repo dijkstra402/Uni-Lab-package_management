@@ -49,12 +49,12 @@ class Centrifuge:
         pass
 
     @action(description="离心")
-    def centrifuge(self, li_xin_time: int = 0) -> Dict[str, Any]:
+    def centrifuge(self, centrifuge_time: int = 0) -> Dict[str, Any]:
         """
         离心。
 
         Args:
-            li_xin_time[离心时间设置]: 离心时间设置。
+            centrifuge_time[离心时间设置]: 离心时间设置。
         """
         pass
 

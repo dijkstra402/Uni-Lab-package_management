@@ -85,15 +85,15 @@ class Grinder:
 
     @property
     @topic_config()
-    def grinding_disc_xuan_zhuan_state(self) -> bool:
+    def grinding_disc_rotation_state(self) -> bool:
         """研磨盘旋转状态。"""
-        return self.data.get("grinding_disc_xuan_zhuan_state", False)
+        return self.data.get("grinding_disc_rotation_state", False)
 
     @property
     @topic_config()
-    def pressure_jia_zai_state(self) -> bool:
+    def pressure_loading_state(self) -> bool:
         """压力加载状态。"""
-        return self.data.get("pressure_jia_zai_state", False)
+        return self.data.get("pressure_loading_state", False)
 
     @property
     @topic_config()

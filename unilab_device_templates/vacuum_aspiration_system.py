@@ -136,6 +136,6 @@ class VacuumAspirationSystem:
 
     @property
     @topic_config()
-    def guo_lv_qi_state(self) -> int:
+    def filter_state(self) -> int:
         """过滤器状态。"""
-        return self.data.get("guo_lv_qi_state", 0)
+        return self.data.get("filter_state", 0)

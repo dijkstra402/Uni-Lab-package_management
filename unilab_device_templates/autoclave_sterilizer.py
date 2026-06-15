@@ -119,9 +119,9 @@ class AutoclaveSterilizer:
 
     @property
     @topic_config()
-    def gan_zao_function_state(self) -> bool:
+    def drying_function_state(self) -> bool:
         """干燥功能状态。"""
-        return self.data.get("gan_zao_function_state", False)
+        return self.data.get("drying_function_state", False)
 
     @property
     @topic_config()

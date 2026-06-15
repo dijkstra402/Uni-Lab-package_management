@@ -99,15 +99,15 @@ class ElectronBeamEtchingSystem:
 
     @property
     @topic_config()
-    def gas_gong_ying_state(self) -> bool:
+    def gas_supply_state(self) -> bool:
         """气体供应状态。"""
-        return self.data.get("gas_gong_ying_state", False)
+        return self.data.get("gas_supply_state", False)
 
     @property
     @topic_config()
-    def sample_stage_yi_dong_state(self) -> bool:
+    def sample_stage_moving_state(self) -> bool:
         """样品台移动状态。"""
-        return self.data.get("sample_stage_yi_dong_state", False)
+        return self.data.get("sample_stage_moving_state", False)
 
     @property
     @topic_config()

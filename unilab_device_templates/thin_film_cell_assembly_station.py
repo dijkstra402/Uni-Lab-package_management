@@ -244,9 +244,9 @@ class ThinFilmCellAssemblyStation:
 
     @property
     @topic_config()
-    def gas_gong_ying_state(self) -> bool:
+    def gas_supply_state(self) -> bool:
         """气体供应状态。"""
-        return self.data.get("gas_gong_ying_state", False)
+        return self.data.get("gas_supply_state", False)
 
     @property
     @topic_config()

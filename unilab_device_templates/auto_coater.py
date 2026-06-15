@@ -89,22 +89,22 @@ class AutoCoater:
         pass
 
     @action(description="设置干燥温度")
-    def set_gan_zao_temperature(self, gan_zao_temperature: int = 0) -> Dict[str, Any]:
+    def set_drying_temperature(self, drying_temperature: int = 0) -> Dict[str, Any]:
         """
         设置干燥温度。
 
         Args:
-            gan_zao_temperature[设置干燥温度]: 设置干燥温度。
+            drying_temperature[设置干燥温度]: 设置干燥温度。
         """
         pass
 
     @action(description="设置干燥时间")
-    def set_gan_zao_time(self, gan_zao_time: int = 0) -> Dict[str, Any]:
+    def set_drying_time(self, drying_time: int = 0) -> Dict[str, Any]:
         """
         设置干燥时间。
 
         Args:
-            gan_zao_time[设置干燥时间]: 设置干燥时间。
+            drying_time[设置干燥时间]: 设置干燥时间。
         """
         pass
 

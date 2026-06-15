@@ -127,9 +127,9 @@ class CentrifugalExtractor:
 
     @property
     @topic_config()
-    def li_xin_on_state(self) -> bool:
+    def centrifuge_on_state(self) -> bool:
         """离心开启状态。"""
-        return self.data.get("li_xin_on_state", False)
+        return self.data.get("centrifuge_on_state", False)
 
     @property
     @topic_config()

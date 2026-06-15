@@ -59,12 +59,12 @@ class CompositeCleaner:
         pass
 
     @action(description="设置清洗压力")
-    def set_qing_xi_pressure(self, qing_xi_pressure: int = 0) -> Dict[str, Any]:
+    def set_cleaning_pressure(self, cleaning_pressure: int = 0) -> Dict[str, Any]:
         """
         设置清洗压力。
 
         Args:
-            qing_xi_pressure[设置清洗压力]: 设置清洗压力。
+            cleaning_pressure[设置清洗压力]: 设置清洗压力。
         """
         pass
 

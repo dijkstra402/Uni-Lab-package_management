@@ -59,12 +59,12 @@ class LaserCleaner:
         pass
 
     @action(description="设置清洗压力")
-    def set_qing_xi_pressure(self, qing_xi_pressure: int = 0) -> Dict[str, Any]:
+    def set_cleaning_pressure(self, cleaning_pressure: int = 0) -> Dict[str, Any]:
         """
         设置清洗压力。
 
         Args:
-            qing_xi_pressure[设置清洗压力]: 设置清洗压力。
+            cleaning_pressure[设置清洗压力]: 设置清洗压力。
         """
         pass
 
@@ -127,9 +127,9 @@ class LaserCleaner:
 
     @property
     @topic_config()
-    def laser_head_yi_dong_state(self) -> bool:
+    def laser_head_moving_state(self) -> bool:
         """激光头移动状态。"""
-        return self.data.get("laser_head_yi_dong_state", False)
+        return self.data.get("laser_head_moving_state", False)
 
     @property
     @topic_config()

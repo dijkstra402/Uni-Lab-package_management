@@ -59,22 +59,22 @@ class UltrasonicCleaner:
         pass
 
     @action(description="设置清洗压力")
-    def set_qing_xi_pressure(self, qing_xi_pressure: int = 0) -> Dict[str, Any]:
+    def set_cleaning_pressure(self, cleaning_pressure: int = 0) -> Dict[str, Any]:
         """
         设置清洗压力。
 
         Args:
-            qing_xi_pressure[设置清洗压力]: 设置清洗压力。
+            cleaning_pressure[设置清洗压力]: 设置清洗压力。
         """
         pass
 
     @action(description="设置超声波功率")
-    def set_ultrasonic_bo_power(self, ultrasonic_bo_power: int = 0) -> Dict[str, Any]:
+    def set_ultrasonic_power(self, ultrasonic_power: int = 0) -> Dict[str, Any]:
         """
         设置超声波功率。
 
         Args:
-            ultrasonic_bo_power[设置超声波功率]: 设置超声波功率。
+            ultrasonic_power[设置超声波功率]: 设置超声波功率。
         """
         pass
 
@@ -129,9 +129,9 @@ class UltrasonicCleaner:
 
     @property
     @topic_config()
-    def ultrasonic_bo_power_feedback(self) -> int:
+    def ultrasonic_power_feedback(self) -> int:
         """超声波功率反馈。"""
-        return self.data.get("ultrasonic_bo_power_feedback", 0)
+        return self.data.get("ultrasonic_power_feedback", 0)
 
     @property
     @topic_config()
