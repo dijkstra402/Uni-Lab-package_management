@@ -39,12 +39,12 @@ class BlackbodyRadiationSource:
         pass
 
     @action(description="设置辐射强度")
-    def set_radiation_intensity(self, radiation_intensity: int = 0) -> Dict[str, Any]:
+    def set_radiation_intensity(self, radiation_intensity: float = 0.0) -> Dict[str, Any]:
         """
         设置辐射强度。
 
         Args:
-            radiation_intensity[设置辐射强度]: 设置辐射强度。
+            radiation_intensity[辐射强度]: 目标辐射强度（单位依设备量程而定）。
         """
         pass
 
@@ -82,15 +82,27 @@ class BlackbodyRadiationSource:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def target_temperature(self) -> float:
+        """目标温度。"""
+        return self.data.get("target_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_temperature(self) -> float:
         """实际温度。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)
 
     @property
     @topic_config()
@@ -103,3 +115,27 @@ class BlackbodyRadiationSource:
     def radiation_intensity_feedback(self) -> int:
         """辐射强度反馈。"""
         return self.data.get("radiation_intensity_feedback", 0)
+
+    @property
+    @topic_config()
+    def run_time(self) -> float:
+        """运行时间。"""
+        return self.data.get("run_time", 0.0)
+
+    @property
+    @topic_config()
+    def remaining_time(self) -> float:
+        """剩余时间。"""
+        return self.data.get("remaining_time", 0.0)
+
+    @property
+    @topic_config()
+    def radiation_stable_time(self) -> float:
+        """辐射稳定时间。"""
+        return self.data.get("radiation_stable_time", 0.0)
+
+    @property
+    @topic_config()
+    def preheat_stable_time(self) -> float:
+        """预热稳定时间。"""
+        return self.data.get("preheat_stable_time", 0.0)

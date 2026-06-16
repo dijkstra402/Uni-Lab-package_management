@@ -39,7 +39,7 @@ class MoldCellAssemblyStation:
         设置模具温度设定。
 
         Args:
-            mold_temperature[设置模具温度设定]: 设置模具温度设定。
+            mold_temperature[模具温度设定]: 目标模具温度设定（单位依设备量程而定）。
         """
         pass
 
@@ -49,7 +49,7 @@ class MoldCellAssemblyStation:
         设置注塑压力设定。
 
         Args:
-            injection_pressure[设置注塑压力设定]: 设置注塑压力设定。
+            injection_pressure[注塑压力设定]: 目标注塑压力设定（单位依设备量程而定）。
         """
         pass
 
@@ -59,7 +59,7 @@ class MoldCellAssemblyStation:
         设置注塑速度设定。
 
         Args:
-            injection_speed[设置注塑速度设定]: 设置注塑速度设定。
+            injection_speed[注塑速度设定]: 目标注塑速度设定（单位依设备量程而定）。
         """
         pass
 
@@ -69,7 +69,7 @@ class MoldCellAssemblyStation:
         设置保压压力设定。
 
         Args:
-            holding_pressure[设置保压压力设定]: 设置保压压力设定。
+            holding_pressure[保压压力设定]: 目标保压压力设定（单位依设备量程而定）。
         """
         pass
 
@@ -79,7 +79,7 @@ class MoldCellAssemblyStation:
         设置保压时间设定。
 
         Args:
-            holding_time[设置保压时间设定]: 设置保压时间设定。
+            holding_time[保压时间设定]: 目标保压时间设定（单位依设备量程而定）。
         """
         pass
 
@@ -89,7 +89,7 @@ class MoldCellAssemblyStation:
         设置冷却时间设定。
 
         Args:
-            cooling_time[设置冷却时间设定]: 设置冷却时间设定。
+            cooling_time[冷却时间设定]: 目标冷却时间设定（单位依设备量程而定）。
         """
         pass
 
@@ -99,7 +99,7 @@ class MoldCellAssemblyStation:
         设置预热温度设定。
 
         Args:
-            preheat_temperature[设置预热温度设定]: 设置预热温度设定。
+            preheat_temperature[预热温度设定]: 目标预热温度设定（单位依设备量程而定）。
         """
         pass
 
@@ -109,7 +109,7 @@ class MoldCellAssemblyStation:
         设置加热功率设定。
 
         Args:
-            heating_power[设置加热功率设定]: 设置加热功率设定。
+            heating_power[加热功率设定]: 目标加热功率设定（单位依设备量程而定）。
         """
         pass
 
@@ -217,3 +217,51 @@ class MoldCellAssemblyStation:
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
+
+    @property
+    @topic_config()
+    def current_mold_temperature(self) -> float:
+        """模具温度实际。"""
+        return self.data.get("current_mold_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_injection_pressure(self) -> float:
+        """注塑压力实际。"""
+        return self.data.get("current_injection_pressure", 0.0)
+
+    @property
+    @topic_config()
+    def current_injection_speed(self) -> float:
+        """注塑速度实际。"""
+        return self.data.get("current_injection_speed", 0.0)
+
+    @property
+    @topic_config()
+    def current_holding_pressure(self) -> float:
+        """保压压力实际。"""
+        return self.data.get("current_holding_pressure", 0.0)
+
+    @property
+    @topic_config()
+    def current_holding_time(self) -> float:
+        """保压时间实际。"""
+        return self.data.get("current_holding_time", 0.0)
+
+    @property
+    @topic_config()
+    def current_cooling_time(self) -> float:
+        """冷却时间实际。"""
+        return self.data.get("current_cooling_time", 0.0)
+
+    @property
+    @topic_config()
+    def current_preheat_temperature(self) -> float:
+        """预热温度实际。"""
+        return self.data.get("current_preheat_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_heating_power(self) -> float:
+        """加热功率实际。"""
+        return self.data.get("current_heating_power", 0.0)

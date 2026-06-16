@@ -39,23 +39,28 @@ class PhotochemicalReactor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置光源强度")
+    def set_light_intensity(self, light_intensity: int = 0) -> Dict[str, Any]:
+        """
+        设置光源强度。
+
+        Args:
+            light_intensity[光源强度]: 目标光源强度（单位依设备量程而定）。
         """
         pass
 
     @action(description="光源开启")
-    def turn_on_light(self, light_intensity: int = 0) -> Dict[str, Any]:
-        """
-        光源开启。
-
-        Args:
-            light_intensity[光源强度设置]: 光源强度设置。
-        """
+    def turn_on_light(self) -> Dict[str, Any]:
+        """光源开启。"""
         pass
 
     @property
@@ -72,12 +77,24 @@ class PhotochemicalReactor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_light_intensity(self) -> int:
+    def current_light_intensity(self) -> float:
         """实际光强监测。"""
-        return self.data.get("current_light_intensity", 0)
+        return self.data.get("current_light_intensity", 0.0)

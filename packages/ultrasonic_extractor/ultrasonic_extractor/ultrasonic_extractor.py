@@ -39,52 +39,52 @@ class UltrasonicExtractor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置运行时间")
-    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+    def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
         """
         设置运行时间。
 
         Args:
-            run_time[设置运行时间]: 设置运行时间。
+            run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置超声功率")
-    def set_ultrasonic_power(self, ultrasonic_power: int = 0) -> Dict[str, Any]:
+    def set_ultrasonic_power(self, ultrasonic_power: float = 0.0) -> Dict[str, Any]:
         """
         设置超声功率。
 
         Args:
-            ultrasonic_power[设置超声功率]: 设置超声功率。
+            ultrasonic_power[超声功率]: 目标超声功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置超声频率")
-    def set_ultrasonic_frequency(self, ultrasonic_frequency: int = 0) -> Dict[str, Any]:
+    def set_ultrasonic_frequency(self, ultrasonic_frequency: float = 0.0) -> Dict[str, Any]:
         """
         设置超声频率。
 
         Args:
-            ultrasonic_frequency[设置超声频率]: 设置超声频率。
+            ultrasonic_frequency[超声频率]: 目标超声频率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置萃取温度")
-    def set_extraction_temperature(self, extraction_temperature: int = 0) -> Dict[str, Any]:
+    def set_extraction_temperature(self, extraction_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置萃取温度。
 
         Args:
-            extraction_temperature[设置萃取温度]: 设置萃取温度。
+            extraction_temperature[萃取温度]: 目标萃取温度（单位依设备量程而定）。
         """
         pass
 
@@ -117,6 +117,18 @@ class UltrasonicExtractor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def ultrasonic_on_state(self) -> bool:
         """超声开启状态。"""
         return self.data.get("ultrasonic_on_state", False)
@@ -141,24 +153,24 @@ class UltrasonicExtractor:
 
     @property
     @topic_config()
-    def current_run_time(self) -> int:
+    def current_run_time(self) -> float:
         """实际运行时间。"""
-        return self.data.get("current_run_time", 0)
+        return self.data.get("current_run_time", 0.0)
 
     @property
     @topic_config()
-    def current_ultrasonic_power(self) -> int:
+    def current_ultrasonic_power(self) -> float:
         """实际超声功率。"""
-        return self.data.get("current_ultrasonic_power", 0)
+        return self.data.get("current_ultrasonic_power", 0.0)
 
     @property
     @topic_config()
-    def current_ultrasonic_frequency(self) -> int:
+    def current_ultrasonic_frequency(self) -> float:
         """实际超声频率。"""
-        return self.data.get("current_ultrasonic_frequency", 0)
+        return self.data.get("current_ultrasonic_frequency", 0.0)
 
     @property
     @topic_config()
-    def current_extraction_temperature(self) -> int:
+    def current_extraction_temperature(self) -> float:
         """实际萃取温度。"""
-        return self.data.get("current_extraction_temperature", 0)
+        return self.data.get("current_extraction_temperature", 0.0)

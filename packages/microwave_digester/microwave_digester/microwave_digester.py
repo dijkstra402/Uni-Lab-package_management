@@ -39,42 +39,52 @@ class MicrowaveDigester:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置目标温度")
-    def set_target_temperature(self, target_temperature: int = 0) -> Dict[str, Any]:
+    def set_target_temperature(self, target_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置目标温度。
 
         Args:
-            target_temperature[设置目标温度]: 设置目标温度。
+            target_temperature[目标温度]: 目标目标温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置目标压力")
-    def set_target_pressure(self, target_pressure: int = 0) -> Dict[str, Any]:
+    def set_target_pressure(self, target_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置目标压力。
 
         Args:
-            target_pressure[设置目标压力]: 设置目标压力。
+            target_pressure[目标压力]: 目标目标压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置微波功率")
-    def set_microwave_power(self, microwave_power: int = 0) -> Dict[str, Any]:
+    def set_microwave_power(self, microwave_power: float = 0.0) -> Dict[str, Any]:
         """
         设置微波功率。
 
         Args:
-            microwave_power[设置微波功率]: 设置微波功率。
+            microwave_power[微波功率]: 目标微波功率（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置消解时间")
+    def set_digestion_time(self, digestion_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置消解时间。
+
+        Args:
+            digestion_time[消解时间]: 目标消解时间（单位依设备量程而定）。
         """
         pass
 
@@ -84,18 +94,13 @@ class MicrowaveDigester:
         设置程序段。
 
         Args:
-            program_segment[设置程序段]: 设置程序段。
+            program_segment[程序段]: 目标程序段（单位依设备量程而定）。
         """
         pass
 
     @action(description="消解")
-    def digest(self, digestion_time: int = 0) -> Dict[str, Any]:
-        """
-        消解。
-
-        Args:
-            digestion_time[消解时间设置]: 消解时间设置。
-        """
+    def digest(self) -> Dict[str, Any]:
+        """消解。"""
         pass
 
     @property
@@ -109,6 +114,18 @@ class MicrowaveDigester:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
 
     @property
     @topic_config()
@@ -136,18 +153,24 @@ class MicrowaveDigester:
 
     @property
     @topic_config()
+    def cooling_system_running(self) -> bool:
+        """冷却系统运行。"""
+        return self.data.get("cooling_system_running", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def current_temperature(self) -> float:
         """实际温度检测。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_pressure(self) -> int:
+    def current_pressure(self) -> float:
         """实际压力检测。"""
-        return self.data.get("current_pressure", 0)
+        return self.data.get("current_pressure", 0.0)

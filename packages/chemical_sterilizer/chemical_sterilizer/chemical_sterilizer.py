@@ -39,42 +39,42 @@ class ChemicalSterilizer:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置消毒剂浓度")
-    def set_disinfectant_concentration(self, disinfectant_concentration: int = 0) -> Dict[str, Any]:
+    def set_disinfectant_concentration(self, disinfectant_concentration: float = 0.0) -> Dict[str, Any]:
         """
         设置消毒剂浓度。
 
         Args:
-            disinfectant_concentration[设置消毒剂浓度]: 设置消毒剂浓度。
+            disinfectant_concentration[消毒剂浓度]: 目标消毒剂浓度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置消毒温度")
-    def set_disinfection_temperature(self, disinfection_temperature: int = 0) -> Dict[str, Any]:
+    def set_disinfection_temperature(self, disinfection_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置消毒温度。
 
         Args:
-            disinfection_temperature[设置消毒温度]: 设置消毒温度。
+            disinfection_temperature[消毒温度]: 目标消毒温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置消毒时间")
-    def set_disinfection_time(self, disinfection_time: int = 0) -> Dict[str, Any]:
+    def set_disinfection_time(self, disinfection_time: float = 0.0) -> Dict[str, Any]:
         """
         设置消毒时间。
 
         Args:
-            disinfection_time[设置消毒时间]: 设置消毒时间。
+            disinfection_time[消毒时间]: 目标消毒时间（单位依设备量程而定）。
         """
         pass
 
@@ -107,6 +107,18 @@ class ChemicalSterilizer:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def stir_state(self) -> bool:
         """搅拌状态。"""
         return self.data.get("stir_state", False)
@@ -125,24 +137,24 @@ class ChemicalSterilizer:
 
     @property
     @topic_config()
-    def current_disinfection_time(self) -> int:
+    def current_disinfection_time(self) -> float:
         """实际消毒时间。"""
-        return self.data.get("current_disinfection_time", 0)
+        return self.data.get("current_disinfection_time", 0.0)
 
     @property
     @topic_config()
-    def disinfectant_concentration_feedback(self) -> int:
+    def disinfectant_concentration_feedback(self) -> float:
         """消毒剂浓度反馈。"""
-        return self.data.get("disinfectant_concentration_feedback", 0)
+        return self.data.get("disinfectant_concentration_feedback", 0.0)
 
     @property
     @topic_config()
-    def disinfection_temperature_feedback(self) -> int:
+    def disinfection_temperature_feedback(self) -> float:
         """消毒温度反馈。"""
-        return self.data.get("disinfection_temperature_feedback", 0)
+        return self.data.get("disinfection_temperature_feedback", 0.0)
 
     @property
     @topic_config()
-    def disinfection_time_feedback(self) -> int:
+    def disinfection_time_feedback(self) -> float:
         """消毒时间反馈。"""
-        return self.data.get("disinfection_time_feedback", 0)
+        return self.data.get("disinfection_time_feedback", 0.0)

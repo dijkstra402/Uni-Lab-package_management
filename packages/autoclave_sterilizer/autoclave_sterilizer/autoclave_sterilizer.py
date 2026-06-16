@@ -39,42 +39,42 @@ class AutoclaveSterilizer:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置消毒压力")
-    def set_disinfection_pressure(self, disinfection_pressure: int = 0) -> Dict[str, Any]:
+    def set_disinfection_pressure(self, disinfection_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置消毒压力。
 
         Args:
-            disinfection_pressure[设置消毒压力]: 设置消毒压力。
+            disinfection_pressure[消毒压力]: 目标消毒压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置消毒温度")
-    def set_disinfection_temperature(self, disinfection_temperature: int = 0) -> Dict[str, Any]:
+    def set_disinfection_temperature(self, disinfection_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置消毒温度。
 
         Args:
-            disinfection_temperature[设置消毒温度]: 设置消毒温度。
+            disinfection_temperature[消毒温度]: 目标消毒温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置消毒时间")
-    def set_disinfection_time(self, disinfection_time: int = 0) -> Dict[str, Any]:
+    def set_disinfection_time(self, disinfection_time: float = 0.0) -> Dict[str, Any]:
         """
         设置消毒时间。
 
         Args:
-            disinfection_time[设置消毒时间]: 设置消毒时间。
+            disinfection_time[消毒时间]: 目标消毒时间（单位依设备量程而定）。
         """
         pass
 
@@ -107,6 +107,18 @@ class AutoclaveSterilizer:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def exhaust_valve_state(self) -> bool:
         """排气阀状态。"""
         return self.data.get("exhaust_valve_state", False)
@@ -131,24 +143,24 @@ class AutoclaveSterilizer:
 
     @property
     @topic_config()
-    def current_disinfection_time(self) -> int:
+    def current_disinfection_time(self) -> float:
         """实际消毒时间。"""
-        return self.data.get("current_disinfection_time", 0)
+        return self.data.get("current_disinfection_time", 0.0)
 
     @property
     @topic_config()
-    def disinfection_pressure_feedback(self) -> int:
+    def disinfection_pressure_feedback(self) -> float:
         """消毒压力反馈。"""
-        return self.data.get("disinfection_pressure_feedback", 0)
+        return self.data.get("disinfection_pressure_feedback", 0.0)
 
     @property
     @topic_config()
-    def disinfection_temperature_feedback(self) -> int:
+    def disinfection_temperature_feedback(self) -> float:
         """消毒温度反馈。"""
-        return self.data.get("disinfection_temperature_feedback", 0)
+        return self.data.get("disinfection_temperature_feedback", 0.0)
 
     @property
     @topic_config()
-    def disinfection_time_feedback(self) -> int:
+    def disinfection_time_feedback(self) -> float:
         """消毒时间反馈。"""
-        return self.data.get("disinfection_time_feedback", 0)
+        return self.data.get("disinfection_time_feedback", 0.0)

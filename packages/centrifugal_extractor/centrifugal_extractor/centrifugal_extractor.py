@@ -39,52 +39,52 @@ class CentrifugalExtractor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置运行时间")
-    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+    def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
         """
         设置运行时间。
 
         Args:
-            run_time[设置运行时间]: 设置运行时间。
+            run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置转速")
-    def set_speed(self, speed: int = 0) -> Dict[str, Any]:
+    def set_speed(self, speed: float = 0.0) -> Dict[str, Any]:
         """
         设置转速。
 
         Args:
-            speed[设置转速]: 设置转速。
+            speed[转速]: 目标转速（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置分离时间")
-    def set_separation_time(self, separation_time: int = 0) -> Dict[str, Any]:
+    def set_separation_time(self, separation_time: float = 0.0) -> Dict[str, Any]:
         """
         设置分离时间。
 
         Args:
-            separation_time[设置分离时间]: 设置分离时间。
+            separation_time[分离时间]: 目标分离时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置进料流量")
-    def set_feed_flow(self, feed_flow: int = 0) -> Dict[str, Any]:
+    def set_feed_flow(self, feed_flow: float = 0.0) -> Dict[str, Any]:
         """
         设置进料流量。
 
         Args:
-            feed_flow[设置进料流量]: 设置进料流量。
+            feed_flow[进料流量]: 目标进料流量（单位依设备量程而定）。
         """
         pass
 
@@ -94,7 +94,7 @@ class CentrifugalExtractor:
         设置轻重相界面。
 
         Args:
-            phase_interface[设置轻重相界面]: 设置轻重相界面。
+            phase_interface[轻重相界面]: 目标轻重相界面（单位依设备量程而定）。
         """
         pass
 
@@ -127,6 +127,18 @@ class CentrifugalExtractor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def centrifuge_on_state(self) -> bool:
         """离心开启状态。"""
         return self.data.get("centrifuge_on_state", False)
@@ -145,27 +157,27 @@ class CentrifugalExtractor:
 
     @property
     @topic_config()
-    def current_run_time(self) -> int:
+    def current_run_time(self) -> float:
         """实际运行时间。"""
-        return self.data.get("current_run_time", 0)
+        return self.data.get("current_run_time", 0.0)
 
     @property
     @topic_config()
-    def current_speed(self) -> int:
+    def current_speed(self) -> float:
         """实际转速。"""
-        return self.data.get("current_speed", 0)
+        return self.data.get("current_speed", 0.0)
 
     @property
     @topic_config()
-    def current_separation_time(self) -> int:
+    def current_separation_time(self) -> float:
         """实际分离时间。"""
-        return self.data.get("current_separation_time", 0)
+        return self.data.get("current_separation_time", 0.0)
 
     @property
     @topic_config()
-    def current_feed_flow(self) -> int:
+    def current_feed_flow(self) -> float:
         """实际进料流量。"""
-        return self.data.get("current_feed_flow", 0)
+        return self.data.get("current_feed_flow", 0.0)
 
     @property
     @topic_config()

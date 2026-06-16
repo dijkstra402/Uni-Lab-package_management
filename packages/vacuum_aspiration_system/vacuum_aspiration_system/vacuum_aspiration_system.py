@@ -39,42 +39,42 @@ class VacuumAspirationSystem:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置真空度")
-    def set_vacuum(self, vacuum: int = 0) -> Dict[str, Any]:
+    def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
         """
         设置真空度。
 
         Args:
-            vacuum[设置真空度]: 设置真空度。
+            vacuum[真空度]: 目标真空度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置吸液时间")
-    def set_aspirate_time(self, aspirate_time: int = 0) -> Dict[str, Any]:
+    def set_aspirate_time(self, aspirate_time: float = 0.0) -> Dict[str, Any]:
         """
         设置吸液时间。
 
         Args:
-            aspirate_time[设置吸液时间]: 设置吸液时间。
+            aspirate_time[吸液时间]: 目标吸液时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置吸液体积")
-    def set_aspirate_volume(self, aspirate_volume: int = 0) -> Dict[str, Any]:
+    def set_aspirate_volume(self, aspirate_volume: float = 0.0) -> Dict[str, Any]:
         """
         设置吸液体积。
 
         Args:
-            aspirate_volume[设置吸液体积]: 设置吸液体积。
+            aspirate_volume[吸液体积]: 目标吸液体积（单位依设备量程而定）。
         """
         pass
 
@@ -112,27 +112,45 @@ class VacuumAspirationSystem:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def vacuum_completed(self) -> bool:
+        """真空完成。"""
+        return self.data.get("vacuum_completed", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_vacuum(self) -> int:
+    def current_vacuum(self) -> float:
         """实际真空度。"""
-        return self.data.get("current_vacuum", 0)
+        return self.data.get("current_vacuum", 0.0)
 
     @property
     @topic_config()
-    def current_aspirate_time(self) -> int:
+    def current_aspirate_time(self) -> float:
         """实际吸液时间。"""
-        return self.data.get("current_aspirate_time", 0)
+        return self.data.get("current_aspirate_time", 0.0)
 
     @property
     @topic_config()
-    def current_aspirate_volume(self) -> int:
+    def current_aspirate_volume(self) -> float:
         """实际吸液体积。"""
-        return self.data.get("current_aspirate_volume", 0)
+        return self.data.get("current_aspirate_volume", 0.0)
 
     @property
     @topic_config()

@@ -39,12 +39,12 @@ class ElectrophoresisDevice:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
@@ -67,18 +67,42 @@ class ElectrophoresisDevice:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_voltage(self) -> int:
+    def current_voltage(self) -> float:
         """实际电压。"""
-        return self.data.get("current_voltage", 0)
+        return self.data.get("current_voltage", 0.0)
 
     @property
     @topic_config()
-    def current_current(self) -> int:
+    def target_current(self) -> float:
+        """目标电流。"""
+        return self.data.get("target_current", 0.0)
+
+    @property
+    @topic_config()
+    def current_current(self) -> float:
         """实际电流。"""
-        return self.data.get("current_current", 0)
+        return self.data.get("current_current", 0.0)
+
+    @property
+    @topic_config()
+    def power_limit(self) -> float:
+        """功率限制。"""
+        return self.data.get("power_limit", 0.0)

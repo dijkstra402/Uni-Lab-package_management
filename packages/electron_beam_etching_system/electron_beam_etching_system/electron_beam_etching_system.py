@@ -39,45 +39,68 @@ class ElectronBeamEtchingSystem:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置刻蚀功率")
+    def set_etching_power(self, etching_power: float = 0.0) -> Dict[str, Any]:
+        """
+        设置刻蚀功率。
+
+        Args:
+            etching_power[刻蚀功率]: 目标刻蚀功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置真空度")
-    def set_vacuum(self, vacuum: int = 0) -> Dict[str, Any]:
+    def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
         """
         设置真空度。
 
         Args:
-            vacuum[设置真空度]: 设置真空度。
+            vacuum[真空度]: 目标真空度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置刻蚀时间")
+    def set_etching_time(self, etching_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置刻蚀时间。
+
+        Args:
+            etching_time[刻蚀时间]: 目标刻蚀时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置样品台温度")
-    def set_sample_stage_temp(self, sample_stage_temp: int = 0) -> Dict[str, Any]:
+    def set_sample_stage_temp(self, sample_stage_temp: float = 0.0) -> Dict[str, Any]:
         """
         设置样品台温度。
 
         Args:
-            sample_stage_temp[设置样品台温度]: 设置样品台温度。
+            sample_stage_temp[样品台温度]: 目标样品台温度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置刻蚀深度")
+    def set_etching_depth(self, etching_depth: float = 0.0) -> Dict[str, Any]:
+        """
+        设置刻蚀深度。
+
+        Args:
+            etching_depth[刻蚀深度]: 目标刻蚀深度（单位依设备量程而定）。
         """
         pass
 
     @action(description="刻蚀")
-    def etch(self, etching_power: int = 0, etching_time: int = 0, etching_depth: int = 0) -> Dict[str, Any]:
-        """
-        刻蚀。
-
-        Args:
-            etching_power[刻蚀功率设置]: 刻蚀功率设置。
-            etching_time[刻蚀时间设置]: 刻蚀时间设置。
-            etching_depth[刻蚀深度设置]: 刻蚀深度设置。
-        """
+    def etch(self) -> Dict[str, Any]:
+        """刻蚀。"""
         pass
 
     @action(description="等离子体")
@@ -96,6 +119,24 @@ class ElectronBeamEtchingSystem:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def vacuum_system_running(self) -> bool:
+        """真空系统运行。"""
+        return self.data.get("vacuum_system_running", False)
 
     @property
     @topic_config()
@@ -129,12 +170,12 @@ class ElectronBeamEtchingSystem:
 
     @property
     @topic_config()
-    def current_power(self) -> int:
+    def current_power(self) -> float:
         """实际功率检测。"""
-        return self.data.get("current_power", 0)
+        return self.data.get("current_power", 0.0)
 
     @property
     @topic_config()
-    def current_vacuum(self) -> int:
+    def current_vacuum(self) -> float:
         """实际真空度检测。"""
-        return self.data.get("current_vacuum", 0)
+        return self.data.get("current_vacuum", 0.0)

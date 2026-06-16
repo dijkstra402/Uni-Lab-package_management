@@ -39,72 +39,72 @@ class TabletPress:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置压制压力")
-    def set_pressing_pressure(self, pressing_pressure: int = 0) -> Dict[str, Any]:
+    def set_pressing_pressure(self, pressing_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置压制压力。
 
         Args:
-            pressing_pressure[设置压制压力]: 设置压制压力。
+            pressing_pressure[压制压力]: 目标压制压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置压制时间")
-    def set_pressing_time(self, pressing_time: int = 0) -> Dict[str, Any]:
+    def set_pressing_time(self, pressing_time: float = 0.0) -> Dict[str, Any]:
         """
         设置压制时间。
 
         Args:
-            pressing_time[设置压制时间]: 设置压制时间。
+            pressing_time[压制时间]: 目标压制时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置保压时间")
-    def set_holding_time(self, holding_time: int = 0) -> Dict[str, Any]:
+    def set_holding_time(self, holding_time: float = 0.0) -> Dict[str, Any]:
         """
         设置保压时间。
 
         Args:
-            holding_time[设置保压时间]: 设置保压时间。
+            holding_time[保压时间]: 目标保压时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置泄压速率")
-    def set_depressurize_rate(self, depressurize_rate: int = 0) -> Dict[str, Any]:
+    def set_depressurize_rate(self, depressurize_rate: float = 0.0) -> Dict[str, Any]:
         """
         设置泄压速率。
 
         Args:
-            depressurize_rate[设置泄压速率]: 设置泄压速率。
+            depressurize_rate[泄压速率]: 目标泄压速率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置压模温度")
-    def set_mold_temperature(self, mold_temperature: int = 0) -> Dict[str, Any]:
+    def set_mold_temperature(self, mold_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置压模温度。
 
         Args:
-            mold_temperature[设置压模温度]: 设置压模温度。
+            mold_temperature[压模温度]: 目标压模温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置样品直径")
-    def set_sample_diameter(self, sample_diameter: int = 0) -> Dict[str, Any]:
+    def set_sample_diameter(self, sample_diameter: float = 0.0) -> Dict[str, Any]:
         """
         设置样品直径。
 
         Args:
-            sample_diameter[设置样品直径]: 设置样品直径。
+            sample_diameter[样品直径]: 目标样品直径（单位依设备量程而定）。
         """
         pass
 
@@ -114,7 +114,7 @@ class TabletPress:
         设置压制次数。
 
         Args:
-            pressing_count[设置压制次数]: 设置压制次数。
+            pressing_count[压制次数]: 目标压制次数（单位依设备量程而定）。
         """
         pass
 
@@ -137,12 +137,30 @@ class TabletPress:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def running_completed(self) -> bool:
+        """运行完成。"""
+        return self.data.get("running_completed", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_pressure(self) -> int:
+    def current_pressure(self) -> float:
         """实际压力监测。"""
-        return self.data.get("current_pressure", 0)
+        return self.data.get("current_pressure", 0.0)

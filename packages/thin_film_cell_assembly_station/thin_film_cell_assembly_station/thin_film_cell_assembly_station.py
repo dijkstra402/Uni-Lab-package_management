@@ -39,7 +39,7 @@ class ThinFilmCellAssemblyStation:
         设置沉积温度设定。
 
         Args:
-            deposition_temperature[设置沉积温度设定]: 设置沉积温度设定。
+            deposition_temperature[沉积温度设定]: 目标沉积温度设定（单位依设备量程而定）。
         """
         pass
 
@@ -49,7 +49,7 @@ class ThinFilmCellAssemblyStation:
         设置沉积速率设定。
 
         Args:
-            deposition_rate[设置沉积速率设定]: 设置沉积速率设定。
+            deposition_rate[沉积速率设定]: 目标沉积速率设定（单位依设备量程而定）。
         """
         pass
 
@@ -59,7 +59,7 @@ class ThinFilmCellAssemblyStation:
         设置沉积时间设定。
 
         Args:
-            deposition_time[设置沉积时间设定]: 设置沉积时间设定。
+            deposition_time[沉积时间设定]: 目标沉积时间设定（单位依设备量程而定）。
         """
         pass
 
@@ -69,7 +69,7 @@ class ThinFilmCellAssemblyStation:
         设置溅射功率设定。
 
         Args:
-            sputter_power[设置溅射功率设定]: 设置溅射功率设定。
+            sputter_power[溅射功率设定]: 目标溅射功率设定（单位依设备量程而定）。
         """
         pass
 
@@ -79,7 +79,7 @@ class ThinFilmCellAssemblyStation:
         设置溅射气压设定。
 
         Args:
-            sputter_pressure[设置溅射气压设定]: 设置溅射气压设定。
+            sputter_pressure[溅射气压设定]: 目标溅射气压设定（单位依设备量程而定）。
         """
         pass
 
@@ -89,7 +89,7 @@ class ThinFilmCellAssemblyStation:
         设置退火温度设定。
 
         Args:
-            annealing_temperature[设置退火温度设定]: 设置退火温度设定。
+            annealing_temperature[退火温度设定]: 目标退火温度设定（单位依设备量程而定）。
         """
         pass
 
@@ -99,7 +99,7 @@ class ThinFilmCellAssemblyStation:
         设置退火时间设定。
 
         Args:
-            annealing_time[设置退火时间设定]: 设置退火时间设定。
+            annealing_time[退火时间设定]: 目标退火时间设定（单位依设备量程而定）。
         """
         pass
 
@@ -109,7 +109,7 @@ class ThinFilmCellAssemblyStation:
         设置真空度设定。
 
         Args:
-            vacuum[设置真空度设定]: 设置真空度设定。
+            vacuum[真空度设定]: 目标真空度设定（单位依设备量程而定）。
         """
         pass
 
@@ -119,7 +119,7 @@ class ThinFilmCellAssemblyStation:
         设置Ar气流量设定。
 
         Args:
-            ar_gas_flow[设置Ar气流量设定]: 设置Ar气流量设定。
+            ar_gas_flow[Ar气流量设定]: 目标Ar气流量设定（单位依设备量程而定）。
         """
         pass
 
@@ -129,7 +129,7 @@ class ThinFilmCellAssemblyStation:
         设置O2气流量设定。
 
         Args:
-            o2_gas_flow[设置O2气流量设定]: 设置O2气流量设定。
+            o2_gas_flow[O2气流量设定]: 目标O2气流量设定（单位依设备量程而定）。
         """
         pass
 
@@ -139,7 +139,7 @@ class ThinFilmCellAssemblyStation:
         设置N2气流量设定。
 
         Args:
-            n2_gas_flow[设置N2气流量设定]: 设置N2气流量设定。
+            n2_gas_flow[N2气流量设定]: 目标N2气流量设定（单位依设备量程而定）。
         """
         pass
 
@@ -149,17 +149,17 @@ class ThinFilmCellAssemblyStation:
         设置气体分压比设定。
 
         Args:
-            gas_partial_pressure_ratio[设置气体分压比设定]: 设置气体分压比设定。
+            gas_partial_pressure_ratio[气体分压比设定]: 目标气体分压比设定（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置薄膜厚度设定")
-    def set_film_thickness(self, film_thickness: int = 0) -> Dict[str, Any]:
+    def set_film_thickness(self, film_thickness: float = 0.0) -> Dict[str, Any]:
         """
         设置薄膜厚度设定。
 
         Args:
-            film_thickness[设置薄膜厚度设定]: 设置薄膜厚度设定。
+            film_thickness[薄膜厚度设定]: 目标薄膜厚度设定（单位依设备量程而定）。
         """
         pass
 
@@ -169,7 +169,7 @@ class ThinFilmCellAssemblyStation:
         设置射频功率设定。
 
         Args:
-            rf_power[设置射频功率设定]: 设置射频功率设定。
+            rf_power[射频功率设定]: 目标射频功率设定（单位依设备量程而定）。
         """
         pass
 
@@ -274,12 +274,114 @@ class ThinFilmCellAssemblyStation:
 
     @property
     @topic_config()
-    def vacuum_status_code(self) -> int:
+    def vacuum_status_code(self) -> float:
         """真空状态码。"""
-        return self.data.get("vacuum_status_code", 0)
+        return self.data.get("vacuum_status_code", 0.0)
 
     @property
     @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
+
+    @property
+    @topic_config()
+    def current_deposition_temperature(self) -> float:
+        """沉积温度实际。"""
+        return self.data.get("current_deposition_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_deposition_rate(self) -> float:
+        """沉积速率实际。"""
+        return self.data.get("current_deposition_rate", 0.0)
+
+    @property
+    @topic_config()
+    def current_deposition_time(self) -> float:
+        """沉积时间实际。"""
+        return self.data.get("current_deposition_time", 0.0)
+
+    @property
+    @topic_config()
+    def current_sputter_power(self) -> float:
+        """溅射功率实际。"""
+        return self.data.get("current_sputter_power", 0.0)
+
+    @property
+    @topic_config()
+    def current_sputter_pressure(self) -> float:
+        """溅射气压实际。"""
+        return self.data.get("current_sputter_pressure", 0.0)
+
+    @property
+    @topic_config()
+    def current_annealing_temperature(self) -> float:
+        """退火温度实际。"""
+        return self.data.get("current_annealing_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_annealing_time(self) -> float:
+        """退火时间实际。"""
+        return self.data.get("current_annealing_time", 0.0)
+
+    @property
+    @topic_config()
+    def current_vacuum(self) -> float:
+        """真空度实际。"""
+        return self.data.get("current_vacuum", 0.0)
+
+    @property
+    @topic_config()
+    def current_ar_gas_flow(self) -> float:
+        """Ar气流量实际。"""
+        return self.data.get("current_ar_gas_flow", 0.0)
+
+    @property
+    @topic_config()
+    def current_o2_gas_flow(self) -> float:
+        """O2气流量实际。"""
+        return self.data.get("current_o2_gas_flow", 0.0)
+
+    @property
+    @topic_config()
+    def current_n2_gas_flow(self) -> float:
+        """N2气流量实际。"""
+        return self.data.get("current_n2_gas_flow", 0.0)
+
+    @property
+    @topic_config()
+    def current_gas_partial_pressure_ratio(self) -> float:
+        """气体分压比实际。"""
+        return self.data.get("current_gas_partial_pressure_ratio", 0.0)
+
+    @property
+    @topic_config()
+    def substrate_rotation_speed(self) -> float:
+        """基片旋转速度。"""
+        return self.data.get("substrate_rotation_speed", 0.0)
+
+    @property
+    @topic_config()
+    def current_film_thickness(self) -> float:
+        """薄膜厚度实际。"""
+        return self.data.get("current_film_thickness", 0.0)
+
+    @property
+    @topic_config()
+    def target_temperature(self) -> float:
+        """靶材温度监测。"""
+        return self.data.get("target_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def substrate_temperature(self) -> float:
+        """基片温度监测。"""
+        return self.data.get("substrate_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_rf_power(self) -> float:
+        """射频功率实际。"""
+        return self.data.get("current_rf_power", 0.0)

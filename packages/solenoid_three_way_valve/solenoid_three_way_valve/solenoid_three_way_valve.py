@@ -39,12 +39,12 @@ class SolenoidThreeWayValve:
         pass
 
     @action(description="设置绝对位置")
-    def set_position(self, position: int = 0) -> Dict[str, Any]:
+    def set_position(self, position: float = 0.0) -> Dict[str, Any]:
         """
         设置绝对位置。
 
         Args:
-            position[设置绝对位置]: 设置绝对位置。
+            position[绝对位置]: 目标绝对位置（单位依设备量程而定）。
         """
         pass
 
@@ -67,12 +67,18 @@ class SolenoidThreeWayValve:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_position(self) -> int:
+    def current_position(self) -> float:
         """当前位置显示。"""
-        return self.data.get("current_position", 0)
+        return self.data.get("current_position", 0.0)

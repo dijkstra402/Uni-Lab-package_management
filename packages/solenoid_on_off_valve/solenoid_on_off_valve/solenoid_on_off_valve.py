@@ -39,22 +39,22 @@ class SolenoidOnOffValve:
         pass
 
     @action(description="设置打开时间")
-    def set_open_time(self, open_time: int = 0) -> Dict[str, Any]:
+    def set_open_time(self, open_time: float = 0.0) -> Dict[str, Any]:
         """
         设置打开时间。
 
         Args:
-            open_time[设置打开时间]: 设置打开时间。
+            open_time[打开时间]: 目标打开时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置关闭时间")
-    def set_close_time(self, close_time: int = 0) -> Dict[str, Any]:
+    def set_close_time(self, close_time: float = 0.0) -> Dict[str, Any]:
         """
         设置关闭时间。
 
         Args:
-            close_time[设置关闭时间]: 设置关闭时间。
+            close_time[关闭时间]: 目标关闭时间（单位依设备量程而定）。
         """
         pass
 
@@ -82,12 +82,18 @@ class SolenoidOnOffValve:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_switch(self) -> int:
+    def current_switch(self) -> bool:
         """当前开关显示。"""
-        return self.data.get("current_switch", 0)
+        return self.data.get("current_switch", False)

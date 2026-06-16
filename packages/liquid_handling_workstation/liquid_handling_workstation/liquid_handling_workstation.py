@@ -39,12 +39,42 @@ class LiquidHandlingWorkstation:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置吸液体积")
+    def set_aspirate_volume(self, aspirate_volume: float = 0.0) -> Dict[str, Any]:
+        """
+        设置吸液体积。
+
+        Args:
+            aspirate_volume[吸液体积]: 目标吸液体积（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置排液体积")
+    def set_dispense_volume(self, dispense_volume: float = 0.0) -> Dict[str, Any]:
+        """
+        设置排液体积。
+
+        Args:
+            dispense_volume[排液体积]: 目标排液体积（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置移液速度")
+    def set_pipette_speed(self, pipette_speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置移液速度。
+
+        Args:
+            pipette_speed[移液速度]: 目标移液速度（单位依设备量程而定）。
         """
         pass
 
@@ -54,38 +84,23 @@ class LiquidHandlingWorkstation:
         设置目标孔位。
 
         Args:
-            target_well[设置目标孔位]: 设置目标孔位。
+            target_well[目标孔位]: 目标目标孔位（单位依设备量程而定）。
         """
         pass
 
     @action(description="吸液")
-    def draw_liquid(self, aspirate_volume: int = 0) -> Dict[str, Any]:
-        """
-        吸液。
-
-        Args:
-            aspirate_volume[吸液体积设置]: 吸液体积设置。
-        """
+    def draw_liquid(self) -> Dict[str, Any]:
+        """吸液。"""
         pass
 
     @action(description="排液")
-    def dispense(self, dispense_volume: int = 0) -> Dict[str, Any]:
-        """
-        排液。
-
-        Args:
-            dispense_volume[排液体积设置]: 排液体积设置。
-        """
+    def dispense(self) -> Dict[str, Any]:
+        """排液。"""
         pass
 
     @action(description="移液路径")
-    def pipette_path(self, pipette_speed: int = 0) -> Dict[str, Any]:
-        """
-        移液路径。
-
-        Args:
-            pipette_speed[移液速度设置]: 移液速度设置。
-        """
+    def pipette_path(self) -> Dict[str, Any]:
+        """移液路径。"""
         pass
 
     @action(description="枪头更换")
@@ -107,30 +122,48 @@ class LiquidHandlingWorkstation:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_aspirate_volume(self) -> int:
+    def current_aspirate_volume(self) -> float:
         """实际吸液体积。"""
-        return self.data.get("current_aspirate_volume", 0)
+        return self.data.get("current_aspirate_volume", 0.0)
 
     @property
     @topic_config()
-    def current_dispense_volume(self) -> int:
+    def current_dispense_volume(self) -> float:
         """实际排液体积。"""
-        return self.data.get("current_dispense_volume", 0)
+        return self.data.get("current_dispense_volume", 0.0)
 
     @property
     @topic_config()
-    def current_pipette_speed(self) -> int:
+    def current_pipette_speed(self) -> float:
         """实际移液速度。"""
-        return self.data.get("current_pipette_speed", 0)
+        return self.data.get("current_pipette_speed", 0.0)
 
     @property
     @topic_config()
     def tip_state(self) -> int:
         """枪头状态。"""
         return self.data.get("tip_state", 0)
+
+    @property
+    @topic_config()
+    def liquid_level(self) -> float:
+        """液位检测值。"""
+        return self.data.get("liquid_level", 0.0)

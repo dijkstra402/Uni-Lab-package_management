@@ -39,23 +39,28 @@ class PureWaterSystem:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置制水流量")
+    def set_water_production_flow(self, water_production_flow: float = 0.0) -> Dict[str, Any]:
+        """
+        设置制水流量。
+
+        Args:
+            water_production_flow[制水流量]: 目标制水流量（单位依设备量程而定）。
         """
         pass
 
     @action(description="制水")
-    def produce_water(self, water_production_flow: int = 0) -> Dict[str, Any]:
-        """
-        制水。
-
-        Args:
-            water_production_flow[制水流量设置]: 制水流量设置。
-        """
+    def produce_water(self) -> Dict[str, Any]:
+        """制水。"""
         pass
 
     @action(description="冲洗")
@@ -77,6 +82,18 @@ class PureWaterSystem:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
@@ -89,6 +106,6 @@ class PureWaterSystem:
 
     @property
     @topic_config()
-    def current_water_production_flow(self) -> int:
+    def current_water_production_flow(self) -> float:
         """实际制水流量。"""
-        return self.data.get("current_water_production_flow", 0)
+        return self.data.get("current_water_production_flow", 0.0)

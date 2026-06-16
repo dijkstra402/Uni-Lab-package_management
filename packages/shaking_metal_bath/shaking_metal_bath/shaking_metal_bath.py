@@ -67,18 +67,48 @@ class ShakingMetalBath:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
-        """实际温度。"""
-        return self.data.get("current_temperature", 0)
+    def oscillation_speed(self) -> float:
+        """振荡速度。"""
+        return self.data.get("oscillation_speed", 0.0)
 
     @property
     @topic_config()
-    def current_speed(self) -> int:
+    def target_temperature(self) -> float:
+        """目标温度。"""
+        return self.data.get("target_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def run_time(self) -> float:
+        """运行时间。"""
+        return self.data.get("run_time", 0.0)
+
+    @property
+    @topic_config()
+    def current_temperature(self) -> float:
+        """实际温度。"""
+        return self.data.get("current_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_speed(self) -> float:
         """实际转速。"""
-        return self.data.get("current_speed", 0)
+        return self.data.get("current_speed", 0.0)
+
+    @property
+    @topic_config()
+    def remaining_time(self) -> float:
+        """剩余时间。"""
+        return self.data.get("remaining_time", 0.0)

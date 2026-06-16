@@ -38,13 +38,43 @@ class BlenderHomogenizer:
         """初始化。"""
         pass
 
+    @action(description="设置匀浆转速")
+    def set_blend_speed(self, blend_speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置匀浆转速。
+
+        Args:
+            blend_speed[匀浆转速]: 目标匀浆转速（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置匀浆时间")
+    def set_blend_time(self, blend_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置匀浆时间。
+
+        Args:
+            blend_time[匀浆时间]: 目标匀浆时间（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置匀浆模式")
+    def set_blend_mode(self, blend_mode: str = "") -> Dict[str, Any]:
+        """
+        设置匀浆模式。
+
+        Args:
+            blend_mode[匀浆模式]: 目标匀浆模式（具体取值由设备型号定义）。
+        """
+        pass
+
     @action(description="设置脉冲间隔")
-    def set_pulse_interval(self, pulse_interval: int = 0) -> Dict[str, Any]:
+    def set_pulse_interval(self, pulse_interval: float = 0.0) -> Dict[str, Any]:
         """
         设置脉冲间隔。
 
         Args:
-            pulse_interval[设置脉冲间隔]: 设置脉冲间隔。
+            pulse_interval[脉冲间隔]: 目标脉冲间隔（单位依设备量程而定）。
         """
         pass
 
@@ -54,30 +84,23 @@ class BlenderHomogenizer:
         设置脉冲宽度。
 
         Args:
-            pulse_width[设置脉冲宽度]: 设置脉冲宽度。
+            pulse_width[脉冲宽度]: 目标脉冲宽度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置扭矩限制")
-    def set_torque_limit(self, torque_limit: int = 0) -> Dict[str, Any]:
+    def set_torque_limit(self, torque_limit: float = 0.0) -> Dict[str, Any]:
         """
         设置扭矩限制。
 
         Args:
-            torque_limit[设置扭矩限制]: 设置扭矩限制。
+            torque_limit[扭矩限制]: 目标扭矩限制（单位依设备量程而定）。
         """
         pass
 
     @action(description="匀浆")
-    def blend(self, blend_speed: int = 0, blend_time: int = 0, blend_mode: int = 0) -> Dict[str, Any]:
-        """
-        匀浆。
-
-        Args:
-            blend_speed[匀浆转速设置]: 匀浆转速设置。
-            blend_time[匀浆时间设置]: 匀浆时间设置。
-            blend_mode[匀浆模式设置]: 匀浆模式设置。
-        """
+    def blend(self) -> Dict[str, Any]:
+        """匀浆。"""
         pass
 
     @property
@@ -94,6 +117,12 @@ class BlenderHomogenizer:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
     def safety_lock_state(self) -> bool:
         """安全锁状态。"""
         return self.data.get("safety_lock_state", False)
@@ -106,18 +135,18 @@ class BlenderHomogenizer:
 
     @property
     @topic_config()
-    def current_speed(self) -> int:
+    def current_speed(self) -> float:
         """当前转速显示。"""
-        return self.data.get("current_speed", 0)
+        return self.data.get("current_speed", 0.0)
 
     @property
     @topic_config()
-    def current_time(self) -> int:
+    def current_time(self) -> float:
         """当前时间显示。"""
-        return self.data.get("current_time", 0)
+        return self.data.get("current_time", 0.0)
 
     @property
     @topic_config()
-    def current_torque(self) -> int:
+    def current_torque(self) -> float:
         """当前扭矩显示。"""
-        return self.data.get("current_torque", 0)
+        return self.data.get("current_torque", 0.0)

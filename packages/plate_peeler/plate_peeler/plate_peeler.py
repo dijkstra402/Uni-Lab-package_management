@@ -39,42 +39,52 @@ class PlatePeeler:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置撕膜速度")
-    def set_peeling_speed(self, peeling_speed: int = 0) -> Dict[str, Any]:
+    def set_peeling_speed(self, peeling_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置撕膜速度。
 
         Args:
-            peeling_speed[设置撕膜速度]: 设置撕膜速度。
+            peeling_speed[撕膜速度]: 目标撕膜速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置撕膜高度")
-    def set_peeling_height(self, peeling_height: int = 0) -> Dict[str, Any]:
+    def set_peeling_height(self, peeling_height: float = 0.0) -> Dict[str, Any]:
         """
         设置撕膜高度。
 
         Args:
-            peeling_height[设置撕膜高度]: 设置撕膜高度。
+            peeling_height[撕膜高度]: 目标撕膜高度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置抓取压力")
+    def set_grip_pressure(self, grip_pressure: float = 0.0) -> Dict[str, Any]:
+        """
+        设置抓取压力。
+
+        Args:
+            grip_pressure[抓取压力]: 目标抓取压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置容器位置")
-    def set_container_position(self, container_position: int = 0) -> Dict[str, Any]:
+    def set_container_position(self, container_position: float = 0.0) -> Dict[str, Any]:
         """
         设置容器位置。
 
         Args:
-            container_position[设置容器位置]: 设置容器位置。
+            container_position[容器位置]: 目标容器位置（单位依设备量程而定）。
         """
         pass
 
@@ -89,13 +99,8 @@ class PlatePeeler:
         pass
 
     @action(description="抓取")
-    def grip(self, grip_pressure: int = 0) -> Dict[str, Any]:
-        """
-        抓取。
-
-        Args:
-            grip_pressure[抓取压力设置]: 抓取压力设置。
-        """
+    def grip(self) -> Dict[str, Any]:
+        """抓取。"""
         pass
 
     @action(description="丢弃")
@@ -117,30 +122,48 @@ class PlatePeeler:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def peeling_completed(self) -> bool:
+        """撕膜完成。"""
+        return self.data.get("peeling_completed", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_peeling_speed(self) -> int:
+    def current_peeling_speed(self) -> float:
         """实际撕膜速度。"""
-        return self.data.get("current_peeling_speed", 0)
+        return self.data.get("current_peeling_speed", 0.0)
 
     @property
     @topic_config()
-    def current_peeling_height(self) -> int:
+    def current_peeling_height(self) -> float:
         """实际撕膜高度。"""
-        return self.data.get("current_peeling_height", 0)
+        return self.data.get("current_peeling_height", 0.0)
 
     @property
     @topic_config()
-    def current_grip_pressure(self) -> int:
+    def current_grip_pressure(self) -> float:
         """实际抓取压力。"""
-        return self.data.get("current_grip_pressure", 0)
+        return self.data.get("current_grip_pressure", 0.0)
 
     @property
     @topic_config()
-    def current_container_position(self) -> int:
+    def current_container_position(self) -> float:
         """实际容器位置。"""
-        return self.data.get("current_container_position", 0)
+        return self.data.get("current_container_position", 0.0)

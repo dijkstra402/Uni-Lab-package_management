@@ -44,7 +44,7 @@ class CoinCellAssemblyStation:
         设置电解液使用瓶数。
 
         Args:
-            electrolyte_bottle_count[设置电解液使用瓶数]: 设置电解液使用瓶数。
+            electrolyte_bottle_count[电解液使用瓶数]: 目标电解液使用瓶数（单位依设备量程而定）。
         """
         pass
 
@@ -54,7 +54,7 @@ class CoinCellAssemblyStation:
         设置负极片盘数。
 
         Args:
-            anode_sheet_reels[设置负极片盘数]: 设置负极片盘数。
+            anode_sheet_reels[负极片盘数]: 目标负极片盘数（单位依设备量程而定）。
         """
         pass
 
@@ -64,7 +64,7 @@ class CoinCellAssemblyStation:
         设置隔膜盘数。
 
         Args:
-            separator_reels[设置隔膜盘数]: 设置隔膜盘数。
+            separator_reels[隔膜盘数]: 目标隔膜盘数（单位依设备量程而定）。
         """
         pass
 
@@ -74,7 +74,7 @@ class CoinCellAssemblyStation:
         设置单瓶电解液使用次数。
 
         Args:
-            electrolyte_uses_per_bottle[设置单瓶电解液使用次数]: 设置单瓶电解液使用次数。
+            electrolyte_uses_per_bottle[单瓶电解液使用次数]: 目标单瓶电解液使用次数（单位依设备量程而定）。
         """
         pass
 
@@ -84,7 +84,7 @@ class CoinCellAssemblyStation:
         设置电解液吸取量。
 
         Args:
-            electrolyte_draw_volume[设置电解液吸取量]: 设置电解液吸取量。
+            electrolyte_draw_volume[电解液吸取量]: 目标电解液吸取量（单位依设备量程而定）。
         """
         pass
 
@@ -94,7 +94,7 @@ class CoinCellAssemblyStation:
         设置电池组装压制力。
 
         Args:
-            cell_assembly_press_force[设置电池组装压制力]: 设置电池组装压制力。
+            cell_assembly_press_force[电池组装压制力]: 目标电池组装压制力（单位依设备量程而定）。
         """
         pass
 
@@ -104,7 +104,7 @@ class CoinCellAssemblyStation:
         设置电解液二维码序列号。
 
         Args:
-            electrolyte_qr_serial[设置电解液二维码序列号]: 设置电解液二维码序列号。
+            electrolyte_qr_serial[电解液二维码序列号]: 目标电解液二维码序列号（具体取值由设备型号定义）。
         """
         pass
 
@@ -114,7 +114,7 @@ class CoinCellAssemblyStation:
         设置移液枪排液量。
 
         Args:
-            pipette_dispense_volume[设置移液枪排液量]: 设置移液枪排液量。
+            pipette_dispense_volume[移液枪排液量]: 目标移液枪排液量（单位依设备量程而定）。
         """
         pass
 
@@ -124,7 +124,7 @@ class CoinCellAssemblyStation:
         设置组装参数：极片堆叠方式(7/8)。
 
         Args:
-            assembly_parameter_electrode_stacking_mode_7_8[设置组装参数：极片堆叠方式(7/8)]: 设置组装参数：极片堆叠方式(7/8)。
+            assembly_parameter_electrode_stacking_mode_7_8[组装参数：极片堆叠方式(7/8)]: 目标组装参数：极片堆叠方式(7/8)（单位依设备量程而定）。
         """
         pass
 
@@ -134,7 +134,7 @@ class CoinCellAssemblyStation:
         设置电池二维码序列号。
 
         Args:
-            battery_qr_serial[设置电池二维码序列号]: 设置电池二维码序列号。
+            battery_qr_serial[电池二维码序列号]: 目标电池二维码序列号（具体取值由设备型号定义）。
         """
         pass
 
@@ -144,7 +144,7 @@ class CoinCellAssemblyStation:
         设置开路电压OK下限值。
 
         Args:
-            ocv_ok_lower_limit[设置开路电压OK下限值]: 设置开路电压OK下限值。
+            ocv_ok_lower_limit[开路电压OK下限值]: 目标开路电压OK下限值（单位依设备量程而定）。
         """
         pass
 
@@ -154,7 +154,7 @@ class CoinCellAssemblyStation:
         设置开路电压OK上限值。
 
         Args:
-            ocv_ok_upper_limit[设置开路电压OK上限值]: 设置开路电压OK上限值。
+            ocv_ok_upper_limit[开路电压OK上限值]: 目标开路电压OK上限值（单位依设备量程而定）。
         """
         pass
 
@@ -164,7 +164,7 @@ class CoinCellAssemblyStation:
         设置10mm正极片厚度。
 
         Args:
-            v_10mm_cathode_sheet_thickness[设置10mm正极片厚度]: 设置10mm正极片厚度。
+            v_10mm_cathode_sheet_thickness[10mm正极片厚度]: 目标10mm正极片厚度（单位依设备量程而定）。
         """
         pass
 
@@ -174,7 +174,7 @@ class CoinCellAssemblyStation:
         设置12mm正极片厚度。
 
         Args:
-            v_12mm_cathode_sheet_thickness[设置12mm正极片厚度]: 设置12mm正极片厚度。
+            v_12mm_cathode_sheet_thickness[12mm正极片厚度]: 目标12mm正极片厚度（单位依设备量程而定）。
         """
         pass
 
@@ -184,7 +184,7 @@ class CoinCellAssemblyStation:
         设置16mm正极片厚度。
 
         Args:
-            v_16mm_cathode_sheet_thickness[设置16mm正极片厚度]: 设置16mm正极片厚度。
+            v_16mm_cathode_sheet_thickness[16mm正极片厚度]: 目标16mm正极片厚度（单位依设备量程而定）。
         """
         pass
 
@@ -194,7 +194,7 @@ class CoinCellAssemblyStation:
         设置铝箔厚度。
 
         Args:
-            aluminum_foil_thickness[设置铝箔厚度]: 设置铝箔厚度。
+            aluminum_foil_thickness[铝箔厚度]: 目标铝箔厚度（单位依设备量程而定）。
         """
         pass
 
@@ -204,7 +204,7 @@ class CoinCellAssemblyStation:
         设置正极壳厚度。
 
         Args:
-            cathode_case_thickness[设置正极壳厚度]: 设置正极壳厚度。
+            cathode_case_thickness[正极壳厚度]: 目标正极壳厚度（单位依设备量程而定）。
         """
         pass
 
@@ -214,7 +214,7 @@ class CoinCellAssemblyStation:
         设置平垫厚度。
 
         Args:
-            flat_washer_thickness[设置平垫厚度]: 设置平垫厚度。
+            flat_washer_thickness[平垫厚度]: 目标平垫厚度（单位依设备量程而定）。
         """
         pass
 
@@ -224,7 +224,7 @@ class CoinCellAssemblyStation:
         设置负极壳厚度。
 
         Args:
-            anode_case_thickness[设置负极壳厚度]: 设置负极壳厚度。
+            anode_case_thickness[负极壳厚度]: 目标负极壳厚度（单位依设备量程而定）。
         """
         pass
 
@@ -234,7 +234,7 @@ class CoinCellAssemblyStation:
         设置弹垫厚度。
 
         Args:
-            spring_washer_thickness[设置弹垫厚度]: 设置弹垫厚度。
+            spring_washer_thickness[弹垫厚度]: 目标弹垫厚度（单位依设备量程而定）。
         """
         pass
 
@@ -244,7 +244,7 @@ class CoinCellAssemblyStation:
         设置成品电池厚度。
 
         Args:
-            finished_cell_thickness[设置成品电池厚度]: 设置成品电池厚度。
+            finished_cell_thickness[成品电池厚度]: 目标成品电池厚度（单位依设备量程而定）。
         """
         pass
 
@@ -286,6 +286,60 @@ class CoinCellAssemblyStation:
 
     @property
     @topic_config()
+    def electrolyte_bottle_count(self) -> int:
+        """电解液使用瓶数。"""
+        return self.data.get("electrolyte_bottle_count", 0)
+
+    @property
+    @topic_config()
+    def electrolyte_uses_per_bottle(self) -> int:
+        """单瓶电解液使用次数。"""
+        return self.data.get("electrolyte_uses_per_bottle", 0)
+
+    @property
+    @topic_config()
+    def electrolyte_draw_volume(self) -> int:
+        """电解液吸取量。"""
+        return self.data.get("electrolyte_draw_volume", 0)
+
+    @property
+    @topic_config()
+    def cell_assembly_press_force(self) -> int:
+        """电池组装压制力。"""
+        return self.data.get("cell_assembly_press_force", 0)
+
+    @property
+    @topic_config()
+    def electrolyte_qr_serial(self) -> str:
+        """电解液二维码序列号。"""
+        return self.data.get("electrolyte_qr_serial", "")
+
+    @property
+    @topic_config()
+    def aluminum_foil_material(self) -> bool:
+        """铝箔物料。"""
+        return self.data.get("aluminum_foil_material", False)
+
+    @property
+    @topic_config()
+    def pressing_mode(self) -> bool:
+        """压制模式。"""
+        return self.data.get("pressing_mode", False)
+
+    @property
+    @topic_config()
+    def cathode_weigh(self) -> bool:
+        """正极片称重。"""
+        return self.data.get("cathode_weigh", False)
+
+    @property
+    @topic_config()
+    def pipette_dispense_volume(self) -> int:
+        """移液枪排液量。"""
+        return self.data.get("pipette_dispense_volume", 0)
+
+    @property
+    @topic_config()
     def current_cell_cathode_weigh_data(self) -> str:
         """当前电池正极片称重数据。"""
         return self.data.get("current_cell_cathode_weigh_data", "")
@@ -307,6 +361,18 @@ class CoinCellAssemblyStation:
     def current_electrolyte_fill_volume(self) -> int:
         """当前电解液加注量。"""
         return self.data.get("current_electrolyte_fill_volume", 0)
+
+    @property
+    @topic_config()
+    def assembly_parameter_electrode_stacking_mode_7_8(self) -> int:
+        """组装参数：极片堆叠方式(7/8)。"""
+        return self.data.get("assembly_parameter_electrode_stacking_mode_7_8", 0)
+
+    @property
+    @topic_config()
+    def battery_qr_serial(self) -> str:
+        """电池二维码序列号。"""
+        return self.data.get("battery_qr_serial", "")
 
     @property
     @topic_config()
@@ -340,6 +406,18 @@ class CoinCellAssemblyStation:
 
     @property
     @topic_config()
+    def ocv_ok_lower_limit(self) -> float:
+        """开路电压OK下限值。"""
+        return self.data.get("ocv_ok_lower_limit", 0.0)
+
+    @property
+    @topic_config()
+    def ocv_ok_upper_limit(self) -> float:
+        """开路电压OK上限值。"""
+        return self.data.get("ocv_ok_upper_limit", 0.0)
+
+    @property
+    @topic_config()
     def current_in_progress_cell_count(self) -> int:
         """当前进行组装电池数量。"""
         return self.data.get("current_in_progress_cell_count", 0)
@@ -349,3 +427,51 @@ class CoinCellAssemblyStation:
     def current_completed_cell_count(self) -> int:
         """当前完成组装电池数量。"""
         return self.data.get("current_completed_cell_count", 0)
+
+    @property
+    @topic_config()
+    def p_10mm_cathode_sheet_remaining_material_count(self) -> int:
+        """10mm正极片剩余物料数量。"""
+        return self.data.get("p_10mm_cathode_sheet_remaining_material_count", 0)
+
+    @property
+    @topic_config()
+    def p_12mm_cathode_sheet_remaining_material_count(self) -> int:
+        """12mm正极片剩余物料数量。"""
+        return self.data.get("p_12mm_cathode_sheet_remaining_material_count", 0)
+
+    @property
+    @topic_config()
+    def p_16mm_cathode_sheet_remaining_material_count(self) -> int:
+        """16mm正极片剩余物料数量。"""
+        return self.data.get("p_16mm_cathode_sheet_remaining_material_count", 0)
+
+    @property
+    @topic_config()
+    def aluminum_foil_remaining_material_count(self) -> int:
+        """铝箔剩余物料数量。"""
+        return self.data.get("aluminum_foil_remaining_material_count", 0)
+
+    @property
+    @topic_config()
+    def cathode_case_remaining_material_count(self) -> int:
+        """正极壳剩余物料数量。"""
+        return self.data.get("cathode_case_remaining_material_count", 0)
+
+    @property
+    @topic_config()
+    def flat_washer_remaining_material_count(self) -> int:
+        """平垫剩余物料数量。"""
+        return self.data.get("flat_washer_remaining_material_count", 0)
+
+    @property
+    @topic_config()
+    def anode_case_remaining_material_count(self) -> int:
+        """负极壳剩余物料数量。"""
+        return self.data.get("anode_case_remaining_material_count", 0)
+
+    @property
+    @topic_config()
+    def spring_washer_remaining_material_count(self) -> int:
+        """弹垫剩余物料数量。"""
+        return self.data.get("spring_washer_remaining_material_count", 0)

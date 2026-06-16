@@ -39,62 +39,62 @@ class LaserCleaner:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置清洗温度")
-    def set_cleaning_temperature(self, cleaning_temperature: int = 0) -> Dict[str, Any]:
+    def set_cleaning_temperature(self, cleaning_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗温度。
 
         Args:
-            cleaning_temperature[设置清洗温度]: 设置清洗温度。
+            cleaning_temperature[清洗温度]: 目标清洗温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置清洗压力")
-    def set_cleaning_pressure(self, cleaning_pressure: int = 0) -> Dict[str, Any]:
+    def set_cleaning_pressure(self, cleaning_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗压力。
 
         Args:
-            cleaning_pressure[设置清洗压力]: 设置清洗压力。
+            cleaning_pressure[清洗压力]: 目标清洗压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置激光功率")
-    def set_laser_power(self, laser_power: int = 0) -> Dict[str, Any]:
+    def set_laser_power(self, laser_power: float = 0.0) -> Dict[str, Any]:
         """
         设置激光功率。
 
         Args:
-            laser_power[设置激光功率]: 设置激光功率。
+            laser_power[激光功率]: 目标激光功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置扫描速度")
-    def set_scan_speed(self, scan_speed: int = 0) -> Dict[str, Any]:
+    def set_scan_speed(self, scan_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置扫描速度。
 
         Args:
-            scan_speed[设置扫描速度]: 设置扫描速度。
+            scan_speed[扫描速度]: 目标扫描速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置聚焦距离")
-    def set_focus_distance(self, focus_distance: int = 0) -> Dict[str, Any]:
+    def set_focus_distance(self, focus_distance: float = 0.0) -> Dict[str, Any]:
         """
         设置聚焦距离。
 
         Args:
-            focus_distance[设置聚焦距离]: 设置聚焦距离。
+            focus_distance[聚焦距离]: 目标聚焦距离（单位依设备量程而定）。
         """
         pass
 
@@ -127,6 +127,18 @@ class LaserCleaner:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def laser_head_moving_state(self) -> bool:
         """激光头移动状态。"""
         return self.data.get("laser_head_moving_state", False)
@@ -145,24 +157,24 @@ class LaserCleaner:
 
     @property
     @topic_config()
-    def current_cleaning_time(self) -> int:
+    def current_cleaning_time(self) -> float:
         """实际清洗时间。"""
-        return self.data.get("current_cleaning_time", 0)
+        return self.data.get("current_cleaning_time", 0.0)
 
     @property
     @topic_config()
-    def laser_power_feedback(self) -> int:
+    def laser_power_feedback(self) -> float:
         """激光功率反馈。"""
-        return self.data.get("laser_power_feedback", 0)
+        return self.data.get("laser_power_feedback", 0.0)
 
     @property
     @topic_config()
-    def scan_speed_feedback(self) -> int:
+    def scan_speed_feedback(self) -> float:
         """扫描速度反馈。"""
-        return self.data.get("scan_speed_feedback", 0)
+        return self.data.get("scan_speed_feedback", 0.0)
 
     @property
     @topic_config()
-    def focus_distance_feedback(self) -> int:
+    def focus_distance_feedback(self) -> float:
         """聚焦距离反馈。"""
-        return self.data.get("focus_distance_feedback", 0)
+        return self.data.get("focus_distance_feedback", 0.0)

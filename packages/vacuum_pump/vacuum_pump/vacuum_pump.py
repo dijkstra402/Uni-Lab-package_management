@@ -39,12 +39,12 @@ class VacuumPump:
         pass
 
     @action(description="设置目标真空度")
-    def set_target_vacuum(self, target_vacuum: int = 0) -> Dict[str, Any]:
+    def set_target_vacuum(self, target_vacuum: float = 0.0) -> Dict[str, Any]:
         """
         设置目标真空度。
 
         Args:
-            target_vacuum[设置目标真空度]: 设置目标真空度。
+            target_vacuum[目标真空度]: 目标目标真空度（单位依设备量程而定）。
         """
         pass
 
@@ -72,6 +72,12 @@ class VacuumPump:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
     def high_pressure_protection_state(self) -> bool:
         """高压保护状态。"""
         return self.data.get("high_pressure_protection_state", False)
@@ -90,6 +96,6 @@ class VacuumPump:
 
     @property
     @topic_config()
-    def current_vacuum(self) -> int:
+    def current_vacuum(self) -> float:
         """当前真空度显示。"""
-        return self.data.get("current_vacuum", 0)
+        return self.data.get("current_vacuum", 0.0)

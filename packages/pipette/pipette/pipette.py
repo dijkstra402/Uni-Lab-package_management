@@ -39,55 +39,83 @@ class Pipette:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置吸液体积")
+    def set_aspirate_volume(self, aspirate_volume: float = 0.0) -> Dict[str, Any]:
+        """
+        设置吸液体积。
+
+        Args:
+            aspirate_volume[吸液体积]: 目标吸液体积（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置排液体积")
+    def set_dispense_volume(self, dispense_volume: float = 0.0) -> Dict[str, Any]:
+        """
+        设置排液体积。
+
+        Args:
+            dispense_volume[排液体积]: 目标排液体积（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置吸液速度")
+    def set_aspirate_speed(self, aspirate_speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置吸液速度。
+
+        Args:
+            aspirate_speed[吸液速度]: 目标吸液速度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置排液速度")
+    def set_dispense_speed(self, dispense_speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置排液速度。
+
+        Args:
+            dispense_speed[排液速度]: 目标排液速度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置枪头位置")
+    def set_tip_position(self, tip_position: float = 0.0) -> Dict[str, Any]:
+        """
+        设置枪头位置。
+
+        Args:
+            tip_position[枪头位置]: 目标枪头位置（单位依设备量程而定）。
         """
         pass
 
     @action(description="吸液")
-    def draw_liquid(self, aspirate_volume: int = 0, aspirate_speed: int = 0) -> Dict[str, Any]:
-        """
-        吸液。
-
-        Args:
-            aspirate_volume[吸液体积设置]: 吸液体积设置。
-            aspirate_speed[吸液速度设置]: 吸液速度设置。
-        """
+    def draw_liquid(self) -> Dict[str, Any]:
+        """吸液。"""
         pass
 
     @action(description="排液")
-    def dispense(self, dispense_volume: int = 0, dispense_speed: int = 0) -> Dict[str, Any]:
-        """
-        排液。
-
-        Args:
-            dispense_volume[排液体积设置]: 排液体积设置。
-            dispense_speed[排液速度设置]: 排液速度设置。
-        """
+    def dispense(self) -> Dict[str, Any]:
+        """排液。"""
         pass
 
     @action(description="枪头安装")
-    def attach_tip(self, tip_position: int = 0) -> Dict[str, Any]:
-        """
-        枪头安装。
-
-        Args:
-            tip_position[枪头位置设置]: 枪头位置设置。
-        """
+    def attach_tip(self) -> Dict[str, Any]:
+        """枪头安装。"""
         pass
 
     @action(description="枪头丢弃")
-    def discard_tip(self, tip_position: int = 0) -> Dict[str, Any]:
-        """
-        枪头丢弃。
-
-        Args:
-            tip_position[枪头位置设置]: 枪头位置设置。
-        """
+    def discard_tip(self) -> Dict[str, Any]:
+        """枪头丢弃。"""
         pass
 
     @property
@@ -104,27 +132,39 @@ class Pipette:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_aspirate_volume(self) -> int:
+    def current_aspirate_volume(self) -> float:
         """实际吸液体积。"""
-        return self.data.get("current_aspirate_volume", 0)
+        return self.data.get("current_aspirate_volume", 0.0)
 
     @property
     @topic_config()
-    def current_dispense_volume(self) -> int:
+    def current_dispense_volume(self) -> float:
         """实际排液体积。"""
-        return self.data.get("current_dispense_volume", 0)
+        return self.data.get("current_dispense_volume", 0.0)
 
     @property
     @topic_config()
-    def current_tip_position(self) -> int:
+    def current_tip_position(self) -> float:
         """实际枪头位置。"""
-        return self.data.get("current_tip_position", 0)
+        return self.data.get("current_tip_position", 0.0)
 
     @property
     @topic_config()

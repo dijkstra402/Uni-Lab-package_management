@@ -39,62 +39,62 @@ class GrindingPolishingMachine:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置研磨转速")
-    def set_grinding_speed(self, grinding_speed: int = 0) -> Dict[str, Any]:
+    def set_grinding_speed(self, grinding_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置研磨转速。
 
         Args:
-            grinding_speed[设置研磨转速]: 设置研磨转速。
+            grinding_speed[研磨转速]: 目标研磨转速（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置抛光转速")
-    def set_polishing_speed(self, polishing_speed: int = 0) -> Dict[str, Any]:
+    def set_polishing_speed(self, polishing_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置抛光转速。
 
         Args:
-            polishing_speed[设置抛光转速]: 设置抛光转速。
+            polishing_speed[抛光转速]: 目标抛光转速（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置研磨时间")
-    def set_grinding_time(self, grinding_time: int = 0) -> Dict[str, Any]:
+    def set_grinding_time(self, grinding_time: float = 0.0) -> Dict[str, Any]:
         """
         设置研磨时间。
 
         Args:
-            grinding_time[设置研磨时间]: 设置研磨时间。
+            grinding_time[研磨时间]: 目标研磨时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置抛光时间")
-    def set_polishing_time(self, polishing_time: int = 0) -> Dict[str, Any]:
+    def set_polishing_time(self, polishing_time: float = 0.0) -> Dict[str, Any]:
         """
         设置抛光时间。
 
         Args:
-            polishing_time[设置抛光时间]: 设置抛光时间。
+            polishing_time[抛光时间]: 目标抛光时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置磨抛压力")
-    def set_polishing_pressure(self, polishing_pressure: int = 0) -> Dict[str, Any]:
+    def set_polishing_pressure(self, polishing_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置磨抛压力。
 
         Args:
-            polishing_pressure[设置磨抛压力]: 设置磨抛压力。
+            polishing_pressure[磨抛压力]: 目标磨抛压力（单位依设备量程而定）。
         """
         pass
 
@@ -104,7 +104,7 @@ class GrindingPolishingMachine:
         设置样品夹持力。
 
         Args:
-            sample_clamp_force[设置样品夹持力]: 设置样品夹持力。
+            sample_clamp_force[样品夹持力]: 目标样品夹持力（单位依设备量程而定）。
         """
         pass
 
@@ -114,7 +114,7 @@ class GrindingPolishingMachine:
         设置磨抛精度。
 
         Args:
-            polishing_precision[设置磨抛精度]: 设置磨抛精度。
+            polishing_precision[磨抛精度]: 目标磨抛精度（单位依设备量程而定）。
         """
         pass
 
@@ -134,6 +134,24 @@ class GrindingPolishingMachine:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def running_completed(self) -> bool:
+        """运行完成。"""
+        return self.data.get("running_completed", False)
 
     @property
     @topic_config()

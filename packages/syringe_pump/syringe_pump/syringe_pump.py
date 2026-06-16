@@ -38,34 +38,49 @@ class SyringePump:
         """初始化。"""
         pass
 
-    @action(description="绝对控制")
-    def move_absolute(self, position: int = 0) -> Dict[str, Any]:
+    @action(description="设置绝对位置")
+    def set_position(self, position: float = 0.0) -> Dict[str, Any]:
         """
-        绝对控制。
+        设置绝对位置。
 
         Args:
-            position[绝对位置设置]: 绝对位置设置。
+            position[绝对位置]: 目标绝对位置（单位依设备量程而定）。
         """
+        pass
+
+    @action(description="设置抽液位置")
+    def set_aspirate_position(self, aspirate_position: float = 0.0) -> Dict[str, Any]:
+        """
+        设置抽液位置。
+
+        Args:
+            aspirate_position[抽液位置]: 目标抽液位置（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置排液位置")
+    def set_dispense_position(self, dispense_position: float = 0.0) -> Dict[str, Any]:
+        """
+        设置排液位置。
+
+        Args:
+            dispense_position[排液位置]: 目标排液位置（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="绝对控制")
+    def move_absolute(self) -> Dict[str, Any]:
+        """绝对控制。"""
         pass
 
     @action(description="抽液")
-    def aspirate(self, aspirate_position: int = 0) -> Dict[str, Any]:
-        """
-        抽液。
-
-        Args:
-            aspirate_position[抽液位置设置]: 抽液位置设置。
-        """
+    def aspirate(self) -> Dict[str, Any]:
+        """抽液。"""
         pass
 
     @action(description="排液")
-    def dispense(self, dispense_position: int = 0) -> Dict[str, Any]:
-        """
-        排液。
-
-        Args:
-            dispense_position[排液位置设置]: 排液位置设置。
-        """
+    def dispense(self) -> Dict[str, Any]:
+        """排液。"""
         pass
 
     @property
@@ -82,12 +97,18 @@ class SyringePump:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_position(self) -> int:
+    def current_position(self) -> float:
         """当前位置显示。"""
-        return self.data.get("current_position", 0)
+        return self.data.get("current_position", 0.0)

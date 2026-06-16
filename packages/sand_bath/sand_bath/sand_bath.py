@@ -39,12 +39,12 @@ class SandBath:
         pass
 
     @action(description="设置升温速率")
-    def set_ramp_rate(self, ramp_rate: int = 0) -> Dict[str, Any]:
+    def set_ramp_rate(self, ramp_rate: float = 0.0) -> Dict[str, Any]:
         """
         设置升温速率。
 
         Args:
-            ramp_rate[设置升温速率]: 设置升温速率。
+            ramp_rate[升温速率]: 目标升温速率（单位依设备量程而定）。
         """
         pass
 
@@ -82,12 +82,54 @@ class SandBath:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def target_temperature(self) -> float:
+        """目标温度。"""
+        return self.data.get("target_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_temperature(self) -> float:
         """实际温度。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def stir_speed(self) -> float:
+        """搅拌速度。"""
+        return self.data.get("stir_speed", 0.0)
+
+    @property
+    @topic_config()
+    def run_time(self) -> float:
+        """运行时间。"""
+        return self.data.get("run_time", 0.0)
+
+    @property
+    @topic_config()
+    def remaining_time(self) -> float:
+        """剩余时间。"""
+        return self.data.get("remaining_time", 0.0)
+
+    @property
+    @topic_config()
+    def preheat_time(self) -> float:
+        """预热时间。"""
+        return self.data.get("preheat_time", 0.0)
+
+    @property
+    @topic_config()
+    def holding_time(self) -> float:
+        """保温时间。"""
+        return self.data.get("holding_time", 0.0)

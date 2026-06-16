@@ -39,52 +39,52 @@ class UltrasonicCleaner:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置清洗温度")
-    def set_cleaning_temperature(self, cleaning_temperature: int = 0) -> Dict[str, Any]:
+    def set_cleaning_temperature(self, cleaning_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗温度。
 
         Args:
-            cleaning_temperature[设置清洗温度]: 设置清洗温度。
+            cleaning_temperature[清洗温度]: 目标清洗温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置清洗压力")
-    def set_cleaning_pressure(self, cleaning_pressure: int = 0) -> Dict[str, Any]:
+    def set_cleaning_pressure(self, cleaning_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗压力。
 
         Args:
-            cleaning_pressure[设置清洗压力]: 设置清洗压力。
+            cleaning_pressure[清洗压力]: 目标清洗压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置超声波功率")
-    def set_ultrasonic_power(self, ultrasonic_power: int = 0) -> Dict[str, Any]:
+    def set_ultrasonic_power(self, ultrasonic_power: float = 0.0) -> Dict[str, Any]:
         """
         设置超声波功率。
 
         Args:
-            ultrasonic_power[设置超声波功率]: 设置超声波功率。
+            ultrasonic_power[超声波功率]: 目标超声波功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置清洗时间")
-    def set_cleaning_time(self, cleaning_time: int = 0) -> Dict[str, Any]:
+    def set_cleaning_time(self, cleaning_time: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗时间。
 
         Args:
-            cleaning_time[设置清洗时间]: 设置清洗时间。
+            cleaning_time[清洗时间]: 目标清洗时间（单位依设备量程而定）。
         """
         pass
 
@@ -117,30 +117,48 @@ class UltrasonicCleaner:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def liquid_level(self) -> bool:
+        """液位检测。"""
+        return self.data.get("liquid_level", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_cleaning_time(self) -> int:
+    def current_cleaning_time(self) -> float:
         """实际清洗时间。"""
-        return self.data.get("current_cleaning_time", 0)
+        return self.data.get("current_cleaning_time", 0.0)
 
     @property
     @topic_config()
-    def ultrasonic_power_feedback(self) -> int:
+    def ultrasonic_power_feedback(self) -> float:
         """超声波功率反馈。"""
-        return self.data.get("ultrasonic_power_feedback", 0)
+        return self.data.get("ultrasonic_power_feedback", 0.0)
 
     @property
     @topic_config()
-    def cleaning_temperature_feedback(self) -> int:
+    def cleaning_temperature_feedback(self) -> float:
         """清洗温度反馈。"""
-        return self.data.get("cleaning_temperature_feedback", 0)
+        return self.data.get("cleaning_temperature_feedback", 0.0)
 
     @property
     @topic_config()
-    def cleaning_time_feedback(self) -> int:
+    def cleaning_time_feedback(self) -> float:
         """清洗时间反馈。"""
-        return self.data.get("cleaning_time_feedback", 0)
+        return self.data.get("cleaning_time_feedback", 0.0)

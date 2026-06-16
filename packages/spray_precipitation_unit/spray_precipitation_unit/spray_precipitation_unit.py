@@ -39,12 +39,12 @@ class SprayPrecipitationUnit:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
@@ -72,6 +72,36 @@ class SprayPrecipitationUnit:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def liquid_level_alarm(self) -> bool:
+        """液位报警。"""
+        return self.data.get("liquid_level_alarm", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
+
+    @property
+    @topic_config()
+    def spray_flow(self) -> float:
+        """喷雾流量。"""
+        return self.data.get("spray_flow", 0.0)
+
+    @property
+    @topic_config()
+    def spray_pressure(self) -> float:
+        """喷雾压力。"""
+        return self.data.get("spray_pressure", 0.0)

@@ -39,42 +39,42 @@ class SolidPhaseExtractor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置运行时间")
-    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+    def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
         """
         设置运行时间。
 
         Args:
-            run_time[设置运行时间]: 设置运行时间。
+            run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置萃取柱压力")
-    def set_extraction_column_pressure(self, extraction_column_pressure: int = 0) -> Dict[str, Any]:
+    def set_extraction_column_pressure(self, extraction_column_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置萃取柱压力。
 
         Args:
-            extraction_column_pressure[设置萃取柱压力]: 设置萃取柱压力。
+            extraction_column_pressure[萃取柱压力]: 目标萃取柱压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置洗脱液流量")
-    def set_eluent_flow(self, eluent_flow: int = 0) -> Dict[str, Any]:
+    def set_eluent_flow(self, eluent_flow: float = 0.0) -> Dict[str, Any]:
         """
         设置洗脱液流量。
 
         Args:
-            eluent_flow[设置洗脱液流量]: 设置洗脱液流量。
+            eluent_flow[洗脱液流量]: 目标洗脱液流量（单位依设备量程而定）。
         """
         pass
 
@@ -107,6 +107,30 @@ class SolidPhaseExtractor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def sample_loading_completed(self) -> bool:
+        """样品加载完成。"""
+        return self.data.get("sample_loading_completed", False)
+
+    @property
+    @topic_config()
+    def elution_completed(self) -> bool:
+        """洗脱完成。"""
+        return self.data.get("elution_completed", False)
+
+    @property
+    @topic_config()
     def column_pressure_protection_state(self) -> bool:
         """柱压保护状态。"""
         return self.data.get("column_pressure_protection_state", False)
@@ -119,18 +143,18 @@ class SolidPhaseExtractor:
 
     @property
     @topic_config()
-    def current_run_time(self) -> int:
+    def current_run_time(self) -> float:
         """实际运行时间。"""
-        return self.data.get("current_run_time", 0)
+        return self.data.get("current_run_time", 0.0)
 
     @property
     @topic_config()
-    def current_extraction_column_pressure(self) -> int:
+    def current_extraction_column_pressure(self) -> float:
         """实际萃取柱压力。"""
-        return self.data.get("current_extraction_column_pressure", 0)
+        return self.data.get("current_extraction_column_pressure", 0.0)
 
     @property
     @topic_config()
-    def current_eluent_flow(self) -> int:
+    def current_eluent_flow(self) -> float:
         """实际洗脱液流量。"""
-        return self.data.get("current_eluent_flow", 0)
+        return self.data.get("current_eluent_flow", 0.0)

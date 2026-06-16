@@ -39,62 +39,62 @@ class DryIceCleaner:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置清洗温度")
-    def set_cleaning_temperature(self, cleaning_temperature: int = 0) -> Dict[str, Any]:
+    def set_cleaning_temperature(self, cleaning_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗温度。
 
         Args:
-            cleaning_temperature[设置清洗温度]: 设置清洗温度。
+            cleaning_temperature[清洗温度]: 目标清洗温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置清洗压力")
-    def set_cleaning_pressure(self, cleaning_pressure: int = 0) -> Dict[str, Any]:
+    def set_cleaning_pressure(self, cleaning_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗压力。
 
         Args:
-            cleaning_pressure[设置清洗压力]: 设置清洗压力。
+            cleaning_pressure[清洗压力]: 目标清洗压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置干冰用量")
-    def set_dry_ice_amount(self, dry_ice_amount: int = 0) -> Dict[str, Any]:
+    def set_dry_ice_amount(self, dry_ice_amount: float = 0.0) -> Dict[str, Any]:
         """
         设置干冰用量。
 
         Args:
-            dry_ice_amount[设置干冰用量]: 设置干冰用量。
+            dry_ice_amount[干冰用量]: 目标干冰用量（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置喷射压力")
-    def set_jet_pressure(self, jet_pressure: int = 0) -> Dict[str, Any]:
+    def set_jet_pressure(self, jet_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置喷射压力。
 
         Args:
-            jet_pressure[设置喷射压力]: 设置喷射压力。
+            jet_pressure[喷射压力]: 目标喷射压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置喷嘴距离")
-    def set_nozzle_distance(self, nozzle_distance: int = 0) -> Dict[str, Any]:
+    def set_nozzle_distance(self, nozzle_distance: float = 0.0) -> Dict[str, Any]:
         """
         设置喷嘴距离。
 
         Args:
-            nozzle_distance[设置喷嘴距离]: 设置喷嘴距离。
+            nozzle_distance[喷嘴距离]: 目标喷嘴距离（单位依设备量程而定）。
         """
         pass
 
@@ -127,6 +127,18 @@ class DryIceCleaner:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def compressed_air_state(self) -> bool:
         """压缩空气状态。"""
         return self.data.get("compressed_air_state", False)
@@ -139,9 +151,9 @@ class DryIceCleaner:
 
     @property
     @topic_config()
-    def current_cleaning_time(self) -> int:
+    def current_cleaning_time(self) -> float:
         """实际清洗时间。"""
-        return self.data.get("current_cleaning_time", 0)
+        return self.data.get("current_cleaning_time", 0.0)
 
     @property
     @topic_config()

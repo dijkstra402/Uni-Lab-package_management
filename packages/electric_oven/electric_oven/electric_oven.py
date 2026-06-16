@@ -39,62 +39,62 @@ class ElectricOven:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置烘烤时间")
-    def set_baking_time(self, baking_time: int = 0) -> Dict[str, Any]:
+    def set_baking_time(self, baking_time: float = 0.0) -> Dict[str, Any]:
         """
         设置烘烤时间。
 
         Args:
-            baking_time[设置烘烤时间]: 设置烘烤时间。
+            baking_time[烘烤时间]: 目标烘烤时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置加热模式")
-    def set_heating_mode(self, heating_mode: int = 0) -> Dict[str, Any]:
+    def set_heating_mode(self, heating_mode: str = "") -> Dict[str, Any]:
         """
         设置加热模式。
 
         Args:
-            heating_mode[设置加热模式]: 设置加热模式。
+            heating_mode[加热模式]: 目标加热模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置加热功率")
-    def set_heating_power(self, heating_power: int = 0) -> Dict[str, Any]:
+    def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
         """
         设置加热功率。
 
         Args:
-            heating_power[设置加热功率]: 设置加热功率。
+            heating_power[加热功率]: 目标加热功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置旋转速度")
-    def set_rotation_speed(self, rotation_speed: int = 0) -> Dict[str, Any]:
+    def set_rotation_speed(self, rotation_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置旋转速度。
 
         Args:
-            rotation_speed[设置旋转速度]: 设置旋转速度。
+            rotation_speed[旋转速度]: 目标旋转速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置热风转速")
-    def set_hot_air_speed(self, hot_air_speed: int = 0) -> Dict[str, Any]:
+    def set_hot_air_speed(self, hot_air_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置热风转速。
 
         Args:
-            hot_air_speed[设置热风转速]: 设置热风转速。
+            hot_air_speed[热风转速]: 目标热风转速（单位依设备量程而定）。
         """
         pass
 
@@ -117,6 +117,18 @@ class ElectricOven:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
@@ -129,12 +141,24 @@ class ElectricOven:
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
-        """当前温度。"""
-        return self.data.get("current_temperature", 0)
+    def target_temperature(self) -> float:
+        """目标温度。"""
+        return self.data.get("target_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_heating_power(self) -> int:
+    def current_temperature(self) -> float:
+        """当前温度。"""
+        return self.data.get("current_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def remaining_baking_time(self) -> float:
+        """剩余烘烤时间。"""
+        return self.data.get("remaining_baking_time", 0.0)
+
+    @property
+    @topic_config()
+    def current_heating_power(self) -> float:
         """实际加热功率。"""
-        return self.data.get("current_heating_power", 0)
+        return self.data.get("current_heating_power", 0.0)

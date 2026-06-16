@@ -39,42 +39,42 @@ class SampleGrinder:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置研磨转速")
-    def set_grinding_speed(self, grinding_speed: int = 0) -> Dict[str, Any]:
+    def set_grinding_speed(self, grinding_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置研磨转速。
 
         Args:
-            grinding_speed[设置研磨转速]: 设置研磨转速。
+            grinding_speed[研磨转速]: 目标研磨转速（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置研磨时间")
-    def set_grinding_time(self, grinding_time: int = 0) -> Dict[str, Any]:
+    def set_grinding_time(self, grinding_time: float = 0.0) -> Dict[str, Any]:
         """
         设置研磨时间。
 
         Args:
-            grinding_time[设置研磨时间]: 设置研磨时间。
+            grinding_time[研磨时间]: 目标研磨时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置研磨压力")
-    def set_grinding_pressure(self, grinding_pressure: int = 0) -> Dict[str, Any]:
+    def set_grinding_pressure(self, grinding_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置研磨压力。
 
         Args:
-            grinding_pressure[设置研磨压力]: 设置研磨压力。
+            grinding_pressure[研磨压力]: 目标研磨压力（单位依设备量程而定）。
         """
         pass
 
@@ -84,7 +84,7 @@ class SampleGrinder:
         设置磨头选择。
 
         Args:
-            grinding_head_select[设置磨头选择]: 设置磨头选择。
+            grinding_head_select[磨头选择]: 目标磨头选择（单位依设备量程而定）。
         """
         pass
 
@@ -94,7 +94,7 @@ class SampleGrinder:
         设置粒度控制。
 
         Args:
-            particle_size_control[设置粒度控制]: 设置粒度控制。
+            particle_size_control[粒度控制]: 目标粒度控制（单位依设备量程而定）。
         """
         pass
 
@@ -104,17 +104,17 @@ class SampleGrinder:
         设置冷却水量。
 
         Args:
-            cooling_water_volume[设置冷却水量]: 设置冷却水量。
+            cooling_water_volume[冷却水量]: 目标冷却水量（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置振动频率")
-    def set_vibration_frequency(self, vibration_frequency: int = 0) -> Dict[str, Any]:
+    def set_vibration_frequency(self, vibration_frequency: float = 0.0) -> Dict[str, Any]:
         """
         设置振动频率。
 
         Args:
-            vibration_frequency[设置振动频率]: 设置振动频率。
+            vibration_frequency[振动频率]: 目标振动频率（单位依设备量程而定）。
         """
         pass
 
@@ -124,7 +124,7 @@ class SampleGrinder:
         设置研磨精度。
 
         Args:
-            grinding_precision[设置研磨精度]: 设置研磨精度。
+            grinding_precision[研磨精度]: 目标研磨精度（单位依设备量程而定）。
         """
         pass
 
@@ -147,12 +147,30 @@ class SampleGrinder:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def running_completed(self) -> bool:
+        """运行完成。"""
+        return self.data.get("running_completed", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_speed(self) -> int:
+    def current_speed(self) -> float:
         """实际转速监测。"""
-        return self.data.get("current_speed", 0)
+        return self.data.get("current_speed", 0.0)

@@ -39,12 +39,12 @@ class Distiller:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
@@ -72,12 +72,42 @@ class Distiller:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def heating_temperature(self) -> float:
+        """加热温度。"""
+        return self.data.get("heating_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_temperature(self) -> float:
         """实际温度。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def distillation_flow(self) -> float:
+        """蒸馏流量。"""
+        return self.data.get("distillation_flow", 0.0)
+
+    @property
+    @topic_config()
+    def condensation_temperature(self) -> float:
+        """冷凝温度。"""
+        return self.data.get("condensation_temperature", 0.0)

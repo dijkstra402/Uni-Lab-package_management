@@ -39,22 +39,22 @@ class PeristalticPump:
         pass
 
     @action(description="设置转动速度")
-    def set_speed(self, speed: int = 0) -> Dict[str, Any]:
+    def set_speed(self, speed: float = 0.0) -> Dict[str, Any]:
         """
         设置转动速度。
 
         Args:
-            speed[设置转动速度]: 设置转动速度。
+            speed[转动速度]: 目标转动速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置转动时间")
-    def set_duration(self, duration: int = 0) -> Dict[str, Any]:
+    def set_duration(self, duration: float = 0.0) -> Dict[str, Any]:
         """
         设置转动时间。
 
         Args:
-            duration[设置转动时间]: 设置转动时间。
+            duration[转动时间]: 目标转动时间（单位依设备量程而定）。
         """
         pass
 
@@ -79,6 +79,12 @@ class PeristalticPump:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
 
     @property
     @topic_config()

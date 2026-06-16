@@ -39,36 +39,73 @@ class Grinder:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置研磨盘转速")
+    def set_grinding_disc_speed(self, grinding_disc_speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置研磨盘转速。
+
+        Args:
+            grinding_disc_speed[研磨盘转速]: 目标研磨盘转速（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置研磨压力")
+    def set_grinding_pressure(self, grinding_pressure: float = 0.0) -> Dict[str, Any]:
+        """
+        设置研磨压力。
+
+        Args:
+            grinding_pressure[研磨压力]: 目标研磨压力（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置研磨时间")
+    def set_grinding_time(self, grinding_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置研磨时间。
+
+        Args:
+            grinding_time[研磨时间]: 目标研磨时间（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置研磨粒度")
+    def set_grinding_particle_size(self, grinding_particle_size: int = 0) -> Dict[str, Any]:
+        """
+        设置研磨粒度。
+
+        Args:
+            grinding_particle_size[研磨粒度]: 目标研磨粒度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置清洁时间")
+    def set_cleaning_time(self, cleaning_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置清洁时间。
+
+        Args:
+            cleaning_time[清洁时间]: 目标清洁时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="研磨")
-    def grind(self, grinding_disc_speed: int = 0, grinding_pressure: int = 0, grinding_time: int = 0, grinding_particle_size: int = 0) -> Dict[str, Any]:
-        """
-        研磨。
-
-        Args:
-            grinding_disc_speed[研磨盘转速设置]: 研磨盘转速设置。
-            grinding_pressure[研磨压力设置]: 研磨压力设置。
-            grinding_time[研磨时间设置]: 研磨时间设置。
-            grinding_particle_size[研磨粒度设置]: 研磨粒度设置。
-        """
+    def grind(self) -> Dict[str, Any]:
+        """研磨。"""
         pass
 
     @action(description="自动清洁")
-    def auto_clean(self, cleaning_time: int = 0) -> Dict[str, Any]:
-        """
-        自动清洁。
-
-        Args:
-            cleaning_time[清洁时间设置]: 清洁时间设置。
-        """
+    def auto_clean(self) -> Dict[str, Any]:
+        """自动清洁。"""
         pass
 
     @property
@@ -85,6 +122,18 @@ class Grinder:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def grinding_disc_rotation_state(self) -> bool:
         """研磨盘旋转状态。"""
         return self.data.get("grinding_disc_rotation_state", False)
@@ -94,6 +143,12 @@ class Grinder:
     def pressure_loading_state(self) -> bool:
         """压力加载状态。"""
         return self.data.get("pressure_loading_state", False)
+
+    @property
+    @topic_config()
+    def cooling_system_running(self) -> bool:
+        """冷却系统运行。"""
+        return self.data.get("cooling_system_running", False)
 
     @property
     @topic_config()
@@ -109,12 +164,12 @@ class Grinder:
 
     @property
     @topic_config()
-    def current_speed(self) -> int:
+    def current_speed(self) -> float:
         """实际转速检测。"""
-        return self.data.get("current_speed", 0)
+        return self.data.get("current_speed", 0.0)
 
     @property
     @topic_config()
-    def current_pressure(self) -> int:
+    def current_pressure(self) -> float:
         """实际压力检测。"""
-        return self.data.get("current_pressure", 0)
+        return self.data.get("current_pressure", 0.0)

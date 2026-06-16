@@ -39,22 +39,22 @@ class MechanicalStirredReactor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置频率")
-    def set_frequency(self, frequency: int = 0) -> Dict[str, Any]:
+    def set_frequency(self, frequency: float = 0.0) -> Dict[str, Any]:
         """
         设置频率。
 
         Args:
-            frequency[设置频率]: 设置频率。
+            frequency[频率]: 目标频率（单位依设备量程而定）。
         """
         pass
 
@@ -77,24 +77,36 @@ class MechanicalStirredReactor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_frequency(self) -> int:
+    def current_frequency(self) -> float:
         """实际频率显示。"""
-        return self.data.get("current_frequency", 0)
+        return self.data.get("current_frequency", 0.0)
 
     @property
     @topic_config()
-    def output_current(self) -> int:
+    def output_current(self) -> float:
         """输出电流显示。"""
-        return self.data.get("output_current", 0)
+        return self.data.get("output_current", 0.0)
 
     @property
     @topic_config()
-    def torque_percent(self) -> int:
+    def torque_percent(self) -> float:
         """扭矩百分比显示。"""
-        return self.data.get("torque_percent", 0)
+        return self.data.get("torque_percent", 0.0)

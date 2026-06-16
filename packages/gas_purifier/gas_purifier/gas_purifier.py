@@ -39,22 +39,22 @@ class GasPurifier:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置输出流量")
-    def set_output_flow(self, output_flow: int = 0) -> Dict[str, Any]:
+    def set_output_flow(self, output_flow: float = 0.0) -> Dict[str, Any]:
         """
         设置输出流量。
 
         Args:
-            output_flow[设置输出流量]: 设置输出流量。
+            output_flow[输出流量]: 目标输出流量（单位依设备量程而定）。
         """
         pass
 
@@ -82,12 +82,30 @@ class GasPurifier:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_output_flow(self) -> int:
+    def current_output_flow(self) -> float:
         """实际输出流量。"""
-        return self.data.get("current_output_flow", 0)
+        return self.data.get("current_output_flow", 0.0)
+
+    @property
+    @topic_config()
+    def output_pressure(self) -> float:
+        """输出压力。"""
+        return self.data.get("output_pressure", 0.0)

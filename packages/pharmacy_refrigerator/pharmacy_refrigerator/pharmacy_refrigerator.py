@@ -39,22 +39,22 @@ class PharmacyRefrigerator:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置温度")
-    def set_temperature(self, temperature: int = 0) -> Dict[str, Any]:
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置温度。
 
         Args:
-            temperature[设置温度]: 设置温度。
+            temperature[温度]: 目标温度（单位依设备量程而定）。
         """
         pass
 
@@ -82,6 +82,18 @@ class PharmacyRefrigerator:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def door_open_state(self) -> bool:
         """门打开状态。"""
         return self.data.get("door_open_state", False)
@@ -100,6 +112,24 @@ class PharmacyRefrigerator:
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def current_temperature(self) -> float:
         """实际温度。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def temperature_logging_interval(self) -> float:
+        """温度记录间隔。"""
+        return self.data.get("temperature_logging_interval", 0.0)
+
+    @property
+    @topic_config()
+    def alarm_temperature_upper_limit(self) -> float:
+        """报警温度上限。"""
+        return self.data.get("alarm_temperature_upper_limit", 0.0)
+
+    @property
+    @topic_config()
+    def alarm_temperature_lower_limit(self) -> float:
+        """报警温度下限。"""
+        return self.data.get("alarm_temperature_lower_limit", 0.0)

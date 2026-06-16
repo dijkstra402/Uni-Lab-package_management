@@ -39,33 +39,53 @@ class TubularReactor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置段1目标温度")
+    def set_zone1_target_temp(self, zone1_target_temp: float = 0.0) -> Dict[str, Any]:
+        """
+        设置段1目标温度。
+
+        Args:
+            zone1_target_temp[段1目标温度]: 目标段1目标温度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置段2目标温度")
+    def set_zone2_target_temp(self, zone2_target_temp: float = 0.0) -> Dict[str, Any]:
+        """
+        设置段2目标温度。
+
+        Args:
+            zone2_target_temp[段2目标温度]: 目标段2目标温度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置系统背压")
+    def set_system_backpressure(self, system_backpressure: int = 0) -> Dict[str, Any]:
+        """
+        设置系统背压。
+
+        Args:
+            system_backpressure[系统背压]: 目标系统背压（单位依设备量程而定）。
         """
         pass
 
     @action(description="段1控温")
-    def control_temp_zone1(self, zone1_target_temp: int = 0) -> Dict[str, Any]:
-        """
-        段1控温。
-
-        Args:
-            zone1_target_temp[段1目标温度设置]: 段1目标温度设置。
-        """
+    def control_temp_zone1(self) -> Dict[str, Any]:
+        """段1控温。"""
         pass
 
     @action(description="段2控温")
-    def control_temp_zone2(self, zone2_target_temp: int = 0) -> Dict[str, Any]:
-        """
-        段2控温。
-
-        Args:
-            zone2_target_temp[段2目标温度设置]: 段2目标温度设置。
-        """
+    def control_temp_zone2(self) -> Dict[str, Any]:
+        """段2控温。"""
         pass
 
     @action(description="进料泵")
@@ -74,13 +94,8 @@ class TubularReactor:
         pass
 
     @action(description="背压阀调节")
-    def adjust_backpressure_valve(self, system_backpressure: int = 0) -> Dict[str, Any]:
-        """
-        背压阀调节。
-
-        Args:
-            system_backpressure[系统背压设置]: 系统背压设置。
-        """
+    def adjust_backpressure_valve(self) -> Dict[str, Any]:
+        """背压阀调节。"""
         pass
 
     @property
@@ -97,9 +112,33 @@ class TubularReactor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
+
+    @property
+    @topic_config()
+    def current_zone_1_temperature(self) -> float:
+        """段1实际温度。"""
+        return self.data.get("current_zone_1_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_zone_2_temperature(self) -> float:
+        """段2实际温度。"""
+        return self.data.get("current_zone_2_temperature", 0.0)
 
     @property
     @topic_config()

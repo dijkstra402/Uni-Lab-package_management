@@ -39,7 +39,7 @@ class PouchCellAssemblyStation:
         设置封装温度设定。
 
         Args:
-            packaging_temperature[设置封装温度设定]: 设置封装温度设定。
+            packaging_temperature[封装温度设定]: 目标封装温度设定（单位依设备量程而定）。
         """
         pass
 
@@ -49,7 +49,7 @@ class PouchCellAssemblyStation:
         设置封装压力设定。
 
         Args:
-            packaging_pressure[设置封装压力设定]: 设置封装压力设定。
+            packaging_pressure[封装压力设定]: 目标封装压力设定（单位依设备量程而定）。
         """
         pass
 
@@ -59,7 +59,7 @@ class PouchCellAssemblyStation:
         设置封装时间设定。
 
         Args:
-            packaging_time[设置封装时间设定]: 设置封装时间设定。
+            packaging_time[封装时间设定]: 目标封装时间设定（单位依设备量程而定）。
         """
         pass
 
@@ -69,7 +69,7 @@ class PouchCellAssemblyStation:
         设置热压温度设定。
 
         Args:
-            hot_press_temperature[设置热压温度设定]: 设置热压温度设定。
+            hot_press_temperature[热压温度设定]: 目标热压温度设定（单位依设备量程而定）。
         """
         pass
 
@@ -79,7 +79,7 @@ class PouchCellAssemblyStation:
         设置热压压力设定。
 
         Args:
-            hot_press_pressure[设置热压压力设定]: 设置热压压力设定。
+            hot_press_pressure[热压压力设定]: 目标热压压力设定（单位依设备量程而定）。
         """
         pass
 
@@ -89,7 +89,7 @@ class PouchCellAssemblyStation:
         设置热压时间设定。
 
         Args:
-            hot_press_time[设置热压时间设定]: 设置热压时间设定。
+            hot_press_time[热压时间设定]: 目标热压时间设定（单位依设备量程而定）。
         """
         pass
 
@@ -99,7 +99,7 @@ class PouchCellAssemblyStation:
         设置裁切速度设定。
 
         Args:
-            cutting_speed[设置裁切速度设定]: 设置裁切速度设定。
+            cutting_speed[裁切速度设定]: 目标裁切速度设定（单位依设备量程而定）。
         """
         pass
 
@@ -109,7 +109,7 @@ class PouchCellAssemblyStation:
         设置真空度设定。
 
         Args:
-            vacuum[设置真空度设定]: 设置真空度设定。
+            vacuum[真空度设定]: 目标真空度设定（单位依设备量程而定）。
         """
         pass
 
@@ -119,7 +119,7 @@ class PouchCellAssemblyStation:
         设置冷却水温设定。
 
         Args:
-            cooling_water_temp[设置冷却水温设定]: 设置冷却水温设定。
+            cooling_water_temp[冷却水温设定]: 目标冷却水温设定（单位依设备量程而定）。
         """
         pass
 
@@ -129,7 +129,7 @@ class PouchCellAssemblyStation:
         设置加热功率设定。
 
         Args:
-            heating_power[设置加热功率设定]: 设置加热功率设定。
+            heating_power[加热功率设定]: 目标加热功率设定（单位依设备量程而定）。
         """
         pass
 
@@ -237,3 +237,69 @@ class PouchCellAssemblyStation:
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
+
+    @property
+    @topic_config()
+    def current_packaging_temperature(self) -> float:
+        """封装温度实际。"""
+        return self.data.get("current_packaging_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_packaging_pressure(self) -> float:
+        """封装压力实际。"""
+        return self.data.get("current_packaging_pressure", 0.0)
+
+    @property
+    @topic_config()
+    def current_packaging_time(self) -> float:
+        """封装时间实际。"""
+        return self.data.get("current_packaging_time", 0.0)
+
+    @property
+    @topic_config()
+    def current_hot_press_temperature(self) -> float:
+        """热压温度实际。"""
+        return self.data.get("current_hot_press_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_hot_press_pressure(self) -> float:
+        """热压压力实际。"""
+        return self.data.get("current_hot_press_pressure", 0.0)
+
+    @property
+    @topic_config()
+    def current_hot_press_time(self) -> float:
+        """热压时间实际。"""
+        return self.data.get("current_hot_press_time", 0.0)
+
+    @property
+    @topic_config()
+    def current_cutting_speed(self) -> float:
+        """裁切速度实际。"""
+        return self.data.get("current_cutting_speed", 0.0)
+
+    @property
+    @topic_config()
+    def current_vacuum(self) -> float:
+        """真空度实际。"""
+        return self.data.get("current_vacuum", 0.0)
+
+    @property
+    @topic_config()
+    def packaging_mold_position(self) -> float:
+        """封装模具位置。"""
+        return self.data.get("packaging_mold_position", 0.0)
+
+    @property
+    @topic_config()
+    def current_cooling_water_temp(self) -> float:
+        """冷却水温实际。"""
+        return self.data.get("current_cooling_water_temp", 0.0)
+
+    @property
+    @topic_config()
+    def current_heating_power(self) -> float:
+        """加热功率实际。"""
+        return self.data.get("current_heating_power", 0.0)

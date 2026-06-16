@@ -39,42 +39,42 @@ class IntegratedPowderLiquidStation:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置配方编号")
-    def set_recipe_number(self, recipe_number: int = 0) -> Dict[str, Any]:
+    def set_recipe_number(self, recipe_number: str = "") -> Dict[str, Any]:
         """
         设置配方编号。
 
         Args:
-            recipe_number[设置配方编号]: 设置配方编号。
+            recipe_number[配方编号]: 目标配方编号（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置搅拌速度")
-    def set_stir_speed(self, stir_speed: int = 0) -> Dict[str, Any]:
+    def set_stir_speed(self, stir_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置搅拌速度。
 
         Args:
-            stir_speed[设置搅拌速度]: 设置搅拌速度。
+            stir_speed[搅拌速度]: 目标搅拌速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置搅拌时间")
-    def set_stir_time(self, stir_time: int = 0) -> Dict[str, Any]:
+    def set_stir_time(self, stir_time: float = 0.0) -> Dict[str, Any]:
         """
         设置搅拌时间。
 
         Args:
-            stir_time[设置搅拌时间]: 设置搅拌时间。
+            stir_time[搅拌时间]: 目标搅拌时间（单位依设备量程而定）。
         """
         pass
 
@@ -112,30 +112,48 @@ class IntegratedPowderLiquidStation:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def stir_completed(self) -> bool:
+        """搅拌完成。"""
+        return self.data.get("stir_completed", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_powder_prep_weight(self) -> int:
+    def current_powder_prep_weight(self) -> float:
         """实际配粉重量。"""
-        return self.data.get("current_powder_prep_weight", 0)
+        return self.data.get("current_powder_prep_weight", 0.0)
 
     @property
     @topic_config()
-    def current_liquid_prep_volume(self) -> int:
+    def current_liquid_prep_volume(self) -> float:
         """实际配液体积。"""
-        return self.data.get("current_liquid_prep_volume", 0)
+        return self.data.get("current_liquid_prep_volume", 0.0)
 
     @property
     @topic_config()
-    def current_stir_speed(self) -> int:
+    def current_stir_speed(self) -> float:
         """实际搅拌速度。"""
-        return self.data.get("current_stir_speed", 0)
+        return self.data.get("current_stir_speed", 0.0)
 
     @property
     @topic_config()
-    def device_temperature(self) -> int:
+    def device_temperature(self) -> float:
         """设备温度显示。"""
-        return self.data.get("device_temperature", 0)
+        return self.data.get("device_temperature", 0.0)

@@ -39,33 +39,43 @@ class DistilledWaterSystem:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置加热温度")
+    def set_heating_temperature(self, heating_temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置加热温度。
+
+        Args:
+            heating_temperature[加热温度]: 目标加热温度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置蒸馏流量")
+    def set_distillation_flow(self, distillation_flow: float = 0.0) -> Dict[str, Any]:
+        """
+        设置蒸馏流量。
+
+        Args:
+            distillation_flow[蒸馏流量]: 目标蒸馏流量（单位依设备量程而定）。
         """
         pass
 
     @action(description="蒸馏")
-    def distill(self, distillation_flow: int = 0) -> Dict[str, Any]:
-        """
-        蒸馏。
-
-        Args:
-            distillation_flow[蒸馏流量设置]: 蒸馏流量设置。
-        """
+    def distill(self) -> Dict[str, Any]:
+        """蒸馏。"""
         pass
 
     @action(description="加热")
-    def heat(self, heating_temperature: int = 0) -> Dict[str, Any]:
-        """
-        加热。
-
-        Args:
-            heating_temperature[加热温度设置]: 加热温度设置。
-        """
+    def heat(self) -> Dict[str, Any]:
+        """加热。"""
         pass
 
     @property
@@ -82,18 +92,36 @@ class DistilledWaterSystem:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_heating_temperature(self) -> int:
+    def current_heating_temperature(self) -> float:
         """实际加热温度。"""
-        return self.data.get("current_heating_temperature", 0)
+        return self.data.get("current_heating_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_distillation_flow(self) -> int:
+    def current_distillation_flow(self) -> float:
         """实际蒸馏流量。"""
-        return self.data.get("current_distillation_flow", 0)
+        return self.data.get("current_distillation_flow", 0.0)
+
+    @property
+    @topic_config()
+    def condensate_temperature(self) -> float:
+        """冷凝水温度。"""
+        return self.data.get("condensate_temperature", 0.0)

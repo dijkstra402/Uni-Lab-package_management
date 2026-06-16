@@ -39,12 +39,12 @@ class PlungerPump:
         pass
 
     @action(description="设置往复频率")
-    def set_reciprocating_frequency(self, reciprocating_frequency: int = 0) -> Dict[str, Any]:
+    def set_reciprocating_frequency(self, reciprocating_frequency: float = 0.0) -> Dict[str, Any]:
         """
         设置往复频率。
 
         Args:
-            reciprocating_frequency[设置往复频率]: 设置往复频率。
+            reciprocating_frequency[往复频率]: 目标往复频率（单位依设备量程而定）。
         """
         pass
 
@@ -54,7 +54,7 @@ class PlungerPump:
         设置行程长度。
 
         Args:
-            stroke_length[设置行程长度]: 设置行程长度。
+            stroke_length[行程长度]: 目标行程长度（单位依设备量程而定）。
         """
         pass
 
@@ -64,7 +64,7 @@ class PlungerPump:
         设置冲程数。
 
         Args:
-            stroke_count[设置冲程数]: 设置冲程数。
+            stroke_count[冲程数]: 目标冲程数（单位依设备量程而定）。
         """
         pass
 
@@ -84,6 +84,12 @@ class PlungerPump:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
 
     @property
     @topic_config()

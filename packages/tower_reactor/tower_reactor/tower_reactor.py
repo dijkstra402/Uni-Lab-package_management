@@ -39,12 +39,22 @@ class TowerReactor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置回流比")
+    def set_reflux_ratio(self, reflux_ratio: float = 0.0) -> Dict[str, Any]:
+        """
+        设置回流比。
+
+        Args:
+            reflux_ratio[回流比]: 目标回流比（单位依设备量程而定）。
         """
         pass
 
@@ -54,13 +64,8 @@ class TowerReactor:
         pass
 
     @action(description="回流")
-    def reflux(self, reflux_ratio: int = 0) -> Dict[str, Any]:
-        """
-        回流。
-
-        Args:
-            reflux_ratio[回流比设置]: 回流比设置。
-        """
+    def reflux(self) -> Dict[str, Any]:
+        """回流。"""
         pass
 
     @property
@@ -77,12 +82,24 @@ class TowerReactor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_liquid_level(self) -> int:
+    def current_liquid_level(self) -> float:
         """实际液位高度。"""
-        return self.data.get("current_liquid_level", 0)
+        return self.data.get("current_liquid_level", 0.0)

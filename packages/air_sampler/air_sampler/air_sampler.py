@@ -39,62 +39,62 @@ class AirSampler:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置运行时间")
-    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+    def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
         """
         设置运行时间。
 
         Args:
-            run_time[设置运行时间]: 设置运行时间。
+            run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置采样流量")
-    def set_sampling_flow(self, sampling_flow: int = 0) -> Dict[str, Any]:
+    def set_sampling_flow(self, sampling_flow: float = 0.0) -> Dict[str, Any]:
         """
         设置采样流量。
 
         Args:
-            sampling_flow[设置采样流量]: 设置采样流量。
+            sampling_flow[采样流量]: 目标采样流量（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置采样时间")
-    def set_sampling_time(self, sampling_time: int = 0) -> Dict[str, Any]:
+    def set_sampling_time(self, sampling_time: float = 0.0) -> Dict[str, Any]:
         """
         设置采样时间。
 
         Args:
-            sampling_time[设置采样时间]: 设置采样时间。
+            sampling_time[采样时间]: 目标采样时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置采样压力")
-    def set_sampling_pressure(self, sampling_pressure: int = 0) -> Dict[str, Any]:
+    def set_sampling_pressure(self, sampling_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置采样压力。
 
         Args:
-            sampling_pressure[设置采样压力]: 设置采样压力。
+            sampling_pressure[采样压力]: 目标采样压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置采样温度")
-    def set_sampling_temperature(self, sampling_temperature: int = 0) -> Dict[str, Any]:
+    def set_sampling_temperature(self, sampling_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置采样温度。
 
         Args:
-            sampling_temperature[设置采样温度]: 设置采样温度。
+            sampling_temperature[采样温度]: 目标采样温度（单位依设备量程而定）。
         """
         pass
 
@@ -127,6 +127,18 @@ class AirSampler:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def flow_stable_state(self) -> bool:
         """流量稳定状态。"""
         return self.data.get("flow_stable_state", False)
@@ -139,33 +151,33 @@ class AirSampler:
 
     @property
     @topic_config()
-    def current_run_time(self) -> int:
+    def current_run_time(self) -> float:
         """实际运行时间。"""
-        return self.data.get("current_run_time", 0)
+        return self.data.get("current_run_time", 0.0)
 
     @property
     @topic_config()
-    def current_sampling_flow(self) -> int:
+    def current_sampling_flow(self) -> float:
         """实际采样流量。"""
-        return self.data.get("current_sampling_flow", 0)
+        return self.data.get("current_sampling_flow", 0.0)
 
     @property
     @topic_config()
-    def current_sampling_time(self) -> int:
+    def current_sampling_time(self) -> float:
         """实际采样时间。"""
-        return self.data.get("current_sampling_time", 0)
+        return self.data.get("current_sampling_time", 0.0)
 
     @property
     @topic_config()
-    def current_sampling_pressure(self) -> int:
+    def current_sampling_pressure(self) -> float:
         """实际采样压力。"""
-        return self.data.get("current_sampling_pressure", 0)
+        return self.data.get("current_sampling_pressure", 0.0)
 
     @property
     @topic_config()
-    def current_sampling_temperature(self) -> int:
+    def current_sampling_temperature(self) -> float:
         """实际采样温度。"""
-        return self.data.get("current_sampling_temperature", 0)
+        return self.data.get("current_sampling_temperature", 0.0)
 
     @property
     @topic_config()

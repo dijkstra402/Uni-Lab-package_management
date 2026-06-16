@@ -39,32 +39,32 @@ class SoxhletExtractor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置运行时间")
-    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+    def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
         """
         设置运行时间。
 
         Args:
-            run_time[设置运行时间]: 设置运行时间。
+            run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置加热温度")
-    def set_heating_temperature(self, heating_temperature: int = 0) -> Dict[str, Any]:
+    def set_heating_temperature(self, heating_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置加热温度。
 
         Args:
-            heating_temperature[设置加热温度]: 设置加热温度。
+            heating_temperature[加热温度]: 目标加热温度（单位依设备量程而定）。
         """
         pass
 
@@ -74,17 +74,17 @@ class SoxhletExtractor:
         设置提取次数。
 
         Args:
-            extraction_count[设置提取次数]: 设置提取次数。
+            extraction_count[提取次数]: 目标提取次数（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置回流时间")
-    def set_reflux_time(self, reflux_time: int = 0) -> Dict[str, Any]:
+    def set_reflux_time(self, reflux_time: float = 0.0) -> Dict[str, Any]:
         """
         设置回流时间。
 
         Args:
-            reflux_time[设置回流时间]: 设置回流时间。
+            reflux_time[回流时间]: 目标回流时间（单位依设备量程而定）。
         """
         pass
 
@@ -117,6 +117,18 @@ class SoxhletExtractor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def heating_state(self) -> bool:
         """加热状态。"""
         return self.data.get("heating_state", False)
@@ -141,15 +153,15 @@ class SoxhletExtractor:
 
     @property
     @topic_config()
-    def current_run_time(self) -> int:
+    def current_run_time(self) -> float:
         """实际运行时间。"""
-        return self.data.get("current_run_time", 0)
+        return self.data.get("current_run_time", 0.0)
 
     @property
     @topic_config()
-    def current_heating_temperature(self) -> int:
+    def current_heating_temperature(self) -> float:
         """实际加热温度。"""
-        return self.data.get("current_heating_temperature", 0)
+        return self.data.get("current_heating_temperature", 0.0)
 
     @property
     @topic_config()
@@ -159,6 +171,6 @@ class SoxhletExtractor:
 
     @property
     @topic_config()
-    def current_reflux_time(self) -> int:
+    def current_reflux_time(self) -> float:
         """实际回流时间。"""
-        return self.data.get("current_reflux_time", 0)
+        return self.data.get("current_reflux_time", 0.0)

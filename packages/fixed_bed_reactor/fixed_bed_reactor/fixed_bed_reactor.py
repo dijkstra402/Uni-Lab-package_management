@@ -39,22 +39,22 @@ class FixedBedReactor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置MFC流量")
-    def set_mfc_flow(self, mfc_flow: int = 0) -> Dict[str, Any]:
+    def set_mfc_flow(self, mfc_flow: float = 0.0) -> Dict[str, Any]:
         """
         设置MFC流量。
 
         Args:
-            mfc_flow[设置MFC流量]: 设置MFC流量。
+            mfc_flow[MFC流量]: 目标MFC流量（单位依设备量程而定）。
         """
         pass
 
@@ -82,6 +82,24 @@ class FixedBedReactor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
+
+    @property
+    @topic_config()
+    def current_mfc_flow(self) -> float:
+        """MFC实际流量。"""
+        return self.data.get("current_mfc_flow", 0.0)

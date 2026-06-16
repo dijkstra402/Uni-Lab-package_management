@@ -39,92 +39,92 @@ class SampleFusionMachine:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置目标温度")
-    def set_target_temperature(self, target_temperature: int = 0) -> Dict[str, Any]:
+    def set_target_temperature(self, target_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置目标温度。
 
         Args:
-            target_temperature[设置目标温度]: 设置目标温度。
+            target_temperature[目标温度]: 目标目标温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置升温速率")
-    def set_ramp_rate(self, ramp_rate: int = 0) -> Dict[str, Any]:
+    def set_ramp_rate(self, ramp_rate: float = 0.0) -> Dict[str, Any]:
         """
         设置升温速率。
 
         Args:
-            ramp_rate[设置升温速率]: 设置升温速率。
+            ramp_rate[升温速率]: 目标升温速率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置保温时间")
-    def set_holding_time(self, holding_time: int = 0) -> Dict[str, Any]:
+    def set_holding_time(self, holding_time: float = 0.0) -> Dict[str, Any]:
         """
         设置保温时间。
 
         Args:
-            holding_time[设置保温时间]: 设置保温时间。
+            holding_time[保温时间]: 目标保温时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置冷却速率")
-    def set_cooling_rate(self, cooling_rate: int = 0) -> Dict[str, Any]:
+    def set_cooling_rate(self, cooling_rate: float = 0.0) -> Dict[str, Any]:
         """
         设置冷却速率。
 
         Args:
-            cooling_rate[设置冷却速率]: 设置冷却速率。
+            cooling_rate[冷却速率]: 目标冷却速率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置加热功率")
-    def set_heating_power(self, heating_power: int = 0) -> Dict[str, Any]:
+    def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
         """
         设置加热功率。
 
         Args:
-            heating_power[设置加热功率]: 设置加热功率。
+            heating_power[加热功率]: 目标加热功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置搅拌速度")
-    def set_stir_speed(self, stir_speed: int = 0) -> Dict[str, Any]:
+    def set_stir_speed(self, stir_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置搅拌速度。
 
         Args:
-            stir_speed[设置搅拌速度]: 设置搅拌速度。
+            stir_speed[搅拌速度]: 目标搅拌速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置样品重量")
-    def set_sample_weight(self, sample_weight: int = 0) -> Dict[str, Any]:
+    def set_sample_weight(self, sample_weight: float = 0.0) -> Dict[str, Any]:
         """
         设置样品重量。
 
         Args:
-            sample_weight[设置样品重量]: 设置样品重量。
+            sample_weight[样品重量]: 目标样品重量（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置熔样时间")
-    def set_fusion_time(self, fusion_time: int = 0) -> Dict[str, Any]:
+    def set_fusion_time(self, fusion_time: float = 0.0) -> Dict[str, Any]:
         """
         设置熔样时间。
 
         Args:
-            fusion_time[设置熔样时间]: 设置熔样时间。
+            fusion_time[熔样时间]: 目标熔样时间（单位依设备量程而定）。
         """
         pass
 
@@ -147,12 +147,30 @@ class SampleFusionMachine:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def running_completed(self) -> bool:
+        """运行完成。"""
+        return self.data.get("running_completed", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def current_temperature(self) -> float:
         """实际温度监测。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)

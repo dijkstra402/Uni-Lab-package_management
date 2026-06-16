@@ -39,22 +39,32 @@ class EvaporationCoater:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置蒸发源温度")
+    def set_evaporation_source_temp(self, evaporation_source_temp: float = 0.0) -> Dict[str, Any]:
+        """
+        设置蒸发源温度。
+
+        Args:
+            evaporation_source_temp[蒸发源温度]: 目标蒸发源温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置蒸镀速率")
-    def set_evaporation_rate(self, evaporation_rate: int = 0) -> Dict[str, Any]:
+    def set_evaporation_rate(self, evaporation_rate: float = 0.0) -> Dict[str, Any]:
         """
         设置蒸镀速率。
 
         Args:
-            evaporation_rate[设置蒸镀速率]: 设置蒸镀速率。
+            evaporation_rate[蒸镀速率]: 目标蒸镀速率（单位依设备量程而定）。
         """
         pass
 
@@ -64,17 +74,17 @@ class EvaporationCoater:
         设置目标膜厚。
 
         Args:
-            target_film_thickness[设置目标膜厚]: 设置目标膜厚。
+            target_film_thickness[目标膜厚]: 目标目标膜厚（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置基板温度")
-    def set_substrate_temperature(self, substrate_temperature: int = 0) -> Dict[str, Any]:
+    def set_substrate_temperature(self, substrate_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置基板温度。
 
         Args:
-            substrate_temperature[设置基板温度]: 设置基板温度。
+            substrate_temperature[基板温度]: 目标基板温度（单位依设备量程而定）。
         """
         pass
 
@@ -89,13 +99,8 @@ class EvaporationCoater:
         pass
 
     @action(description="蒸发源停止")
-    def stop_evaporation_source(self, evaporation_source_temp: int = 0) -> Dict[str, Any]:
-        """
-        蒸发源停止。
-
-        Args:
-            evaporation_source_temp[蒸发源温度设置]: 蒸发源温度设置。
-        """
+    def stop_evaporation_source(self) -> Dict[str, Any]:
+        """蒸发源停止。"""
         pass
 
     @action(description="腔室充气")
@@ -117,12 +122,54 @@ class EvaporationCoater:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def evaporation_source_heating_completed(self) -> bool:
+        """蒸发源加热完成。"""
+        return self.data.get("evaporation_source_heating_completed", False)
+
+    @property
+    @topic_config()
+    def film_thickness_ready(self) -> bool:
+        """膜厚监测就绪。"""
+        return self.data.get("film_thickness_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
+    def current_evaporation_source_temp(self) -> float:
+        """蒸发源温度实际值。"""
+        return self.data.get("current_evaporation_source_temp", 0.0)
+
+    @property
+    @topic_config()
+    def current_evaporation_rate(self) -> float:
+        """蒸镀速率实际值。"""
+        return self.data.get("current_evaporation_rate", 0.0)
+
+    @property
+    @topic_config()
     def current_film_thickness(self) -> int:
         """实际膜厚。"""
         return self.data.get("current_film_thickness", 0)
+
+    @property
+    @topic_config()
+    def current_substrate_temperature(self) -> float:
+        """基板温度实际值。"""
+        return self.data.get("current_substrate_temperature", 0.0)

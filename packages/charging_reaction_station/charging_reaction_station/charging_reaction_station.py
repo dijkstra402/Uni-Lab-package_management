@@ -39,42 +39,42 @@ class ChargingReactionStation:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置反应温度")
-    def set_reaction_temperature(self, reaction_temperature: int = 0) -> Dict[str, Any]:
+    def set_reaction_temperature(self, reaction_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置反应温度。
 
         Args:
-            reaction_temperature[设置反应温度]: 设置反应温度。
+            reaction_temperature[反应温度]: 目标反应温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置搅拌速度")
-    def set_stir_speed(self, stir_speed: int = 0) -> Dict[str, Any]:
+    def set_stir_speed(self, stir_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置搅拌速度。
 
         Args:
-            stir_speed[设置搅拌速度]: 设置搅拌速度。
+            stir_speed[搅拌速度]: 目标搅拌速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置反应时间")
-    def set_reaction_time(self, reaction_time: int = 0) -> Dict[str, Any]:
+    def set_reaction_time(self, reaction_time: float = 0.0) -> Dict[str, Any]:
         """
         设置反应时间。
 
         Args:
-            reaction_time[设置反应时间]: 设置反应时间。
+            reaction_time[反应时间]: 目标反应时间（单位依设备量程而定）。
         """
         pass
 
@@ -112,36 +112,60 @@ class ChargingReactionStation:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def reaction_completed(self) -> bool:
+        """反应完成。"""
+        return self.data.get("reaction_completed", False)
+
+    @property
+    @topic_config()
+    def stir_completed(self) -> bool:
+        """搅拌完成。"""
+        return self.data.get("stir_completed", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_charge_weight(self) -> int:
+    def current_charge_weight(self) -> float:
         """实际投料重量。"""
-        return self.data.get("current_charge_weight", 0)
+        return self.data.get("current_charge_weight", 0.0)
 
     @property
     @topic_config()
-    def current_reaction_temperature(self) -> int:
+    def current_reaction_temperature(self) -> float:
         """实际反应温度。"""
-        return self.data.get("current_reaction_temperature", 0)
+        return self.data.get("current_reaction_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_stir_speed(self) -> int:
+    def current_stir_speed(self) -> float:
         """实际搅拌速度。"""
-        return self.data.get("current_stir_speed", 0)
+        return self.data.get("current_stir_speed", 0.0)
 
     @property
     @topic_config()
-    def current_reaction_time(self) -> int:
+    def current_reaction_time(self) -> float:
         """实际反应时间。"""
-        return self.data.get("current_reaction_time", 0)
+        return self.data.get("current_reaction_time", 0.0)
 
     @property
     @topic_config()
-    def liquid_level(self) -> int:
+    def liquid_level(self) -> float:
         """液位高度显示。"""
-        return self.data.get("liquid_level", 0)
+        return self.data.get("liquid_level", 0.0)

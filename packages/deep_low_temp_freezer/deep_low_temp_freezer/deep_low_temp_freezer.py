@@ -39,52 +39,52 @@ class DeepLowTempFreezer:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置温度")
-    def set_temperature(self, temperature: int = 0) -> Dict[str, Any]:
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置温度。
 
         Args:
-            temperature[设置温度]: 设置温度。
+            temperature[温度]: 目标温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置降温速率")
-    def set_cooldown_rate(self, cooldown_rate: int = 0) -> Dict[str, Any]:
+    def set_cooldown_rate(self, cooldown_rate: float = 0.0) -> Dict[str, Any]:
         """
         设置降温速率。
 
         Args:
-            cooldown_rate[设置降温速率]: 设置降温速率。
+            cooldown_rate[降温速率]: 目标降温速率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置真空度")
-    def set_vacuum(self, vacuum: int = 0) -> Dict[str, Any]:
+    def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
         """
         设置真空度。
 
         Args:
-            vacuum[设置真空度]: 设置真空度。
+            vacuum[真空度]: 目标真空度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置保温时间")
-    def set_holding_time(self, holding_time: int = 0) -> Dict[str, Any]:
+    def set_holding_time(self, holding_time: float = 0.0) -> Dict[str, Any]:
         """
         设置保温时间。
 
         Args:
-            holding_time[设置保温时间]: 设置保温时间。
+            holding_time[保温时间]: 目标保温时间（单位依设备量程而定）。
         """
         pass
 
@@ -112,12 +112,30 @@ class DeepLowTempFreezer:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def current_temperature(self) -> float:
         """实际温度。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_vacuum(self) -> float:
+        """真空度实际值。"""
+        return self.data.get("current_vacuum", 0.0)

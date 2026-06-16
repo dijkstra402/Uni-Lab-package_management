@@ -39,62 +39,62 @@ class CompositeCleaner:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置清洗温度")
-    def set_cleaning_temperature(self, cleaning_temperature: int = 0) -> Dict[str, Any]:
+    def set_cleaning_temperature(self, cleaning_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗温度。
 
         Args:
-            cleaning_temperature[设置清洗温度]: 设置清洗温度。
+            cleaning_temperature[清洗温度]: 目标清洗温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置清洗压力")
-    def set_cleaning_pressure(self, cleaning_pressure: int = 0) -> Dict[str, Any]:
+    def set_cleaning_pressure(self, cleaning_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗压力。
 
         Args:
-            cleaning_pressure[设置清洗压力]: 设置清洗压力。
+            cleaning_pressure[清洗压力]: 目标清洗压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置主清洗功率")
-    def set_main_wash_power(self, main_wash_power: int = 0) -> Dict[str, Any]:
+    def set_main_wash_power(self, main_wash_power: float = 0.0) -> Dict[str, Any]:
         """
         设置主清洗功率。
 
         Args:
-            main_wash_power[设置主清洗功率]: 设置主清洗功率。
+            main_wash_power[主清洗功率]: 目标主清洗功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置辅助清洗功率")
-    def set_aux_wash_power(self, aux_wash_power: int = 0) -> Dict[str, Any]:
+    def set_aux_wash_power(self, aux_wash_power: float = 0.0) -> Dict[str, Any]:
         """
         设置辅助清洗功率。
 
         Args:
-            aux_wash_power[设置辅助清洗功率]: 设置辅助清洗功率。
+            aux_wash_power[辅助清洗功率]: 目标辅助清洗功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置总清洗时间")
-    def set_total_wash_time(self, total_wash_time: int = 0) -> Dict[str, Any]:
+    def set_total_wash_time(self, total_wash_time: float = 0.0) -> Dict[str, Any]:
         """
         设置总清洗时间。
 
         Args:
-            total_wash_time[设置总清洗时间]: 设置总清洗时间。
+            total_wash_time[总清洗时间]: 目标总清洗时间（单位依设备量程而定）。
         """
         pass
 
@@ -127,6 +127,18 @@ class CompositeCleaner:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def modules_sync_state(self) -> bool:
         """各模块协同状态。"""
         return self.data.get("modules_sync_state", False)
@@ -139,24 +151,24 @@ class CompositeCleaner:
 
     @property
     @topic_config()
-    def current_cleaning_time(self) -> int:
+    def current_cleaning_time(self) -> float:
         """实际清洗时间。"""
-        return self.data.get("current_cleaning_time", 0)
+        return self.data.get("current_cleaning_time", 0.0)
 
     @property
     @topic_config()
-    def main_wash_power_feedback(self) -> int:
+    def main_wash_power_feedback(self) -> float:
         """主清洗功率反馈。"""
-        return self.data.get("main_wash_power_feedback", 0)
+        return self.data.get("main_wash_power_feedback", 0.0)
 
     @property
     @topic_config()
-    def aux_wash_power_feedback(self) -> int:
+    def aux_wash_power_feedback(self) -> float:
         """辅助清洗功率反馈。"""
-        return self.data.get("aux_wash_power_feedback", 0)
+        return self.data.get("aux_wash_power_feedback", 0.0)
 
     @property
     @topic_config()
-    def total_wash_time_feedback(self) -> int:
+    def total_wash_time_feedback(self) -> float:
         """总清洗时间反馈。"""
-        return self.data.get("total_wash_time_feedback", 0)
+        return self.data.get("total_wash_time_feedback", 0.0)

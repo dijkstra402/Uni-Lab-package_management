@@ -39,52 +39,52 @@ class FoodRefrigerator:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置温度")
-    def set_temperature(self, temperature: int = 0) -> Dict[str, Any]:
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置温度。
 
         Args:
-            temperature[设置温度]: 设置温度。
+            temperature[温度]: 目标温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置湿度")
-    def set_humidity(self, humidity: int = 0) -> Dict[str, Any]:
+    def set_humidity(self, humidity: float = 0.0) -> Dict[str, Any]:
         """
         设置湿度。
 
         Args:
-            humidity[设置湿度]: 设置湿度。
+            humidity[湿度]: 目标湿度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置杀菌时间")
-    def set_sterilization_time(self, sterilization_time: int = 0) -> Dict[str, Any]:
+    def set_sterilization_time(self, sterilization_time: float = 0.0) -> Dict[str, Any]:
         """
         设置杀菌时间。
 
         Args:
-            sterilization_time[设置杀菌时间]: 设置杀菌时间。
+            sterilization_time[杀菌时间]: 目标杀菌时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置保鲜周期")
-    def set_fresh_keeping_cycle(self, fresh_keeping_cycle: int = 0) -> Dict[str, Any]:
+    def set_fresh_keeping_cycle(self, fresh_keeping_cycle: float = 0.0) -> Dict[str, Any]:
         """
         设置保鲜周期。
 
         Args:
-            fresh_keeping_cycle[设置保鲜周期]: 设置保鲜周期。
+            fresh_keeping_cycle[保鲜周期]: 目标保鲜周期（单位依设备量程而定）。
         """
         pass
 
@@ -104,6 +104,18 @@ class FoodRefrigerator:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
 
     @property
     @topic_config()
@@ -131,12 +143,12 @@ class FoodRefrigerator:
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def current_temperature(self) -> float:
         """实际温度。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_humidity(self) -> int:
+    def current_humidity(self) -> float:
         """实际湿度。"""
-        return self.data.get("current_humidity", 0)
+        return self.data.get("current_humidity", 0.0)

@@ -39,53 +39,63 @@ class ElectricDigester:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置目标温度")
-    def set_target_temperature(self, target_temperature: int = 0) -> Dict[str, Any]:
+    def set_target_temperature(self, target_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置目标温度。
 
         Args:
-            target_temperature[设置目标温度]: 设置目标温度。
+            target_temperature[目标温度]: 目标目标温度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置消解时间")
+    def set_digestion_time(self, digestion_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置消解时间。
+
+        Args:
+            digestion_time[消解时间]: 目标消解时间（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置加热功率")
+    def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
+        """
+        设置加热功率。
+
+        Args:
+            heating_power[加热功率]: 目标加热功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置升温速率")
-    def set_ramp_rate(self, ramp_rate: int = 0) -> Dict[str, Any]:
+    def set_ramp_rate(self, ramp_rate: float = 0.0) -> Dict[str, Any]:
         """
         设置升温速率。
 
         Args:
-            ramp_rate[设置升温速率]: 设置升温速率。
+            ramp_rate[升温速率]: 目标升温速率（单位依设备量程而定）。
         """
         pass
 
     @action(description="消解")
-    def digest(self, digestion_time: int = 0) -> Dict[str, Any]:
-        """
-        消解。
-
-        Args:
-            digestion_time[消解时间设置]: 消解时间设置。
-        """
+    def digest(self) -> Dict[str, Any]:
+        """消解。"""
         pass
 
     @action(description="加热")
-    def heat(self, heating_power: int = 0) -> Dict[str, Any]:
-        """
-        加热。
-
-        Args:
-            heating_power[加热功率设置]: 加热功率设置。
-        """
+    def heat(self) -> Dict[str, Any]:
+        """加热。"""
         pass
 
     @property
@@ -99,6 +109,18 @@ class ElectricDigester:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
 
     @property
     @topic_config()
@@ -120,12 +142,12 @@ class ElectricDigester:
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def current_temperature(self) -> float:
         """实际温度检测。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)
 
     @property
     @topic_config()
-    def remaining_time(self) -> int:
+    def remaining_time(self) -> float:
         """剩余时间显示。"""
-        return self.data.get("remaining_time", 0)
+        return self.data.get("remaining_time", 0.0)

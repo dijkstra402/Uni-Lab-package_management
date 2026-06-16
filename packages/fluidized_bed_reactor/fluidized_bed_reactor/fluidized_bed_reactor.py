@@ -39,12 +39,12 @@ class FluidizedBedReactor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
@@ -54,7 +54,7 @@ class FluidizedBedReactor:
         设置流化风速。
 
         Args:
-            fluidization_wind_speed[设置流化风速]: 设置流化风速。
+            fluidization_wind_speed[流化风速]: 目标流化风速（单位依设备量程而定）。
         """
         pass
 
@@ -79,6 +79,18 @@ class FluidizedBedReactor:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
 
     @property
     @topic_config()

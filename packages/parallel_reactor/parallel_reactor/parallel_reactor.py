@@ -39,35 +39,43 @@ class ParallelReactor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置通道1温度")
+    def set_channel1_temperature(self, channel1_temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置通道1温度。
+
+        Args:
+            channel1_temperature[通道1温度]: 目标通道1温度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置通道2温度")
+    def set_channel2_temperature(self, channel2_temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置通道2温度。
+
+        Args:
+            channel2_temperature[通道2温度]: 目标通道2温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="通道1加热")
-    def heat_channel1(self, channel1_temperature: int = 0, channel2_temperature: int = 0) -> Dict[str, Any]:
-        """
-        通道1加热。
-
-        Args:
-            channel1_temperature[通道1温度设置]: 通道1温度设置。
-            channel2_temperature[通道2温度设置]: 通道2温度设置。
-        """
+    def heat_channel1(self) -> Dict[str, Any]:
+        """通道1加热。"""
         pass
 
     @action(description="通道2加热")
-    def heat_channel2(self, channel1_temperature: int = 0, channel2_temperature: int = 0) -> Dict[str, Any]:
-        """
-        通道2加热。
-
-        Args:
-            channel1_temperature[通道1温度设置]: 通道1温度设置。
-            channel2_temperature[通道2温度设置]: 通道2温度设置。
-        """
+    def heat_channel2(self) -> Dict[str, Any]:
+        """通道2加热。"""
         pass
 
     @property
@@ -84,6 +92,30 @@ class ParallelReactor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
+
+    @property
+    @topic_config()
+    def current_channel1_temperature(self) -> float:
+        """通道1实际温度。"""
+        return self.data.get("current_channel1_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_channel2_temperature(self) -> float:
+        """通道2实际温度。"""
+        return self.data.get("current_channel2_temperature", 0.0)

@@ -39,72 +39,72 @@ class CuttingMachine:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置切割速度")
-    def set_cutting_speed(self, cutting_speed: int = 0) -> Dict[str, Any]:
+    def set_cutting_speed(self, cutting_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置切割速度。
 
         Args:
-            cutting_speed[设置切割速度]: 设置切割速度。
+            cutting_speed[切割速度]: 目标切割速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置切割深度")
-    def set_cutting_depth(self, cutting_depth: int = 0) -> Dict[str, Any]:
+    def set_cutting_depth(self, cutting_depth: float = 0.0) -> Dict[str, Any]:
         """
         设置切割深度。
 
         Args:
-            cutting_depth[设置切割深度]: 设置切割深度。
+            cutting_depth[切割深度]: 目标切割深度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置进给速率")
-    def set_feed_rate(self, feed_rate: int = 0) -> Dict[str, Any]:
+    def set_feed_rate(self, feed_rate: float = 0.0) -> Dict[str, Any]:
         """
         设置进给速率。
 
         Args:
-            feed_rate[设置进给速率]: 设置进给速率。
+            feed_rate[进给速率]: 目标进给速率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置切割压力")
-    def set_cutting_pressure(self, cutting_pressure: int = 0) -> Dict[str, Any]:
+    def set_cutting_pressure(self, cutting_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置切割压力。
 
         Args:
-            cutting_pressure[设置切割压力]: 设置切割压力。
+            cutting_pressure[切割压力]: 目标切割压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置冷却液流量")
-    def set_coolant_flow(self, coolant_flow: int = 0) -> Dict[str, Any]:
+    def set_coolant_flow(self, coolant_flow: float = 0.0) -> Dict[str, Any]:
         """
         设置冷却液流量。
 
         Args:
-            coolant_flow[设置冷却液流量]: 设置冷却液流量。
+            coolant_flow[冷却液流量]: 目标冷却液流量（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置刀片转速")
-    def set_blade_speed(self, blade_speed: int = 0) -> Dict[str, Any]:
+    def set_blade_speed(self, blade_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置刀片转速。
 
         Args:
-            blade_speed[设置刀片转速]: 设置刀片转速。
+            blade_speed[刀片转速]: 目标刀片转速（单位依设备量程而定）。
         """
         pass
 
@@ -114,7 +114,7 @@ class CuttingMachine:
         设置切割精度。
 
         Args:
-            cutting_precision[设置切割精度]: 设置切割精度。
+            cutting_precision[切割精度]: 目标切割精度（单位依设备量程而定）。
         """
         pass
 
@@ -134,6 +134,24 @@ class CuttingMachine:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def running_completed(self) -> bool:
+        """运行完成。"""
+        return self.data.get("running_completed", False)
 
     @property
     @topic_config()

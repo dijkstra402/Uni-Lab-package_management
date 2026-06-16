@@ -39,22 +39,22 @@ class FridgeFreezer:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置温度")
-    def set_temperature(self, temperature: int = 0) -> Dict[str, Any]:
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置温度。
 
         Args:
-            temperature[设置温度]: 设置温度。
+            temperature[温度]: 目标温度（单位依设备量程而定）。
         """
         pass
 
@@ -87,6 +87,18 @@ class FridgeFreezer:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def running_state(self) -> bool:
         """运行状态。"""
         return self.data.get("running_state", False)
@@ -99,12 +111,18 @@ class FridgeFreezer:
 
     @property
     @topic_config()
+    def cooling_system_running(self) -> bool:
+        """制冷系统运行。"""
+        return self.data.get("cooling_system_running", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def current_temperature(self) -> float:
         """实际温度。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)

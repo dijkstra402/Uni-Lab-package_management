@@ -39,22 +39,22 @@ class SteamOven:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置蒸煮时间")
-    def set_steaming_time(self, steaming_time: int = 0) -> Dict[str, Any]:
+    def set_steaming_time(self, steaming_time: float = 0.0) -> Dict[str, Any]:
         """
         设置蒸煮时间。
 
         Args:
-            steaming_time[设置蒸煮时间]: 设置蒸煮时间。
+            steaming_time[蒸煮时间]: 目标蒸煮时间（单位依设备量程而定）。
         """
         pass
 
@@ -64,17 +64,17 @@ class SteamOven:
         设置蒸汽量。
 
         Args:
-            steam_volume[设置蒸汽量]: 设置蒸汽量。
+            steam_volume[蒸汽量]: 目标蒸汽量（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置加热功率")
-    def set_heating_power(self, heating_power: int = 0) -> Dict[str, Any]:
+    def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
         """
         设置加热功率。
 
         Args:
-            heating_power[设置加热功率]: 设置加热功率。
+            heating_power[加热功率]: 目标加热功率（单位依设备量程而定）。
         """
         pass
 
@@ -97,6 +97,18 @@ class SteamOven:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
@@ -109,15 +121,27 @@ class SteamOven:
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
-        """当前温度。"""
-        return self.data.get("current_temperature", 0)
+    def target_temperature(self) -> float:
+        """目标温度。"""
+        return self.data.get("target_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_humidity(self) -> int:
+    def current_temperature(self) -> float:
+        """当前温度。"""
+        return self.data.get("current_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_humidity(self) -> float:
         """当前湿度。"""
-        return self.data.get("current_humidity", 0)
+        return self.data.get("current_humidity", 0.0)
+
+    @property
+    @topic_config()
+    def remaining_steaming_time(self) -> float:
+        """剩余蒸煮时间。"""
+        return self.data.get("remaining_steaming_time", 0.0)
 
     @property
     @topic_config()
@@ -127,6 +151,18 @@ class SteamOven:
 
     @property
     @topic_config()
-    def current_heating_power(self) -> int:
+    def current_heating_power(self) -> float:
         """实际加热功率。"""
-        return self.data.get("current_heating_power", 0)
+        return self.data.get("current_heating_power", 0.0)
+
+    @property
+    @topic_config()
+    def pressure(self) -> float:
+        """压力监测。"""
+        return self.data.get("pressure", 0.0)
+
+    @property
+    @topic_config()
+    def steam_temperature(self) -> float:
+        """蒸汽温度监测。"""
+        return self.data.get("steam_temperature", 0.0)

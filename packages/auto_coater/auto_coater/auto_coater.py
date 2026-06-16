@@ -39,32 +39,32 @@ class AutoCoater:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置涂布速度")
-    def set_coating_speed(self, coating_speed: int = 0) -> Dict[str, Any]:
+    def set_coating_speed(self, coating_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置涂布速度。
 
         Args:
-            coating_speed[设置涂布速度]: 设置涂布速度。
+            coating_speed[涂布速度]: 目标涂布速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置涂布厚度")
-    def set_coating_thickness(self, coating_thickness: int = 0) -> Dict[str, Any]:
+    def set_coating_thickness(self, coating_thickness: float = 0.0) -> Dict[str, Any]:
         """
         设置涂布厚度。
 
         Args:
-            coating_thickness[设置涂布厚度]: 设置涂布厚度。
+            coating_thickness[涂布厚度]: 目标涂布厚度（单位依设备量程而定）。
         """
         pass
 
@@ -74,37 +74,37 @@ class AutoCoater:
         设置涂布宽度。
 
         Args:
-            coating_width[设置涂布宽度]: 设置涂布宽度。
+            coating_width[涂布宽度]: 目标涂布宽度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置刮刀压力")
-    def set_blade_pressure(self, blade_pressure: int = 0) -> Dict[str, Any]:
+    def set_blade_pressure(self, blade_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置刮刀压力。
 
         Args:
-            blade_pressure[设置刮刀压力]: 设置刮刀压力。
+            blade_pressure[刮刀压力]: 目标刮刀压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置干燥温度")
-    def set_drying_temperature(self, drying_temperature: int = 0) -> Dict[str, Any]:
+    def set_drying_temperature(self, drying_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置干燥温度。
 
         Args:
-            drying_temperature[设置干燥温度]: 设置干燥温度。
+            drying_temperature[干燥温度]: 目标干燥温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置干燥时间")
-    def set_drying_time(self, drying_time: int = 0) -> Dict[str, Any]:
+    def set_drying_time(self, drying_time: float = 0.0) -> Dict[str, Any]:
         """
         设置干燥时间。
 
         Args:
-            drying_time[设置干燥时间]: 设置干燥时间。
+            drying_time[干燥时间]: 目标干燥时间（单位依设备量程而定）。
         """
         pass
 
@@ -114,17 +114,17 @@ class AutoCoater:
         设置涂布次数。
 
         Args:
-            coating_count[设置涂布次数]: 设置涂布次数。
+            coating_count[涂布次数]: 目标涂布次数（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置刮刀角度")
-    def set_blade_angle(self, blade_angle: int = 0) -> Dict[str, Any]:
+    def set_blade_angle(self, blade_angle: float = 0.0) -> Dict[str, Any]:
         """
         设置刮刀角度。
 
         Args:
-            blade_angle[设置刮刀角度]: 设置刮刀角度。
+            blade_angle[刮刀角度]: 目标刮刀角度（单位依设备量程而定）。
         """
         pass
 
@@ -144,6 +144,24 @@ class AutoCoater:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def running_completed(self) -> bool:
+        """运行完成。"""
+        return self.data.get("running_completed", False)
 
     @property
     @topic_config()

@@ -39,52 +39,52 @@ class SpinCoater:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置低速时间")
-    def set_low_speed_time(self, low_speed_time: int = 0) -> Dict[str, Any]:
+    def set_low_speed_time(self, low_speed_time: float = 0.0) -> Dict[str, Any]:
         """
         设置低速时间。
 
         Args:
-            low_speed_time[设置低速时间]: 设置低速时间。
+            low_speed_time[低速时间]: 目标低速时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置高速时间")
-    def set_high_speed_time(self, high_speed_time: int = 0) -> Dict[str, Any]:
+    def set_high_speed_time(self, high_speed_time: float = 0.0) -> Dict[str, Any]:
         """
         设置高速时间。
 
         Args:
-            high_speed_time[设置高速时间]: 设置高速时间。
+            high_speed_time[高速时间]: 目标高速时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置加速度")
-    def set_acceleration(self, acceleration: int = 0) -> Dict[str, Any]:
+    def set_acceleration(self, acceleration: float = 0.0) -> Dict[str, Any]:
         """
         设置加速度。
 
         Args:
-            acceleration[设置加速度]: 设置加速度。
+            acceleration[加速度]: 目标加速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置减速度")
-    def set_deceleration(self, deceleration: int = 0) -> Dict[str, Any]:
+    def set_deceleration(self, deceleration: float = 0.0) -> Dict[str, Any]:
         """
         设置减速度。
 
         Args:
-            deceleration[设置减速度]: 设置减速度。
+            deceleration[减速度]: 目标减速度（单位依设备量程而定）。
         """
         pass
 
@@ -94,7 +94,7 @@ class SpinCoater:
         设置样品尺寸。
 
         Args:
-            sample_size[设置样品尺寸]: 设置样品尺寸。
+            sample_size[样品尺寸]: 目标样品尺寸（单位依设备量程而定）。
         """
         pass
 
@@ -114,6 +114,24 @@ class SpinCoater:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def running_completed(self) -> bool:
+        """运行完成。"""
+        return self.data.get("running_completed", False)
 
     @property
     @topic_config()

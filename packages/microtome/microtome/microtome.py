@@ -39,32 +39,32 @@ class Microtome:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置切片厚度")
-    def set_slice_thickness(self, slice_thickness: int = 0) -> Dict[str, Any]:
+    def set_slice_thickness(self, slice_thickness: float = 0.0) -> Dict[str, Any]:
         """
         设置切片厚度。
 
         Args:
-            slice_thickness[设置切片厚度]: 设置切片厚度。
+            slice_thickness[切片厚度]: 目标切片厚度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置切片速度")
-    def set_slice_speed(self, slice_speed: int = 0) -> Dict[str, Any]:
+    def set_slice_speed(self, slice_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置切片速度。
 
         Args:
-            slice_speed[设置切片速度]: 设置切片速度。
+            slice_speed[切片速度]: 目标切片速度（单位依设备量程而定）。
         """
         pass
 
@@ -74,27 +74,27 @@ class Microtome:
         设置进给量。
 
         Args:
-            feed_amount[设置进给量]: 设置进给量。
+            feed_amount[进给量]: 目标进给量（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置刀架角度")
-    def set_tool_holder_angle(self, tool_holder_angle: int = 0) -> Dict[str, Any]:
+    def set_tool_holder_angle(self, tool_holder_angle: float = 0.0) -> Dict[str, Any]:
         """
         设置刀架角度。
 
         Args:
-            tool_holder_angle[设置刀架角度]: 设置刀架角度。
+            tool_holder_angle[刀架角度]: 目标刀架角度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置样品转速")
-    def set_sample_speed(self, sample_speed: int = 0) -> Dict[str, Any]:
+    def set_sample_speed(self, sample_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置样品转速。
 
         Args:
-            sample_speed[设置样品转速]: 设置样品转速。
+            sample_speed[样品转速]: 目标样品转速（单位依设备量程而定）。
         """
         pass
 
@@ -104,7 +104,7 @@ class Microtome:
         设置切片精度。
 
         Args:
-            slice_precision[设置切片精度]: 设置切片精度。
+            slice_precision[切片精度]: 目标切片精度（单位依设备量程而定）。
         """
         pass
 
@@ -114,7 +114,7 @@ class Microtome:
         设置切片数量。
 
         Args:
-            slicing_count[设置切片数量]: 设置切片数量。
+            slicing_count[切片数量]: 目标切片数量（单位依设备量程而定）。
         """
         pass
 
@@ -137,6 +137,30 @@ class Microtome:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def running_completed(self) -> bool:
+        """运行完成。"""
+        return self.data.get("running_completed", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
+
+    @property
+    @topic_config()
+    def slicing_interval_time(self) -> float:
+        """切片间隔时间。"""
+        return self.data.get("slicing_interval_time", 0.0)

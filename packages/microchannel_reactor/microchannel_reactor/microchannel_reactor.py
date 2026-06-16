@@ -39,22 +39,22 @@ class MicrochannelReactor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置混合比例")
-    def set_mix_ratio(self, mix_ratio: int = 0) -> Dict[str, Any]:
+    def set_mix_ratio(self, mix_ratio: float = 0.0) -> Dict[str, Any]:
         """
         设置混合比例。
 
         Args:
-            mix_ratio[设置混合比例]: 设置混合比例。
+            mix_ratio[混合比例]: 目标混合比例（单位依设备量程而定）。
         """
         pass
 
@@ -82,6 +82,30 @@ class MicrochannelReactor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
+
+    @property
+    @topic_config()
+    def module_1_temperature(self) -> float:
+        """模块1温度。"""
+        return self.data.get("module_1_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def module_2_temperature(self) -> float:
+        """模块2温度。"""
+        return self.data.get("module_2_temperature", 0.0)

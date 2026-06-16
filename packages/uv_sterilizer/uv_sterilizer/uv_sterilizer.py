@@ -39,32 +39,32 @@ class UvSterilizer:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置紫外灯功率")
-    def set_uv_lamp_power(self, uv_lamp_power: int = 0) -> Dict[str, Any]:
+    def set_uv_lamp_power(self, uv_lamp_power: float = 0.0) -> Dict[str, Any]:
         """
         设置紫外灯功率。
 
         Args:
-            uv_lamp_power[设置紫外灯功率]: 设置紫外灯功率。
+            uv_lamp_power[紫外灯功率]: 目标紫外灯功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置消毒时间")
-    def set_disinfection_time(self, disinfection_time: int = 0) -> Dict[str, Any]:
+    def set_disinfection_time(self, disinfection_time: float = 0.0) -> Dict[str, Any]:
         """
         设置消毒时间。
 
         Args:
-            disinfection_time[设置消毒时间]: 设置消毒时间。
+            disinfection_time[消毒时间]: 目标消毒时间（单位依设备量程而定）。
         """
         pass
 
@@ -97,6 +97,18 @@ class UvSterilizer:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def lamp_door_state(self) -> bool:
         """灯门状态。"""
         return self.data.get("lamp_door_state", False)
@@ -115,18 +127,18 @@ class UvSterilizer:
 
     @property
     @topic_config()
-    def current_disinfection_time(self) -> int:
+    def current_disinfection_time(self) -> float:
         """实际消毒时间。"""
-        return self.data.get("current_disinfection_time", 0)
+        return self.data.get("current_disinfection_time", 0.0)
 
     @property
     @topic_config()
-    def uv_lamp_power_feedback(self) -> int:
+    def uv_lamp_power_feedback(self) -> float:
         """紫外灯功率反馈。"""
-        return self.data.get("uv_lamp_power_feedback", 0)
+        return self.data.get("uv_lamp_power_feedback", 0.0)
 
     @property
     @topic_config()
-    def disinfection_time_feedback(self) -> int:
+    def disinfection_time_feedback(self) -> float:
         """消毒时间反馈。"""
-        return self.data.get("disinfection_time_feedback", 0)
+        return self.data.get("disinfection_time_feedback", 0.0)

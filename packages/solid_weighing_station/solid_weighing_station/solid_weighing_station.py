@@ -39,33 +39,43 @@ class SolidWeighingStation:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置称量精度")
+    def set_weighing_precision(self, weighing_precision: int = 0) -> Dict[str, Any]:
+        """
+        设置称量精度。
+
+        Args:
+            weighing_precision[称量精度]: 目标称量精度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置卸料速度")
+    def set_discharge_speed(self, discharge_speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置卸料速度。
+
+        Args:
+            discharge_speed[卸料速度]: 目标卸料速度（单位依设备量程而定）。
         """
         pass
 
     @action(description="称量")
-    def weigh(self, weighing_precision: int = 0) -> Dict[str, Any]:
-        """
-        称量。
-
-        Args:
-            weighing_precision[称量精度设置]: 称量精度设置。
-        """
+    def weigh(self) -> Dict[str, Any]:
+        """称量。"""
         pass
 
     @action(description="卸料")
-    def discharge(self, discharge_speed: int = 0) -> Dict[str, Any]:
-        """
-        卸料。
-
-        Args:
-            discharge_speed[卸料速度设置]: 卸料速度设置。
-        """
+    def discharge(self) -> Dict[str, Any]:
+        """卸料。"""
         pass
 
     @action(description="校准")
@@ -92,12 +102,24 @@ class SolidWeighingStation:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_weighed_weight(self) -> int:
+    def current_weighed_weight(self) -> float:
         """实际称量重量。"""
-        return self.data.get("current_weighed_weight", 0)
+        return self.data.get("current_weighed_weight", 0.0)

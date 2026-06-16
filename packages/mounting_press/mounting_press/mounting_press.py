@@ -39,62 +39,62 @@ class MountingPress:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置加热温度")
-    def set_heating_temperature(self, heating_temperature: int = 0) -> Dict[str, Any]:
+    def set_heating_temperature(self, heating_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置加热温度。
 
         Args:
-            heating_temperature[设置加热温度]: 设置加热温度。
+            heating_temperature[加热温度]: 目标加热温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置加热时间")
-    def set_heating_time(self, heating_time: int = 0) -> Dict[str, Any]:
+    def set_heating_time(self, heating_time: float = 0.0) -> Dict[str, Any]:
         """
         设置加热时间。
 
         Args:
-            heating_time[设置加热时间]: 设置加热时间。
+            heating_time[加热时间]: 目标加热时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置冷却时间")
-    def set_cooling_time(self, cooling_time: int = 0) -> Dict[str, Any]:
+    def set_cooling_time(self, cooling_time: float = 0.0) -> Dict[str, Any]:
         """
         设置冷却时间。
 
         Args:
-            cooling_time[设置冷却时间]: 设置冷却时间。
+            cooling_time[冷却时间]: 目标冷却时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置压力")
-    def set_pressure(self, pressure: int = 0) -> Dict[str, Any]:
+    def set_pressure(self, pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置压力。
 
         Args:
-            pressure[设置压力]: 设置压力。
+            pressure[压力]: 目标压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置保温时间")
-    def set_holding_time(self, holding_time: int = 0) -> Dict[str, Any]:
+    def set_holding_time(self, holding_time: float = 0.0) -> Dict[str, Any]:
         """
         设置保温时间。
 
         Args:
-            holding_time[设置保温时间]: 设置保温时间。
+            holding_time[保温时间]: 目标保温时间（单位依设备量程而定）。
         """
         pass
 
@@ -114,6 +114,24 @@ class MountingPress:
     def fault(self) -> bool:
         """故障。"""
         return self.data.get("fault", False)
+
+    @property
+    @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def running_completed(self) -> bool:
+        """运行完成。"""
+        return self.data.get("running_completed", False)
 
     @property
     @topic_config()

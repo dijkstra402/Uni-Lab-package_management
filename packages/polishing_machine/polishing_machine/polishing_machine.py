@@ -39,62 +39,62 @@ class PolishingMachine:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置抛光轮转速")
-    def set_polishing_wheel_speed(self, polishing_wheel_speed: int = 0) -> Dict[str, Any]:
+    def set_polishing_wheel_speed(self, polishing_wheel_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置抛光轮转速。
 
         Args:
-            polishing_wheel_speed[设置抛光轮转速]: 设置抛光轮转速。
+            polishing_wheel_speed[抛光轮转速]: 目标抛光轮转速（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置抛光压力")
-    def set_polishing_pressure(self, polishing_pressure: int = 0) -> Dict[str, Any]:
+    def set_polishing_pressure(self, polishing_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置抛光压力。
 
         Args:
-            polishing_pressure[设置抛光压力]: 设置抛光压力。
+            polishing_pressure[抛光压力]: 目标抛光压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置抛光时间")
-    def set_polishing_time(self, polishing_time: int = 0) -> Dict[str, Any]:
+    def set_polishing_time(self, polishing_time: float = 0.0) -> Dict[str, Any]:
         """
         设置抛光时间。
 
         Args:
-            polishing_time[设置抛光时间]: 设置抛光时间。
+            polishing_time[抛光时间]: 目标抛光时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置抛光液流量")
-    def set_polishing_fluid_flow(self, polishing_fluid_flow: int = 0) -> Dict[str, Any]:
+    def set_polishing_fluid_flow(self, polishing_fluid_flow: float = 0.0) -> Dict[str, Any]:
         """
         设置抛光液流量。
 
         Args:
-            polishing_fluid_flow[设置抛光液流量]: 设置抛光液流量。
+            polishing_fluid_flow[抛光液流量]: 目标抛光液流量（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置样品转速")
-    def set_sample_speed(self, sample_speed: int = 0) -> Dict[str, Any]:
+    def set_sample_speed(self, sample_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置样品转速。
 
         Args:
-            sample_speed[设置样品转速]: 设置样品转速。
+            sample_speed[样品转速]: 目标样品转速（单位依设备量程而定）。
         """
         pass
 
@@ -117,12 +117,36 @@ class PolishingMachine:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def running_completed(self) -> bool:
+        """运行完成。"""
+        return self.data.get("running_completed", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_speed(self) -> int:
+    def current_speed(self) -> float:
         """实际转速监测。"""
-        return self.data.get("current_speed", 0)
+        return self.data.get("current_speed", 0.0)
+
+    @property
+    @topic_config()
+    def polishing_precision_level(self) -> int:
+        """抛光精度等级。"""
+        return self.data.get("polishing_precision_level", 0)

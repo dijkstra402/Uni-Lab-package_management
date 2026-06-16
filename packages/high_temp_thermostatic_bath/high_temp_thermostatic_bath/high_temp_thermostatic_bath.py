@@ -39,12 +39,12 @@ class HighTempThermostaticBath:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
@@ -54,37 +54,37 @@ class HighTempThermostaticBath:
         设置控温精度。
 
         Args:
-            temp_control_precision[设置控温精度]: 设置控温精度。
+            temp_control_precision[控温精度]: 目标控温精度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置加热功率")
-    def set_heating_power(self, heating_power: int = 0) -> Dict[str, Any]:
+    def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
         """
         设置加热功率。
 
         Args:
-            heating_power[设置加热功率]: 设置加热功率。
+            heating_power[加热功率]: 目标加热功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置循环泵转速")
-    def set_circulation_pump_speed(self, circulation_pump_speed: int = 0) -> Dict[str, Any]:
+    def set_circulation_pump_speed(self, circulation_pump_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置循环泵转速。
 
         Args:
-            circulation_pump_speed[设置循环泵转速]: 设置循环泵转速。
+            circulation_pump_speed[循环泵转速]: 目标循环泵转速（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置恒温时间")
-    def set_hold_time(self, hold_time: int = 0) -> Dict[str, Any]:
+    def set_hold_time(self, hold_time: float = 0.0) -> Dict[str, Any]:
         """
         设置恒温时间。
 
         Args:
-            hold_time[设置恒温时间]: 设置恒温时间。
+            hold_time[恒温时间]: 目标恒温时间（单位依设备量程而定）。
         """
         pass
 
@@ -94,7 +94,7 @@ class HighTempThermostaticBath:
         设置报警灵敏度。
 
         Args:
-            alarm_sensitivity[设置报警灵敏度]: 设置报警灵敏度。
+            alarm_sensitivity[报警灵敏度]: 目标报警灵敏度（单位依设备量程而定）。
         """
         pass
 
@@ -117,6 +117,18 @@ class HighTempThermostaticBath:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
@@ -129,18 +141,42 @@ class HighTempThermostaticBath:
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def target_temperature(self) -> float:
+        """目标温度。"""
+        return self.data.get("target_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_temperature(self) -> float:
         """当前温度。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_heating_power(self) -> int:
+    def current_heating_power(self) -> float:
         """实际加热功率。"""
-        return self.data.get("current_heating_power", 0)
+        return self.data.get("current_heating_power", 0.0)
 
     @property
     @topic_config()
-    def current_circulation_pump_speed(self) -> int:
+    def current_circulation_pump_speed(self) -> float:
         """实际循环泵转速。"""
-        return self.data.get("current_circulation_pump_speed", 0)
+        return self.data.get("current_circulation_pump_speed", 0.0)
+
+    @property
+    @topic_config()
+    def liquid_level(self) -> float:
+        """液位监测。"""
+        return self.data.get("liquid_level", 0.0)
+
+    @property
+    @topic_config()
+    def pressure(self) -> float:
+        """压力监测。"""
+        return self.data.get("pressure", 0.0)
+
+    @property
+    @topic_config()
+    def remaining_hold_time(self) -> float:
+        """剩余恒温时间。"""
+        return self.data.get("remaining_hold_time", 0.0)

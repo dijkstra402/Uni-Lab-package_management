@@ -39,62 +39,62 @@ class SupercriticalExtractor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置运行时间")
-    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+    def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
         """
         设置运行时间。
 
         Args:
-            run_time[设置运行时间]: 设置运行时间。
+            run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置萃取压力")
-    def set_extraction_pressure(self, extraction_pressure: int = 0) -> Dict[str, Any]:
+    def set_extraction_pressure(self, extraction_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置萃取压力。
 
         Args:
-            extraction_pressure[设置萃取压力]: 设置萃取压力。
+            extraction_pressure[萃取压力]: 目标萃取压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置萃取温度")
-    def set_extraction_temperature(self, extraction_temperature: int = 0) -> Dict[str, Any]:
+    def set_extraction_temperature(self, extraction_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置萃取温度。
 
         Args:
-            extraction_temperature[设置萃取温度]: 设置萃取温度。
+            extraction_temperature[萃取温度]: 目标萃取温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置CO2流量")
-    def set_co2_flow(self, co2_flow: int = 0) -> Dict[str, Any]:
+    def set_co2_flow(self, co2_flow: float = 0.0) -> Dict[str, Any]:
         """
         设置CO2流量。
 
         Args:
-            co2_flow[设置CO2流量]: 设置CO2流量。
+            co2_flow[CO2流量]: 目标CO2流量（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置分离压力")
-    def set_separation_pressure(self, separation_pressure: int = 0) -> Dict[str, Any]:
+    def set_separation_pressure(self, separation_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置分离压力。
 
         Args:
-            separation_pressure[设置分离压力]: 设置分离压力。
+            separation_pressure[分离压力]: 目标分离压力（单位依设备量程而定）。
         """
         pass
 
@@ -127,6 +127,18 @@ class SupercriticalExtractor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def pressure_protection_state(self) -> bool:
         """压力保护状态。"""
         return self.data.get("pressure_protection_state", False)
@@ -145,30 +157,30 @@ class SupercriticalExtractor:
 
     @property
     @topic_config()
-    def current_run_time(self) -> int:
+    def current_run_time(self) -> float:
         """实际运行时间。"""
-        return self.data.get("current_run_time", 0)
+        return self.data.get("current_run_time", 0.0)
 
     @property
     @topic_config()
-    def current_extraction_pressure(self) -> int:
+    def current_extraction_pressure(self) -> float:
         """实际萃取压力。"""
-        return self.data.get("current_extraction_pressure", 0)
+        return self.data.get("current_extraction_pressure", 0.0)
 
     @property
     @topic_config()
-    def current_extraction_temperature(self) -> int:
+    def current_extraction_temperature(self) -> float:
         """实际萃取温度。"""
-        return self.data.get("current_extraction_temperature", 0)
+        return self.data.get("current_extraction_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_co2_flow(self) -> int:
+    def current_co2_flow(self) -> float:
         """实际CO2流量。"""
-        return self.data.get("current_co2_flow", 0)
+        return self.data.get("current_co2_flow", 0.0)
 
     @property
     @topic_config()
-    def current_separation_pressure(self) -> int:
+    def current_separation_pressure(self) -> float:
         """实际分离压力。"""
-        return self.data.get("current_separation_pressure", 0)
+        return self.data.get("current_separation_pressure", 0.0)

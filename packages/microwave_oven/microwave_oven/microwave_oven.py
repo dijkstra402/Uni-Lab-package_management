@@ -39,42 +39,42 @@ class MicrowaveOven:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置加热时间")
-    def set_heating_time(self, heating_time: int = 0) -> Dict[str, Any]:
+    def set_heating_time(self, heating_time: float = 0.0) -> Dict[str, Any]:
         """
         设置加热时间。
 
         Args:
-            heating_time[设置加热时间]: 设置加热时间。
+            heating_time[加热时间]: 目标加热时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置加热模式")
-    def set_heating_mode(self, heating_mode: int = 0) -> Dict[str, Any]:
+    def set_heating_mode(self, heating_mode: str = "") -> Dict[str, Any]:
         """
         设置加热模式。
 
         Args:
-            heating_mode[设置加热模式]: 设置加热模式。
+            heating_mode[加热模式]: 目标加热模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置转盘转速")
-    def set_turntable_speed(self, turntable_speed: int = 0) -> Dict[str, Any]:
+    def set_turntable_speed(self, turntable_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置转盘转速。
 
         Args:
-            turntable_speed[设置转盘转速]: 设置转盘转速。
+            turntable_speed[转盘转速]: 目标转盘转速（单位依设备量程而定）。
         """
         pass
 
@@ -97,6 +97,18 @@ class MicrowaveOven:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
@@ -109,6 +121,30 @@ class MicrowaveOven:
 
     @property
     @topic_config()
-    def current_power(self) -> int:
+    def current_power(self) -> float:
         """实际功率。"""
-        return self.data.get("current_power", 0)
+        return self.data.get("current_power", 0.0)
+
+    @property
+    @topic_config()
+    def remaining_heating_time(self) -> float:
+        """剩余加热时间。"""
+        return self.data.get("remaining_heating_time", 0.0)
+
+    @property
+    @topic_config()
+    def humidity(self) -> float:
+        """湿度监测。"""
+        return self.data.get("humidity", 0.0)
+
+    @property
+    @topic_config()
+    def weight(self) -> float:
+        """重量检测。"""
+        return self.data.get("weight", 0.0)
+
+    @property
+    @topic_config()
+    def door_state(self) -> int:
+        """门状态监测。"""
+        return self.data.get("door_state", 0)

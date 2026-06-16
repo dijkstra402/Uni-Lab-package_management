@@ -38,13 +38,33 @@ class VortexMixer:
         """初始化。"""
         pass
 
+    @action(description="设置混匀速度")
+    def set_mix_speed(self, mix_speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置混匀速度。
+
+        Args:
+            mix_speed[混匀速度]: 目标混匀速度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置混匀时间")
+    def set_mix_time(self, mix_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置混匀时间。
+
+        Args:
+            mix_time[混匀时间]: 目标混匀时间（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="设置工作模式")
-    def set_work_mode(self, work_mode: int = 0) -> Dict[str, Any]:
+    def set_work_mode(self, work_mode: str = "") -> Dict[str, Any]:
         """
         设置工作模式。
 
         Args:
-            work_mode[设置工作模式]: 设置工作模式。
+            work_mode[工作模式]: 目标工作模式（具体取值由设备型号定义）。
         """
         pass
 
@@ -54,7 +74,7 @@ class VortexMixer:
         设置速度档位。
 
         Args:
-            speed_gear[设置速度档位]: 设置速度档位。
+            speed_gear[速度档位]: 目标速度档位（单位依设备量程而定）。
         """
         pass
 
@@ -64,19 +84,13 @@ class VortexMixer:
         设置启动延迟。
 
         Args:
-            start_delay[设置启动延迟]: 设置启动延迟。
+            start_delay[启动延迟]: 目标启动延迟（单位依设备量程而定）。
         """
         pass
 
     @action(description="混匀")
-    def mix(self, mix_speed: int = 0, mix_time: int = 0) -> Dict[str, Any]:
-        """
-        混匀。
-
-        Args:
-            mix_speed[混匀速度设置]: 混匀速度设置。
-            mix_time[混匀时间设置]: 混匀时间设置。
-        """
+    def mix(self) -> Dict[str, Any]:
+        """混匀。"""
         pass
 
     @action(description="脚踏开关")
@@ -98,21 +112,27 @@ class VortexMixer:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_speed(self) -> int:
+    def current_speed(self) -> float:
         """当前速度显示。"""
-        return self.data.get("current_speed", 0)
+        return self.data.get("current_speed", 0.0)
 
     @property
     @topic_config()
-    def current_time(self) -> int:
+    def current_time(self) -> float:
         """当前时间显示。"""
-        return self.data.get("current_time", 0)
+        return self.data.get("current_time", 0.0)
 
     @property
     @topic_config()

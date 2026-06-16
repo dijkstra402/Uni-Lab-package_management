@@ -39,52 +39,52 @@ class MicrowaveExtractor:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置运行时间")
-    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+    def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
         """
         设置运行时间。
 
         Args:
-            run_time[设置运行时间]: 设置运行时间。
+            run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置微波功率")
-    def set_microwave_power(self, microwave_power: int = 0) -> Dict[str, Any]:
+    def set_microwave_power(self, microwave_power: float = 0.0) -> Dict[str, Any]:
         """
         设置微波功率。
 
         Args:
-            microwave_power[设置微波功率]: 设置微波功率。
+            microwave_power[微波功率]: 目标微波功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置萃取温度")
-    def set_extraction_temperature(self, extraction_temperature: int = 0) -> Dict[str, Any]:
+    def set_extraction_temperature(self, extraction_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置萃取温度。
 
         Args:
-            extraction_temperature[设置萃取温度]: 设置萃取温度。
+            extraction_temperature[萃取温度]: 目标萃取温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置搅拌速度")
-    def set_stir_speed(self, stir_speed: int = 0) -> Dict[str, Any]:
+    def set_stir_speed(self, stir_speed: float = 0.0) -> Dict[str, Any]:
         """
         设置搅拌速度。
 
         Args:
-            stir_speed[设置搅拌速度]: 设置搅拌速度。
+            stir_speed[搅拌速度]: 目标搅拌速度（单位依设备量程而定）。
         """
         pass
 
@@ -117,6 +117,18 @@ class MicrowaveExtractor:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def pressure_protection_state(self) -> bool:
         """压力保护状态。"""
         return self.data.get("pressure_protection_state", False)
@@ -141,24 +153,24 @@ class MicrowaveExtractor:
 
     @property
     @topic_config()
-    def current_run_time(self) -> int:
+    def current_run_time(self) -> float:
         """实际运行时间。"""
-        return self.data.get("current_run_time", 0)
+        return self.data.get("current_run_time", 0.0)
 
     @property
     @topic_config()
-    def current_microwave_power(self) -> int:
+    def current_microwave_power(self) -> float:
         """实际微波功率。"""
-        return self.data.get("current_microwave_power", 0)
+        return self.data.get("current_microwave_power", 0.0)
 
     @property
     @topic_config()
-    def current_extraction_temperature(self) -> int:
+    def current_extraction_temperature(self) -> float:
         """实际萃取温度。"""
-        return self.data.get("current_extraction_temperature", 0)
+        return self.data.get("current_extraction_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_stir_speed(self) -> int:
+    def current_stir_speed(self) -> float:
         """实际搅拌速度。"""
-        return self.data.get("current_stir_speed", 0)
+        return self.data.get("current_stir_speed", 0.0)

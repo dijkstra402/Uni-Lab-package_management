@@ -39,53 +39,68 @@ class CapAndDispenseModule:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
+        """
+        pass
+
+    @action(description="设置加液体积")
+    def set_add_volume(self, add_volume: float = 0.0) -> Dict[str, Any]:
+        """
+        设置加液体积。
+
+        Args:
+            add_volume[加液体积]: 目标加液体积（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置开盖高度")
+    def set_cap_height(self, cap_height: float = 0.0) -> Dict[str, Any]:
+        """
+        设置开盖高度。
+
+        Args:
+            cap_height[开盖高度]: 目标开盖高度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置关盖扭矩")
+    def set_cap_torque(self, cap_torque: float = 0.0) -> Dict[str, Any]:
+        """
+        设置关盖扭矩。
+
+        Args:
+            cap_torque[关盖扭矩]: 目标关盖扭矩（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置容器位置")
-    def set_container_position(self, container_position: int = 0) -> Dict[str, Any]:
+    def set_container_position(self, container_position: float = 0.0) -> Dict[str, Any]:
         """
         设置容器位置。
 
         Args:
-            container_position[设置容器位置]: 设置容器位置。
+            container_position[容器位置]: 目标容器位置（单位依设备量程而定）。
         """
         pass
 
     @action(description="开盖")
-    def open_cap(self, cap_height: int = 0) -> Dict[str, Any]:
-        """
-        开盖。
-
-        Args:
-            cap_height[开盖高度设置]: 开盖高度设置。
-        """
+    def open_cap(self) -> Dict[str, Any]:
+        """开盖。"""
         pass
 
     @action(description="关盖")
-    def close_cap(self, cap_torque: int = 0) -> Dict[str, Any]:
-        """
-        关盖。
-
-        Args:
-            cap_torque[关盖扭矩设置]: 关盖扭矩设置。
-        """
+    def close_cap(self) -> Dict[str, Any]:
+        """关盖。"""
         pass
 
     @action(description="加液")
-    def add_liquid(self, add_volume: int = 0) -> Dict[str, Any]:
-        """
-        加液。
-
-        Args:
-            add_volume[加液体积设置]: 加液体积设置。
-        """
+    def add_liquid(self) -> Dict[str, Any]:
+        """加液。"""
         pass
 
     @action(description="定位")
@@ -107,30 +122,42 @@ class CapAndDispenseModule:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_add_volume(self) -> int:
+    def current_add_volume(self) -> float:
         """实际加液体积。"""
-        return self.data.get("current_add_volume", 0)
+        return self.data.get("current_add_volume", 0.0)
 
     @property
     @topic_config()
-    def current_cap_height(self) -> int:
+    def current_cap_height(self) -> float:
         """实际开盖高度。"""
-        return self.data.get("current_cap_height", 0)
+        return self.data.get("current_cap_height", 0.0)
 
     @property
     @topic_config()
-    def current_cap_torque(self) -> int:
+    def current_cap_torque(self) -> float:
         """实际关盖扭矩。"""
-        return self.data.get("current_cap_torque", 0)
+        return self.data.get("current_cap_torque", 0.0)
 
     @property
     @topic_config()
-    def current_container_position(self) -> int:
+    def current_container_position(self) -> float:
         """实际容器位置。"""
-        return self.data.get("current_container_position", 0)
+        return self.data.get("current_container_position", 0.0)

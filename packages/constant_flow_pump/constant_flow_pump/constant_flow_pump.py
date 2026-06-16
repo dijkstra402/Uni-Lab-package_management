@@ -38,24 +38,29 @@ class ConstantFlowPump:
         """初始化。"""
         pass
 
+    @action(description="设置流量")
+    def set_flow(self, flow: float = 0.0) -> Dict[str, Any]:
+        """
+        设置流量。
+
+        Args:
+            flow[流量]: 目标流量（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="设置运行时间")
-    def set_run_time(self, run_time: int = 0) -> Dict[str, Any]:
+    def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
         """
         设置运行时间。
 
         Args:
-            run_time[设置运行时间]: 设置运行时间。
+            run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="流量校准")
-    def calibrate_flow(self, flow: int = 0) -> Dict[str, Any]:
-        """
-        流量校准。
-
-        Args:
-            flow[流量设置]: 流量设置。
-        """
+    def calibrate_flow(self) -> Dict[str, Any]:
+        """流量校准。"""
         pass
 
     @action(description="运行")
@@ -82,18 +87,24 @@ class ConstantFlowPump:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_flow(self) -> int:
+    def current_flow(self) -> float:
         """当前流量显示。"""
-        return self.data.get("current_flow", 0)
+        return self.data.get("current_flow", 0.0)
 
     @property
     @topic_config()
-    def cumulative_flow(self) -> int:
+    def cumulative_flow(self) -> float:
         """累计流量显示。"""
-        return self.data.get("cumulative_flow", 0)
+        return self.data.get("cumulative_flow", 0.0)

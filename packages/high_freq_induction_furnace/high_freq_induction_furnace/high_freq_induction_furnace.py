@@ -39,52 +39,52 @@ class HighFreqInductionFurnace:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置感应功率")
-    def set_induction_power(self, induction_power: int = 0) -> Dict[str, Any]:
+    def set_induction_power(self, induction_power: float = 0.0) -> Dict[str, Any]:
         """
         设置感应功率。
 
         Args:
-            induction_power[设置感应功率]: 设置感应功率。
+            induction_power[感应功率]: 目标感应功率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置振荡频率")
-    def set_oscillation_frequency(self, oscillation_frequency: int = 0) -> Dict[str, Any]:
+    def set_oscillation_frequency(self, oscillation_frequency: float = 0.0) -> Dict[str, Any]:
         """
         设置振荡频率。
 
         Args:
-            oscillation_frequency[设置振荡频率]: 设置振荡频率。
+            oscillation_frequency[振荡频率]: 目标振荡频率（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置加热时间")
-    def set_heating_time(self, heating_time: int = 0) -> Dict[str, Any]:
+    def set_heating_time(self, heating_time: float = 0.0) -> Dict[str, Any]:
         """
         设置加热时间。
 
         Args:
-            heating_time[设置加热时间]: 设置加热时间。
+            heating_time[加热时间]: 目标加热时间（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置冷却水流速")
-    def set_cooling_water_velocity(self, cooling_water_velocity: int = 0) -> Dict[str, Any]:
+    def set_cooling_water_velocity(self, cooling_water_velocity: float = 0.0) -> Dict[str, Any]:
         """
         设置冷却水流速。
 
         Args:
-            cooling_water_velocity[设置冷却水流速]: 设置冷却水流速。
+            cooling_water_velocity[冷却水流速]: 目标冷却水流速（单位依设备量程而定）。
         """
         pass
 
@@ -107,6 +107,18 @@ class HighFreqInductionFurnace:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
@@ -119,24 +131,36 @@ class HighFreqInductionFurnace:
 
     @property
     @topic_config()
-    def current_temperature(self) -> int:
+    def target_temperature(self) -> float:
+        """目标温度。"""
+        return self.data.get("target_temperature", 0.0)
+
+    @property
+    @topic_config()
+    def current_temperature(self) -> float:
         """当前温度。"""
-        return self.data.get("current_temperature", 0)
+        return self.data.get("current_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_induction_power(self) -> int:
+    def current_induction_power(self) -> float:
         """实际感应功率。"""
-        return self.data.get("current_induction_power", 0)
+        return self.data.get("current_induction_power", 0.0)
 
     @property
     @topic_config()
-    def current_oscillation_frequency(self) -> int:
+    def current_oscillation_frequency(self) -> float:
         """实际振荡频率。"""
-        return self.data.get("current_oscillation_frequency", 0)
+        return self.data.get("current_oscillation_frequency", 0.0)
 
     @property
     @topic_config()
-    def current_cooling_water_velocity(self) -> int:
+    def remaining_heating_time(self) -> float:
+        """剩余加热时间。"""
+        return self.data.get("remaining_heating_time", 0.0)
+
+    @property
+    @topic_config()
+    def current_cooling_water_velocity(self) -> float:
         """实际冷却水流速。"""
-        return self.data.get("current_cooling_water_velocity", 0)
+        return self.data.get("current_cooling_water_velocity", 0.0)

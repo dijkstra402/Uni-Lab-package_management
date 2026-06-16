@@ -39,42 +39,52 @@ class PlateSealer:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置封膜温度")
-    def set_sealing_temperature(self, sealing_temperature: int = 0) -> Dict[str, Any]:
+    def set_sealing_temperature(self, sealing_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置封膜温度。
 
         Args:
-            sealing_temperature[设置封膜温度]: 设置封膜温度。
+            sealing_temperature[封膜温度]: 目标封膜温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置封膜时间")
-    def set_sealing_time(self, sealing_time: int = 0) -> Dict[str, Any]:
+    def set_sealing_time(self, sealing_time: float = 0.0) -> Dict[str, Any]:
         """
         设置封膜时间。
 
         Args:
-            sealing_time[设置封膜时间]: 设置封膜时间。
+            sealing_time[封膜时间]: 目标封膜时间（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置送膜长度")
+    def set_film_feed_length(self, film_feed_length: int = 0) -> Dict[str, Any]:
+        """
+        设置送膜长度。
+
+        Args:
+            film_feed_length[送膜长度]: 目标送膜长度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置压力")
-    def set_pressure(self, pressure: int = 0) -> Dict[str, Any]:
+    def set_pressure(self, pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置压力。
 
         Args:
-            pressure[设置压力]: 设置压力。
+            pressure[压力]: 目标压力（单位依设备量程而定）。
         """
         pass
 
@@ -84,13 +94,8 @@ class PlateSealer:
         pass
 
     @action(description="送膜")
-    def feed_film(self, film_feed_length: int = 0) -> Dict[str, Any]:
-        """
-        送膜。
-
-        Args:
-            film_feed_length[送膜长度设置]: 送膜长度设置。
-        """
+    def feed_film(self) -> Dict[str, Any]:
+        """送膜。"""
         pass
 
     @action(description="加热启动")
@@ -117,21 +122,45 @@ class PlateSealer:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
+    def sealing_completed(self) -> bool:
+        """封膜完成。"""
+        return self.data.get("sealing_completed", False)
+
+    @property
+    @topic_config()
+    def heating_completed(self) -> bool:
+        """加热完成。"""
+        return self.data.get("heating_completed", False)
+
+    @property
+    @topic_config()
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
 
     @property
     @topic_config()
-    def current_sealing_temperature(self) -> int:
+    def current_sealing_temperature(self) -> float:
         """实际封膜温度。"""
-        return self.data.get("current_sealing_temperature", 0)
+        return self.data.get("current_sealing_temperature", 0.0)
 
     @property
     @topic_config()
-    def current_sealing_time(self) -> int:
+    def current_sealing_time(self) -> float:
         """实际封膜时间。"""
-        return self.data.get("current_sealing_time", 0)
+        return self.data.get("current_sealing_time", 0.0)
 
     @property
     @topic_config()
@@ -141,6 +170,6 @@ class PlateSealer:
 
     @property
     @topic_config()
-    def current_pressure(self) -> int:
+    def current_pressure(self) -> float:
         """实际压力。"""
-        return self.data.get("current_pressure", 0)
+        return self.data.get("current_pressure", 0.0)

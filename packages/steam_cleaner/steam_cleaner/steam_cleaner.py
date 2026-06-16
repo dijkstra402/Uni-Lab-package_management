@@ -39,62 +39,62 @@ class SteamCleaner:
         pass
 
     @action(description="设置运行模式")
-    def set_mode(self, mode: int = 0) -> Dict[str, Any]:
+    def set_mode(self, mode: str = "") -> Dict[str, Any]:
         """
         设置运行模式。
 
         Args:
-            mode[设置运行模式]: 设置运行模式。
+            mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
         pass
 
     @action(description="设置清洗温度")
-    def set_cleaning_temperature(self, cleaning_temperature: int = 0) -> Dict[str, Any]:
+    def set_cleaning_temperature(self, cleaning_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗温度。
 
         Args:
-            cleaning_temperature[设置清洗温度]: 设置清洗温度。
+            cleaning_temperature[清洗温度]: 目标清洗温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置清洗压力")
-    def set_cleaning_pressure(self, cleaning_pressure: int = 0) -> Dict[str, Any]:
+    def set_cleaning_pressure(self, cleaning_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置清洗压力。
 
         Args:
-            cleaning_pressure[设置清洗压力]: 设置清洗压力。
+            cleaning_pressure[清洗压力]: 目标清洗压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置蒸汽压力")
-    def set_steam_pressure(self, steam_pressure: int = 0) -> Dict[str, Any]:
+    def set_steam_pressure(self, steam_pressure: float = 0.0) -> Dict[str, Any]:
         """
         设置蒸汽压力。
 
         Args:
-            steam_pressure[设置蒸汽压力]: 设置蒸汽压力。
+            steam_pressure[蒸汽压力]: 目标蒸汽压力（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置蒸汽温度")
-    def set_steam_temperature(self, steam_temperature: int = 0) -> Dict[str, Any]:
+    def set_steam_temperature(self, steam_temperature: float = 0.0) -> Dict[str, Any]:
         """
         设置蒸汽温度。
 
         Args:
-            steam_temperature[设置蒸汽温度]: 设置蒸汽温度。
+            steam_temperature[蒸汽温度]: 目标蒸汽温度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置蒸汽时间")
-    def set_steam_time(self, steam_time: int = 0) -> Dict[str, Any]:
+    def set_steam_time(self, steam_time: float = 0.0) -> Dict[str, Any]:
         """
         设置蒸汽时间。
 
         Args:
-            steam_time[设置蒸汽时间]: 设置蒸汽时间。
+            steam_time[蒸汽时间]: 目标蒸汽时间（单位依设备量程而定）。
         """
         pass
 
@@ -127,6 +127,18 @@ class SteamCleaner:
 
     @property
     @topic_config()
+    def idle(self) -> bool:
+        """空闲。"""
+        return self.data.get("idle", False)
+
+    @property
+    @topic_config()
+    def device_ready(self) -> bool:
+        """设备就绪。"""
+        return self.data.get("device_ready", False)
+
+    @property
+    @topic_config()
     def steam_generator_state(self) -> bool:
         """蒸汽发生器状态。"""
         return self.data.get("steam_generator_state", False)
@@ -145,24 +157,24 @@ class SteamCleaner:
 
     @property
     @topic_config()
-    def current_cleaning_time(self) -> int:
+    def current_cleaning_time(self) -> float:
         """实际清洗时间。"""
-        return self.data.get("current_cleaning_time", 0)
+        return self.data.get("current_cleaning_time", 0.0)
 
     @property
     @topic_config()
-    def steam_pressure_feedback(self) -> int:
+    def steam_pressure_feedback(self) -> float:
         """蒸汽压力反馈。"""
-        return self.data.get("steam_pressure_feedback", 0)
+        return self.data.get("steam_pressure_feedback", 0.0)
 
     @property
     @topic_config()
-    def steam_temperature_feedback(self) -> int:
+    def steam_temperature_feedback(self) -> float:
         """蒸汽温度反馈。"""
-        return self.data.get("steam_temperature_feedback", 0)
+        return self.data.get("steam_temperature_feedback", 0.0)
 
     @property
     @topic_config()
-    def steam_time_feedback(self) -> int:
+    def steam_time_feedback(self) -> float:
         """蒸汽时间反馈。"""
-        return self.data.get("steam_time_feedback", 0)
+        return self.data.get("steam_time_feedback", 0.0)
