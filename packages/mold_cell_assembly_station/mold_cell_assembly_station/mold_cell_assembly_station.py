@@ -33,83 +33,83 @@ class MoldCellAssemblyStation:
         self.config = config or {}
         self.data: Dict[str, Any] = {"status": "idle"}
 
-    @action(description="设置模具温度设定")
+    @action(description="设置模具温度")
     def set_mold_temperature(self, mold_temperature: float = 0.0) -> Dict[str, Any]:
         """
-        设置模具温度设定。
+        设置模具温度。
 
         Args:
-            mold_temperature[模具温度设定]: 目标模具温度设定（单位依设备量程而定）。
+            mold_temperature[模具温度]: 目标模具温度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置注塑压力设定")
+    @action(description="设置注塑压力")
     def set_injection_pressure(self, injection_pressure: float = 0.0) -> Dict[str, Any]:
         """
-        设置注塑压力设定。
+        设置注塑压力。
 
         Args:
-            injection_pressure[注塑压力设定]: 目标注塑压力设定（单位依设备量程而定）。
+            injection_pressure[注塑压力]: 目标注塑压力（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置注塑速度设定")
+    @action(description="设置注塑速度")
     def set_injection_speed(self, injection_speed: float = 0.0) -> Dict[str, Any]:
         """
-        设置注塑速度设定。
+        设置注塑速度。
 
         Args:
-            injection_speed[注塑速度设定]: 目标注塑速度设定（单位依设备量程而定）。
+            injection_speed[注塑速度]: 目标注塑速度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置保压压力设定")
+    @action(description="设置保压压力")
     def set_holding_pressure(self, holding_pressure: float = 0.0) -> Dict[str, Any]:
         """
-        设置保压压力设定。
+        设置保压压力。
 
         Args:
-            holding_pressure[保压压力设定]: 目标保压压力设定（单位依设备量程而定）。
+            holding_pressure[保压压力]: 目标保压压力（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置保压时间设定")
+    @action(description="设置保压时间")
     def set_holding_time(self, holding_time: float = 0.0) -> Dict[str, Any]:
         """
-        设置保压时间设定。
+        设置保压时间。
 
         Args:
-            holding_time[保压时间设定]: 目标保压时间设定（单位依设备量程而定）。
+            holding_time[保压时间]: 目标保压时间（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置冷却时间设定")
+    @action(description="设置冷却时间")
     def set_cooling_time(self, cooling_time: float = 0.0) -> Dict[str, Any]:
         """
-        设置冷却时间设定。
+        设置冷却时间。
 
         Args:
-            cooling_time[冷却时间设定]: 目标冷却时间设定（单位依设备量程而定）。
+            cooling_time[冷却时间]: 目标冷却时间（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置预热温度设定")
+    @action(description="设置预热温度")
     def set_preheat_temperature(self, preheat_temperature: float = 0.0) -> Dict[str, Any]:
         """
-        设置预热温度设定。
+        设置预热温度。
 
         Args:
-            preheat_temperature[预热温度设定]: 目标预热温度设定（单位依设备量程而定）。
+            preheat_temperature[预热温度]: 目标预热温度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置加热功率设定")
+    @action(description="设置加热功率")
     def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
         """
-        设置加热功率设定。
+        设置加热功率。
 
         Args:
-            heating_power[加热功率设定]: 目标加热功率设定（单位依设备量程而定）。
+            heating_power[加热功率]: 目标加热功率（单位依设备量程而定）。
         """
         pass
 

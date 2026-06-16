@@ -48,6 +48,26 @@ class RefrigeratedCentrifuge:
         """
         pass
 
+    @action(description="设置转速")
+    def set_speed(self, speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置转速。
+
+        Args:
+            speed[转速]: 目标转速（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置温度")
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[温度]: 目标温度（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="离心")
     def centrifuge(self) -> Dict[str, Any]:
         """离心。"""
@@ -90,21 +110,9 @@ class RefrigeratedCentrifuge:
 
     @property
     @topic_config()
-    def target_speed(self) -> float:
-        """目标转速。"""
-        return self.data.get("target_speed", 0.0)
-
-    @property
-    @topic_config()
     def current_speed(self) -> float:
         """实际转速。"""
         return self.data.get("current_speed", 0.0)
-
-    @property
-    @topic_config()
-    def target_temperature(self) -> float:
-        """目标温度。"""
-        return self.data.get("target_temperature", 0.0)
 
     @property
     @topic_config()

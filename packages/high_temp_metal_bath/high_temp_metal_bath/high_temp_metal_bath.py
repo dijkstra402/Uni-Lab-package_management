@@ -38,6 +38,16 @@ class HighTempMetalBath:
         """初始化。"""
         pass
 
+    @action(description="设置温度")
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[温度]: 目标温度（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="加热启动")
     def start_heating(self) -> Dict[str, Any]:
         """加热启动。"""
@@ -71,12 +81,6 @@ class HighTempMetalBath:
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
-
-    @property
-    @topic_config()
-    def target_temperature(self) -> float:
-        """目标温度。"""
-        return self.data.get("target_temperature", 0.0)
 
     @property
     @topic_config()

@@ -48,16 +48,6 @@ class OzoneSterilizer:
         """
         pass
 
-    @action(description="设置臭氧浓度")
-    def set_ozone_concentration(self, ozone_concentration: float = 0.0) -> Dict[str, Any]:
-        """
-        设置臭氧浓度。
-
-        Args:
-            ozone_concentration[臭氧浓度]: 目标臭氧浓度（单位依设备量程而定）。
-        """
-        pass
-
     @action(description="设置消毒时间")
     def set_disinfection_time(self, disinfection_time: float = 0.0) -> Dict[str, Any]:
         """
@@ -65,6 +55,16 @@ class OzoneSterilizer:
 
         Args:
             disinfection_time[消毒时间]: 目标消毒时间（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置臭氧浓度")
+    def set_ozone_concentration(self, ozone_concentration: float = 0.0) -> Dict[str, Any]:
+        """
+        设置臭氧浓度。
+
+        Args:
+            ozone_concentration[臭氧浓度]: 目标臭氧浓度（单位依设备量程而定）。
         """
         pass
 

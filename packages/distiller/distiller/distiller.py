@@ -48,6 +48,16 @@ class Distiller:
         """
         pass
 
+    @action(description="设置温度")
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[温度]: 目标温度（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="蒸馏")
     def distill(self) -> Dict[str, Any]:
         """蒸馏。"""
@@ -90,12 +100,6 @@ class Distiller:
 
     @property
     @topic_config()
-    def heating_temperature(self) -> float:
-        """加热温度。"""
-        return self.data.get("heating_temperature", 0.0)
-
-    @property
-    @topic_config()
     def current_temperature(self) -> float:
         """实际温度。"""
         return self.data.get("current_temperature", 0.0)
@@ -105,9 +109,3 @@ class Distiller:
     def distillation_flow(self) -> float:
         """蒸馏流量。"""
         return self.data.get("distillation_flow", 0.0)
-
-    @property
-    @topic_config()
-    def condensation_temperature(self) -> float:
-        """冷凝温度。"""
-        return self.data.get("condensation_temperature", 0.0)

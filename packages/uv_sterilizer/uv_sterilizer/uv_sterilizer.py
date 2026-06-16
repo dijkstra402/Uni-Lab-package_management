@@ -48,16 +48,6 @@ class UvSterilizer:
         """
         pass
 
-    @action(description="设置紫外灯功率")
-    def set_uv_lamp_power(self, uv_lamp_power: float = 0.0) -> Dict[str, Any]:
-        """
-        设置紫外灯功率。
-
-        Args:
-            uv_lamp_power[紫外灯功率]: 目标紫外灯功率（单位依设备量程而定）。
-        """
-        pass
-
     @action(description="设置消毒时间")
     def set_disinfection_time(self, disinfection_time: float = 0.0) -> Dict[str, Any]:
         """
@@ -65,6 +55,16 @@ class UvSterilizer:
 
         Args:
             disinfection_time[消毒时间]: 目标消毒时间（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置紫外灯功率")
+    def set_uv_lamp_power(self, uv_lamp_power: float = 0.0) -> Dict[str, Any]:
+        """
+        设置紫外灯功率。
+
+        Args:
+            uv_lamp_power[紫外灯功率]: 目标紫外灯功率（单位依设备量程而定）。
         """
         pass
 

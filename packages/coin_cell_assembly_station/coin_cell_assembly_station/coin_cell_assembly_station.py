@@ -118,13 +118,13 @@ class CoinCellAssemblyStation:
         """
         pass
 
-    @action(description="设置组装参数：极片堆叠方式(7/8)")
-    def set_assembly_parameter_electrode_stacking_mode_7_8(self, assembly_parameter_electrode_stacking_mode_7_8: int = 0) -> Dict[str, Any]:
+    @action(description="设置极片堆叠方式")
+    def set_electrode_stacking_mode(self, electrode_stacking_mode: str = "") -> Dict[str, Any]:
         """
-        设置组装参数：极片堆叠方式(7/8)。
+        设置极片堆叠方式。
 
         Args:
-            assembly_parameter_electrode_stacking_mode_7_8[组装参数：极片堆叠方式(7/8)]: 目标组装参数：极片堆叠方式(7/8)（单位依设备量程而定）。
+            electrode_stacking_mode[极片堆叠方式]: 目标极片堆叠方式（具体取值由设备型号定义）。
         """
         pass
 
@@ -159,32 +159,32 @@ class CoinCellAssemblyStation:
         pass
 
     @action(description="设置10mm正极片厚度")
-    def set_v_10mm_cathode_sheet_thickness(self, v_10mm_cathode_sheet_thickness: float = 0.0) -> Dict[str, Any]:
+    def set_cathode_sheet_thickness_10mm(self, cathode_sheet_thickness_10mm: float = 0.0) -> Dict[str, Any]:
         """
         设置10mm正极片厚度。
 
         Args:
-            v_10mm_cathode_sheet_thickness[10mm正极片厚度]: 目标10mm正极片厚度（单位依设备量程而定）。
+            cathode_sheet_thickness_10mm[10mm正极片厚度]: 目标10mm正极片厚度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置12mm正极片厚度")
-    def set_v_12mm_cathode_sheet_thickness(self, v_12mm_cathode_sheet_thickness: float = 0.0) -> Dict[str, Any]:
+    def set_cathode_sheet_thickness_12mm(self, cathode_sheet_thickness_12mm: float = 0.0) -> Dict[str, Any]:
         """
         设置12mm正极片厚度。
 
         Args:
-            v_12mm_cathode_sheet_thickness[12mm正极片厚度]: 目标12mm正极片厚度（单位依设备量程而定）。
+            cathode_sheet_thickness_12mm[12mm正极片厚度]: 目标12mm正极片厚度（单位依设备量程而定）。
         """
         pass
 
     @action(description="设置16mm正极片厚度")
-    def set_v_16mm_cathode_sheet_thickness(self, v_16mm_cathode_sheet_thickness: float = 0.0) -> Dict[str, Any]:
+    def set_cathode_sheet_thickness_16mm(self, cathode_sheet_thickness_16mm: float = 0.0) -> Dict[str, Any]:
         """
         设置16mm正极片厚度。
 
         Args:
-            v_16mm_cathode_sheet_thickness[16mm正极片厚度]: 目标16mm正极片厚度（单位依设备量程而定）。
+            cathode_sheet_thickness_16mm[16mm正极片厚度]: 目标16mm正极片厚度（单位依设备量程而定）。
         """
         pass
 
@@ -304,12 +304,6 @@ class CoinCellAssemblyStation:
 
     @property
     @topic_config()
-    def cell_assembly_press_force(self) -> int:
-        """电池组装压制力。"""
-        return self.data.get("cell_assembly_press_force", 0)
-
-    @property
-    @topic_config()
     def electrolyte_qr_serial(self) -> str:
         """电解液二维码序列号。"""
         return self.data.get("electrolyte_qr_serial", "")
@@ -364,9 +358,9 @@ class CoinCellAssemblyStation:
 
     @property
     @topic_config()
-    def assembly_parameter_electrode_stacking_mode_7_8(self) -> int:
+    def electrode_stacking_mode(self) -> str:
         """组装参数：极片堆叠方式(7/8)。"""
-        return self.data.get("assembly_parameter_electrode_stacking_mode_7_8", 0)
+        return self.data.get("electrode_stacking_mode", "")
 
     @property
     @topic_config()
@@ -403,18 +397,6 @@ class CoinCellAssemblyStation:
     def electrolyte_status_code(self) -> int:
         """电解液状态码。"""
         return self.data.get("electrolyte_status_code", 0)
-
-    @property
-    @topic_config()
-    def ocv_ok_lower_limit(self) -> float:
-        """开路电压OK下限值。"""
-        return self.data.get("ocv_ok_lower_limit", 0.0)
-
-    @property
-    @topic_config()
-    def ocv_ok_upper_limit(self) -> float:
-        """开路电压OK上限值。"""
-        return self.data.get("ocv_ok_upper_limit", 0.0)
 
     @property
     @topic_config()

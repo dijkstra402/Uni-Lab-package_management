@@ -58,6 +58,26 @@ class OverheadLossInWeightFeeder:
         """
         pass
 
+    @action(description="设置投料量")
+    def set_charge_amount(self, charge_amount: float = 0.0) -> Dict[str, Any]:
+        """
+        设置投料量。
+
+        Args:
+            charge_amount[投料量]: 目标投料量（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置失重率")
+    def set_weight_loss_rate(self, weight_loss_rate: float = 0.0) -> Dict[str, Any]:
+        """
+        设置失重率。
+
+        Args:
+            weight_loss_rate[失重率]: 目标失重率（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="投料")
     def charge(self) -> Dict[str, Any]:
         """投料。"""

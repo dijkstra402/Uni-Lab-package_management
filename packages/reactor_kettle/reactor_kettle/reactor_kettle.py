@@ -58,6 +58,16 @@ class ReactorKettle:
         """
         pass
 
+    @action(description="设置搅拌转速")
+    def set_stir_speed(self, stir_speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置搅拌转速。
+
+        Args:
+            stir_speed[搅拌转速]: 目标搅拌转速（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="搅拌启动")
     def start_stirring(self) -> Dict[str, Any]:
         """搅拌启动。"""

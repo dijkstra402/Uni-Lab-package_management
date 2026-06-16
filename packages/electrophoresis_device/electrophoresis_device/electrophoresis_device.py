@@ -48,6 +48,36 @@ class ElectrophoresisDevice:
         """
         pass
 
+    @action(description="设置电压")
+    def set_voltage(self, voltage: float = 0.0) -> Dict[str, Any]:
+        """
+        设置电压。
+
+        Args:
+            voltage[电压]: 目标电压（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置电流")
+    def set_current(self, current: float = 0.0) -> Dict[str, Any]:
+        """
+        设置电流。
+
+        Args:
+            current[电流]: 目标电流（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置功率")
+    def set_power(self, power: float = 0.0) -> Dict[str, Any]:
+        """
+        设置功率。
+
+        Args:
+            power[功率]: 目标功率（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="电泳")
     def electrophoresis(self) -> Dict[str, Any]:
         """电泳。"""
@@ -91,18 +121,6 @@ class ElectrophoresisDevice:
 
     @property
     @topic_config()
-    def target_current(self) -> float:
-        """目标电流。"""
-        return self.data.get("target_current", 0.0)
-
-    @property
-    @topic_config()
     def current_current(self) -> float:
         """实际电流。"""
         return self.data.get("current_current", 0.0)
-
-    @property
-    @topic_config()
-    def power_limit(self) -> float:
-        """功率限制。"""
-        return self.data.get("power_limit", 0.0)

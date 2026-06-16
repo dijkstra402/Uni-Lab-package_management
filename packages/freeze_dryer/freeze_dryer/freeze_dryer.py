@@ -58,6 +58,16 @@ class FreezeDryer:
         """
         pass
 
+    @action(description="设置冷阱温度")
+    def set_cold_trap_temp(self, cold_trap_temp: float = 0.0) -> Dict[str, Any]:
+        """
+        设置冷阱温度。
+
+        Args:
+            cold_trap_temp[冷阱温度]: 目标冷阱温度（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="冻干")
     def freeze_dry(self) -> Dict[str, Any]:
         """冻干。"""
@@ -97,12 +107,6 @@ class FreezeDryer:
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
-
-    @property
-    @topic_config()
-    def cold_trap_temp(self) -> float:
-        """冷阱温度。"""
-        return self.data.get("cold_trap_temp", 0.0)
 
     @property
     @topic_config()

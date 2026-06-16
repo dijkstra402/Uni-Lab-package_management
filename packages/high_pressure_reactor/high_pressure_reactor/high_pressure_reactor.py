@@ -48,6 +48,16 @@ class HighPressureReactor:
         """
         pass
 
+    @action(description="设置充压")
+    def set_pressurization(self, pressurization: float = 0.0) -> Dict[str, Any]:
+        """
+        设置充压。
+
+        Args:
+            pressurization[充压]: 目标充压（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="进料泵")
     def feed_pump(self) -> Dict[str, Any]:
         """进料泵。"""

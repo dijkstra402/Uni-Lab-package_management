@@ -78,6 +78,16 @@ class MicrowaveOven:
         """
         pass
 
+    @action(description="设置功率")
+    def set_power(self, power: float = 0.0) -> Dict[str, Any]:
+        """
+        设置功率。
+
+        Args:
+            power[功率]: 目标功率（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""

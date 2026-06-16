@@ -38,6 +38,26 @@ class DryBlockTempCalibrator:
         """初始化。"""
         pass
 
+    @action(description="设置温度")
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[温度]: 目标温度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置恒温时间")
+    def set_hold_time(self, hold_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置恒温时间。
+
+        Args:
+            hold_time[恒温时间]: 目标恒温时间（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="运行倒计时")
     def run_countdown(self) -> Dict[str, Any]:
         """运行倒计时。"""
@@ -86,12 +106,6 @@ class DryBlockTempCalibrator:
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
-
-    @property
-    @topic_config()
-    def target_temperature(self) -> float:
-        """目标温度。"""
-        return self.data.get("target_temperature", 0.0)
 
     @property
     @topic_config()

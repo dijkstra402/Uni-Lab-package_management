@@ -48,6 +48,16 @@ class RotaryEvaporator:
         """
         pass
 
+    @action(description="设置水浴温度")
+    def set_water_bath_temp(self, water_bath_temp: float = 0.0) -> Dict[str, Any]:
+        """
+        设置水浴温度。
+
+        Args:
+            water_bath_temp[水浴温度]: 目标水浴温度（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="蒸发")
     def evaporate(self) -> Dict[str, Any]:
         """蒸发。"""
@@ -87,12 +97,6 @@ class RotaryEvaporator:
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
-
-    @property
-    @topic_config()
-    def water_bath_temp(self) -> float:
-        """水浴温度。"""
-        return self.data.get("water_bath_temp", 0.0)
 
     @property
     @topic_config()

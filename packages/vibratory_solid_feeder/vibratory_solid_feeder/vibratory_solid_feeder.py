@@ -78,6 +78,16 @@ class VibratorySolidFeeder:
         """
         pass
 
+    @action(description="设置加料量")
+    def set_feed_amount(self, feed_amount: float = 0.0) -> Dict[str, Any]:
+        """
+        设置加料量。
+
+        Args:
+            feed_amount[加料量]: 目标加料量（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="加料")
     def feed(self) -> Dict[str, Any]:
         """加料。"""

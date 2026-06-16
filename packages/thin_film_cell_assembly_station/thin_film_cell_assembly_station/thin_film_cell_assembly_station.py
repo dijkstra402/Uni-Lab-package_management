@@ -33,143 +33,143 @@ class ThinFilmCellAssemblyStation:
         self.config = config or {}
         self.data: Dict[str, Any] = {"status": "idle"}
 
-    @action(description="设置沉积温度设定")
+    @action(description="设置沉积温度")
     def set_deposition_temperature(self, deposition_temperature: float = 0.0) -> Dict[str, Any]:
         """
-        设置沉积温度设定。
+        设置沉积温度。
 
         Args:
-            deposition_temperature[沉积温度设定]: 目标沉积温度设定（单位依设备量程而定）。
+            deposition_temperature[沉积温度]: 目标沉积温度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置沉积速率设定")
+    @action(description="设置沉积速率")
     def set_deposition_rate(self, deposition_rate: float = 0.0) -> Dict[str, Any]:
         """
-        设置沉积速率设定。
+        设置沉积速率。
 
         Args:
-            deposition_rate[沉积速率设定]: 目标沉积速率设定（单位依设备量程而定）。
+            deposition_rate[沉积速率]: 目标沉积速率（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置沉积时间设定")
+    @action(description="设置沉积时间")
     def set_deposition_time(self, deposition_time: float = 0.0) -> Dict[str, Any]:
         """
-        设置沉积时间设定。
+        设置沉积时间。
 
         Args:
-            deposition_time[沉积时间设定]: 目标沉积时间设定（单位依设备量程而定）。
+            deposition_time[沉积时间]: 目标沉积时间（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置溅射功率设定")
+    @action(description="设置溅射功率")
     def set_sputter_power(self, sputter_power: float = 0.0) -> Dict[str, Any]:
         """
-        设置溅射功率设定。
+        设置溅射功率。
 
         Args:
-            sputter_power[溅射功率设定]: 目标溅射功率设定（单位依设备量程而定）。
+            sputter_power[溅射功率]: 目标溅射功率（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置溅射气压设定")
+    @action(description="设置溅射气压")
     def set_sputter_pressure(self, sputter_pressure: float = 0.0) -> Dict[str, Any]:
         """
-        设置溅射气压设定。
+        设置溅射气压。
 
         Args:
-            sputter_pressure[溅射气压设定]: 目标溅射气压设定（单位依设备量程而定）。
+            sputter_pressure[溅射气压]: 目标溅射气压（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置退火温度设定")
+    @action(description="设置退火温度")
     def set_annealing_temperature(self, annealing_temperature: float = 0.0) -> Dict[str, Any]:
         """
-        设置退火温度设定。
+        设置退火温度。
 
         Args:
-            annealing_temperature[退火温度设定]: 目标退火温度设定（单位依设备量程而定）。
+            annealing_temperature[退火温度]: 目标退火温度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置退火时间设定")
+    @action(description="设置退火时间")
     def set_annealing_time(self, annealing_time: float = 0.0) -> Dict[str, Any]:
         """
-        设置退火时间设定。
+        设置退火时间。
 
         Args:
-            annealing_time[退火时间设定]: 目标退火时间设定（单位依设备量程而定）。
+            annealing_time[退火时间]: 目标退火时间（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置真空度设定")
+    @action(description="设置真空度")
     def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
         """
-        设置真空度设定。
+        设置真空度。
 
         Args:
-            vacuum[真空度设定]: 目标真空度设定（单位依设备量程而定）。
+            vacuum[真空度]: 目标真空度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置Ar气流量设定")
+    @action(description="设置Ar气流量")
     def set_ar_gas_flow(self, ar_gas_flow: float = 0.0) -> Dict[str, Any]:
         """
-        设置Ar气流量设定。
+        设置Ar气流量。
 
         Args:
-            ar_gas_flow[Ar气流量设定]: 目标Ar气流量设定（单位依设备量程而定）。
+            ar_gas_flow[Ar气流量]: 目标Ar气流量（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置O2气流量设定")
+    @action(description="设置O2气流量")
     def set_o2_gas_flow(self, o2_gas_flow: float = 0.0) -> Dict[str, Any]:
         """
-        设置O2气流量设定。
+        设置O2气流量。
 
         Args:
-            o2_gas_flow[O2气流量设定]: 目标O2气流量设定（单位依设备量程而定）。
+            o2_gas_flow[O2气流量]: 目标O2气流量（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置N2气流量设定")
+    @action(description="设置N2气流量")
     def set_n2_gas_flow(self, n2_gas_flow: float = 0.0) -> Dict[str, Any]:
         """
-        设置N2气流量设定。
+        设置N2气流量。
 
         Args:
-            n2_gas_flow[N2气流量设定]: 目标N2气流量设定（单位依设备量程而定）。
+            n2_gas_flow[N2气流量]: 目标N2气流量（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置气体分压比设定")
+    @action(description="设置气体分压比")
     def set_gas_partial_pressure_ratio(self, gas_partial_pressure_ratio: float = 0.0) -> Dict[str, Any]:
         """
-        设置气体分压比设定。
+        设置气体分压比。
 
         Args:
-            gas_partial_pressure_ratio[气体分压比设定]: 目标气体分压比设定（单位依设备量程而定）。
+            gas_partial_pressure_ratio[气体分压比]: 目标气体分压比（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置薄膜厚度设定")
+    @action(description="设置薄膜厚度")
     def set_film_thickness(self, film_thickness: float = 0.0) -> Dict[str, Any]:
         """
-        设置薄膜厚度设定。
+        设置薄膜厚度。
 
         Args:
-            film_thickness[薄膜厚度设定]: 目标薄膜厚度设定（单位依设备量程而定）。
+            film_thickness[薄膜厚度]: 目标薄膜厚度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置射频功率设定")
+    @action(description="设置射频功率")
     def set_rf_power(self, rf_power: float = 0.0) -> Dict[str, Any]:
         """
-        设置射频功率设定。
+        设置射频功率。
 
         Args:
-            rf_power[射频功率设定]: 目标射频功率设定（单位依设备量程而定）。
+            rf_power[射频功率]: 目标射频功率（单位依设备量程而定）。
         """
         pass
 

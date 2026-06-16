@@ -58,6 +58,16 @@ class Centrifuge:
         """
         pass
 
+    @action(description="设置转速")
+    def set_speed(self, speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置转速。
+
+        Args:
+            speed[转速]: 目标转速（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="离心")
     def centrifuge(self) -> Dict[str, Any]:
         """离心。"""
@@ -97,12 +107,6 @@ class Centrifuge:
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
-
-    @property
-    @topic_config()
-    def target_speed(self) -> float:
-        """目标转速。"""
-        return self.data.get("target_speed", 0.0)
 
     @property
     @topic_config()

@@ -48,6 +48,16 @@ class SprayWasher:
         """
         pass
 
+    @action(description="设置清洗时间")
+    def set_cleaning_time(self, cleaning_time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置清洗时间。
+
+        Args:
+            cleaning_time[清洗时间]: 目标清洗时间（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="设置清洗温度")
     def set_cleaning_temperature(self, cleaning_temperature: float = 0.0) -> Dict[str, Any]:
         """

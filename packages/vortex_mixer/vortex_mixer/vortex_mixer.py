@@ -88,6 +88,26 @@ class VortexMixer:
         """
         pass
 
+    @action(description="设置循环次数")
+    def set_cycle_count(self, cycle_count: int = 0) -> Dict[str, Any]:
+        """
+        设置循环次数。
+
+        Args:
+            cycle_count[循环次数]: 目标循环次数（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置时间")
+    def set_time(self, time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置时间。
+
+        Args:
+            time[时间]: 目标时间（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="混匀")
     def mix(self) -> Dict[str, Any]:
         """混匀。"""

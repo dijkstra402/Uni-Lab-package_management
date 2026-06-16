@@ -58,6 +58,16 @@ class PureWaterSystem:
         """
         pass
 
+    @action(description="设置水质电阻率")
+    def set_water_resistivity(self, water_resistivity: float = 0.0) -> Dict[str, Any]:
+        """
+        设置水质电阻率。
+
+        Args:
+            water_resistivity[水质电阻率]: 目标水质电阻率（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="制水")
     def produce_water(self) -> Dict[str, Any]:
         """制水。"""

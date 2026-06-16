@@ -48,6 +48,16 @@ class NitrogenEvaporator:
         """
         pass
 
+    @action(description="设置温度")
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[温度]: 目标温度（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="氮吹")
     def nitrogen_blow(self) -> Dict[str, Any]:
         """氮吹。"""
@@ -87,12 +97,6 @@ class NitrogenEvaporator:
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
-
-    @property
-    @topic_config()
-    def heating_temperature(self) -> float:
-        """加热温度。"""
-        return self.data.get("heating_temperature", 0.0)
 
     @property
     @topic_config()

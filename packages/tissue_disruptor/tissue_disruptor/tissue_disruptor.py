@@ -48,6 +48,16 @@ class TissueDisruptor:
         """
         pass
 
+    @action(description="设置转速")
+    def set_speed(self, speed: float = 0.0) -> Dict[str, Any]:
+        """
+        设置转速。
+
+        Args:
+            speed[转速]: 目标转速（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="破碎")
     def disrupt(self) -> Dict[str, Any]:
         """破碎。"""

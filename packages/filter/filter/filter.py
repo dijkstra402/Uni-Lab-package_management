@@ -48,6 +48,26 @@ class Filter:
         """
         pass
 
+    @action(description="设置压力")
+    def set_pressure(self, pressure: float = 0.0) -> Dict[str, Any]:
+        """
+        设置压力。
+
+        Args:
+            pressure[压力]: 目标压力（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置流量")
+    def set_flow(self, flow: float = 0.0) -> Dict[str, Any]:
+        """
+        设置流量。
+
+        Args:
+            flow[流量]: 目标流量（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="过滤")
     def filter(self) -> Dict[str, Any]:
         """过滤。"""
@@ -90,21 +110,9 @@ class Filter:
 
     @property
     @topic_config()
-    def filtration_pressure(self) -> float:
-        """过滤压力。"""
-        return self.data.get("filtration_pressure", 0.0)
-
-    @property
-    @topic_config()
     def current_pressure(self) -> float:
         """实际压力。"""
         return self.data.get("current_pressure", 0.0)
-
-    @property
-    @topic_config()
-    def filtration_flow(self) -> float:
-        """过滤流量。"""
-        return self.data.get("filtration_flow", 0.0)
 
     @property
     @topic_config()

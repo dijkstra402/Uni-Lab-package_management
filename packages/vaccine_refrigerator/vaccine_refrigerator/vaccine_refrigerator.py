@@ -58,6 +58,16 @@ class VaccineRefrigerator:
         """
         pass
 
+    @action(description="设置报警温度")
+    def set_alarm_temperature(self, alarm_temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置报警温度。
+
+        Args:
+            alarm_temperature[报警温度]: 目标报警温度（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""
@@ -121,15 +131,3 @@ class VaccineRefrigerator:
     def temperature_logging_interval(self) -> float:
         """温度记录间隔。"""
         return self.data.get("temperature_logging_interval", 0.0)
-
-    @property
-    @topic_config()
-    def alarm_temperature_upper_limit(self) -> float:
-        """报警温度上限。"""
-        return self.data.get("alarm_temperature_upper_limit", 0.0)
-
-    @property
-    @topic_config()
-    def alarm_temperature_lower_limit(self) -> float:
-        """报警温度下限。"""
-        return self.data.get("alarm_temperature_lower_limit", 0.0)

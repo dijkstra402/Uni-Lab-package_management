@@ -68,6 +68,16 @@ class SolidWeighingStation:
         """
         pass
 
+    @action(description="设置称量重量")
+    def set_weighed_weight(self, weighed_weight: float = 0.0) -> Dict[str, Any]:
+        """
+        设置称量重量。
+
+        Args:
+            weighed_weight[称量重量]: 目标称量重量（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="称量")
     def weigh(self) -> Dict[str, Any]:
         """称量。"""

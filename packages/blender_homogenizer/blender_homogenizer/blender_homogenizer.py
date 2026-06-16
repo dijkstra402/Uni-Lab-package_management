@@ -98,6 +98,16 @@ class BlenderHomogenizer:
         """
         pass
 
+    @action(description="设置时间")
+    def set_time(self, time: float = 0.0) -> Dict[str, Any]:
+        """
+        设置时间。
+
+        Args:
+            time[时间]: 目标时间（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="匀浆")
     def blend(self) -> Dict[str, Any]:
         """匀浆。"""

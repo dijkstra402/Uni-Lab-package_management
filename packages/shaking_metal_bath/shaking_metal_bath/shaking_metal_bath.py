@@ -38,6 +38,16 @@ class ShakingMetalBath:
         """初始化。"""
         pass
 
+    @action(description="设置温度")
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[温度]: 目标温度（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="振荡启动")
     def start_oscillation(self) -> Dict[str, Any]:
         """振荡启动。"""
@@ -82,12 +92,6 @@ class ShakingMetalBath:
     def oscillation_speed(self) -> float:
         """振荡速度。"""
         return self.data.get("oscillation_speed", 0.0)
-
-    @property
-    @topic_config()
-    def target_temperature(self) -> float:
-        """目标温度。"""
-        return self.data.get("target_temperature", 0.0)
 
     @property
     @topic_config()

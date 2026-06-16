@@ -68,6 +68,16 @@ class AutoTitrator:
         """
         pass
 
+    @action(description="设置滴定液体积")
+    def set_titrant_volume(self, titrant_volume: float = 0.0) -> Dict[str, Any]:
+        """
+        设置滴定液体积。
+
+        Args:
+            titrant_volume[滴定液体积]: 目标滴定液体积（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="滴定启动")
     def start_titration(self) -> Dict[str, Any]:
         """滴定启动。"""
@@ -129,12 +139,6 @@ class AutoTitrator:
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
-
-    @property
-    @topic_config()
-    def titrant_volume(self) -> float:
-        """滴定液体积。"""
-        return self.data.get("titrant_volume", 0.0)
 
     @property
     @topic_config()

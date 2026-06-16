@@ -58,6 +58,16 @@ class UltrasonicDisruptor:
         """
         pass
 
+    @action(description="设置功率")
+    def set_power(self, power: float = 0.0) -> Dict[str, Any]:
+        """
+        设置功率。
+
+        Args:
+            power[功率]: 目标功率（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="超声")
     def ultrasonicate(self) -> Dict[str, Any]:
         """超声。"""
@@ -92,12 +102,6 @@ class UltrasonicDisruptor:
     def fault_code(self) -> int:
         """故障代码。"""
         return self.data.get("fault_code", 0)
-
-    @property
-    @topic_config()
-    def ultrasonic_power(self) -> float:
-        """超声功率。"""
-        return self.data.get("ultrasonic_power", 0.0)
 
     @property
     @topic_config()

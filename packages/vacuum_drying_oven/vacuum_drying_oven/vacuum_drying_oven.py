@@ -78,6 +78,26 @@ class VacuumDryingOven:
         """
         pass
 
+    @action(description="设置温度")
+    def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
+        """
+        设置温度。
+
+        Args:
+            temperature[温度]: 目标温度（单位依设备量程而定）。
+        """
+        pass
+
+    @action(description="设置真空度")
+    def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
+        """
+        设置真空度。
+
+        Args:
+            vacuum[真空度]: 目标真空度（单位依设备量程而定）。
+        """
+        pass
+
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""
@@ -121,21 +141,9 @@ class VacuumDryingOven:
 
     @property
     @topic_config()
-    def target_temperature(self) -> float:
-        """目标温度。"""
-        return self.data.get("target_temperature", 0.0)
-
-    @property
-    @topic_config()
     def current_temperature(self) -> float:
         """当前温度。"""
         return self.data.get("current_temperature", 0.0)
-
-    @property
-    @topic_config()
-    def target_vacuum(self) -> float:
-        """目标真空度。"""
-        return self.data.get("target_vacuum", 0.0)
 
     @property
     @topic_config()

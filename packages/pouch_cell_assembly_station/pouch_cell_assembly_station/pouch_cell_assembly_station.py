@@ -33,103 +33,103 @@ class PouchCellAssemblyStation:
         self.config = config or {}
         self.data: Dict[str, Any] = {"status": "idle"}
 
-    @action(description="设置封装温度设定")
+    @action(description="设置封装温度")
     def set_packaging_temperature(self, packaging_temperature: float = 0.0) -> Dict[str, Any]:
         """
-        设置封装温度设定。
+        设置封装温度。
 
         Args:
-            packaging_temperature[封装温度设定]: 目标封装温度设定（单位依设备量程而定）。
+            packaging_temperature[封装温度]: 目标封装温度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置封装压力设定")
+    @action(description="设置封装压力")
     def set_packaging_pressure(self, packaging_pressure: float = 0.0) -> Dict[str, Any]:
         """
-        设置封装压力设定。
+        设置封装压力。
 
         Args:
-            packaging_pressure[封装压力设定]: 目标封装压力设定（单位依设备量程而定）。
+            packaging_pressure[封装压力]: 目标封装压力（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置封装时间设定")
+    @action(description="设置封装时间")
     def set_packaging_time(self, packaging_time: float = 0.0) -> Dict[str, Any]:
         """
-        设置封装时间设定。
+        设置封装时间。
 
         Args:
-            packaging_time[封装时间设定]: 目标封装时间设定（单位依设备量程而定）。
+            packaging_time[封装时间]: 目标封装时间（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置热压温度设定")
+    @action(description="设置热压温度")
     def set_hot_press_temperature(self, hot_press_temperature: float = 0.0) -> Dict[str, Any]:
         """
-        设置热压温度设定。
+        设置热压温度。
 
         Args:
-            hot_press_temperature[热压温度设定]: 目标热压温度设定（单位依设备量程而定）。
+            hot_press_temperature[热压温度]: 目标热压温度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置热压压力设定")
+    @action(description="设置热压压力")
     def set_hot_press_pressure(self, hot_press_pressure: float = 0.0) -> Dict[str, Any]:
         """
-        设置热压压力设定。
+        设置热压压力。
 
         Args:
-            hot_press_pressure[热压压力设定]: 目标热压压力设定（单位依设备量程而定）。
+            hot_press_pressure[热压压力]: 目标热压压力（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置热压时间设定")
+    @action(description="设置热压时间")
     def set_hot_press_time(self, hot_press_time: float = 0.0) -> Dict[str, Any]:
         """
-        设置热压时间设定。
+        设置热压时间。
 
         Args:
-            hot_press_time[热压时间设定]: 目标热压时间设定（单位依设备量程而定）。
+            hot_press_time[热压时间]: 目标热压时间（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置裁切速度设定")
+    @action(description="设置裁切速度")
     def set_cutting_speed(self, cutting_speed: float = 0.0) -> Dict[str, Any]:
         """
-        设置裁切速度设定。
+        设置裁切速度。
 
         Args:
-            cutting_speed[裁切速度设定]: 目标裁切速度设定（单位依设备量程而定）。
+            cutting_speed[裁切速度]: 目标裁切速度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置真空度设定")
+    @action(description="设置真空度")
     def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
         """
-        设置真空度设定。
+        设置真空度。
 
         Args:
-            vacuum[真空度设定]: 目标真空度设定（单位依设备量程而定）。
+            vacuum[真空度]: 目标真空度（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置冷却水温设定")
+    @action(description="设置冷却水温")
     def set_cooling_water_temp(self, cooling_water_temp: float = 0.0) -> Dict[str, Any]:
         """
-        设置冷却水温设定。
+        设置冷却水温。
 
         Args:
-            cooling_water_temp[冷却水温设定]: 目标冷却水温设定（单位依设备量程而定）。
+            cooling_water_temp[冷却水温]: 目标冷却水温（单位依设备量程而定）。
         """
         pass
 
-    @action(description="设置加热功率设定")
+    @action(description="设置加热功率")
     def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
         """
-        设置加热功率设定。
+        设置加热功率。
 
         Args:
-            heating_power[加热功率设定]: 目标加热功率设定（单位依设备量程而定）。
+            heating_power[加热功率]: 目标加热功率（单位依设备量程而定）。
         """
         pass
 
