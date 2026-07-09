@@ -10,3 +10,4 @@ venv/
 .env
 *.pkl
 unilabos_data/
+.history/
