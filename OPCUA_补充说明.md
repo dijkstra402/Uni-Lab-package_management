@@ -26,7 +26,8 @@
 
 - **列结构不变**：`设备大类, device_id, 类型, 英文名, 中文描述, 参数(名:类型), PLC节点, 交互模式`（8 列）
 - **交互模式仍为三分类**：`写触发→等完成→复位` / `写设定值` / `读状态`
-- **英文名 snake_case、PLC 节点 Pascal_Case_With_Underscores**：与生成器 (`generate_plc_drivers.py`) 的 `pascal()` 规则一致
+- **英文名 snake_case**：Python 类/方法名沿用此列
+- **PLC 节点采用中文命名**（**本次全量重写，对齐 OPCUA 通信协议**，见第 10 节）
 - **`(Kind|EnName)` 唯一性**：脚本按 `(类型, 英文名)` 对每个 `device_id` 去重，OPCUA 中已在 CSV 内的变量自动跳过
 - **不修改已有行**：新条目**追加**在对应 `device_id` 现有块末尾，不改动已有条目的任何字段；重跑 `generate_plc_drivers.py` 无需担心节点漂移
 - **多参数 setpoint 用序列化字符串**：CSV 无引号语义，`参数(名:类型)` 中不能出现逗号；因此如"20 段温度程序"，用 `program_segment:str` 一个 str 参数承载序列化字符串，而非 `segment:int,time:float,temperature:float` 这样破坏 CSV 分隔的写法
@@ -218,7 +219,54 @@ OPC UA 中的"目标 / 实际 / 偏差 / 累计运行时间 / 校准点"等数�
 
 | 文件 | 变更 |
 |------|-----|
-| `device_templates_actions.csv` | 2372 → 2666（第一轮）→ **2750**（第二轮绿标补齐）行；device_id 数 139 → 141 |
+| `device_templates_actions.csv` | 2372 → 2666（第一轮）→ 2750（第二轮绿标补齐）行；device_id 数 139 → 141；**第三轮：PLC 节点列(col 7) 全量改为中文（2749 行全部改写）** |
 | `device_templates_actions.csv.bak` | 备份：第一轮补充前版本 |
-| `device_templates_actions.csv.bak2` | 备份：第二轮绿标补充前版本（即第一轮结果） |
-| `OPCUA_补充说明.md` | 新增（本文档，含绿标 sheet 100% 覆盖核对） |
+| `device_templates_actions.csv.bak2` | 备份：第二轮绿标补充前版本 |
+| `device_templates_actions.csv.bak3` | 备份：第三轮中文节点重写前版本（即两轮补充完成后的英文节点版） |
+| `generate_plc_drivers.py` | **同步改造**：`plc_node()` 从中文描述派生中文节点；`render_action/render_property` 优先读取 CSV 中文节点；`rewrite_csv` 幂等重写（不再把中文覆盖回英文） |
+| `OPCUA_补充说明.md` | 新增（本文档） |
+
+## 10. 第三轮：PLC 节点全量中文化
+
+### 10.1 动机
+
+前两轮补充结束时，CSV 的 PLC 节点列（col 7）仍是 `Pascal_Case_With_Underscores` 英文形式（如 `Fault`、`Speed_Setpoint`、`Initialize_Trigger / Initialize_Complete`），与 OPCUA 通信协议（8 份绿标 sheet + 其它未标绿 sheet）里 PLC 侧的中文节点命名（`故障`、`转动速度设置`、`初始化触发 / 初始化完成`）不匹配。要让 CSV 真正对齐 PLC 侧 OPC UA 服务器暴露的节点，就必须把 PLC 节点列从"英文派生"改为"中文派生"。
+
+### 10.2 转换规则（与 `generate_plc_drivers.plc_node()` 一致）
+
+对每一行，按 `(kind, mode, 中文描述)` 三元组派生 PLC 节点：
+
+| 类型 | 交互模式 | PLC 节点派生规则 | 例 |
+|------|---------|-------------------|-----|
+| property | 读状态 | 中文描述**逐字保留** | `故障 / 温度超限报警 / 设备就绪` |
+| action | 写触发→等完成→复位 | `<X>触发 / <X>完成`（X = 中文描述剥掉括号内容） | `初始化触发 / 初始化完成`、`除霜触发 / 除霜完成` |
+| action | 写设定值 | `<X>设置`（若描述已为 `X设置` 则直用；若为 `设置X` 则前后调换；括号内容先剥掉） | `设置转动速度` → `转动速度设置`、`第1段程序时间设置` → `第1段程序时间设置`（原样） |
+
+含括号的特殊行处理：
+
+- `设置程序段(格式 段号:时间s:温度C 分号连接20段)` → 剥括号 → `设置程序段` → 调换 → `程序段设置`
+- `设置控制模式(CC/CV)` → 剥括号 → `设置控制模式` → 调换 → `控制模式设置`
+- `组装参数：极片堆叠方式(7/8)`（property）→ 属性用逐字保留 → `组装参数：极片堆叠方式(7/8)`
+
+### 10.3 执行结果
+
+- CSV 全量重写：**2749 行全部改写**（涵盖 property 1528 行 / action 写设定值 770 行 / action 写触发→等完成→复位 451 行）
+- 幂等性核验：用生成器同款规则重新派生一遍 col 7，与当前 CSV **0 处不一致**。重跑 `python generate_plc_drivers.py` 不会覆盖任何中文节点。
+
+### 10.4 generate_plc_drivers.py 的同步改造
+
+要让"CSV 中文节点"真正落到生成的 Python 驱动里（`packages/<id>/<id>/<id>_plc.py`），必须同步改造生成器：
+
+1. **`plc_node()` 签名扩展为 `(row_type, en, param, zh, mode)`**：优先按中文描述派生节点，回退到英文名。
+2. **`group_by_device()`** 把 CSV 的 `PLC节点` 和 `交互模式` 列一并读入 `item.node` / `item.mode`。
+3. **`render_action()`**：
+   - 设定类：若 CSV 已给出中文节点则优先采用；否则派生。
+   - 触发类：新增 `_split_trigger_complete("X触发 / X完成")` 将合并串拆成两个独立节点名 `X触发`、`X完成`，分别写入 `set_node_value(...)` 和 `_wait_until_true(...)`。
+4. **`render_property()`**：直接用 `item.node`（若为空则回退到 `desc`），保证生成的 `get_node_value("故障")` 等调用与 CSV 一致。
+5. **`rewrite_csv()`**：改为幂等——用同一份 `plc_node()` 派生规则刷新 col 7，因此从中文 CSV 出发结果仍是中文 CSV。
+
+### 10.5 影响面
+
+- **CSV**：col 7 全量中文化，其他列（英文名 / 中文描述 / 参数 / 交互模式）完全不动。Python 侧 `snake_case` 方法名（英文名列）保持不变，向上层业务代码零影响。
+- **生成的 `_plc.py`**：重跑生成器后，每个方法体内 `set_node_value(...)` / `get_node_value(...)` 的字符串参数会由英文（`"Fault"`、`"Speed_Setpoint"`、`"Initialize_Trigger"`）**改为对应中文**（`"故障"`、`"转动速度设置"`、`"初始化触发"`）。这些字符串就是 OPC UA BrowseName，与 PLC 侧一致后可直接对接。
+- **`_plc.py` 中的 `@device` 装饰器 / `@action` 装饰器 / class 名 / 方法名**：全部保持英文，Python 语法层不受影响。
