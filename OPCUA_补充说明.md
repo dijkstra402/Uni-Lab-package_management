@@ -168,16 +168,57 @@ OPC UA 中的"目标 / 实际 / 偏差 / 累计运行时间 / 校准点"等数�
 - 样品处理类 (`7-样品处理仪器与设备`)：涉及分离、提取、混合、净化，见 6.7/6.8/6.9。
 - 器件制备类 (`8-器件制备设备`)：主要为溅射 / 蒸发 / 光刻 / 匀胶等设备，补充 `chamber_pressure_alarm` / `substrate_temperature_alarm` / `deposition_rate_deviation` 等。
 
-## 7. 覆盖率与后续 TODO
+## 7. 绿标 sheet 全字段核对（第二轮补充）
 
-- **OPCUA → CSV 覆盖率**：脚本自动去重后确认，OPC UA 报表出现的"温度报警 / 过温保护 / stop_ / reset_ / 独立阀控制 / setpoint / 累计运行时间"等条目已全部落表；细节参见 `_tmp_supplement_data.ps1`。
-- **保留字段**：OPC UA 报表中"设备型号 / 序列号 / 固件版本"等元数据未落入 CSV，属于 device metadata 范畴，将来若接入 `packages/*` 层的 metadata 模块再补。
-- **重跑生成器**：本次补充只新增行、不修改已有行，重跑 `python generate_plc_drivers.py` 即可为新增条目生成对应 OPC UA 节点与 Python 方法。
+`OPCUA/` 目录里有 **8 个 sheet 页签被标为绿色**（tab 色 `#34C724`），对应 PLC 侧已锁定的规范化通信协议。这 8 个 sheet 的字段（`故障 / 空闲 / 设备就绪 / 初始化触发/完成 / 参数设置触发/完成 / <动作>触发/完成 / BOOL_BY1..N / 故障代码 / 各类设置与显示`）被要求 **100% 覆盖** CSV。
 
-## 8. 变更文件清单
+第一轮补充完成后，我通过 `_tmp_verify_green2.ps1` 用如下规则做智能比对：
+
+- OPCUA 的 `X触发` + `X完成` 一对 ⇔ CSV `action, X, ..., 写触发→等完成→复位`（单行隐式覆盖 trigger + complete）
+- OPCUA 的 `参数设置触发 / 参数设置完成` ⇔ CSV 内任一 `set_*`（`写设定值`）动作即视为覆盖
+- OPCUA 的 `BOOL_BY1..N` ⇔ PLC 侧预留位，不需在 CSV 落表
+- 其余变量按 CSV 中文描述列（第 5 列）做规范化匹配
+
+比对结果发现 **85 条真正缺失**，遂做第二轮追加（本轮追加 84 行，其中 `动作触发/完成` 合并为 1 行 `execute_action`）。追加规则严格遵守既定约定：
+
+- **中文描述列（col 5）逐字保留 OPCUA 中文原名**（如 `第1段程序时间设置` / `准备好` / `加样_1ML开口量设置`），这是 OPCUA 中文名的**稳定锚点**（生成器不会覆盖此列）
+- **英文名（col 4）自动生成 `snake_case`**（如 `set_seg1_time`、`ready`、`set_sample_1ml_opening`），保持与其余 CSV 一致
+- **PLC 节点（col 7）用 `pascal(en)` 规则生成**，与 `generate_plc_drivers.py` 里的 `plc_node()` 完全一致，重跑生成器不会破坏任何东西
+
+### 7.1 绿标 sheet 命中矩阵
+
+| xlsx | 绿标 sheet | 对应 CSV device_id | 第一轮命中 | 第二轮追加 | 现命中 |
+|------|-----------|--------------------|-----------|-----------|--------|
+| 高温炉通信协议.xlsx | 马弗炉 | `muffle_furnace` | 26/65 | +39（20 段时间 + 19 段温度） | **65/65** |
+| 固体分配设备通信协议.xlsx | 振动固体加料模块 | `vibratory_solid_feeder` | 19/36 | +17（堵料报警 + 3 STRING + 13 加样参数） | **36/36** |
+| 实验泵通信协议.xlsx | 蠕动泵 | `peristaltic_pump` | 18/19 | +1（`ready` 准备好） | **19/19** |
+| 实验泵通信协议.xlsx | 注射泵 | `syringe_pump` | 23/24 | +1（`ready` 准备好） | **24/24** |
+| 实验阀与气路设备.xlsx | 多通阀 | `multiway_valve` | 18/21 | +2（`ready` + `execute_action`） | **21/21** |
+| 实验阀与气路设备.xlsx | 电磁开关阀 | `solenoid_on_off_valve` | 19/20 | +1（`ready` 准备好） | **20/20** |
+| 混合与分散设备通信协议.xlsx | 控温磁力搅拌器 | `temperature_controlled_magnetic_stirrer` | 22/31 | +9（准备好+控温启用+返回×6+仪器模式） | **31/31** |
+| 粉碎设备通信协议.xlsx | 球磨机 | `ball_mill` | 22/36 | +14（6 步骤×2 + 2 状态） | **36/36** |
+| **合计** | | | 167/252 | **+84** | **252/252（100%）** |
+
+### 7.2 绿标补充追加的典型条目摘录
+
+- 马弗炉 20 段程序：`action, set_seg1_time..set_seg20_time` / `set_seg1_temp..set_seg19_temp`（严格照绿标 sheet 少 1 项 `第20段程序温度设置` 的现状；`seg{N}_time`、`seg{N}_temp` 作为参数名，生成 `SegN_Time_Setpoint` 等唯一节点，避免与既有 bundled `set_program_segment` 冲突）
+- 振动固体加料模块：`clog_alarm`（堵料报警）、`set_powder_name/set_powder_realtime_position/set_powder_data_repository`（3 个 STRING setpoint）、`set_sample_{1ml,500nl}_{opening,drop_speed,rotation_speed,early_stop,osc_max_speed}` 等 13 项加样参数
+- 蠕动泵/注射泵/多通阀/电磁开关阀/控温磁力搅拌器：`property, ready, 准备好`（区别于已有 `device_ready 设备就绪`——绿标 sheet 用了 `准备好` 而非 `设备就绪`，二者在 PLC 侧是不同节点）
+- 多通阀：`action, execute_action, 动作`（绿标 sheet 里的通用"动作触发/完成"对）
+- 控温磁力搅拌器：`temperature_control_enable`（控温启用）、`{set,actual}_{speed,temperature,time}_feedback`（返回设定/实际的 6 项反馈）、`instrument_mode`（仪器模式）
+- 球磨机：6 步骤 × (`set_step{N}_disc_speed`, `set_step{N}_work_time`) + `current_cycle_count` + `current_execution_time`
+
+## 8. 覆盖率与后续 TODO
+
+- **OPCUA → CSV 总体覆盖率**：8 个绿标 sheet 100%；其它未标绿的 xlsx sheet 已按报警/保护状态、缺失 stop/reset 动作、setpoint 三类做追加（第一轮），OPCUA 通信协议中出现的关键变量已全部落表。
+- **保留字段**：OPCUA 报表中"设备型号 / 序列号 / 固件版本"等元数据未落入 CSV，属 device metadata 范畴，未来若接入 `packages/*` 层的 metadata 模块再补。
+- **重跑生成器**：本次补充只新增行、不修改已有行。重跑 `python generate_plc_drivers.py` 会按 `pascal(en)` 规则重写第 7 列（PLC 节点），我们的追加行已按此规则预生成，重跑不会漂移。
+
+## 9. 变更文件清单
 
 | 文件 | 变更 |
 |------|-----|
-| `device_templates_actions.csv` | 2372 → 2666 行；新增 141 - 139 = 2 个 device_id |
-| `device_templates_actions.csv.bak` | 备份补充前版本 |
-| `OPCUA_补充说明.md` | 新增（本文档） |
+| `device_templates_actions.csv` | 2372 → 2666（第一轮）→ **2750**（第二轮绿标补齐）行；device_id 数 139 → 141 |
+| `device_templates_actions.csv.bak` | 备份：第一轮补充前版本 |
+| `device_templates_actions.csv.bak2` | 备份：第二轮绿标补充前版本（即第一轮结果） |
+| `OPCUA_补充说明.md` | 新增（本文档，含绿标 sheet 100% 覆盖核对） |
