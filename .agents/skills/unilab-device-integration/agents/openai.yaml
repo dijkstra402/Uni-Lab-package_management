@@ -1,0 +1,4 @@
+interface:
+  display_name: "Uni-Lab 设备标准接入"
+  short_description: "按统一接口接入直连、PLC 和 OPC UA 实验设备"
+  default_prompt: "使用 $unilab-device-integration 按照 Uni-Lab 统一接口标准接入这台设备。"
