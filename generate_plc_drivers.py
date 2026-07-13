@@ -4,10 +4,10 @@ PLC(OPC UA) 交互驱动生成器
 读取 device_templates_actions.csv，为每个设备大类在其包目录下生成
     packages/<id>/<id>/<id>_plc.py
 生成的类继承 OpcUaClientWithSubscription，把标准动作/属性映射为 PLC 节点读写，
-交互范式对齐 AI4C.py：
-    - 触发类动作(无参数)：写 <X>_Trigger=True → 等 <X>_Complete=True → 复位 → 等 <X>_Complete=False
-    - 设定类动作(set_*，单参数)：写 <Param>_Setpoint = 值
-    - 状态属性：读对应状态节点
+交互范式与 OPCUA 通信协议一致，节点使用中文命名：
+    - 触发类动作(无参数)：写 <X>触发=True → 等 <X>完成=True → 复位 → 等 <X>完成=False
+    - 设定类动作(set_*，单参数)：写 <X>设置 = 值
+    - 状态属性：读对应中文命名的状态节点（如 故障 / 设备就绪 / 温度超限报警）
 
 同时把 PLC 方案(节点、交互模式)回写到 device_templates_actions.csv。
 """
@@ -24,7 +24,7 @@ PY_DEFAULT = {"float": "0.0", "int": "0", "str": '""', "bool": "False"}
 
 
 def pascal(name: str) -> str:
-    """snake_case → Pascal_Case 的 PLC 节点命名（保留下划线分段）。"""
+    """snake_case → Pascal_Case（仅用于 Python 类名等英文场景）。"""
     return "_".join(seg.capitalize() for seg in name.split("_"))
 
 
@@ -32,16 +32,42 @@ def class_name(device_id: str) -> str:
     return "".join(seg.capitalize() for seg in device_id.split("_"))
 
 
-def plc_node(row_type: str, en: str, param: str):
-    """返回 (节点描述, 交互模式)。param 形如 'temperature:float' 或空。"""
+def _strip_paren(s: str) -> str:
+    """剥除中文/英文括号及其内容（用于 PLC 节点派生时清理描述）。"""
+    if not s:
+        return s
+    cuts = [i for i in (s.find("("), s.find("（")) if i >= 0]
+    if cuts:
+        return s[: min(cuts)].rstrip()
+    return s
+
+
+def plc_node(row_type: str, en: str, param: str, zh: str = "", mode: str = ""):
+    """
+    返回 (PLC 节点, 交互模式)。
+
+    PLC 节点使用与 OPCUA 通信协议一致的中文命名：
+    - 属性(property): 直接用中文描述作为节点名
+    - 触发类动作(action, 无 param): 节点表示为 "<X>触发 / <X>完成"
+    - 设定类动作(action, 有 param): 节点为 "<X>设置"
+
+    参数中 zh、mode 优先于 en/param 用于派生；若 zh 为空则回退到英文名。
+    """
+    core = _strip_paren(zh) if zh else en
     if row_type == "property":
-        return pascal(en), "读状态"
+        return (zh or en), "读状态"
     if param:  # set_* 设定类动作
-        pname = param.split(":")[0]
-        return f"{pascal(pname)}_Setpoint", "写设定值"
+        if core.endswith("设置"):
+            node = core
+        elif core.startswith("设置") and len(core) > 2:
+            node = core[2:] + "设置"
+        else:
+            node = (core or en) + "设置"
+        return node, "写设定值"
     # 触发类动作
-    p = pascal(en)
-    return f"{p}_Trigger / {p}_Complete", "写触发→等完成→复位"
+    if not core:
+        core = en
+    return f"{core}触发 / {core}完成", "写触发→等完成→复位"
 
 
 def load_rows():
@@ -54,7 +80,13 @@ def group_by_device(rows):
     for r in rows:
         did = r["device_id"]
         devices.setdefault(did, {"category": r["设备大类"], "actions": [], "properties": []})
-        item = {"en": r["英文名"], "desc": r["中文描述"], "param": r["参数(名:类型)"].strip()}
+        item = {
+            "en": r["英文名"],
+            "desc": r["中文描述"],
+            "param": r["参数(名:类型)"].strip(),
+            "node": (r.get("PLC节点") or "").strip(),
+            "mode": (r.get("交互模式") or "").strip(),
+        }
         if r["类型"] == "action":
             devices[did]["actions"].append(item)
         else:
@@ -63,12 +95,34 @@ def group_by_device(rows):
     return devices
 
 
+def _split_trigger_complete(node: str):
+    """把 "X触发 / X完成" 拆成 (trigger_node, complete_node)。回退兼容英文旧格式。"""
+    if node and "/" in node:
+        parts = [p.strip() for p in node.split("/", 1)]
+        if len(parts) == 2 and parts[0] and parts[1]:
+            return parts[0], parts[1]
+    # 回退：按中文 "X触发"/"X完成" 或英文 "X_Trigger"/"X_Complete" 派生
+    core = node
+    for suf in ("触发", "完成", "_Trigger", "_Complete"):
+        if core.endswith(suf):
+            core = core[: -len(suf)]
+            break
+    if core:
+        return f"{core}触发", f"{core}完成"
+    return "触发", "完成"
+
+
 def render_action(a):
     en, desc, param = a["en"], a["desc"], a["param"]
+    csv_node = a.get("node", "")
+    csv_mode = a.get("mode", "")
     if param:  # 设定类：写设定值
         pname, ptype = param.split(":")
         default = PY_DEFAULT.get(ptype, "None")
-        node = f"{pascal(pname)}_Setpoint"
+        node, _ = plc_node("action", en, param, zh=desc, mode=csv_mode)
+        # 若 CSV 明确给出中文节点，则优先采用
+        if csv_node and "/" not in csv_node:
+            node = csv_node
         return f'''    @action(description="{desc}")
     def {en}(self, {pname}: {ptype} = {default}) -> Dict[str, Any]:
         """{desc}：写入设定值节点 {node}。"""
@@ -76,16 +130,20 @@ def render_action(a):
         return {{"success": True, "message": "{desc}已下发", "{pname}": {pname}}}
 '''
     # 触发类：写触发→等完成→复位
-    p = pascal(en)
+    if csv_node and "/" in csv_node:
+        trig_node, done_node = _split_trigger_complete(csv_node)
+    else:
+        derived, _ = plc_node("action", en, "", zh=desc, mode=csv_mode)
+        trig_node, done_node = _split_trigger_complete(derived)
     return f'''    @action(description="{desc}")
     def {en}(self) -> Dict[str, Any]:
-        """{desc}：写 {p}_Trigger 触发，等待 {p}_Complete 完成后复位。"""
+        """{desc}：写 {trig_node} 触发，等待 {done_node} 完成后复位。"""
         logger.info("{desc}...")
-        self.set_node_value("{p}_Trigger", True)
-        if not self._wait_until_true("{p}_Complete", description="{desc}完成"):
+        self.set_node_value("{trig_node}", True)
+        if not self._wait_until_true("{done_node}", description="{desc}完成"):
             raise ValueError("{desc}失败：动作未完成")
-        self.set_node_value("{p}_Trigger", False)
-        if not self._wait_until_false("{p}_Complete", description="{desc}完成复位"):
+        self.set_node_value("{trig_node}", False)
+        if not self._wait_until_false("{done_node}", description="{desc}完成复位"):
             raise ValueError("{desc}失败：完成状态复位超时")
         return {{"success": True, "message": "{desc}完成"}}
 '''
@@ -94,7 +152,7 @@ def render_action(a):
 def render_property(p):
     en, desc, ptype = p["en"], p["desc"], p["ptype"]
     default = PY_DEFAULT.get(ptype, '""')
-    node = pascal(en)
+    node = p.get("node") or desc or en
     return f'''    @property
     @topic_config()
     def {en}(self) -> {ptype}:
@@ -114,10 +172,10 @@ def render_file(device_id, info):
 
 由 generate_plc_drivers.py 依据 device_templates_actions.csv 生成。
 继承 OpcUaClientWithSubscription，把「{cat}」标准动作/属性映射为 PLC 节点读写：
-- 触发类动作：写 <X>_Trigger=True → 等 <X>_Complete=True → 复位 → 等 <X>_Complete=False
-- 设定类动作：写 <Param>_Setpoint = 值
-- 状态属性：  读对应状态节点
-节点均可在设备接入时通过 CSV(NodeId 映射) 注册。
+- 触发类动作：写 <X>触发=True → 等 <X>完成=True → 复位 → 等 <X>完成=False
+- 设定类动作：写 <X>设置 = 值
+- 状态属性：  读对应中文命名的状态节点
+节点使用与 OPCUA 通信协议一致的中文命名，通过 CSV(NodeId 映射) 在设备接入时注册。
 """
 
 import time
@@ -207,10 +265,21 @@ def write_drivers(devices):
 
 
 def rewrite_csv(rows):
-    """在原 CSV 基础上追加 PLC节点 / 交互模式 两列。"""
+    """
+    在原 CSV 基础上刷新 PLC节点 / 交互模式 两列。
+
+    PLC 节点采用与 OPCUA 通信协议一致的中文命名（参见 plc_node()）。
+    若 CSV 中已存在合规的中文节点，则保持不变；否则按中文描述派生。
+    """
     fields = ["设备大类", "device_id", "类型", "英文名", "中文描述", "参数(名:类型)", "PLC节点", "交互模式"]
     for r in rows:
-        node, mode = plc_node(r["类型"], r["英文名"], r["参数(名:类型)"].strip())
+        node, mode = plc_node(
+            r["类型"],
+            r["英文名"],
+            r["参数(名:类型)"].strip(),
+            zh=r.get("中文描述", ""),
+            mode=r.get("交互模式", ""),
+        )
         r["PLC节点"] = node
         r["交互模式"] = mode
     with open(CSV_PATH, "w", newline="", encoding="utf-8") as f:
