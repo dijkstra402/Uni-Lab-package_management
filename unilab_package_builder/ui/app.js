@@ -15,8 +15,10 @@ const elements = {
   categorySelect: document.querySelector("#categorySelect"),
   clearFilters: document.querySelector("#clearFilters"),
   configForm: document.querySelector("#configForm"),
+  devicePackageButton: document.querySelector("#devicePackageButton"),
   detailId: document.querySelector("#detailId"),
   exportButton: document.querySelector("#exportButton"),
+  acceptanceBundleButton: document.querySelector("#acceptanceBundleButton"),
   formError: document.querySelector("#formError"),
   moduleDetail: document.querySelector("#moduleDetail"),
   moduleList: document.querySelector("#moduleList"),
@@ -128,6 +130,8 @@ function renderSelected() {
   const selected = state.selectedIds.map(getModule).filter(Boolean);
   elements.selectedCount.textContent = String(selected.length);
   elements.exportButton.disabled = selected.length === 0;
+  elements.devicePackageButton.disabled = selected.length === 0;
+  elements.acceptanceBundleButton.disabled = selected.length === 0;
   elements.selectionStatus.textContent = selected.length ? "可导出" : "未选择";
   elements.selectionStatus.className = `status-chip ${selected.length ? "status-chip-ready" : "status-chip-neutral"}`;
   elements.actionTotal.textContent = String(selected.reduce((total, module) => total + module.actions.length, 0));
@@ -201,15 +205,21 @@ function projectConfig() {
   };
 }
 
-function downloadConfig(event) {
-  event.preventDefault();
+function validatedProjectConfig() {
   elements.formError.textContent = "";
-  if (!elements.configForm.reportValidity()) return;
+  if (!elements.configForm.reportValidity()) return null;
   const config = projectConfig();
   if (!config.modules.length) {
-    elements.formError.textContent = "至少选择一个设备模块后才能导出。";
-    return;
+    elements.formError.textContent = "至少选择一个设备模块后才能生成或导出。";
+    return null;
   }
+  return config;
+}
+
+function downloadConfig(event) {
+  event.preventDefault();
+  const config = validatedProjectConfig();
+  if (!config) return;
   const blob = new Blob([`${JSON.stringify(config, null, 2)}\n`], { type: "application/json" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
@@ -217,6 +227,53 @@ function downloadConfig(event) {
   link.click();
   URL.revokeObjectURL(link.href);
   showToast(`已导出 ${config.modules.length} 个模块的配置 JSON`);
+}
+
+function downloadFilename(response, fallback) {
+  const disposition = response.headers.get("Content-Disposition") || "";
+  const match = disposition.match(/filename="([^"]+)"/i);
+  return match?.[1] || fallback;
+}
+
+async function downloadBundle(kind) {
+  const config = validatedProjectConfig();
+  if (!config) return;
+  const button = kind === "device" ? elements.devicePackageButton : elements.acceptanceBundleButton;
+  const endpoint = kind === "device" ? "/api/generate/device-package" : "/api/generate/acceptance-bundle";
+  const fallback = kind === "device" ? "device-package.tar.gz" : "acceptance-bundle.tar.gz";
+  button.disabled = true;
+  button.setAttribute("aria-busy", "true");
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/gzip" },
+      body: JSON.stringify(config),
+    });
+    if (!response.ok) {
+      let message = `HTTP ${response.status}`;
+      try {
+        const errorPayload = await response.json();
+        message = errorPayload.error || message;
+      } catch {
+        message = `HTTP ${response.status}`;
+      }
+      throw new Error(message);
+    }
+    const blob = await response.blob();
+    const link = document.createElement("a");
+    const objectUrl = URL.createObjectURL(blob);
+    link.href = objectUrl;
+    link.download = downloadFilename(response, fallback);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(objectUrl);
+    showToast(kind === "device" ? "设备包已生成并开始下载" : "自动验收包已生成并开始下载");
+  } catch (error) {
+    elements.formError.textContent = `生成失败：${error.message || "请稍后重试"}`;
+  } finally {
+    button.removeAttribute("aria-busy");
+    renderSelected();
+  }
 }
 
 function showToast(message) {
@@ -275,6 +332,8 @@ elements.selectedList.addEventListener("click", (event) => {
   if (removeButton) toggleSelection(removeButton.dataset.removeId, false);
   if (detailButton) setActive(detailButton.dataset.detailId);
 });
+elements.devicePackageButton.addEventListener("click", () => downloadBundle("device"));
+elements.acceptanceBundleButton.addEventListener("click", () => downloadBundle("acceptance"));
 document.querySelectorAll("[data-view]").forEach((button) => button.addEventListener("click", () => {
   state.view = button.dataset.view;
   renderModules();

@@ -168,6 +168,8 @@ python -m unilab_package_builder init --package-name my_lab_devices --module rea
 python -m unilab_package_builder ui
 ```
 
+UI 中的 `生成并下载设备包` 会直接执行 `init` 生成 OS 设备包；相邻的
+`生成并下载自动验收包` 会生成遵循 PLC-Sim `automation-acceptance` 目录规范的 L0 合同模板。
 完整配置、生成工程结构和 PLC-Sim 自动验收接缝见 [`PACKAGE_BUILDER.md`](PACKAGE_BUILDER.md)。
 
 ## License

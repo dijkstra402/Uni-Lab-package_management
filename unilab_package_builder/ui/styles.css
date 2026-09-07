@@ -244,11 +244,21 @@ kbd { padding: 1px 5px; color: var(--ink-muted); background: var(--surface-muted
 .form-help { margin-top: 2px; }
 .form-error { min-height: 16px; color: var(--danger-red); font-size: 10px; }
 .inspector-footer { flex: 0 0 auto; padding: 12px 16px 14px; background: var(--surface); border-top: 1px solid var(--border); }
+.bundle-actions { display: grid; gap: 7px; }
+.bundle-button { width: 100%; }
 .primary-button { display: inline-flex; align-items: center; justify-content: center; width: 100%; gap: 7px; min-height: 40px; padding: 0 12px; color: var(--surface); background: var(--instrument-teal); border: 0; border-radius: 8px; font-size: 12px; font-weight: 600; transition: background var(--fast) ease, transform var(--fast) ease; }
 .primary-button:hover:not(:disabled) { background: var(--instrument-teal-dark); }
 .primary-button:active:not(:disabled) { transform: translateY(1px); }
 .primary-button:disabled { cursor: not-allowed; opacity: 0.48; }
 .primary-button svg { width: 17px; height: 17px; }
+.secondary-button, .tertiary-button { display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 36px; padding: 0 10px; border-radius: 7px; font-size: 11px; font-weight: 600; }
+.secondary-button { gap: 7px; color: var(--instrument-teal-dark); background: var(--instrument-teal-soft); border: 1px solid #b7e4df; }
+.secondary-button:hover:not(:disabled) { background: #d9f5f1; border-color: var(--instrument-teal); }
+.secondary-button:disabled, .tertiary-button:disabled { cursor: not-allowed; opacity: 0.48; }
+.secondary-button svg { width: 16px; height: 16px; }
+.tertiary-button { color: var(--ink-muted); background: var(--surface); border: 1px solid var(--border-strong); }
+.tertiary-button:hover:not(:disabled) { color: var(--instrument-teal-dark); border-color: var(--instrument-teal); }
+.bundle-button[aria-busy="true"] { cursor: wait; }
 
 .toast { position: fixed; right: 20px; bottom: 20px; z-index: 5; max-width: 320px; padding: 10px 12px; color: var(--surface); background: #1f2937; border-radius: 8px; box-shadow: 0 12px 32px rgb(15 23 42 / 12%); font-size: 12px; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity var(--normal) ease, transform var(--normal) ease; }
 .toast.is-visible { opacity: 1; transform: translateY(0); }

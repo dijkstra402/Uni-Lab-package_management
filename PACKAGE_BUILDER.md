@@ -18,7 +18,7 @@ python -m unilab_package_builder list --category '合成制备仪器与设备 > 
 python -m unilab_package_builder list --query '反应釜' --format json
 ```
 
-也可以启动本地无依赖选配 UI，在浏览器中搜索、筛选、查看合同并导出配置：
+也可以启动本地无依赖选配 UI，在浏览器中搜索、筛选、查看合同并直接生成下载包：
 
 ```bash
 python -m unilab_package_builder ui
@@ -27,6 +27,16 @@ python -m unilab_package_builder ui
 
 UI 继承 Uni-Lab FE 的“精密仪器台”设计系统：冷灰工作区、仪器青主操作色、白色结构表面、
 等宽设备数据和 720px / 600px 响应式降级。页面只读取本地模块目录，不在浏览器执行设备源码。
+选择模块并填写项目身份后，可以使用：
+
+- `生成并下载设备包`：后端临时执行与 `init` 相同的脚手架逻辑，返回 `<发行名>-device-package.tar.gz`；
+- `生成并下载自动验收包`：返回 `<发行名>-acceptance-bundle.tar.gz`，包含 PLC-Sim `automation-acceptance`
+  规范的 L0 合同模板；
+- `导出配置 JSON`：保留为离线或命令行工作流的输入文件。
+
+对应的本地接口是 `POST /api/generate/device-package` 和
+`POST /api/generate/acceptance-bundle`，请求体就是导出的项目配置 JSON。后端只在临时目录
+生成并以内存归档返回，不把用户配置或生成产物留在仓库中。
 
 ## 生成设备包
 
@@ -69,5 +79,11 @@ python -m unilab_package_builder init \
    用例、环境和证据等级。用例只引用逻辑变量，通过公开 OPC UA/HTTP 进程验证设备包可观察行为，
    不把 NodeId、PLC 完成位或库存状态复制进设备包选择配置。
 
-当前仓库实现的是第一个工程的可执行选择与脚手架闭环；PLC-Sim 的通用 139 模块验收矩阵仍需在
-其 owning branch 中按供应商点表逐项补齐，不能由本工具猜测物理地址或完成条件。
+当前仓库实现了第一个工程的可执行选择与脚手架闭环，并可生成第二个工程的 L0 合同模板；
+PLC-Sim 的通用 139 模块验收矩阵仍需在其 owning branch 中按供应商点表逐项补齐，不能由本工具
+猜测物理地址或完成条件。
+
+UI 下载的自动验收包同样遵守这个边界：它会为每个所选设备生成 ready/state、代表性动作、
+故障、超时、重启和非法参数用例模板，并在 `requirements-coverage.yaml` 中标记待补齐项为
+`blocked`。供应商点表、Namespace、NodeId、真实完成条件和 L1-L4 证据必须在验收工程中补齐，
+不能因为点击下载就被误认为已经通过自动验收。

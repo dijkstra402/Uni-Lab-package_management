@@ -57,6 +57,12 @@ def load_project_config(path: Path) -> ProjectConfig:
         data = json.loads(Path(path).read_text(encoding="utf-8"))
     except json.JSONDecodeError as error:
         raise ConfigError(f"配置不是合法 JSON: {path}: {error}") from error
+    return project_config_from_dict(data)
+
+
+def project_config_from_dict(data: object) -> ProjectConfig:
+    """从已解析的 JSON 对象构造并校验选择配置。"""
+
     if not isinstance(data, dict):
         raise ConfigError("配置根节点必须是 JSON 对象")
     modules = data.get("modules")

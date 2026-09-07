@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f4f7fb" />
     <title>设备包选配器 · Uni-Lab</title>
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./styles.css" />
     <script type="module" src="./app.js" defer></script>
   </head>
@@ -126,11 +127,20 @@
           </form>
 
           <div class="inspector-footer">
-            <button class="primary-button" id="exportButton" type="submit" form="configForm" disabled>
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.5 8.5L10 12l3.5-3.5M4 15.5h12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              导出配置 JSON
-            </button>
-            <p class="form-help">导出后运行 <code>unilab-package-builder init</code> 生成设备包工程。</p>
+            <div class="bundle-actions">
+              <button class="primary-button bundle-button" id="devicePackageButton" type="button" disabled>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.5 8.5L10 12l3.5-3.5M4 15.5h12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                生成并下载设备包
+              </button>
+              <button class="secondary-button bundle-button" id="acceptanceBundleButton" type="button" disabled>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3.5h10v13H5zM7.5 7h5M7.5 10h5M7.5 13h3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                生成并下载自动验收包
+              </button>
+              <button class="tertiary-button" id="exportButton" type="submit" form="configForm" disabled>
+                导出配置 JSON
+              </button>
+            </div>
+            <p class="form-help">设备包会直接生成 OS 工程；自动验收包生成 PLC-Sim 规范的 L0 合同模板，点表映射后再执行真实验收。</p>
           </div>
         </aside>
       </main>
