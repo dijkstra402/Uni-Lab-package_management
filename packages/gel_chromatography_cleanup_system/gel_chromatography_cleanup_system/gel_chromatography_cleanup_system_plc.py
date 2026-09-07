@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="gel_chromatography_cleanup_system_plc",
-    category=["凝胶色谱净化系统"],
+    category=["样品处理仪器与设备", "纯化设备", "凝胶色谱净化系统"],
     description="凝胶色谱净化系统 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="凝胶色谱净化系统(PLC)",
+    displayname="凝胶色谱净化系统(PLC)",
 )
 class GelChromatographyCleanupSystemPLC(OpcUaClientWithSubscription):
 

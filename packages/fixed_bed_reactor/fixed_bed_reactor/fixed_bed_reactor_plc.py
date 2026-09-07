@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="fixed_bed_reactor_plc",
-    category=["固定床反应器"],
+    category=["合成制备仪器与设备", "反应器", "固定床反应器"],
     description="固定床反应器 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="固定床反应器(PLC)",
+    displayname="固定床反应器(PLC)",
 )
 class FixedBedReactorPLC(OpcUaClientWithSubscription):
 

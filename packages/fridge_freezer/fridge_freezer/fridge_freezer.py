@@ -4,7 +4,7 @@
 定义「冷冻冷藏箱」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="fridge_freezer",
-    category=["冷冻冷藏箱"],
+    category=["加热、制冷及空气净化与调节设备", "冰箱及类似设备", "冷冻冷藏箱"],
     description="冷冻冷藏箱标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="冷冻冷藏箱",
+    displayname="冷冻冷藏箱",
 )
 class FridgeFreezer:
 
@@ -36,7 +36,7 @@ class FridgeFreezer:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class FridgeFreezer:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置温度")
     def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
@@ -56,22 +56,22 @@ class FridgeFreezer:
         Args:
             temperature[温度]: 目标温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="除霜")
     def defrost(self) -> Dict[str, Any]:
         """除霜。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="停止")
     def stop(self) -> Dict[str, Any]:
         """停止。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

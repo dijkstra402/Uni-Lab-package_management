@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="sample_grinder_plc",
-    category=["磨样机"],
+    category=["样品处理仪器与设备", "样品制备设备", "磨样机"],
     description="磨样机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="磨样机(PLC)",
+    displayname="磨样机(PLC)",
 )
 class SampleGrinderPLC(OpcUaClientWithSubscription):
 

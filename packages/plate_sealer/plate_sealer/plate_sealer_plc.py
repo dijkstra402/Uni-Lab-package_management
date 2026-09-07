@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="plate_sealer_plc",
-    category=["封膜仪"],
+    category=["合成制备仪器与设备", "液体分配设备", "封膜仪"],
     description="封膜仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="封膜仪(PLC)",
+    displayname="封膜仪(PLC)",
 )
 class PlateSealerPLC(OpcUaClientWithSubscription):
 

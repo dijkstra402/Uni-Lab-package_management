@@ -4,7 +4,7 @@
 定义「电烤箱」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="electric_oven",
-    category=["电烤箱"],
+    category=["加热、制冷及空气净化与调节设备", "恒温箱及类似设备", "高温箱", "电烤箱"],
     description="电烤箱标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="电烤箱",
+    displayname="电烤箱",
 )
 class ElectricOven:
 
@@ -36,7 +36,7 @@ class ElectricOven:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class ElectricOven:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置烘烤时间")
     def set_baking_time(self, baking_time: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class ElectricOven:
         Args:
             baking_time[烘烤时间]: 目标烘烤时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置加热模式")
     def set_heating_mode(self, heating_mode: str = "") -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class ElectricOven:
         Args:
             heating_mode[加热模式]: 目标加热模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置加热功率")
     def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class ElectricOven:
         Args:
             heating_power[加热功率]: 目标加热功率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置旋转速度")
     def set_rotation_speed(self, rotation_speed: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class ElectricOven:
         Args:
             rotation_speed[旋转速度]: 目标旋转速度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置热风转速")
     def set_hot_air_speed(self, hot_air_speed: float = 0.0) -> Dict[str, Any]:
@@ -96,7 +96,7 @@ class ElectricOven:
         Args:
             hot_air_speed[热风转速]: 目标热风转速（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置温度")
     def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
@@ -106,12 +106,12 @@ class ElectricOven:
         Args:
             temperature[温度]: 目标温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

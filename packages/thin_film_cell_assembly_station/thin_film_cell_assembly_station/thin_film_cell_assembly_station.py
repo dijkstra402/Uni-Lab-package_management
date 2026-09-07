@@ -4,7 +4,7 @@
 定义「薄膜电池组装工站」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="thin_film_cell_assembly_station",
-    category=["薄膜电池组装工站"],
+    category=["器件制备设备", "电池组装设备", "薄膜电池组装工站"],
     description="薄膜电池组装工站标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="薄膜电池组装工站",
+    displayname="薄膜电池组装工站",
 )
 class ThinFilmCellAssemblyStation:
 
@@ -41,7 +41,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             deposition_temperature[沉积温度]: 目标沉积温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置沉积速率")
     def set_deposition_rate(self, deposition_rate: float = 0.0) -> Dict[str, Any]:
@@ -51,7 +51,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             deposition_rate[沉积速率]: 目标沉积速率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置沉积时间")
     def set_deposition_time(self, deposition_time: float = 0.0) -> Dict[str, Any]:
@@ -61,7 +61,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             deposition_time[沉积时间]: 目标沉积时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置溅射功率")
     def set_sputter_power(self, sputter_power: float = 0.0) -> Dict[str, Any]:
@@ -71,7 +71,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             sputter_power[溅射功率]: 目标溅射功率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置溅射气压")
     def set_sputter_pressure(self, sputter_pressure: float = 0.0) -> Dict[str, Any]:
@@ -81,7 +81,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             sputter_pressure[溅射气压]: 目标溅射气压（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置退火温度")
     def set_annealing_temperature(self, annealing_temperature: float = 0.0) -> Dict[str, Any]:
@@ -91,7 +91,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             annealing_temperature[退火温度]: 目标退火温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置退火时间")
     def set_annealing_time(self, annealing_time: float = 0.0) -> Dict[str, Any]:
@@ -101,7 +101,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             annealing_time[退火时间]: 目标退火时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置真空度")
     def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
@@ -111,7 +111,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             vacuum[真空度]: 目标真空度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置Ar气流量")
     def set_ar_gas_flow(self, ar_gas_flow: float = 0.0) -> Dict[str, Any]:
@@ -121,7 +121,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             ar_gas_flow[Ar气流量]: 目标Ar气流量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置O2气流量")
     def set_o2_gas_flow(self, o2_gas_flow: float = 0.0) -> Dict[str, Any]:
@@ -131,7 +131,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             o2_gas_flow[O2气流量]: 目标O2气流量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置N2气流量")
     def set_n2_gas_flow(self, n2_gas_flow: float = 0.0) -> Dict[str, Any]:
@@ -141,7 +141,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             n2_gas_flow[N2气流量]: 目标N2气流量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置气体分压比")
     def set_gas_partial_pressure_ratio(self, gas_partial_pressure_ratio: float = 0.0) -> Dict[str, Any]:
@@ -151,7 +151,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             gas_partial_pressure_ratio[气体分压比]: 目标气体分压比（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置薄膜厚度")
     def set_film_thickness(self, film_thickness: float = 0.0) -> Dict[str, Any]:
@@ -161,7 +161,7 @@ class ThinFilmCellAssemblyStation:
         Args:
             film_thickness[薄膜厚度]: 目标薄膜厚度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置射频功率")
     def set_rf_power(self, rf_power: float = 0.0) -> Dict[str, Any]:
@@ -171,22 +171,22 @@ class ThinFilmCellAssemblyStation:
         Args:
             rf_power[射频功率]: 目标射频功率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="停止")
     def stop(self) -> Dict[str, Any]:
         """停止。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="复位")
     def reset(self) -> Dict[str, Any]:
         """复位。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

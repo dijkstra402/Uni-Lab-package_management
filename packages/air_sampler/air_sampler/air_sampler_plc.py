@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="air_sampler_plc",
-    category=["大气采样器"],
+    category=["样品处理仪器与设备", "提取设备", "大气采样器"],
     description="大气采样器 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="大气采样器(PLC)",
+    displayname="大气采样器(PLC)",
 )
 class AirSamplerPLC(OpcUaClientWithSubscription):
 

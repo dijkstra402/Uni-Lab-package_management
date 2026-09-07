@@ -2,7 +2,7 @@
 
 每个设备**大类**一个**独立设备包**（标准 [LabDeviceTemplate](https://github.com/Xuwznln/LabDeviceTemplate) 结构）。
 每个包都可单独 fork / `pip install -e .` / 上报，预先定义好该大类统一的动作(`@action`)与状态属性(`@property`)，
-方法体为 `pass`（占位）。同一大类下不同品牌的设备继承对应包即可让**一套工作流跨品牌控制整类设备**。
+未实现的方法体会抛出 `NotImplementedError`，避免占位动作误报成功。同一大类下不同品牌的设备继承对应包即可让**一套工作流跨品牌控制整类设备**。
 
 ## 包列表 (139)
 
@@ -154,6 +154,21 @@
 cd packages/<en_id>
 unilab --check_mode --devices ./<en_id> --external_devices_only
 ```
+
+## 选择模块生成设备包
+
+仓库根目录提供 `unilab-package-builder`，可从 139 个标准模块中选择设备并生成独立的
+Uni-Lab-OS 外部设备包：
+
+```bash
+python -m unilab_package_builder list --category '合成制备仪器与设备 > 反应器'
+python -m unilab_package_builder validate --config ./package_builder.example.json
+python -m unilab_package_builder init --config ./package_builder.example.json --out ./my-lab-devices
+python -m unilab_package_builder init --package-name my_lab_devices --module reactor_kettle --out ./my-lab-devices
+python -m unilab_package_builder ui
+```
+
+完整配置、生成工程结构和 PLC-Sim 自动验收接缝见 [`PACKAGE_BUILDER.md`](PACKAGE_BUILDER.md)。
 
 ## License
 

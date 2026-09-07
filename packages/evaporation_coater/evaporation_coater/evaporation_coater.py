@@ -4,7 +4,7 @@
 定义「蒸镀仪」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="evaporation_coater",
-    category=["蒸镀仪"],
+    category=["器件制备设备", "蒸镀与表面沉积设备", "蒸镀仪"],
     description="蒸镀仪标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="蒸镀仪",
+    displayname="蒸镀仪",
 )
 class EvaporationCoater:
 
@@ -36,7 +36,7 @@ class EvaporationCoater:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class EvaporationCoater:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置蒸发源温度")
     def set_evaporation_source_temp(self, evaporation_source_temp: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class EvaporationCoater:
         Args:
             evaporation_source_temp[蒸发源温度]: 目标蒸发源温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置蒸镀速率")
     def set_evaporation_rate(self, evaporation_rate: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class EvaporationCoater:
         Args:
             evaporation_rate[蒸镀速率]: 目标蒸镀速率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置目标膜厚")
     def set_target_film_thickness(self, target_film_thickness: int = 0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class EvaporationCoater:
         Args:
             target_film_thickness[目标膜厚]: 目标目标膜厚（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置基板温度")
     def set_substrate_temperature(self, substrate_temperature: float = 0.0) -> Dict[str, Any]:
@@ -86,27 +86,27 @@ class EvaporationCoater:
         Args:
             substrate_temperature[基板温度]: 目标基板温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="抽真空")
     def evacuate(self) -> Dict[str, Any]:
         """抽真空。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="蒸镀启动")
     def start_evaporation_coating(self) -> Dict[str, Any]:
         """蒸镀启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="蒸发源停止")
     def stop_evaporation_source(self) -> Dict[str, Any]:
         """蒸发源停止。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="腔室充气")
     def inflate_chamber(self) -> Dict[str, Any]:
         """腔室充气。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

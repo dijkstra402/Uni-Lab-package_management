@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="overhead_loss_in_weight_feeder_plc",
-    category=["顶置失重固体投料模块"],
+    category=["合成制备仪器与设备", "固体分配设备", "顶置失重固体投料模块"],
     description="顶置失重固体投料模块 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="顶置失重固体投料模块(PLC)",
+    displayname="顶置失重固体投料模块(PLC)",
 )
 class OverheadLossInWeightFeederPLC(OpcUaClientWithSubscription):
 

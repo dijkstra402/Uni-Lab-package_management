@@ -4,7 +4,7 @@
 定义「冷冻干燥机」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="freeze_dryer",
-    category=["冷冻干燥机"],
+    category=["样品处理仪器与设备", "分离设备", "冷冻干燥机"],
     description="冷冻干燥机标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="冷冻干燥机",
+    displayname="冷冻干燥机",
 )
 class FreezeDryer:
 
@@ -36,7 +36,7 @@ class FreezeDryer:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class FreezeDryer:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置真空度")
     def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class FreezeDryer:
         Args:
             vacuum[真空度]: 目标真空度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置冷阱温度")
     def set_cold_trap_temp(self, cold_trap_temp: float = 0.0) -> Dict[str, Any]:
@@ -66,17 +66,17 @@ class FreezeDryer:
         Args:
             cold_trap_temp[冷阱温度]: 目标冷阱温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="冻干")
     def freeze_dry(self) -> Dict[str, Any]:
         """冻干。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="制冷")
     def cool(self) -> Dict[str, Any]:
         """制冷。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

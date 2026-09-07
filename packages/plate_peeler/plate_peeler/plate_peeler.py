@@ -4,7 +4,7 @@
 定义「撕膜仪」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="plate_peeler",
-    category=["撕膜仪"],
+    category=["合成制备仪器与设备", "液体分配设备", "撕膜仪"],
     description="撕膜仪标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="撕膜仪",
+    displayname="撕膜仪",
 )
 class PlatePeeler:
 
@@ -36,7 +36,7 @@ class PlatePeeler:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class PlatePeeler:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置撕膜速度")
     def set_peeling_speed(self, peeling_speed: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class PlatePeeler:
         Args:
             peeling_speed[撕膜速度]: 目标撕膜速度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置撕膜高度")
     def set_peeling_height(self, peeling_height: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class PlatePeeler:
         Args:
             peeling_height[撕膜高度]: 目标撕膜高度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置抓取压力")
     def set_grip_pressure(self, grip_pressure: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class PlatePeeler:
         Args:
             grip_pressure[抓取压力]: 目标抓取压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置容器位置")
     def set_container_position(self, container_position: float = 0.0) -> Dict[str, Any]:
@@ -86,27 +86,27 @@ class PlatePeeler:
         Args:
             container_position[容器位置]: 目标容器位置（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="撕膜启动")
     def start_peeling(self) -> Dict[str, Any]:
         """撕膜启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="定位")
     def position(self) -> Dict[str, Any]:
         """定位。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="抓取")
     def grip(self) -> Dict[str, Any]:
         """抓取。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="丢弃")
     def discard(self) -> Dict[str, Any]:
         """丢弃。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

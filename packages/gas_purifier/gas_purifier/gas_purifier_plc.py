@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="gas_purifier_plc",
-    category=["气体净化机"],
+    category=["样品处理仪器与设备", "纯化设备", "气体净化机"],
     description="气体净化机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="气体净化机(PLC)",
+    displayname="气体净化机(PLC)",
 )
 class GasPurifierPLC(OpcUaClientWithSubscription):
 

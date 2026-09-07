@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="centrifugal_extractor_plc",
-    category=["离心萃取机"],
+    category=["样品处理仪器与设备", "提取设备", "离心萃取机"],
     description="离心萃取机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="离心萃取机(PLC)",
+    displayname="离心萃取机(PLC)",
 )
 class CentrifugalExtractorPLC(OpcUaClientWithSubscription):
 

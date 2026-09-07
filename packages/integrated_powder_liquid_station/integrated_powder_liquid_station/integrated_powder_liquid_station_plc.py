@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="integrated_powder_liquid_station_plc",
-    category=["一体化配粉配液站"],
+    category=["合成制备仪器与设备", "液体分配设备", "一体化配粉配液站"],
     description="一体化配粉配液站 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="一体化配粉配液站(PLC)",
+    displayname="一体化配粉配液站(PLC)",
 )
 class IntegratedPowderLiquidStationPLC(OpcUaClientWithSubscription):
 

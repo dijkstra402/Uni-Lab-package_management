@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="multiway_valve_plc",
-    category=["多通阀"],
+    category=["合成制备仪器与设备", "实验阀与气路设备", "多通阀"],
     description="多通阀 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="多通阀(PLC)",
+    displayname="多通阀(PLC)",
 )
 class MultiwayValvePLC(OpcUaClientWithSubscription):
 

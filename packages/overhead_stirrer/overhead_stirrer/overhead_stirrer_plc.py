@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="overhead_stirrer_plc",
-    category=["机械搅拌器"],
+    category=["样品处理仪器与设备", "混合与分散设备", "机械搅拌器"],
     description="机械搅拌器 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="机械搅拌器(PLC)",
+    displayname="机械搅拌器(PLC)",
 )
 class OverheadStirrerPLC(OpcUaClientWithSubscription):
 

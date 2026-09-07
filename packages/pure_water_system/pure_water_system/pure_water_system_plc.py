@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="pure_water_system_plc",
-    category=["纯水设备"],
+    category=["样品处理仪器与设备", "纯化设备", "纯水设备"],
     description="纯水设备 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="纯水设备(PLC)",
+    displayname="纯水设备(PLC)",
 )
 class PureWaterSystemPLC(OpcUaClientWithSubscription):
 

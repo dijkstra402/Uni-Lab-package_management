@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="reactor_kettle_plc",
-    category=["反应釜"],
+    category=["合成制备仪器与设备", "反应器", "反应釜"],
     description="反应釜 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="反应釜(PLC)",
+    displayname="反应釜(PLC)",
 )
 class ReactorKettlePLC(OpcUaClientWithSubscription):
 

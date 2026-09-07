@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="pouch_cell_assembly_station_plc",
-    category=["软包电池组装工站"],
+    category=["器件制备设备", "电池组装设备", "软包电池组装工站"],
     description="软包电池组装工站 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="软包电池组装工站(PLC)",
+    displayname="软包电池组装工站(PLC)",
 )
 class PouchCellAssemblyStationPLC(OpcUaClientWithSubscription):
 

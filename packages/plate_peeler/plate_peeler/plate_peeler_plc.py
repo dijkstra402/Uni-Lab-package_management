@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="plate_peeler_plc",
-    category=["撕膜仪"],
+    category=["合成制备仪器与设备", "液体分配设备", "撕膜仪"],
     description="撕膜仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="撕膜仪(PLC)",
+    displayname="撕膜仪(PLC)",
 )
 class PlatePeelerPLC(OpcUaClientWithSubscription):
 

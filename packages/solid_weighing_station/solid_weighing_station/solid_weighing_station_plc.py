@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="solid_weighing_station_plc",
-    category=["固体称量工作站"],
+    category=["合成制备仪器与设备", "固体分配设备", "固体称量工作站"],
     description="固体称量工作站 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="固体称量工作站(PLC)",
+    displayname="固体称量工作站(PLC)",
 )
 class SolidWeighingStationPLC(OpcUaClientWithSubscription):
 

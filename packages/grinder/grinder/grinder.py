@@ -4,7 +4,7 @@
 定义「研磨机」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="grinder",
-    category=["研磨机"],
+    category=["样品处理仪器与设备", "表面处理设备", "研磨机"],
     description="研磨机标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="研磨机",
+    displayname="研磨机",
 )
 class Grinder:
 
@@ -36,7 +36,7 @@ class Grinder:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class Grinder:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置研磨盘转速")
     def set_grinding_disc_speed(self, grinding_disc_speed: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class Grinder:
         Args:
             grinding_disc_speed[研磨盘转速]: 目标研磨盘转速（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置研磨压力")
     def set_grinding_pressure(self, grinding_pressure: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class Grinder:
         Args:
             grinding_pressure[研磨压力]: 目标研磨压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置研磨时间")
     def set_grinding_time(self, grinding_time: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class Grinder:
         Args:
             grinding_time[研磨时间]: 目标研磨时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置研磨粒度")
     def set_grinding_particle_size(self, grinding_particle_size: int = 0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class Grinder:
         Args:
             grinding_particle_size[研磨粒度]: 目标研磨粒度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置清洁时间")
     def set_cleaning_time(self, cleaning_time: float = 0.0) -> Dict[str, Any]:
@@ -96,17 +96,17 @@ class Grinder:
         Args:
             cleaning_time[清洁时间]: 目标清洁时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="研磨")
     def grind(self) -> Dict[str, Any]:
         """研磨。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="自动清洁")
     def auto_clean(self) -> Dict[str, Any]:
         """自动清洁。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

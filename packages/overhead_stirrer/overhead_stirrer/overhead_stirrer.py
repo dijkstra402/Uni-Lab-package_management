@@ -4,7 +4,7 @@
 定义「机械搅拌器」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="overhead_stirrer",
-    category=["机械搅拌器"],
+    category=["样品处理仪器与设备", "混合与分散设备", "机械搅拌器"],
     description="机械搅拌器标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="机械搅拌器",
+    displayname="机械搅拌器",
 )
 class OverheadStirrer:
 
@@ -36,7 +36,7 @@ class OverheadStirrer:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置搅拌速度")
     def set_stir_speed(self, stir_speed: float = 0.0) -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class OverheadStirrer:
         Args:
             stir_speed[搅拌速度]: 目标搅拌速度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置搅拌时间")
     def set_stir_time(self, stir_time: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class OverheadStirrer:
         Args:
             stir_time[搅拌时间]: 目标搅拌时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置搅拌模式")
     def set_stir_mode(self, stir_mode: str = "") -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class OverheadStirrer:
         Args:
             stir_mode[搅拌模式]: 目标搅拌模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置搅拌桨高度")
     def set_impeller_height(self, impeller_height: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class OverheadStirrer:
         Args:
             impeller_height[搅拌桨高度]: 目标搅拌桨高度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置扭矩限制")
     def set_torque_limit(self, torque_limit: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class OverheadStirrer:
         Args:
             torque_limit[扭矩限制]: 目标扭矩限制（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置转速上限")
     def set_speed_upper_limit(self, speed_upper_limit: float = 0.0) -> Dict[str, Any]:
@@ -96,7 +96,7 @@ class OverheadStirrer:
         Args:
             speed_upper_limit[转速上限]: 目标转速上限（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置安全保护")
     def set_safety_protection(self, safety_protection: int = 0) -> Dict[str, Any]:
@@ -106,12 +106,12 @@ class OverheadStirrer:
         Args:
             safety_protection[安全保护]: 目标安全保护（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="搅拌")
     def stir(self) -> Dict[str, Any]:
         """搅拌。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

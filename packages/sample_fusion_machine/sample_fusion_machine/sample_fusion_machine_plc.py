@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="sample_fusion_machine_plc",
-    category=["熔样机"],
+    category=["样品处理仪器与设备", "样品制备设备", "熔样机"],
     description="熔样机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="熔样机(PLC)",
+    displayname="熔样机(PLC)",
 )
 class SampleFusionMachinePLC(OpcUaClientWithSubscription):
 

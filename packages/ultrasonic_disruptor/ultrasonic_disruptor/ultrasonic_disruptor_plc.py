@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="ultrasonic_disruptor_plc",
-    category=["超声破碎仪"],
+    category=["样品处理仪器与设备", "粉碎设备", "超声破碎仪"],
     description="超声破碎仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="超声破碎仪(PLC)",
+    displayname="超声破碎仪(PLC)",
 )
 class UltrasonicDisruptorPLC(OpcUaClientWithSubscription):
 

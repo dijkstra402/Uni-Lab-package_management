@@ -4,7 +4,7 @@
 定义「血液柜」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="blood_bank_refrigerator",
-    category=["血液柜"],
+    category=["加热、制冷及空气净化与调节设备", "冰箱及类似设备", "血液柜"],
     description="血液柜标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="血液柜",
+    displayname="血液柜",
 )
 class BloodBankRefrigerator:
 
@@ -36,7 +36,7 @@ class BloodBankRefrigerator:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class BloodBankRefrigerator:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置温度")
     def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class BloodBankRefrigerator:
         Args:
             temperature[温度]: 目标温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置报警温度")
     def set_alarm_temperature(self, alarm_temperature: float = 0.0) -> Dict[str, Any]:
@@ -66,17 +66,17 @@ class BloodBankRefrigerator:
         Args:
             alarm_temperature[报警温度]: 目标报警温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="备份")
     def backup(self) -> Dict[str, Any]:
         """备份。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

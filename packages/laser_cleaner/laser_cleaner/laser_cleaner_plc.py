@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="laser_cleaner_plc",
-    category=["激光清洗机"],
+    category=["样品处理仪器与设备", "清洗机", "激光清洗机"],
     description="激光清洗机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="激光清洗机(PLC)",
+    displayname="激光清洗机(PLC)",
 )
 class LaserCleanerPLC(OpcUaClientWithSubscription):
 

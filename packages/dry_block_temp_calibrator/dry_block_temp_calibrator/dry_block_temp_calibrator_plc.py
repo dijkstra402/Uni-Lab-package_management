@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="dry_block_temp_calibrator_plc",
-    category=["干体温度校正炉"],
+    category=["加热、制冷及空气净化与调节设备", "固体浴", "干体温度校正炉"],
     description="干体温度校正炉 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="干体温度校正炉(PLC)",
+    displayname="干体温度校正炉(PLC)",
 )
 class DryBlockTempCalibratorPLC(OpcUaClientWithSubscription):
 

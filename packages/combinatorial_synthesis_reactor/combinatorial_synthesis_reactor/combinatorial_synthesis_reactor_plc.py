@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="combinatorial_synthesis_reactor_plc",
-    category=["组合合成反应仪"],
+    category=["合成制备仪器与设备", "反应器", "组合合成反应仪"],
     description="组合合成反应仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="组合合成反应仪(PLC)",
+    displayname="组合合成反应仪(PLC)",
 )
 class CombinatorialSynthesisReactorPLC(OpcUaClientWithSubscription):
 

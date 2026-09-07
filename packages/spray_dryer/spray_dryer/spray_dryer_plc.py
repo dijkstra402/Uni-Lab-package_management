@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="spray_dryer_plc",
-    category=["喷雾干燥机"],
+    category=["样品处理仪器与设备", "分离设备", "喷雾干燥机"],
     description="喷雾干燥机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="喷雾干燥机(PLC)",
+    displayname="喷雾干燥机(PLC)",
 )
 class SprayDryerPLC(OpcUaClientWithSubscription):
 

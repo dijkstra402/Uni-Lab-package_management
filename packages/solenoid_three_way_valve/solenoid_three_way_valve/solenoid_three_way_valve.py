@@ -4,7 +4,7 @@
 定义「电磁三通阀」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="solenoid_three_way_valve",
-    category=["电磁三通阀"],
+    category=["合成制备仪器与设备", "实验阀与气路设备", "电磁三通阀"],
     description="电磁三通阀标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="电磁三通阀",
+    displayname="电磁三通阀",
 )
 class SolenoidThreeWayValve:
 
@@ -36,7 +36,7 @@ class SolenoidThreeWayValve:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置绝对位置")
     def set_position(self, position: float = 0.0) -> Dict[str, Any]:
@@ -46,12 +46,12 @@ class SolenoidThreeWayValve:
         Args:
             position[绝对位置]: 目标绝对位置（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="切换阀位")
     def switch_position(self) -> Dict[str, Any]:
         """切换阀位。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

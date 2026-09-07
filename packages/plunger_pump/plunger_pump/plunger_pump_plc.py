@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="plunger_pump_plc",
-    category=["柱塞泵"],
+    category=["合成制备仪器与设备", "实验泵", "柱塞泵"],
     description="柱塞泵 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="柱塞泵(PLC)",
+    displayname="柱塞泵(PLC)",
 )
 class PlungerPumpPLC(OpcUaClientWithSubscription):
 

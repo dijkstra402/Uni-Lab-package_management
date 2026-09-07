@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="auto_coater_plc",
-    category=["自动涂布机"],
+    category=["样品处理仪器与设备", "样品制备设备", "自动涂布机"],
     description="自动涂布机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="自动涂布机(PLC)",
+    displayname="自动涂布机(PLC)",
 )
 class AutoCoaterPLC(OpcUaClientWithSubscription):
 

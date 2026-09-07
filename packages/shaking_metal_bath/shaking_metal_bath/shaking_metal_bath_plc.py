@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="shaking_metal_bath_plc",
-    category=["振荡金属浴"],
+    category=["加热、制冷及空气净化与调节设备", "固体浴", "振荡金属浴"],
     description="振荡金属浴 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="振荡金属浴(PLC)",
+    displayname="振荡金属浴(PLC)",
 )
 class ShakingMetalBathPLC(OpcUaClientWithSubscription):
 

@@ -4,7 +4,7 @@
 定义「黑体辐射源」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="blackbody_radiation_source",
-    category=["黑体辐射源"],
+    category=["加热、制冷及空气净化与调节设备", "固体浴", "黑体辐射源"],
     description="黑体辐射源标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="黑体辐射源",
+    displayname="黑体辐射源",
 )
 class BlackbodyRadiationSource:
 
@@ -36,7 +36,7 @@ class BlackbodyRadiationSource:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置温度")
     def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class BlackbodyRadiationSource:
         Args:
             temperature[温度]: 目标温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置辐射率")
     def set_emissivity(self, emissivity: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class BlackbodyRadiationSource:
         Args:
             emissivity[辐射率]: 目标辐射率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置辐射强度")
     def set_radiation_intensity(self, radiation_intensity: float = 0.0) -> Dict[str, Any]:
@@ -66,27 +66,27 @@ class BlackbodyRadiationSource:
         Args:
             radiation_intensity[辐射强度]: 目标辐射强度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="运行倒计时")
     def run_countdown(self) -> Dict[str, Any]:
         """运行倒计时。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="加热启动")
     def start_heating(self) -> Dict[str, Any]:
         """加热启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="辐射输出")
     def radiation_output(self) -> Dict[str, Any]:
         """辐射输出。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="辐射率校准")
     def calibrate_emissivity(self) -> Dict[str, Any]:
         """辐射率校准。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

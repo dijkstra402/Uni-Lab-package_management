@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="preparative_chromatograph_plc",
-    category=["制备色谱仪"],
+    category=["样品处理仪器与设备", "纯化设备", "制备色谱仪"],
     description="制备色谱仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="制备色谱仪(PLC)",
+    displayname="制备色谱仪(PLC)",
 )
 class PreparativeChromatographPLC(OpcUaClientWithSubscription):
 

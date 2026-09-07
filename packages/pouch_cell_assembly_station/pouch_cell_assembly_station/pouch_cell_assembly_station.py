@@ -4,7 +4,7 @@
 定义「软包电池组装工站」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="pouch_cell_assembly_station",
-    category=["软包电池组装工站"],
+    category=["器件制备设备", "电池组装设备", "软包电池组装工站"],
     description="软包电池组装工站标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="软包电池组装工站",
+    displayname="软包电池组装工站",
 )
 class PouchCellAssemblyStation:
 
@@ -41,7 +41,7 @@ class PouchCellAssemblyStation:
         Args:
             packaging_temperature[封装温度]: 目标封装温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置封装压力")
     def set_packaging_pressure(self, packaging_pressure: float = 0.0) -> Dict[str, Any]:
@@ -51,7 +51,7 @@ class PouchCellAssemblyStation:
         Args:
             packaging_pressure[封装压力]: 目标封装压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置封装时间")
     def set_packaging_time(self, packaging_time: float = 0.0) -> Dict[str, Any]:
@@ -61,7 +61,7 @@ class PouchCellAssemblyStation:
         Args:
             packaging_time[封装时间]: 目标封装时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置热压温度")
     def set_hot_press_temperature(self, hot_press_temperature: float = 0.0) -> Dict[str, Any]:
@@ -71,7 +71,7 @@ class PouchCellAssemblyStation:
         Args:
             hot_press_temperature[热压温度]: 目标热压温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置热压压力")
     def set_hot_press_pressure(self, hot_press_pressure: float = 0.0) -> Dict[str, Any]:
@@ -81,7 +81,7 @@ class PouchCellAssemblyStation:
         Args:
             hot_press_pressure[热压压力]: 目标热压压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置热压时间")
     def set_hot_press_time(self, hot_press_time: float = 0.0) -> Dict[str, Any]:
@@ -91,7 +91,7 @@ class PouchCellAssemblyStation:
         Args:
             hot_press_time[热压时间]: 目标热压时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置裁切速度")
     def set_cutting_speed(self, cutting_speed: float = 0.0) -> Dict[str, Any]:
@@ -101,7 +101,7 @@ class PouchCellAssemblyStation:
         Args:
             cutting_speed[裁切速度]: 目标裁切速度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置真空度")
     def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
@@ -111,7 +111,7 @@ class PouchCellAssemblyStation:
         Args:
             vacuum[真空度]: 目标真空度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置冷却水温")
     def set_cooling_water_temp(self, cooling_water_temp: float = 0.0) -> Dict[str, Any]:
@@ -121,7 +121,7 @@ class PouchCellAssemblyStation:
         Args:
             cooling_water_temp[冷却水温]: 目标冷却水温（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置加热功率")
     def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
@@ -131,22 +131,22 @@ class PouchCellAssemblyStation:
         Args:
             heating_power[加热功率]: 目标加热功率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="停止")
     def stop(self) -> Dict[str, Any]:
         """停止。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="复位")
     def reset(self) -> Dict[str, Any]:
         """复位。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

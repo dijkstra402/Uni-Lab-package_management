@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="catalyst_evaluation_unit_plc",
-    category=["催化剂评价装置"],
+    category=["合成制备仪器与设备", "反应器", "催化剂评价装置"],
     description="催化剂评价装置 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="催化剂评价装置(PLC)",
+    displayname="催化剂评价装置(PLC)",
 )
 class CatalystEvaluationUnitPLC(OpcUaClientWithSubscription):
 

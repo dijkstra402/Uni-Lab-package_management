@@ -7,12 +7,12 @@ name = "preparative_chromatograph"
 version = "0.1.0"
 description = "Uni-Lab-OS 制备色谱仪标准设备类模板 (preparative_chromatograph device class template)"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = {text = "MIT"}
-dependencies = []
+dependencies = ["unilabos>=0.11.3"]
 
 [project.optional-dependencies]
-dev = ["unilabos"]
+dev = ["pytest>=8,<9", "ruff>=0.6"]
 
 [tool.setuptools.packages.find]
 include = ["preparative_chromatograph*"]

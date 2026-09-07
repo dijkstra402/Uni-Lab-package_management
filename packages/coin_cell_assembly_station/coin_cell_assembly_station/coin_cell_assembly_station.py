@@ -4,7 +4,7 @@
 定义「纽扣电池组装工站」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="coin_cell_assembly_station",
-    category=["纽扣电池组装工站"],
+    category=["器件制备设备", "电池组装设备", "纽扣电池组装工站"],
     description="纽扣电池组装工站标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="纽扣电池组装工站",
+    displayname="纽扣电池组装工站",
 )
 class CoinCellAssemblyStation:
 
@@ -36,7 +36,7 @@ class CoinCellAssemblyStation:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置电解液使用瓶数")
     def set_electrolyte_bottle_count(self, electrolyte_bottle_count: int = 0) -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class CoinCellAssemblyStation:
         Args:
             electrolyte_bottle_count[电解液使用瓶数]: 目标电解液使用瓶数（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置负极片盘数")
     def set_anode_sheet_reels(self, anode_sheet_reels: int = 0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class CoinCellAssemblyStation:
         Args:
             anode_sheet_reels[负极片盘数]: 目标负极片盘数（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置隔膜盘数")
     def set_separator_reels(self, separator_reels: int = 0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class CoinCellAssemblyStation:
         Args:
             separator_reels[隔膜盘数]: 目标隔膜盘数（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置单瓶电解液使用次数")
     def set_electrolyte_uses_per_bottle(self, electrolyte_uses_per_bottle: int = 0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class CoinCellAssemblyStation:
         Args:
             electrolyte_uses_per_bottle[单瓶电解液使用次数]: 目标单瓶电解液使用次数（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置电解液吸取量")
     def set_electrolyte_draw_volume(self, electrolyte_draw_volume: int = 0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class CoinCellAssemblyStation:
         Args:
             electrolyte_draw_volume[电解液吸取量]: 目标电解液吸取量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置电池组装压制力")
     def set_cell_assembly_press_force(self, cell_assembly_press_force: int = 0) -> Dict[str, Any]:
@@ -96,7 +96,7 @@ class CoinCellAssemblyStation:
         Args:
             cell_assembly_press_force[电池组装压制力]: 目标电池组装压制力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置电解液二维码序列号")
     def set_electrolyte_qr_serial(self, electrolyte_qr_serial: str = "") -> Dict[str, Any]:
@@ -106,7 +106,7 @@ class CoinCellAssemblyStation:
         Args:
             electrolyte_qr_serial[电解液二维码序列号]: 目标电解液二维码序列号（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置移液枪排液量")
     def set_pipette_dispense_volume(self, pipette_dispense_volume: int = 0) -> Dict[str, Any]:
@@ -116,7 +116,7 @@ class CoinCellAssemblyStation:
         Args:
             pipette_dispense_volume[移液枪排液量]: 目标移液枪排液量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置极片堆叠方式")
     def set_electrode_stacking_mode(self, electrode_stacking_mode: str = "") -> Dict[str, Any]:
@@ -126,7 +126,7 @@ class CoinCellAssemblyStation:
         Args:
             electrode_stacking_mode[极片堆叠方式]: 目标极片堆叠方式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置电池二维码序列号")
     def set_battery_qr_serial(self, battery_qr_serial: str = "") -> Dict[str, Any]:
@@ -136,7 +136,7 @@ class CoinCellAssemblyStation:
         Args:
             battery_qr_serial[电池二维码序列号]: 目标电池二维码序列号（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置开路电压OK下限值")
     def set_ocv_ok_lower_limit(self, ocv_ok_lower_limit: float = 0.0) -> Dict[str, Any]:
@@ -146,7 +146,7 @@ class CoinCellAssemblyStation:
         Args:
             ocv_ok_lower_limit[开路电压OK下限值]: 目标开路电压OK下限值（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置开路电压OK上限值")
     def set_ocv_ok_upper_limit(self, ocv_ok_upper_limit: float = 0.0) -> Dict[str, Any]:
@@ -156,7 +156,7 @@ class CoinCellAssemblyStation:
         Args:
             ocv_ok_upper_limit[开路电压OK上限值]: 目标开路电压OK上限值（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置10mm正极片厚度")
     def set_cathode_sheet_thickness_10mm(self, cathode_sheet_thickness_10mm: float = 0.0) -> Dict[str, Any]:
@@ -166,7 +166,7 @@ class CoinCellAssemblyStation:
         Args:
             cathode_sheet_thickness_10mm[10mm正极片厚度]: 目标10mm正极片厚度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置12mm正极片厚度")
     def set_cathode_sheet_thickness_12mm(self, cathode_sheet_thickness_12mm: float = 0.0) -> Dict[str, Any]:
@@ -176,7 +176,7 @@ class CoinCellAssemblyStation:
         Args:
             cathode_sheet_thickness_12mm[12mm正极片厚度]: 目标12mm正极片厚度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置16mm正极片厚度")
     def set_cathode_sheet_thickness_16mm(self, cathode_sheet_thickness_16mm: float = 0.0) -> Dict[str, Any]:
@@ -186,7 +186,7 @@ class CoinCellAssemblyStation:
         Args:
             cathode_sheet_thickness_16mm[16mm正极片厚度]: 目标16mm正极片厚度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置铝箔厚度")
     def set_aluminum_foil_thickness(self, aluminum_foil_thickness: float = 0.0) -> Dict[str, Any]:
@@ -196,7 +196,7 @@ class CoinCellAssemblyStation:
         Args:
             aluminum_foil_thickness[铝箔厚度]: 目标铝箔厚度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置正极壳厚度")
     def set_cathode_case_thickness(self, cathode_case_thickness: float = 0.0) -> Dict[str, Any]:
@@ -206,7 +206,7 @@ class CoinCellAssemblyStation:
         Args:
             cathode_case_thickness[正极壳厚度]: 目标正极壳厚度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置平垫厚度")
     def set_flat_washer_thickness(self, flat_washer_thickness: float = 0.0) -> Dict[str, Any]:
@@ -216,7 +216,7 @@ class CoinCellAssemblyStation:
         Args:
             flat_washer_thickness[平垫厚度]: 目标平垫厚度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置负极壳厚度")
     def set_anode_case_thickness(self, anode_case_thickness: float = 0.0) -> Dict[str, Any]:
@@ -226,7 +226,7 @@ class CoinCellAssemblyStation:
         Args:
             anode_case_thickness[负极壳厚度]: 目标负极壳厚度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置弹垫厚度")
     def set_spring_washer_thickness(self, spring_washer_thickness: float = 0.0) -> Dict[str, Any]:
@@ -236,7 +236,7 @@ class CoinCellAssemblyStation:
         Args:
             spring_washer_thickness[弹垫厚度]: 目标弹垫厚度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置成品电池厚度")
     def set_finished_cell_thickness(self, finished_cell_thickness: float = 0.0) -> Dict[str, Any]:
@@ -246,37 +246,37 @@ class CoinCellAssemblyStation:
         Args:
             finished_cell_thickness[成品电池厚度]: 目标成品电池厚度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="停止")
     def stop(self) -> Dict[str, Any]:
         """停止。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="复位")
     def reset(self) -> Dict[str, Any]:
         """复位。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="切换手动模式")
     def set_manual_mode(self) -> Dict[str, Any]:
         """切换手动模式。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="切换自动模式")
     def set_auto_mode(self) -> Dict[str, Any]:
         """切换自动模式。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="配方下发")
     def load_recipe(self) -> Dict[str, Any]:
         """配方下发。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

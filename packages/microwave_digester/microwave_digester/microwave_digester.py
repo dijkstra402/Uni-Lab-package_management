@@ -4,7 +4,7 @@
 定义「微波消解仪」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="microwave_digester",
-    category=["微波消解仪"],
+    category=["样品处理仪器与设备", "消解仪", "微波消解仪"],
     description="微波消解仪标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="微波消解仪",
+    displayname="微波消解仪",
 )
 class MicrowaveDigester:
 
@@ -36,7 +36,7 @@ class MicrowaveDigester:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class MicrowaveDigester:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置目标温度")
     def set_target_temperature(self, target_temperature: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class MicrowaveDigester:
         Args:
             target_temperature[目标温度]: 目标目标温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置目标压力")
     def set_target_pressure(self, target_pressure: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class MicrowaveDigester:
         Args:
             target_pressure[目标压力]: 目标目标压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置微波功率")
     def set_microwave_power(self, microwave_power: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class MicrowaveDigester:
         Args:
             microwave_power[微波功率]: 目标微波功率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置消解时间")
     def set_digestion_time(self, digestion_time: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class MicrowaveDigester:
         Args:
             digestion_time[消解时间]: 目标消解时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置程序段")
     def set_program_segment(self, program_segment: int = 0) -> Dict[str, Any]:
@@ -96,12 +96,12 @@ class MicrowaveDigester:
         Args:
             program_segment[程序段]: 目标程序段（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="消解")
     def digest(self) -> Dict[str, Any]:
         """消解。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

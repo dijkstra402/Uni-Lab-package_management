@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="vacuum_centrifugal_concentrator_plc",
-    category=["真空离心浓缩仪"],
+    category=["样品处理仪器与设备", "浓缩设备", "真空离心浓缩仪"],
     description="真空离心浓缩仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="真空离心浓缩仪(PLC)",
+    displayname="真空离心浓缩仪(PLC)",
 )
 class VacuumCentrifugalConcentratorPLC(OpcUaClientWithSubscription):
 

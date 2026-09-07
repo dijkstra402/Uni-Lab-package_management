@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="freezer_plc",
-    category=["冷冻箱"],
+    category=["加热、制冷及空气净化与调节设备", "冰箱及类似设备", "冷冻箱"],
     description="冷冻箱 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="冷冻箱(PLC)",
+    displayname="冷冻箱(PLC)",
 )
 class FreezerPLC(OpcUaClientWithSubscription):
 

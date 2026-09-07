@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="cap_and_dispense_module_plc",
-    category=["开关盖加液模块"],
+    category=["合成制备仪器与设备", "液体分配设备", "开关盖加液模块"],
     description="开关盖加液模块 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="开关盖加液模块(PLC)",
+    displayname="开关盖加液模块(PLC)",
 )
 class CapAndDispenseModulePLC(OpcUaClientWithSubscription):
 

@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="solenoid_on_off_valve_plc",
-    category=["电磁开关阀"],
+    category=["合成制备仪器与设备", "实验阀与气路设备", "电磁开关阀"],
     description="电磁开关阀 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="电磁开关阀(PLC)",
+    displayname="电磁开关阀(PLC)",
 )
 class SolenoidOnOffValvePLC(OpcUaClientWithSubscription):
 

@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="disperser_plc",
-    category=["分散机"],
+    category=["样品处理仪器与设备", "混合与分散设备", "分散机"],
     description="分散机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="分散机(PLC)",
+    displayname="分散机(PLC)",
 )
 class DisperserPLC(OpcUaClientWithSubscription):
 

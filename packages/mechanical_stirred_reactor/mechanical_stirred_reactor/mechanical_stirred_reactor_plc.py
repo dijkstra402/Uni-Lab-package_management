@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="mechanical_stirred_reactor_plc",
-    category=["机械搅拌反应釜"],
+    category=["合成制备仪器与设备", "反应器", "机械搅拌反应釜"],
     description="机械搅拌反应釜 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="机械搅拌反应釜(PLC)",
+    displayname="机械搅拌反应釜(PLC)",
 )
 class MechanicalStirredReactorPLC(OpcUaClientWithSubscription):
 

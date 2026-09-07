@@ -1,7 +1,7 @@
 """
 PLC(OPC UA) 交互驱动生成器
 
-读取 device_templates_actions.csv，为每个设备大类在其包目录下生成
+读取 device_templates_actions.csv 与 instrument_category_paths.csv，为每个设备大类在其包目录下生成
     packages/<id>/<id>/<id>_plc.py
 生成的类继承 OpcUaClientWithSubscription，把标准动作/属性映射为 PLC 节点读写，
 交互范式与 OPCUA 通信协议一致，节点使用中文命名：
@@ -13,11 +13,13 @@ PLC(OPC UA) 交互驱动生成器
 """
 
 import csv
+import json
 import os
 from collections import OrderedDict
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSV_PATH = os.path.join(ROOT, "device_templates_actions.csv")
+CATEGORY_PATHS_CSV = os.path.join(ROOT, "instrument_category_paths.csv")
 PKG_DIR = os.path.join(ROOT, "packages")
 
 PY_DEFAULT = {"float": "0.0", "int": "0", "str": '""', "bool": "False"}
@@ -75,11 +77,42 @@ def load_rows():
         return list(csv.DictReader(f))
 
 
-def group_by_device(rows):
+def load_category_paths():
+    paths = OrderedDict()
+    with open(CATEGORY_PATHS_CSV, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            device_id = row["device_id"].strip()
+            path = [part.strip() for part in row["仪器分类路径"].split(" > ") if part.strip()]
+            if not device_id or not path:
+                raise ValueError(f"分类路径记录不完整: {row}")
+            if device_id in paths:
+                raise ValueError(f"分类路径重复: {device_id}")
+            paths[device_id] = {"category": row["设备大类"].strip(), "path": path}
+    return paths
+
+
+def group_by_device(rows, category_paths):
     devices = OrderedDict()
     for r in rows:
         did = r["device_id"]
-        devices.setdefault(did, {"category": r["设备大类"], "actions": [], "properties": []})
+        mapping = category_paths.get(did)
+        if mapping is None:
+            package_dir = os.path.join(PKG_DIR, did, did)
+            if os.path.isdir(package_dir):
+                raise ValueError(f"缺少分类路径: {did}")
+        elif mapping["category"] != r["设备大类"]:
+            raise ValueError(
+                f"设备大类不一致: {did}: {r['设备大类']} != {mapping['category']}"
+            )
+        devices.setdefault(
+            did,
+            {
+                "category": r["设备大类"],
+                "category_path": mapping["path"] if mapping else None,
+                "actions": [],
+                "properties": [],
+            },
+        )
         item = {
             "en": r["英文名"],
             "desc": r["中文描述"],
@@ -164,6 +197,7 @@ def render_property(p):
 
 def render_file(device_id, info):
     cat = info["category"]
+    category_literal = json.dumps(info["category_path"], ensure_ascii=False)
     cls = class_name(device_id) + "PLC"
     actions = "\n".join(render_action(a) for a in info["actions"])
     props = "\n".join(render_property(p) for p in info["properties"])
@@ -189,7 +223,7 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="{device_id}_plc",
-    category=["{cat}"],
+    category={category_literal},
     description="{cat} PLC(OPC UA) 交互驱动：动作映射为节点读写。",
     display_name="{cat}(PLC)",
 )
@@ -290,7 +324,11 @@ def rewrite_csv(rows):
 
 def main():
     rows = load_rows()
-    devices = group_by_device(rows)
+    category_paths = load_category_paths()
+    devices = group_by_device(rows, category_paths)
+    unexpected_paths = set(category_paths) - set(devices)
+    if unexpected_paths:
+        raise ValueError(f"分类清单存在未知设备: {', '.join(sorted(unexpected_paths))}")
     written = write_drivers(devices)
     rewrite_csv(rows)
     print(f"生成 {len(written)} 个 _plc.py，覆盖 {len(devices)} 个设备大类；CSV 已补充 PLC 方案列。")

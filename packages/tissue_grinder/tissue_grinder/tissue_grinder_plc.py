@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="tissue_grinder_plc",
-    category=["组织研磨仪"],
+    category=["样品处理仪器与设备", "表面处理设备", "组织研磨仪"],
     description="组织研磨仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="组织研磨仪(PLC)",
+    displayname="组织研磨仪(PLC)",
 )
 class TissueGrinderPLC(OpcUaClientWithSubscription):
 

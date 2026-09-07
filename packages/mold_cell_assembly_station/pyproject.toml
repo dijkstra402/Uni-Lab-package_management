@@ -7,12 +7,12 @@ name = "mold_cell_assembly_station"
 version = "0.1.0"
 description = "Uni-Lab-OS 模具电池组装工站标准设备类模板 (mold_cell_assembly_station device class template)"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = {text = "MIT"}
-dependencies = []
+dependencies = ["unilabos>=0.11.3"]
 
 [project.optional-dependencies]
-dev = ["unilabos"]
+dev = ["pytest>=8,<9", "ruff>=0.6"]
 
 [tool.setuptools.packages.find]
 include = ["mold_cell_assembly_station*"]

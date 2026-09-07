@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="microwave_digester_plc",
-    category=["微波消解仪"],
+    category=["样品处理仪器与设备", "消解仪", "微波消解仪"],
     description="微波消解仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="微波消解仪(PLC)",
+    displayname="微波消解仪(PLC)",
 )
 class MicrowaveDigesterPLC(OpcUaClientWithSubscription):
 

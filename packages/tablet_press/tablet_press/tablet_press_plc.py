@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="tablet_press_plc",
-    category=["压片机"],
+    category=["样品处理仪器与设备", "样品制备设备", "压片机"],
     description="压片机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="压片机(PLC)",
+    displayname="压片机(PLC)",
 )
 class TabletPressPLC(OpcUaClientWithSubscription):
 

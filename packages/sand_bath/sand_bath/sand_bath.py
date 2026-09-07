@@ -4,7 +4,7 @@
 定义「砂浴」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="sand_bath",
-    category=["砂浴"],
+    category=["加热、制冷及空气净化与调节设备", "固体浴", "砂浴"],
     description="砂浴标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="砂浴",
+    displayname="砂浴",
 )
 class SandBath:
 
@@ -36,7 +36,7 @@ class SandBath:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置温度")
     def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class SandBath:
         Args:
             temperature[温度]: 目标温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置升温速率")
     def set_ramp_rate(self, ramp_rate: float = 0.0) -> Dict[str, Any]:
@@ -56,27 +56,27 @@ class SandBath:
         Args:
             ramp_rate[升温速率]: 目标升温速率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="运行倒计时")
     def run_countdown(self) -> Dict[str, Any]:
         """运行倒计时。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="加热启动")
     def start_heating(self) -> Dict[str, Any]:
         """加热启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="搅拌启动")
     def start_stirring(self) -> Dict[str, Any]:
         """搅拌启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="升温速率控制")
     def control_ramp_rate(self) -> Dict[str, Any]:
         """升温速率控制。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

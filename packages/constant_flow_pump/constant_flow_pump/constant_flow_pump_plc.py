@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="constant_flow_pump_plc",
-    category=["恒流泵"],
+    category=["合成制备仪器与设备", "实验泵", "恒流泵"],
     description="恒流泵 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="恒流泵(PLC)",
+    displayname="恒流泵(PLC)",
 )
 class ConstantFlowPumpPLC(OpcUaClientWithSubscription):
 

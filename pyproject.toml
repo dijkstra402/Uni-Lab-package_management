@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unilab-package-builder"
+version = "0.1.0"
+description = "Select Uni-Lab device modules and scaffold an OS-compatible device package"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "ruff>=0.6"]
+
+[project.scripts]
+unilab-package-builder = "unilab_package_builder.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["unilab_package_builder*"]
+
+[tool.setuptools.package-data]
+unilab_package_builder = ["ui/*"]

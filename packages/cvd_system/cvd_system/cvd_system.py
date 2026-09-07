@@ -4,7 +4,7 @@
 定义「化学气相沉积设备」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="cvd_system",
-    category=["化学气相沉积设备"],
+    category=["器件制备设备", "蒸镀与表面沉积设备", "化学气相沉积设备"],
     description="化学气相沉积设备标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="化学气相沉积设备",
+    displayname="化学气相沉积设备",
 )
 class CvdSystem:
 
@@ -36,7 +36,7 @@ class CvdSystem:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class CvdSystem:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置沉积温度")
     def set_deposition_temperature(self, deposition_temperature: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class CvdSystem:
         Args:
             deposition_temperature[沉积温度]: 目标沉积温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置工艺压力")
     def set_process_pressure(self, process_pressure: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class CvdSystem:
         Args:
             process_pressure[工艺压力]: 目标工艺压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置气体流量 1 ")
     def set_gas_flow_1(self, gas_flow_1: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class CvdSystem:
         Args:
             gas_flow_1[气体流量 1 ]: 目标气体流量 1 （单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置沉积时间")
     def set_deposition_time(self, deposition_time: float = 0.0) -> Dict[str, Any]:
@@ -86,32 +86,32 @@ class CvdSystem:
         Args:
             deposition_time[沉积时间]: 目标沉积时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="沉积启动")
     def start_deposition(self) -> Dict[str, Any]:
         """沉积启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="抽真空")
     def evacuate(self) -> Dict[str, Any]:
         """抽真空。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="气体切换")
     def switch_gas(self) -> Dict[str, Any]:
         """气体切换。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="降温")
     def cool_down(self) -> Dict[str, Any]:
         """降温。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="腔室开门")
     def open_chamber_door(self) -> Dict[str, Any]:
         """腔室开门。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

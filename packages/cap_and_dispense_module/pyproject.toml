@@ -7,12 +7,12 @@ name = "cap_and_dispense_module"
 version = "0.1.0"
 description = "Uni-Lab-OS 开关盖加液模块标准设备类模板 (cap_and_dispense_module device class template)"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = {text = "MIT"}
-dependencies = []
+dependencies = ["unilabos>=0.11.3"]
 
 [project.optional-dependencies]
-dev = ["unilabos"]
+dev = ["pytest>=8,<9", "ruff>=0.6"]
 
 [tool.setuptools.packages.find]
 include = ["cap_and_dispense_module*"]

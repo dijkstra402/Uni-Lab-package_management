@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="charging_reaction_station_plc",
-    category=["投料反应站"],
+    category=["合成制备仪器与设备", "液体分配设备", "投料反应站"],
     description="投料反应站 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="投料反应站(PLC)",
+    displayname="投料反应站(PLC)",
 )
 class ChargingReactionStationPLC(OpcUaClientWithSubscription):
 

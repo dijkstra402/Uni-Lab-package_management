@@ -4,7 +4,7 @@
 定义「等离子体清洗机」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="plasma_cleaner",
-    category=["等离子体清洗机"],
+    category=["样品处理仪器与设备", "清洗机", "等离子体清洗机"],
     description="等离子体清洗机标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="等离子体清洗机",
+    displayname="等离子体清洗机",
 )
 class PlasmaCleaner:
 
@@ -36,7 +36,7 @@ class PlasmaCleaner:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class PlasmaCleaner:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置清洗时间")
     def set_cleaning_time(self, cleaning_time: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class PlasmaCleaner:
         Args:
             cleaning_time[清洗时间]: 目标清洗时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置清洗温度")
     def set_cleaning_temperature(self, cleaning_temperature: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class PlasmaCleaner:
         Args:
             cleaning_temperature[清洗温度]: 目标清洗温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置清洗压力")
     def set_cleaning_pressure(self, cleaning_pressure: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class PlasmaCleaner:
         Args:
             cleaning_pressure[清洗压力]: 目标清洗压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置等离子功率")
     def set_plasma_power(self, plasma_power: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class PlasmaCleaner:
         Args:
             plasma_power[等离子功率]: 目标等离子功率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置真空度")
     def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
@@ -96,7 +96,7 @@ class PlasmaCleaner:
         Args:
             vacuum[真空度]: 目标真空度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置处理时间")
     def set_treatment_time(self, treatment_time: float = 0.0) -> Dict[str, Any]:
@@ -106,7 +106,7 @@ class PlasmaCleaner:
         Args:
             treatment_time[处理时间]: 目标处理时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置气体流量")
     def set_gas_flow(self, gas_flow: float = 0.0) -> Dict[str, Any]:
@@ -116,22 +116,22 @@ class PlasmaCleaner:
         Args:
             gas_flow[气体流量]: 目标气体流量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="清洗")
     def clean(self) -> Dict[str, Any]:
         """清洗。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="清洗准备")
     def prepare_cleaning(self) -> Dict[str, Any]:
         """清洗准备。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="清洗结束")
     def finish_cleaning(self) -> Dict[str, Any]:
         """清洗结束。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

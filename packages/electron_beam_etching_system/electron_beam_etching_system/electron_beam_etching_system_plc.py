@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="electron_beam_etching_system_plc",
-    category=["电子束刻蚀系统"],
+    category=["样品处理仪器与设备", "表面处理设备", "电子束刻蚀系统"],
     description="电子束刻蚀系统 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="电子束刻蚀系统(PLC)",
+    displayname="电子束刻蚀系统(PLC)",
 )
 class ElectronBeamEtchingSystemPLC(OpcUaClientWithSubscription):
 

@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="ultra_low_temp_freezer_plc",
-    category=["超低温冰箱"],
+    category=["加热、制冷及空气净化与调节设备", "冰箱及类似设备", "超低温冰箱"],
     description="超低温冰箱 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="超低温冰箱(PLC)",
+    displayname="超低温冰箱(PLC)",
 )
 class UltraLowTempFreezerPLC(OpcUaClientWithSubscription):
 

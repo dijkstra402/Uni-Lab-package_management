@@ -4,7 +4,7 @@
 定义「开关盖加液模块」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="cap_and_dispense_module",
-    category=["开关盖加液模块"],
+    category=["合成制备仪器与设备", "液体分配设备", "开关盖加液模块"],
     description="开关盖加液模块标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="开关盖加液模块",
+    displayname="开关盖加液模块",
 )
 class CapAndDispenseModule:
 
@@ -36,7 +36,7 @@ class CapAndDispenseModule:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class CapAndDispenseModule:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置加液体积")
     def set_add_volume(self, add_volume: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class CapAndDispenseModule:
         Args:
             add_volume[加液体积]: 目标加液体积（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置开盖高度")
     def set_cap_height(self, cap_height: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class CapAndDispenseModule:
         Args:
             cap_height[开盖高度]: 目标开盖高度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置关盖扭矩")
     def set_cap_torque(self, cap_torque: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class CapAndDispenseModule:
         Args:
             cap_torque[关盖扭矩]: 目标关盖扭矩（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置容器位置")
     def set_container_position(self, container_position: float = 0.0) -> Dict[str, Any]:
@@ -86,27 +86,27 @@ class CapAndDispenseModule:
         Args:
             container_position[容器位置]: 目标容器位置（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="开盖")
     def open_cap(self) -> Dict[str, Any]:
         """开盖。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="关盖")
     def close_cap(self) -> Dict[str, Any]:
         """关盖。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="加液")
     def add_liquid(self) -> Dict[str, Any]:
         """加液。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="定位")
     def position(self) -> Dict[str, Any]:
         """定位。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

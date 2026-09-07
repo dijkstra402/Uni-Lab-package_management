@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="steam_cleaner_plc",
-    category=["蒸汽清洗机"],
+    category=["样品处理仪器与设备", "清洗机", "蒸汽清洗机"],
     description="蒸汽清洗机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="蒸汽清洗机(PLC)",
+    displayname="蒸汽清洗机(PLC)",
 )
 class SteamCleanerPLC(OpcUaClientWithSubscription):
 

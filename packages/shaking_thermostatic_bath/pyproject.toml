@@ -7,12 +7,12 @@ name = "shaking_thermostatic_bath"
 version = "0.1.0"
 description = "Uni-Lab-OS 振荡恒温槽标准设备类模板 (shaking_thermostatic_bath device class template)"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = {text = "MIT"}
-dependencies = []
+dependencies = ["unilabos>=0.11.3"]
 
 [project.optional-dependencies]
-dev = ["unilabos"]
+dev = ["pytest>=8,<9", "ruff>=0.6"]
 
 [tool.setuptools.packages.find]
 include = ["shaking_thermostatic_bath*"]

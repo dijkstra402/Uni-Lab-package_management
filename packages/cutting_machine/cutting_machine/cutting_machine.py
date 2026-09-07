@@ -4,7 +4,7 @@
 定义「切割机」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="cutting_machine",
-    category=["切割机"],
+    category=["样品处理仪器与设备", "样品制备设备", "切割机"],
     description="切割机标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="切割机",
+    displayname="切割机",
 )
 class CuttingMachine:
 
@@ -36,7 +36,7 @@ class CuttingMachine:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class CuttingMachine:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置切割速度")
     def set_cutting_speed(self, cutting_speed: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class CuttingMachine:
         Args:
             cutting_speed[切割速度]: 目标切割速度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置切割深度")
     def set_cutting_depth(self, cutting_depth: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class CuttingMachine:
         Args:
             cutting_depth[切割深度]: 目标切割深度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置进给速率")
     def set_feed_rate(self, feed_rate: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class CuttingMachine:
         Args:
             feed_rate[进给速率]: 目标进给速率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置切割压力")
     def set_cutting_pressure(self, cutting_pressure: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class CuttingMachine:
         Args:
             cutting_pressure[切割压力]: 目标切割压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置冷却液流量")
     def set_coolant_flow(self, coolant_flow: float = 0.0) -> Dict[str, Any]:
@@ -96,7 +96,7 @@ class CuttingMachine:
         Args:
             coolant_flow[冷却液流量]: 目标冷却液流量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置刀片转速")
     def set_blade_speed(self, blade_speed: float = 0.0) -> Dict[str, Any]:
@@ -106,7 +106,7 @@ class CuttingMachine:
         Args:
             blade_speed[刀片转速]: 目标刀片转速（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置切割精度")
     def set_cutting_precision(self, cutting_precision: int = 0) -> Dict[str, Any]:
@@ -116,12 +116,12 @@ class CuttingMachine:
         Args:
             cutting_precision[切割精度]: 目标切割精度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

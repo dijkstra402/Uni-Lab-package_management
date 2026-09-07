@@ -3,8 +3,8 @@
 ## 1. 目标
 
 以 `packages/` 下的**直连驱动模板**（`<id>.py`）为接口基准，参照 `AI4C.py` 的真实
-OPC UA 交互范式，为每个设备大类生成 **PLC 驱动**（`<id>_plc.py`），并以
-`device_templates_actions.csv` 为唯一数据源统一维护。
+OPC UA 交互范式，为每个设备大类生成 **PLC 驱动**（`<id>_plc.py`）。接口与节点信息由
+`device_templates_actions.csv` 维护，仪器分类层级由 `instrument_category_paths.csv` 维护。
 
 核心约束：**PLC 驱动暴露的变量（方法名 / 参数名+类型 / 属性名）**，
 使同一套工作流可在「直连」与「PLC」两种实现间无缝切换；同时在 CSV 中建立
@@ -17,8 +17,9 @@ OPC UA 交互范式，为每个设备大类生成 **PLC 驱动**（`<id>_plc.py`
 | `AI4C.py`                        | 真实参照例。继承`OpcUaClientWithSubscription`，节点交互范式：触发类 `_Trigger`/`_Complete`、设定类写值、状态类读节点 |
 | `packages/<id>/<id>/<id>.py`     | 139 个直连模板，`@action` 方法体为 `pass`，`@property` 读 `self.data`                                              |
 | `packages/<id>/<id>/<id>_plc.py` | 已由生成器产出的 PLC 驱动，方法签名与直连同源                                                                              |
-| `device_templates_actions.csv`   | 2372 行，列：`设备大类, device_id, 类型, 英文名, 中文描述, 参数(名:类型), PLC节点, 交互模式`                             |
-| `generate_plc_drivers.py`        | 读 CSV 生成`<id>_plc.py`，并回写 `PLC节点`/`交互模式` 两列                                                           |
+| `device_templates_actions.csv`   | 2749 条设备动作/属性记录，列：`设备大类, device_id, 类型, 英文名, 中文描述, 参数(名:类型), PLC节点, 交互模式`         |
+| `instrument_category_paths.csv`  | 139 个设备的完整仪器分类路径，依据飞书“仪器分类”表的父记录链整理                                                        |
+| `generate_plc_drivers.py`        | 读两份 CSV 生成`<id>_plc.py`，并回写 `PLC节点`/`交互模式` 两列                                                      |
 
 **当前 PLC 节点命名规则**（`generate_plc_drivers.py`）：
 
@@ -29,7 +30,7 @@ OPC UA 交互范式，为每个设备大类生成 **PLC 驱动**（`<id>_plc.py`
 ## 3. 一致性的三层定义
 
 1. **接口级一致（强约束）**：`<id>_plc.py` 的 action 方法名、参数名与类型、property 名集合，
-   必须与 `<id>.py` 完全相同。二者均由**同一份 CSV 确定性生成**，从源头保证一致，
+   必须与 `<id>.py` 完全相同。二者的接口均由**同一份 CSV 确定性生成**，从源头保证一致，
    不手改成品即不会漂移。
 2. **节点对照（映射约束）**：CSV 中 `英文名`（直连变量）与 `PLC节点` 构成一一对照表；
    同一 `device_id` 内 `PLC节点` 唯一，命名符合第 2 节规则。
@@ -38,12 +39,14 @@ OPC UA 交互范式，为每个设备大类生成 **PLC 驱动**（`<id>_plc.py`
 
 ## 4. 方案
 
-### 4.1 数据源：CSV 保持唯一真相
+### 4.1 数据源：接口与分类职责分离
 
-- 直连模板、PLC 驱动、节点对照都以 `device_templates_actions.csv` 为准。
+- 直连接口、PLC 驱动和节点对照以 `device_templates_actions.csv` 为准。
+- `@device(category=...)` 以 `instrument_category_paths.csv` 为准，按飞书父记录链保存完整有序路径；例如反应釜为“合成制备仪器与设备 > 反应器 > 反应釜”。
+- 分类清单依据飞书“仪器分类”表的父记录链整理，生成器校验每个 `device_id` 恰好有一条分类路径。
 - 不手改 `<id>_plc.py`（文件头已标注「自动生成，请勿手改」）；一致性由「同源生成」保证。
 - 直连变量与 PLC 节点的对照表**内嵌在 CSV**（`英文名` 列 = 直连变量，`PLC节点` 列 = PLC 节点），
-  无需额外映射文件。
+  分类层级不重复写入动作明细行。
 
 ### 4.2 生成器：对齐 AI4C.py（沿用现有 `generate_plc_drivers.py`）
 
@@ -59,9 +62,10 @@ OPC UA 交互范式，为每个设备大类生成 **PLC 驱动**（`<id>_plc.py`
 ## 5. 执行步骤
 
 1. 确认 CSV 中每个设备的 `英文名`/`参数(名:类型)`/`类型` 准确，作为直连与 PLC 的共同接口定义。
-2. 运行 `generate_plc_drivers.py`：生成 `<id>_plc.py`，并回写 `PLC节点`/`交互模式`。
-3. 抽查若干设备，确认 PLC 方法签名与直连模板一致、CSV 对照表节点无冲突。
-4. 若发现命名冲突或规则偏差，改 CSV（数据）或生成器（规则）后重跑第 2 步。
+2. 确认 `instrument_category_paths.csv` 覆盖全部 `device_id`，且层级顺序与飞书分类表一致。
+3. 运行 `generate_plc_drivers.py`：生成 `<id>_plc.py`，并回写 `PLC节点`/`交互模式`。
+4. 抽查若干设备，确认 PLC 方法签名与直连模板一致、分类路径完整、CSV 对照表节点无冲突。
+5. 若发现命名冲突或规则偏差，改对应 CSV（数据）或生成器（规则）后重跑第 3 步。
 
 ## 6. 风险与注意
 
@@ -76,5 +80,6 @@ OPC UA 交互范式，为每个设备大类生成 **PLC 驱动**（`<id>_plc.py`
 ## 7. 交付物
 
 - `PLC_GENERATION_PLAN.md`（本文档）
+- `instrument_category_paths.csv`（139 个设备的完整分类路径）
 - 重新生成的 `<id>_plc.py`（139 个设备）
 - 更新后的 `device_templates_actions.csv`（含 `PLC节点`/`交互模式` 对照列）

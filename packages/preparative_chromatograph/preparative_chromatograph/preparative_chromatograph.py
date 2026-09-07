@@ -4,7 +4,7 @@
 定义「制备色谱仪」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="preparative_chromatograph",
-    category=["制备色谱仪"],
+    category=["样品处理仪器与设备", "纯化设备", "制备色谱仪"],
     description="制备色谱仪标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="制备色谱仪",
+    displayname="制备色谱仪",
 )
 class PreparativeChromatograph:
 
@@ -36,7 +36,7 @@ class PreparativeChromatograph:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class PreparativeChromatograph:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置进样量")
     def set_injection_volume(self, injection_volume: int = 0) -> Dict[str, Any]:
@@ -56,17 +56,17 @@ class PreparativeChromatograph:
         Args:
             injection_volume[进样量]: 目标进样量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="制备")
     def prepare(self) -> Dict[str, Any]:
         """制备。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="进样")
     def inject(self) -> Dict[str, Any]:
         """进样。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

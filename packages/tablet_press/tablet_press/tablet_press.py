@@ -4,7 +4,7 @@
 定义「压片机」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="tablet_press",
-    category=["压片机"],
+    category=["样品处理仪器与设备", "样品制备设备", "压片机"],
     description="压片机标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="压片机",
+    displayname="压片机",
 )
 class TabletPress:
 
@@ -36,7 +36,7 @@ class TabletPress:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class TabletPress:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置压制压力")
     def set_pressing_pressure(self, pressing_pressure: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class TabletPress:
         Args:
             pressing_pressure[压制压力]: 目标压制压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置压制时间")
     def set_pressing_time(self, pressing_time: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class TabletPress:
         Args:
             pressing_time[压制时间]: 目标压制时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置保压时间")
     def set_holding_time(self, holding_time: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class TabletPress:
         Args:
             holding_time[保压时间]: 目标保压时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置泄压速率")
     def set_depressurize_rate(self, depressurize_rate: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class TabletPress:
         Args:
             depressurize_rate[泄压速率]: 目标泄压速率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置压模温度")
     def set_mold_temperature(self, mold_temperature: float = 0.0) -> Dict[str, Any]:
@@ -96,7 +96,7 @@ class TabletPress:
         Args:
             mold_temperature[压模温度]: 目标压模温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置样品直径")
     def set_sample_diameter(self, sample_diameter: float = 0.0) -> Dict[str, Any]:
@@ -106,7 +106,7 @@ class TabletPress:
         Args:
             sample_diameter[样品直径]: 目标样品直径（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置压制次数")
     def set_pressing_count(self, pressing_count: int = 0) -> Dict[str, Any]:
@@ -116,12 +116,12 @@ class TabletPress:
         Args:
             pressing_count[压制次数]: 目标压制次数（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

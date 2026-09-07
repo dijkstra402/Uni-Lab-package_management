@@ -4,7 +4,7 @@
 定义「真空吸液系统」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="vacuum_aspiration_system",
-    category=["真空吸液系统"],
+    category=["合成制备仪器与设备", "液体分配设备", "真空吸液系统"],
     description="真空吸液系统标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="真空吸液系统",
+    displayname="真空吸液系统",
 )
 class VacuumAspirationSystem:
 
@@ -36,7 +36,7 @@ class VacuumAspirationSystem:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class VacuumAspirationSystem:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置真空度")
     def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class VacuumAspirationSystem:
         Args:
             vacuum[真空度]: 目标真空度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置吸液时间")
     def set_aspirate_time(self, aspirate_time: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class VacuumAspirationSystem:
         Args:
             aspirate_time[吸液时间]: 目标吸液时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置吸液体积")
     def set_aspirate_volume(self, aspirate_volume: float = 0.0) -> Dict[str, Any]:
@@ -76,27 +76,27 @@ class VacuumAspirationSystem:
         Args:
             aspirate_volume[吸液体积]: 目标吸液体积（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="吸液启动")
     def start_draw_liquid(self) -> Dict[str, Any]:
         """吸液启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="真空启动")
     def start_vacuum(self) -> Dict[str, Any]:
         """真空启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="排液")
     def dispense(self) -> Dict[str, Any]:
         """排液。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="清洗")
     def clean(self) -> Dict[str, Any]:
         """清洗。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

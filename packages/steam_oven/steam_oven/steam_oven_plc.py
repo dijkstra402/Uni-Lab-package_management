@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="steam_oven_plc",
-    category=["蒸箱"],
+    category=["加热、制冷及空气净化与调节设备", "恒温箱及类似设备", "高温箱", "蒸箱"],
     description="蒸箱 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="蒸箱(PLC)",
+    displayname="蒸箱(PLC)",
 )
 class SteamOvenPLC(OpcUaClientWithSubscription):
 

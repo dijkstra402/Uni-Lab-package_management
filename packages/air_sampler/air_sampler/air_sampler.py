@@ -4,7 +4,7 @@
 定义「大气采样器」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="air_sampler",
-    category=["大气采样器"],
+    category=["样品处理仪器与设备", "提取设备", "大气采样器"],
     description="大气采样器标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="大气采样器",
+    displayname="大气采样器",
 )
 class AirSampler:
 
@@ -36,7 +36,7 @@ class AirSampler:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class AirSampler:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行时间")
     def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class AirSampler:
         Args:
             run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置采样流量")
     def set_sampling_flow(self, sampling_flow: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class AirSampler:
         Args:
             sampling_flow[采样流量]: 目标采样流量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置采样时间")
     def set_sampling_time(self, sampling_time: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class AirSampler:
         Args:
             sampling_time[采样时间]: 目标采样时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置采样压力")
     def set_sampling_pressure(self, sampling_pressure: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class AirSampler:
         Args:
             sampling_pressure[采样压力]: 目标采样压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置采样温度")
     def set_sampling_temperature(self, sampling_temperature: float = 0.0) -> Dict[str, Any]:
@@ -96,22 +96,22 @@ class AirSampler:
         Args:
             sampling_temperature[采样温度]: 目标采样温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="停止")
     def stop(self) -> Dict[str, Any]:
         """停止。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="复位")
     def reset(self) -> Dict[str, Any]:
         """复位。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

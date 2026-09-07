@@ -4,7 +4,7 @@
 定义「热混匀仪」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="thermomixer",
-    category=["热混匀仪"],
+    category=["样品处理仪器与设备", "混合与分散设备", "热混匀仪"],
     description="热混匀仪标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="热混匀仪",
+    displayname="热混匀仪",
 )
 class Thermomixer:
 
@@ -36,7 +36,7 @@ class Thermomixer:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置加热温度")
     def set_heating_temperature(self, heating_temperature: float = 0.0) -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class Thermomixer:
         Args:
             heating_temperature[加热温度]: 目标加热温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置混匀速度")
     def set_mix_speed(self, mix_speed: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class Thermomixer:
         Args:
             mix_speed[混匀速度]: 目标混匀速度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行时间")
     def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class Thermomixer:
         Args:
             run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置工作模式")
     def set_work_mode(self, work_mode: str = "") -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class Thermomixer:
         Args:
             work_mode[工作模式]: 目标工作模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置温度单位")
     def set_temperature_unit(self, temperature_unit: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class Thermomixer:
         Args:
             temperature_unit[温度单位]: 目标温度单位（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置加热功率")
     def set_heating_power(self, heating_power: float = 0.0) -> Dict[str, Any]:
@@ -96,7 +96,7 @@ class Thermomixer:
         Args:
             heating_power[加热功率]: 目标加热功率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置安全温度")
     def set_safety_temperature(self, safety_temperature: float = 0.0) -> Dict[str, Any]:
@@ -106,17 +106,17 @@ class Thermomixer:
         Args:
             safety_temperature[安全温度]: 目标安全温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="混匀")
     def mix(self) -> Dict[str, Any]:
         """混匀。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="停止")
     def stop(self) -> Dict[str, Any]:
         """停止。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

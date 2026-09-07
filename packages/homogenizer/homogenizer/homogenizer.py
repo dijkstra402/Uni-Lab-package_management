@@ -4,7 +4,7 @@
 定义「均质器」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="homogenizer",
-    category=["均质器"],
+    category=["样品处理仪器与设备", "混合与分散设备", "均质器"],
     description="均质器标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="均质器",
+    displayname="均质器",
 )
 class Homogenizer:
 
@@ -36,7 +36,7 @@ class Homogenizer:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置均质压力")
     def set_homogenize_pressure(self, homogenize_pressure: float = 0.0) -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class Homogenizer:
         Args:
             homogenize_pressure[均质压力]: 目标均质压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置均质流量")
     def set_homogenize_flow(self, homogenize_flow: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class Homogenizer:
         Args:
             homogenize_flow[均质流量]: 目标均质流量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行时间")
     def set_run_time(self, run_time: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class Homogenizer:
         Args:
             run_time[运行时间]: 目标运行时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置均质级别")
     def set_homogenize_level(self, homogenize_level: int = 0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class Homogenizer:
         Args:
             homogenize_level[均质级别]: 目标均质级别（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置循环次数")
     def set_cycle_count(self, cycle_count: int = 0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class Homogenizer:
         Args:
             cycle_count[循环次数]: 目标循环次数（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置压力上限")
     def set_pressure_upper_limit(self, pressure_upper_limit: float = 0.0) -> Dict[str, Any]:
@@ -96,7 +96,7 @@ class Homogenizer:
         Args:
             pressure_upper_limit[压力上限]: 目标压力上限（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置流量上限")
     def set_flow_upper_limit(self, flow_upper_limit: float = 0.0) -> Dict[str, Any]:
@@ -106,12 +106,12 @@ class Homogenizer:
         Args:
             flow_upper_limit[流量上限]: 目标流量上限（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="均质")
     def homogenize(self) -> Dict[str, Any]:
         """均质。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

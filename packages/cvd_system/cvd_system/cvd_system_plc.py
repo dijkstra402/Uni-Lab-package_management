@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="cvd_system_plc",
-    category=["化学气相沉积设备"],
+    category=["器件制备设备", "蒸镀与表面沉积设备", "化学气相沉积设备"],
     description="化学气相沉积设备 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="化学气相沉积设备(PLC)",
+    displayname="化学气相沉积设备(PLC)",
 )
 class CvdSystemPLC(OpcUaClientWithSubscription):
 

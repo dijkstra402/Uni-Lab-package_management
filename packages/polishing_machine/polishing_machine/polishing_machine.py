@@ -4,7 +4,7 @@
 定义「抛光机」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="polishing_machine",
-    category=["抛光机"],
+    category=["样品处理仪器与设备", "样品制备设备", "抛光机"],
     description="抛光机标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="抛光机",
+    displayname="抛光机",
 )
 class PolishingMachine:
 
@@ -36,7 +36,7 @@ class PolishingMachine:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class PolishingMachine:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置抛光轮转速")
     def set_polishing_wheel_speed(self, polishing_wheel_speed: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class PolishingMachine:
         Args:
             polishing_wheel_speed[抛光轮转速]: 目标抛光轮转速（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置抛光压力")
     def set_polishing_pressure(self, polishing_pressure: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class PolishingMachine:
         Args:
             polishing_pressure[抛光压力]: 目标抛光压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置抛光时间")
     def set_polishing_time(self, polishing_time: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class PolishingMachine:
         Args:
             polishing_time[抛光时间]: 目标抛光时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置抛光液流量")
     def set_polishing_fluid_flow(self, polishing_fluid_flow: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class PolishingMachine:
         Args:
             polishing_fluid_flow[抛光液流量]: 目标抛光液流量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置样品转速")
     def set_sample_speed(self, sample_speed: float = 0.0) -> Dict[str, Any]:
@@ -96,12 +96,12 @@ class PolishingMachine:
         Args:
             sample_speed[样品转速]: 目标样品转速（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="启动")
     def start(self) -> Dict[str, Any]:
         """启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="refrigerated_centrifuge_plc",
-    category=["低温或冷冻离心机"],
+    category=["样品处理仪器与设备", "分离设备", "低温/冷冻离心机"],
     description="低温或冷冻离心机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="低温或冷冻离心机(PLC)",
+    displayname="低温或冷冻离心机(PLC)",
 )
 class RefrigeratedCentrifugePLC(OpcUaClientWithSubscription):
 

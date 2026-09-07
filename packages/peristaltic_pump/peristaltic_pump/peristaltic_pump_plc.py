@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="peristaltic_pump_plc",
-    category=["蠕动泵"],
+    category=["合成制备仪器与设备", "实验泵", "蠕动泵"],
     description="蠕动泵 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="蠕动泵(PLC)",
+    displayname="蠕动泵(PLC)",
 )
 class PeristalticPumpPLC(OpcUaClientWithSubscription):
 

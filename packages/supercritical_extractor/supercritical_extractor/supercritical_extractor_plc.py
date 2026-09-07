@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="supercritical_extractor_plc",
-    category=["超临界萃取设备"],
+    category=["样品处理仪器与设备", "提取设备", "超临界萃取设备"],
     description="超临界萃取设备 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="超临界萃取设备(PLC)",
+    displayname="超临界萃取设备(PLC)",
 )
 class SupercriticalExtractorPLC(OpcUaClientWithSubscription):
 

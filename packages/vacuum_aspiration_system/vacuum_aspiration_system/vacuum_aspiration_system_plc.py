@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="vacuum_aspiration_system_plc",
-    category=["真空吸液系统"],
+    category=["合成制备仪器与设备", "液体分配设备", "真空吸液系统"],
     description="真空吸液系统 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="真空吸液系统(PLC)",
+    displayname="真空吸液系统(PLC)",
 )
 class VacuumAspirationSystemPLC(OpcUaClientWithSubscription):
 

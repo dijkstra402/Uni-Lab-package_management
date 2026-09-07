@@ -4,7 +4,7 @@
 定义「微波合成反应仪」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="microwave_synthesis_reactor",
-    category=["微波合成反应仪"],
+    category=["合成制备仪器与设备", "反应器", "微波合成反应仪"],
     description="微波合成反应仪标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="微波合成反应仪",
+    displayname="微波合成反应仪",
 )
 class MicrowaveSynthesisReactor:
 
@@ -36,7 +36,7 @@ class MicrowaveSynthesisReactor:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,17 +46,17 @@ class MicrowaveSynthesisReactor:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="微波发射")
     def emit_microwave(self) -> Dict[str, Any]:
         """微波发射。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="搅拌")
     def stir(self) -> Dict[str, Any]:
         """搅拌。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

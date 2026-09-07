@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="auto_titrator_plc",
-    category=["自动滴定仪"],
+    category=["合成制备仪器与设备", "液体分配设备", "自动滴定仪"],
     description="自动滴定仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="自动滴定仪(PLC)",
+    displayname="自动滴定仪(PLC)",
 )
 class AutoTitratorPLC(OpcUaClientWithSubscription):
 

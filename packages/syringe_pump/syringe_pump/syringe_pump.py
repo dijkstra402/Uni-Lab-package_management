@@ -4,7 +4,7 @@
 定义「注射泵」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="syringe_pump",
-    category=["注射泵"],
+    category=["合成制备仪器与设备", "实验泵", "注射泵"],
     description="注射泵标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="注射泵",
+    displayname="注射泵",
 )
 class SyringePump:
 
@@ -36,7 +36,7 @@ class SyringePump:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置绝对位置")
     def set_position(self, position: float = 0.0) -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class SyringePump:
         Args:
             position[绝对位置]: 目标绝对位置（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置抽液位置")
     def set_aspirate_position(self, aspirate_position: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class SyringePump:
         Args:
             aspirate_position[抽液位置]: 目标抽液位置（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置排液位置")
     def set_dispense_position(self, dispense_position: float = 0.0) -> Dict[str, Any]:
@@ -66,22 +66,22 @@ class SyringePump:
         Args:
             dispense_position[排液位置]: 目标排液位置（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="绝对控制")
     def move_absolute(self) -> Dict[str, Any]:
         """绝对控制。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="抽液")
     def aspirate(self) -> Dict[str, Any]:
         """抽液。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="排液")
     def dispense(self) -> Dict[str, Any]:
         """排液。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

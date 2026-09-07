@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="pulverizer_plc",
-    category=["打粉机"],
+    category=["样品处理仪器与设备", "粉碎设备", "打粉机"],
     description="打粉机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="打粉机(PLC)",
+    displayname="打粉机(PLC)",
 )
 class PulverizerPLC(OpcUaClientWithSubscription):
 

@@ -4,7 +4,7 @@
 定义「球磨机」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="ball_mill",
-    category=["球磨机"],
+    category=["样品处理仪器与设备", "粉碎设备", "球磨机"],
     description="球磨机标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="球磨机",
+    displayname="球磨机",
 )
 class BallMill:
 
@@ -36,7 +36,7 @@ class BallMill:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class BallMill:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置研磨时间")
     def set_grinding_time(self, grinding_time: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class BallMill:
         Args:
             grinding_time[研磨时间]: 目标研磨时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置球料比")
     def set_ball_to_powder_ratio(self, ball_to_powder_ratio: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class BallMill:
         Args:
             ball_to_powder_ratio[球料比]: 目标球料比（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置研磨温度")
     def set_grinding_temperature(self, grinding_temperature: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class BallMill:
         Args:
             grinding_temperature[研磨温度]: 目标研磨温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置正反转间隔")
     def set_fwd_rev_interval(self, fwd_rev_interval: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class BallMill:
         Args:
             fwd_rev_interval[正反转间隔]: 目标正反转间隔（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置转速")
     def set_speed(self, speed: float = 0.0) -> Dict[str, Any]:
@@ -96,12 +96,12 @@ class BallMill:
         Args:
             speed[转速]: 目标转速（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="研磨")
     def grind(self) -> Dict[str, Any]:
         """研磨。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

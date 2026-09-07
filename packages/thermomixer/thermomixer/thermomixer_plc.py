@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="thermomixer_plc",
-    category=["热混匀仪"],
+    category=["样品处理仪器与设备", "混合与分散设备", "热混匀仪"],
     description="热混匀仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="热混匀仪(PLC)",
+    displayname="热混匀仪(PLC)",
 )
 class ThermomixerPLC(OpcUaClientWithSubscription):
 

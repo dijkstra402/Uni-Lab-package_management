@@ -4,7 +4,7 @@
 定义「振动固体加料模块」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="vibratory_solid_feeder",
-    category=["振动固体加料模块"],
+    category=["合成制备仪器与设备", "固体分配设备", "振动固体加料模块"],
     description="振动固体加料模块标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="振动固体加料模块",
+    displayname="振动固体加料模块",
 )
 class VibratorySolidFeeder:
 
@@ -36,7 +36,7 @@ class VibratorySolidFeeder:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class VibratorySolidFeeder:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置振动频率")
     def set_vibration_frequency(self, vibration_frequency: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class VibratorySolidFeeder:
         Args:
             vibration_frequency[振动频率]: 目标振动频率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置振动振幅")
     def set_vibration_amplitude(self, vibration_amplitude: int = 0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class VibratorySolidFeeder:
         Args:
             vibration_amplitude[振动振幅]: 目标振动振幅（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置加料时间")
     def set_feed_time(self, feed_time: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class VibratorySolidFeeder:
         Args:
             feed_time[加料时间]: 目标加料时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置加料量")
     def set_feed_amount(self, feed_amount: float = 0.0) -> Dict[str, Any]:
@@ -86,17 +86,17 @@ class VibratorySolidFeeder:
         Args:
             feed_amount[加料量]: 目标加料量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="加料")
     def feed(self) -> Dict[str, Any]:
         """加料。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="清堵")
     def clear_clog(self) -> Dict[str, Any]:
         """清堵。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="rotary_evaporator_plc",
-    category=["旋转蒸发器"],
+    category=["样品处理仪器与设备", "浓缩设备", "旋转蒸发器"],
     description="旋转蒸发器 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="旋转蒸发器(PLC)",
+    displayname="旋转蒸发器(PLC)",
 )
 class RotaryEvaporatorPLC(OpcUaClientWithSubscription):
 

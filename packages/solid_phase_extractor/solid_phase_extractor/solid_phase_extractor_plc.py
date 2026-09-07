@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="solid_phase_extractor_plc",
-    category=["固相萃取设备"],
+    category=["样品处理仪器与设备", "提取设备", "固相萃取设备"],
     description="固相萃取设备 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="固相萃取设备(PLC)",
+    displayname="固相萃取设备(PLC)",
 )
 class SolidPhaseExtractorPLC(OpcUaClientWithSubscription):
 

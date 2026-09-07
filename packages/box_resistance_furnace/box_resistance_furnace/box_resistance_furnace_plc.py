@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="box_resistance_furnace_plc",
-    category=["箱式电阻炉"],
+    category=["加热、制冷及空气净化与调节设备", "恒温箱及类似设备", "高温炉", "箱式电阻炉"],
     description="箱式电阻炉 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="箱式电阻炉(PLC)",
+    displayname="箱式电阻炉(PLC)",
 )
 class BoxResistanceFurnacePLC(OpcUaClientWithSubscription):
 

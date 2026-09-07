@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="temp_verification_thermostatic_bath_plc",
-    category=["温度检定恒温槽"],
+    category=["加热、制冷及空气净化与调节设备", "恒温槽", "温度检定恒温槽"],
     description="温度检定恒温槽 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="温度检定恒温槽(PLC)",
+    displayname="温度检定恒温槽(PLC)",
 )
 class TempVerificationThermostaticBathPLC(OpcUaClientWithSubscription):
 

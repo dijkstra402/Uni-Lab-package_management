@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="autoclave_sterilizer_plc",
-    category=["高压消毒机"],
+    category=["样品处理仪器与设备", "消毒机", "高压消毒机"],
     description="高压消毒机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="高压消毒机(PLC)",
+    displayname="高压消毒机(PLC)",
 )
 class AutoclaveSterilizerPLC(OpcUaClientWithSubscription):
 

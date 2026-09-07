@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="nitrogen_evaporator_plc",
-    category=["氮吹仪"],
+    category=["样品处理仪器与设备", "浓缩设备", "氮吹仪"],
     description="氮吹仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="氮吹仪(PLC)",
+    displayname="氮吹仪(PLC)",
 )
 class NitrogenEvaporatorPLC(OpcUaClientWithSubscription):
 

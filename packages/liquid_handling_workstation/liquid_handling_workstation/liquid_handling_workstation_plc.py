@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="liquid_handling_workstation_plc",
-    category=["移液工作站"],
+    category=["合成制备仪器与设备", "液体分配设备", "移液工作站"],
     description="移液工作站 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="移液工作站(PLC)",
+    displayname="移液工作站(PLC)",
 )
 class LiquidHandlingWorkstationPLC(OpcUaClientWithSubscription):
 

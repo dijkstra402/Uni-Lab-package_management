@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="spray_precipitation_unit_plc",
-    category=["喷雾沉淀装置"],
+    category=["样品处理仪器与设备", "分离设备", "喷雾沉淀装置"],
     description="喷雾沉淀装置 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="喷雾沉淀装置(PLC)",
+    displayname="喷雾沉淀装置(PLC)",
 )
 class SprayPrecipitationUnitPLC(OpcUaClientWithSubscription):
 

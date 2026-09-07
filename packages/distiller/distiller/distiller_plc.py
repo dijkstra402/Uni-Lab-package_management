@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="distiller_plc",
-    category=["蒸馏器"],
+    category=["样品处理仪器与设备", "浓缩设备", "蒸馏器"],
     description="蒸馏器 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="蒸馏器(PLC)",
+    displayname="蒸馏器(PLC)",
 )
 class DistillerPLC(OpcUaClientWithSubscription):
 

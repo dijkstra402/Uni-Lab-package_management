@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="plasma_surface_treater_plc",
-    category=["等离子体表面处理机"],
+    category=["样品处理仪器与设备", "样品制备设备", "等离子体表面处理机"],
     description="等离子体表面处理机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="等离子体表面处理机(PLC)",
+    displayname="等离子体表面处理机(PLC)",
 )
 class PlasmaSurfaceTreaterPLC(OpcUaClientWithSubscription):
 

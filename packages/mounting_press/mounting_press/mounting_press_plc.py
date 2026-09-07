@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="mounting_press_plc",
-    category=["镶嵌机"],
+    category=["样品处理仪器与设备", "样品制备设备", "镶嵌机"],
     description="镶嵌机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="镶嵌机(PLC)",
+    displayname="镶嵌机(PLC)",
 )
 class MountingPressPLC(OpcUaClientWithSubscription):
 

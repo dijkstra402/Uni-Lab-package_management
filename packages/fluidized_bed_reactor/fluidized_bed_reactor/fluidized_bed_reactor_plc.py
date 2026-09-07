@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="fluidized_bed_reactor_plc",
-    category=["流化床反应器"],
+    category=["合成制备仪器与设备", "反应器", "流化床反应器"],
     description="流化床反应器 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="流化床反应器(PLC)",
+    displayname="流化床反应器(PLC)",
 )
 class FluidizedBedReactorPLC(OpcUaClientWithSubscription):
 

@@ -4,7 +4,7 @@
 定义「干冰清洗机」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="dry_ice_cleaner",
-    category=["干冰清洗机"],
+    category=["样品处理仪器与设备", "清洗机", "干冰清洗机"],
     description="干冰清洗机标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="干冰清洗机",
+    displayname="干冰清洗机",
 )
 class DryIceCleaner:
 
@@ -36,7 +36,7 @@ class DryIceCleaner:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class DryIceCleaner:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置清洗时间")
     def set_cleaning_time(self, cleaning_time: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class DryIceCleaner:
         Args:
             cleaning_time[清洗时间]: 目标清洗时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置清洗温度")
     def set_cleaning_temperature(self, cleaning_temperature: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class DryIceCleaner:
         Args:
             cleaning_temperature[清洗温度]: 目标清洗温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置清洗压力")
     def set_cleaning_pressure(self, cleaning_pressure: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class DryIceCleaner:
         Args:
             cleaning_pressure[清洗压力]: 目标清洗压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置干冰用量")
     def set_dry_ice_amount(self, dry_ice_amount: float = 0.0) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class DryIceCleaner:
         Args:
             dry_ice_amount[干冰用量]: 目标干冰用量（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置喷射压力")
     def set_jet_pressure(self, jet_pressure: float = 0.0) -> Dict[str, Any]:
@@ -96,7 +96,7 @@ class DryIceCleaner:
         Args:
             jet_pressure[喷射压力]: 目标喷射压力（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置喷嘴距离")
     def set_nozzle_distance(self, nozzle_distance: float = 0.0) -> Dict[str, Any]:
@@ -106,22 +106,22 @@ class DryIceCleaner:
         Args:
             nozzle_distance[喷嘴距离]: 目标喷嘴距离（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="清洗")
     def clean(self) -> Dict[str, Any]:
         """清洗。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="清洗准备")
     def prepare_cleaning(self) -> Dict[str, Any]:
         """清洗准备。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="清洗结束")
     def finish_cleaning(self) -> Dict[str, Any]:
         """清洗结束。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

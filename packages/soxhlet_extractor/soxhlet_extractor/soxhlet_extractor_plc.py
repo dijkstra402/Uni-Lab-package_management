@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="soxhlet_extractor_plc",
-    category=["索氏提取仪"],
+    category=["样品处理仪器与设备", "提取设备", "索氏提取仪"],
     description="索氏提取仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="索氏提取仪(PLC)",
+    displayname="索氏提取仪(PLC)",
 )
 class SoxhletExtractorPLC(OpcUaClientWithSubscription):
 

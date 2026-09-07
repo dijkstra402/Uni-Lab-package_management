@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="shaker_plc",
-    category=["振荡器（非恒温）"],
+    category=["样品处理仪器与设备", "混合与分散设备", "振荡器（非恒温）"],
     description="振荡器（非恒温） PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="振荡器（非恒温）(PLC)",
+    displayname="振荡器（非恒温）(PLC)",
 )
 class ShakerPLC(OpcUaClientWithSubscription):
 

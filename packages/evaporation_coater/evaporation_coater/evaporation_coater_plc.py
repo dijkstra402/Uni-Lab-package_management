@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="evaporation_coater_plc",
-    category=["蒸镀仪"],
+    category=["器件制备设备", "蒸镀与表面沉积设备", "蒸镀仪"],
     description="蒸镀仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="蒸镀仪(PLC)",
+    displayname="蒸镀仪(PLC)",
 )
 class EvaporationCoaterPLC(OpcUaClientWithSubscription):
 

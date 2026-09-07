@@ -4,7 +4,7 @@
 定义「化学消毒机」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="chemical_sterilizer",
-    category=["化学消毒机"],
+    category=["样品处理仪器与设备", "消毒机", "化学消毒机"],
     description="化学消毒机标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="化学消毒机",
+    displayname="化学消毒机",
 )
 class ChemicalSterilizer:
 
@@ -36,7 +36,7 @@ class ChemicalSterilizer:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class ChemicalSterilizer:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置消毒时间")
     def set_disinfection_time(self, disinfection_time: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class ChemicalSterilizer:
         Args:
             disinfection_time[消毒时间]: 目标消毒时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置消毒剂浓度")
     def set_disinfectant_concentration(self, disinfectant_concentration: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class ChemicalSterilizer:
         Args:
             disinfectant_concentration[消毒剂浓度]: 目标消毒剂浓度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置消毒温度")
     def set_disinfection_temperature(self, disinfection_temperature: float = 0.0) -> Dict[str, Any]:
@@ -76,22 +76,22 @@ class ChemicalSterilizer:
         Args:
             disinfection_temperature[消毒温度]: 目标消毒温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="消毒")
     def disinfect(self) -> Dict[str, Any]:
         """消毒。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="消毒准备")
     def prepare_disinfection(self) -> Dict[str, Any]:
         """消毒准备。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="消毒结束")
     def finish_disinfection(self) -> Dict[str, Any]:
         """消毒结束。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

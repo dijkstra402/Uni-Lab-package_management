@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="temperature_controlled_magnetic_stirrer_plc",
-    category=["控温磁力搅拌器"],
+    category=["样品处理仪器与设备", "混合与分散设备", "控温磁力搅拌器"],
     description="控温磁力搅拌器 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="控温磁力搅拌器(PLC)",
+    displayname="控温磁力搅拌器(PLC)",
 )
 class TemperatureControlledMagneticStirrerPLC(OpcUaClientWithSubscription):
 

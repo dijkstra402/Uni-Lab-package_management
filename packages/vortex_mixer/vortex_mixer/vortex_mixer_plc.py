@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="vortex_mixer_plc",
-    category=["涡旋混匀仪"],
+    category=["样品处理仪器与设备", "混合与分散设备", "涡旋混匀仪"],
     description="涡旋混匀仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="涡旋混匀仪(PLC)",
+    displayname="涡旋混匀仪(PLC)",
 )
 class VortexMixerPLC(OpcUaClientWithSubscription):
 

@@ -4,7 +4,7 @@
 定义「超低温冰箱」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="ultra_low_temp_freezer",
-    category=["超低温冰箱"],
+    category=["加热、制冷及空气净化与调节设备", "冰箱及类似设备", "超低温冰箱"],
     description="超低温冰箱标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="超低温冰箱",
+    displayname="超低温冰箱",
 )
 class UltraLowTempFreezer:
 
@@ -36,7 +36,7 @@ class UltraLowTempFreezer:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class UltraLowTempFreezer:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置温度")
     def set_temperature(self, temperature: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class UltraLowTempFreezer:
         Args:
             temperature[温度]: 目标温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置降温速率")
     def set_cooldown_rate(self, cooldown_rate: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class UltraLowTempFreezer:
         Args:
             cooldown_rate[降温速率]: 目标降温速率（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置真空度")
     def set_vacuum(self, vacuum: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class UltraLowTempFreezer:
         Args:
             vacuum[真空度]: 目标真空度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置保温时间")
     def set_holding_time(self, holding_time: float = 0.0) -> Dict[str, Any]:
@@ -86,17 +86,17 @@ class UltraLowTempFreezer:
         Args:
             holding_time[保温时间]: 目标保温时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="除霜")
     def defrost(self) -> Dict[str, Any]:
         """除霜。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="运行")
     def run(self) -> Dict[str, Any]:
         """运行。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

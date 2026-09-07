@@ -4,7 +4,7 @@
 定义「投料反应站」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="charging_reaction_station",
-    category=["投料反应站"],
+    category=["合成制备仪器与设备", "液体分配设备", "投料反应站"],
     description="投料反应站标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="投料反应站",
+    displayname="投料反应站",
 )
 class ChargingReactionStation:
 
@@ -36,7 +36,7 @@ class ChargingReactionStation:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class ChargingReactionStation:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置反应温度")
     def set_reaction_temperature(self, reaction_temperature: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class ChargingReactionStation:
         Args:
             reaction_temperature[反应温度]: 目标反应温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置搅拌速度")
     def set_stir_speed(self, stir_speed: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class ChargingReactionStation:
         Args:
             stir_speed[搅拌速度]: 目标搅拌速度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置反应时间")
     def set_reaction_time(self, reaction_time: float = 0.0) -> Dict[str, Any]:
@@ -76,27 +76,27 @@ class ChargingReactionStation:
         Args:
             reaction_time[反应时间]: 目标反应时间（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="投料启动")
     def start_charging(self) -> Dict[str, Any]:
         """投料启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="反应启动")
     def start_reaction(self) -> Dict[str, Any]:
         """反应启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="搅拌启动")
     def start_stirring(self) -> Dict[str, Any]:
         """搅拌启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="温控启动")
     def start_temp_control(self) -> Dict[str, Any]:
         """温控启动。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="microchannel_reactor_plc",
-    category=["微通道反应器"],
+    category=["合成制备仪器与设备", "反应器", "微通道反应器"],
     description="微通道反应器 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="微通道反应器(PLC)",
+    displayname="微通道反应器(PLC)",
 )
 class MicrochannelReactorPLC(OpcUaClientWithSubscription):
 

@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="filter_plc",
-    category=["过滤器"],
+    category=["样品处理仪器与设备", "分离设备", "过滤器"],
     description="过滤器 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="过滤器(PLC)",
+    displayname="过滤器(PLC)",
 )
 class FilterPLC(OpcUaClientWithSubscription):
 

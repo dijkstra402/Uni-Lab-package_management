@@ -4,7 +4,7 @@
 定义「组合合成反应仪」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="combinatorial_synthesis_reactor",
-    category=["组合合成反应仪"],
+    category=["合成制备仪器与设备", "反应器", "组合合成反应仪"],
     description="组合合成反应仪标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="组合合成反应仪",
+    displayname="组合合成反应仪",
 )
 class CombinatorialSynthesisReactor:
 
@@ -36,7 +36,7 @@ class CombinatorialSynthesisReactor:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,17 +46,17 @@ class CombinatorialSynthesisReactor:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="工位定位")
     def locate_station(self) -> Dict[str, Any]:
         """工位定位。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="多通道加料")
     def multichannel_feed(self) -> Dict[str, Any]:
         """多通道加料。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

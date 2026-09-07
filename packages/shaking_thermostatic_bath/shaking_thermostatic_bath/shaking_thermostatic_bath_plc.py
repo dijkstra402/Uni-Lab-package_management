@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="shaking_thermostatic_bath_plc",
-    category=["振荡恒温槽"],
+    category=["加热、制冷及空气净化与调节设备", "恒温槽", "振荡恒温槽"],
     description="振荡恒温槽 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="振荡恒温槽(PLC)",
+    displayname="振荡恒温槽(PLC)",
 )
 class ShakingThermostaticBathPLC(OpcUaClientWithSubscription):
 

@@ -4,7 +4,7 @@
 定义「合成反应仪」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="synthesis_reactor",
-    category=["合成反应仪"],
+    category=["合成制备仪器与设备", "反应器", "合成反应仪"],
     description="合成反应仪标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="合成反应仪",
+    displayname="合成反应仪",
 )
 class SynthesisReactor:
 
@@ -36,7 +36,7 @@ class SynthesisReactor:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class SynthesisReactor:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置目标温度")
     def set_target_temperature(self, target_temperature: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class SynthesisReactor:
         Args:
             target_temperature[目标温度]: 目标目标温度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置搅拌转速")
     def set_stir_speed(self, stir_speed: float = 0.0) -> Dict[str, Any]:
@@ -66,17 +66,17 @@ class SynthesisReactor:
         Args:
             stir_speed[搅拌转速]: 目标搅拌转速（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="控温")
     def control_temperature(self) -> Dict[str, Any]:
         """控温。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="搅拌")
     def stir(self) -> Dict[str, Any]:
         """搅拌。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

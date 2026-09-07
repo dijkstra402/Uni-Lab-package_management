@@ -4,7 +4,7 @@
 定义「移液工作站」这一设备大类的标准动作(action)与状态属性(property)。
 同一大类下不同品牌的设备都应实现这套统一接口，使一套工作流可跨品牌控制整类设备。
 
-注意: 本文件只定义标准接口, 方法体为 pass(占位)。真实实现由各品牌驱动继承/对接。
+注意: 本文件只定义标准接口, 未实现动作会抛出 NotImplementedError。真实实现由各品牌驱动继承/对接。
 来源: 电气通讯协议标准化 device_action_spec.json
 """
 
@@ -15,9 +15,9 @@ from unilabos.registry.decorators import device, action, topic_config
 
 @device(
     id="liquid_handling_workstation",
-    category=["移液工作站"],
+    category=["合成制备仪器与设备", "液体分配设备", "移液工作站"],
     description="移液工作站标准接口：同一大类跨品牌统一的动作与参数。",
-    display_name="移液工作站",
+    displayname="移液工作站",
 )
 class LiquidHandlingWorkstation:
 
@@ -36,7 +36,7 @@ class LiquidHandlingWorkstation:
     @action(description="初始化")
     def initialize(self) -> Dict[str, Any]:
         """初始化。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置运行模式")
     def set_mode(self, mode: str = "") -> Dict[str, Any]:
@@ -46,7 +46,7 @@ class LiquidHandlingWorkstation:
         Args:
             mode[运行模式]: 目标运行模式（具体取值由设备型号定义）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置吸液体积")
     def set_aspirate_volume(self, aspirate_volume: float = 0.0) -> Dict[str, Any]:
@@ -56,7 +56,7 @@ class LiquidHandlingWorkstation:
         Args:
             aspirate_volume[吸液体积]: 目标吸液体积（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置排液体积")
     def set_dispense_volume(self, dispense_volume: float = 0.0) -> Dict[str, Any]:
@@ -66,7 +66,7 @@ class LiquidHandlingWorkstation:
         Args:
             dispense_volume[排液体积]: 目标排液体积（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置移液速度")
     def set_pipette_speed(self, pipette_speed: float = 0.0) -> Dict[str, Any]:
@@ -76,7 +76,7 @@ class LiquidHandlingWorkstation:
         Args:
             pipette_speed[移液速度]: 目标移液速度（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="设置目标孔位")
     def set_target_well(self, target_well: int = 0) -> Dict[str, Any]:
@@ -86,27 +86,27 @@ class LiquidHandlingWorkstation:
         Args:
             target_well[目标孔位]: 目标目标孔位（单位依设备量程而定）。
         """
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="吸液")
     def draw_liquid(self) -> Dict[str, Any]:
         """吸液。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="排液")
     def dispense(self) -> Dict[str, Any]:
         """排液。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="移液路径")
     def pipette_path(self) -> Dict[str, Any]:
         """移液路径。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @action(description="枪头更换")
     def change_tip(self) -> Dict[str, Any]:
         """枪头更换。"""
-        pass
+        raise NotImplementedError("请在设备包中实现该动作")
 
     @property
     @topic_config()

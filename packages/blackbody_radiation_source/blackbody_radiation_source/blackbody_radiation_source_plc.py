@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="blackbody_radiation_source_plc",
-    category=["黑体辐射源"],
+    category=["加热、制冷及空气净化与调节设备", "固体浴", "黑体辐射源"],
     description="黑体辐射源 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="黑体辐射源(PLC)",
+    displayname="黑体辐射源(PLC)",
 )
 class BlackbodyRadiationSourcePLC(OpcUaClientWithSubscription):
 

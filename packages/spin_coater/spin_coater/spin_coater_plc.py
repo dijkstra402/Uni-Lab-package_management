@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="spin_coater_plc",
-    category=["均胶机"],
+    category=["样品处理仪器与设备", "样品制备设备", "匀胶机"],
     description="均胶机 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="均胶机(PLC)",
+    displayname="均胶机(PLC)",
 )
 class SpinCoaterPLC(OpcUaClientWithSubscription):
 

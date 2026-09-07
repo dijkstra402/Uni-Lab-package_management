@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="homogenizer_plc",
-    category=["均质器"],
+    category=["样品处理仪器与设备", "混合与分散设备", "均质器"],
     description="均质器 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="均质器(PLC)",
+    displayname="均质器(PLC)",
 )
 class HomogenizerPLC(OpcUaClientWithSubscription):
 

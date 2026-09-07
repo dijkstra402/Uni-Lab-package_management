@@ -20,9 +20,9 @@ from base_opcua_client import OpcUaClientWithSubscription
 
 @device(
     id="electric_digester_plc",
-    category=["电热消解仪"],
+    category=["样品处理仪器与设备", "消解仪", "电热消解仪"],
     description="电热消解仪 PLC(OPC UA) 交互驱动：动作映射为节点读写。",
-    display_name="电热消解仪(PLC)",
+    displayname="电热消解仪(PLC)",
 )
 class ElectricDigesterPLC(OpcUaClientWithSubscription):
 
