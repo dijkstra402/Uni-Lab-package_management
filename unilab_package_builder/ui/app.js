@@ -16,7 +16,10 @@ const elements = {
   clearFilters: document.querySelector("#clearFilters"),
   configForm: document.querySelector("#configForm"),
   devicePackageButton: document.querySelector("#devicePackageButton"),
+  devicePackageLabel: document.querySelector("#devicePackageLabel"),
   detailId: document.querySelector("#detailId"),
+  driverMode: document.querySelector("#driverMode"),
+  driverModeHelp: document.querySelector("#driverModeHelp"),
   exportButton: document.querySelector("#exportButton"),
   acceptanceBundleButton: document.querySelector("#acceptanceBundleButton"),
   formError: document.querySelector("#formError"),
@@ -145,6 +148,14 @@ function renderSelected() {
   `).join("") : '<div class="selected-empty">从左侧选择模块，开始组装设备包。</div>';
 }
 
+function renderDriverMode() {
+  const isOpcUa = elements.driverMode.value === "opcua";
+  elements.devicePackageLabel.textContent = isOpcUa ? "生成并下载 OPC UA 设备包" : "生成并下载设备包";
+  elements.driverModeHelp.textContent = isOpcUa
+    ? "将动作填充为 OPC UA 读写，附带标准协议点表；连接时传入真实 NodeId 映射或 BrowseName 根路径。"
+    : "导出标准接口，动作会保留为待实现占位。";
+}
+
 function renderDetail() {
   const module = getModule(state.activeId);
   if (!module) {
@@ -201,6 +212,7 @@ function projectConfig() {
     package_name: document.querySelector("#packageName").value.trim(),
     version: document.querySelector("#version").value.trim(),
     description: document.querySelector("#description").value.trim(),
+    driver_mode: elements.driverMode.value,
     modules: [...state.selectedIds],
   };
 }
@@ -288,10 +300,11 @@ async function loadCatalog() {
     const response = await fetch("/api/catalog", { headers: { Accept: "application/json" } });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const modules = await response.json();
-    if (!Array.isArray(modules) || modules.length !== 139) throw new Error("目录数量校验失败");
+    if (!Array.isArray(modules) || modules.length < 1) throw new Error("目录数量校验失败");
     state.modules = modules;
     state.activeId = modules[0]?.device_id || null;
     elements.catalogCount.textContent = String(modules.length);
+    document.querySelector("#catalogTotal").textContent = String(modules.length);
     render();
   } catch (error) {
     elements.moduleList.innerHTML = `<div class="empty-state"><div><strong>模块目录读取失败</strong><span>请确认页面由 <code>unilab-package-builder ui</code> 启动，并重试。</span><br /><button type="button" data-action="retry">重新读取</button></div></div>`;
@@ -334,6 +347,7 @@ elements.selectedList.addEventListener("click", (event) => {
 });
 elements.devicePackageButton.addEventListener("click", () => downloadBundle("device"));
 elements.acceptanceBundleButton.addEventListener("click", () => downloadBundle("acceptance"));
+elements.driverMode.addEventListener("change", renderDriverMode);
 document.querySelectorAll("[data-view]").forEach((button) => button.addEventListener("click", () => {
   state.view = button.dataset.view;
   renderModules();
@@ -348,3 +362,4 @@ document.addEventListener("keydown", (event) => {
 });
 
 loadCatalog();
+renderDriverMode();

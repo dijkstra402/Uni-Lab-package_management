@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 from .catalog import CatalogError, ModuleCatalog
-from .config import ConfigError, ProjectConfig, load_project_config
+from .config import DRIVER_MODES, ConfigError, ProjectConfig, load_project_config
 from .scaffold import ScaffoldError, generate_project
 from .ui_server import serve_ui
 
@@ -69,6 +69,12 @@ def _build_parser() -> argparse.ArgumentParser:
     init_parser.add_argument("--distribution-name", help="直接选择模块时的发行名称")
     init_parser.add_argument("--description", default="Uni-Lab-OS 设备包")
     init_parser.add_argument("--version", default="0.1.0")
+    init_parser.add_argument(
+        "--driver-mode",
+        choices=DRIVER_MODES,
+        default="template",
+        help="生成标准占位模板或可连接 OPC UA 的真实驱动",
+    )
     init_parser.add_argument("--out", type=Path, required=True)
     init_parser.add_argument("--force", action="store_true", help="允许覆盖已有输出文件")
 
@@ -90,6 +96,7 @@ def _load_init_config(arguments: argparse.Namespace) -> ProjectConfig:
         modules=tuple(arguments.modules or ()),
         version=arguments.version,
         description=arguments.description,
+        driver_mode=arguments.driver_mode,
     )
     config.validate()
     return config

@@ -157,18 +157,24 @@ unilab --check_mode --devices ./<en_id> --external_devices_only
 
 ## 选择模块生成设备包
 
-仓库根目录提供 `unilab-package-builder`，可从 139 个标准模块中选择设备并生成独立的
-Uni-Lab-OS 外部设备包：
+仓库根目录提供 `unilab-package-builder`，可从当前标准模块目录中选择设备并生成独立的
+Uni-Lab-OS 外部设备包。默认生成标准接口模板，也可以选择 OPC UA 真实驱动模式：
 
 ```bash
 python -m unilab_package_builder list --category '合成制备仪器与设备 > 反应器'
 python -m unilab_package_builder validate --config ./package_builder.example.json
 python -m unilab_package_builder init --config ./package_builder.example.json --out ./my-lab-devices
 python -m unilab_package_builder init --package-name my_lab_devices --module reactor_kettle --out ./my-lab-devices
+python -m unilab_package_builder init --package-name my_lab_devices --module reactor_kettle --driver-mode opcua --out ./my-lab-devices
 python -m unilab_package_builder ui
 ```
 
-UI 中的 `生成并下载设备包` 会直接执行 `init` 生成 OS 设备包；相邻的
+配置中的 `driver_mode` 可取 `template` 或 `opcua`。UI 中的 `生成并下载设备包` 会直接执行 `init` 生成 OS 设备包；选择
+`OPC UA 真实驱动` 后，导出包会为每个设备生成标准协议点表和通信运行时。驱动构造参数支持
+`node_id_map`、`node_id_prefix` 和 `browse_root`，依次使用点表 NodeId、运行时映射、NodeId 前缀或
+从 `Objects` 节点按标准 BrowseName 查找。具体设备的 Namespace、物理 NodeId 和安全参数需要在部署时提供。
+
+相邻的
 `生成并下载自动验收包` 会生成遵循 PLC-Sim `automation-acceptance` 目录规范的 L0 合同模板。
 完整配置、生成工程结构和 PLC-Sim 自动验收接缝见 [`PACKAGE_BUILDER.md`](PACKAGE_BUILDER.md)。
 

@@ -12,6 +12,9 @@ class ConfigError(ValueError):
     """设备包选择配置无效。"""
 
 
+DRIVER_MODES = ("template", "opcua")
+
+
 @dataclass(frozen=True, slots=True)
 class ProjectConfig:
     """一次设备包生成请求。"""
@@ -21,6 +24,7 @@ class ProjectConfig:
     modules: tuple[str, ...]
     version: str = "0.1.0"
     description: str = "Uni-Lab-OS 设备包"
+    driver_mode: str = "template"
 
     def validate(self) -> None:
         """校验发行身份、导入包身份和选择集合。"""
@@ -37,6 +41,9 @@ class ProjectConfig:
             raise ConfigError("modules 不允许重复")
         if not re.fullmatch(r"\d+\.\d+\.\d+", self.version):
             raise ConfigError(f"version 必须是三段版本号: {self.version}")
+        if self.driver_mode not in DRIVER_MODES:
+            choices = ", ".join(DRIVER_MODES)
+            raise ConfigError(f"driver_mode 必须是 {choices} 之一: {self.driver_mode}")
 
     def to_dict(self) -> dict[str, object]:
         """返回可写入生成工程的配置投影。"""
@@ -46,6 +53,7 @@ class ProjectConfig:
             "package_name": self.package_name,
             "version": self.version,
             "description": self.description,
+            "driver_mode": self.driver_mode,
             "modules": list(self.modules),
         }
 
@@ -76,14 +84,18 @@ def project_config_from_dict(data: object) -> ProjectConfig:
         raise ConfigError("distribution_name 必须是字符串")
     version = data.get("version", "0.1.0")
     description = data.get("description", "Uni-Lab-OS 设备包")
+    driver_mode = data.get("driver_mode", "template")
     if not isinstance(version, str) or not isinstance(description, str):
         raise ConfigError("version 和 description 必须是字符串")
+    if not isinstance(driver_mode, str):
+        raise ConfigError("driver_mode 必须是字符串")
     config = ProjectConfig(
         distribution_name=distribution_name,
         package_name=package_name,
         modules=tuple(modules),
         version=version,
         description=description,
+        driver_mode=driver_mode,
     )
     config.validate()
     return config

@@ -20,6 +20,8 @@ class ContractSpec:
     name: str
     description: str
     parameter_spec: str
+    opcua_node: str = ""
+    interaction_mode: str = ""
 
     def to_dict(self) -> dict[str, str]:
         """返回供设备包和验收工程消费的稳定合同投影。"""
@@ -29,6 +31,8 @@ class ContractSpec:
             "name": self.name,
             "description": self.description,
             "parameter_spec": self.parameter_spec,
+            "opcua_node": self.opcua_node,
+            "interaction_mode": self.interaction_mode,
         }
 
 
@@ -63,7 +67,7 @@ class ModuleSpec:
 
 
 class ModuleCatalog:
-    """从当前仓库的分类清单和设备源码构建 139 模块目录。"""
+    """从当前仓库的分类清单和设备源码构建设备模块目录。"""
 
     def __init__(self, repository_root: Path) -> None:
         self.repository_root = Path(repository_root).resolve()
@@ -169,8 +173,11 @@ class ModuleCatalog:
             raise CatalogError(
                 "分类清单包含不存在的设备目录: " + ", ".join(sorted(unknown_rows))
             )
-        if len(modules) != 139:
-            raise CatalogError(f"设备模块数量应为 139，实际为 {len(modules)}")
+        if len(modules) != len(category_rows):
+            raise CatalogError(
+                f"设备目录与分类清单数量不一致: packages={len(modules)}, "
+                f"category_rows={len(category_rows)}"
+            )
         return tuple(sorted(modules, key=lambda module: module.device_id))
 
     def _load_contracts(self) -> dict[str, tuple[ContractSpec, ...]]:
@@ -194,6 +201,8 @@ class ModuleCatalog:
                         name=(row.get("英文名") or "").strip(),
                         description=(row.get("中文描述") or "").strip(),
                         parameter_spec=(row.get("参数(名:类型)") or "").strip(),
+                        opcua_node=(row.get("PLC节点") or "").strip(),
+                        interaction_mode=(row.get("交互模式") or "").strip(),
                     )
                 )
         return {device_id: tuple(items) for device_id, items in contracts.items()}
@@ -221,8 +230,6 @@ class ModuleCatalog:
                 if device_id in rows:
                     raise CatalogError(f"分类清单设备重复: {device_id}")
                 rows[device_id] = {"category": category, "path": path}
-        if len(rows) != 139:
-            raise CatalogError(f"分类清单数量应为 139，实际为 {len(rows)}")
         return rows
 
 

@@ -2,7 +2,7 @@
 
 ## 目标
 
-本仓库同时维护 139 个标准设备模块和 `unilab-package-builder`。用户通过一个 JSON 配置选择
+本仓库同时维护标准设备模块和 `unilab-package-builder`。用户通过一个 JSON 配置选择
 设备模块，工具生成一个独立、可安装、可被 Uni-Lab-OS 静态 Registry 检查的设备包工程。
 
 设备包工程是领域实现的唯一所有者：设备类、动作、状态、通信适配器、资源、工作流和领域资产
@@ -30,6 +30,7 @@ UI 继承 Uni-Lab FE 的“精密仪器台”设计系统：冷灰工作区、�
 选择模块并填写项目身份后，可以使用：
 
 - `生成并下载设备包`：后端临时执行与 `init` 相同的脚手架逻辑，返回 `<发行名>-device-package.tar.gz`；
+- `OPC UA 真实驱动`：将选中模块的标准动作填充为 OPC UA 读写，附带协议点表和通信运行时；
 - `生成并下载自动验收包`：返回 `<发行名>-acceptance-bundle.tar.gz`，包含 PLC-Sim `automation-acceptance`
   规范的 L0 合同模板；
 - `导出配置 JSON`：保留为离线或命令行工作流的输入文件。
@@ -67,8 +68,14 @@ python -m unilab_package_builder init \
 - `device_selection.json`：不含物理 NodeId 的选择快照，供后续验收工程生成协议覆盖；
 - `README.md`：编辑、Registry 检查、PackageCatalog inspect/build 命令。
 
-生成后的标准动作未实现时会抛出 `NotImplementedError`。这保证脚手架不会把占位动作报告为
-成功；真正的供应商通信和状态转换必须由设备包开发者实现并在仿真、软 PLC 或真机环境分别验收。
+选择 `driver_mode: "opcua"` 时还会包含：
+
+- `<package>/devices/<module>.py`：按大表动作、属性和 `PLC节点` 生成的真实 OPC UA 设备类；
+- `<package>/protocols/<module>.csv`：标准 BrowseName、数据类型和动作映射，`node_id` 可按设备点表补齐；
+- `<package>/opcua.py`：连接、节点查找、读写、触发完成等待和断线重连运行时。
+
+标准模板模式下，未实现的动作会抛出 `NotImplementedError`。真实驱动模式下，动作会通过协议表
+写入 OPC UA 节点并等待完成位；具体设备仍需在仿真、软 PLC 或真机环境分别验收。
 
 ## 两个工程的接缝
 

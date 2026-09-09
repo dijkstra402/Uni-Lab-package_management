@@ -3,6 +3,7 @@
   "package_name": "my_lab_devices",
   "version": "0.1.0",
   "description": "我的实验室设备包",
+  "driver_mode": "template",
   "modules": [
     "reactor_kettle",
     "syringe_pump"
