@@ -123,16 +123,21 @@
             <input class="text-input data-input" id="version" name="version" value="0.1.0" required pattern="\d+\.\d+\.\d+" />
             <label class="field-label" for="description">设备包说明</label>
             <input class="text-input" id="description" name="description" value="我的实验室设备包" />
-            <label class="field-label" for="driverMode">设备实现方式</label>
-            <select class="text-input data-input" id="driverMode" name="driver_mode">
-              <option value="template">标准模板（动作待实现）</option>
-              <option value="opcua">OPC UA 真实驱动（按标准协议）</option>
-            </select>
-            <p class="field-help" id="driverModeHelp">导出标准接口，动作会保留为待实现占位。</p>
             <div class="form-error" id="formError" role="alert"></div>
           </form>
 
           <div class="inspector-footer">
+            <div class="driver-mode-control">
+              <div class="section-heading-row">
+                <label class="field-label" for="driverMode">设备包驱动模式</label>
+                <span class="data-label">导出选项</span>
+              </div>
+              <select class="text-input data-input" id="driverMode" name="driver_mode">
+                <option value="template">标准模板（不含通信实现）</option>
+                <option value="opcua">OPC UA 真实驱动（含通信与实际动作）</option>
+              </select>
+              <p class="field-help" id="driverModeHelp">标准模板只导出接口，动作会保留为待实现占位。</p>
+            </div>
             <div class="bundle-actions">
               <button class="primary-button bundle-button" id="devicePackageButton" type="button" disabled>
                 <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.5 8.5L10 12l3.5-3.5M4 15.5h12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
