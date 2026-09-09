@@ -26,6 +26,20 @@
             <span>设备包选配器</span>
           </span>
         </a>
+        <div class="topbar-actions" aria-label="设备包导出操作">
+          <button class="topbar-button topbar-button-primary" id="devicePackageButton" type="button" disabled title="生成并下载设备包">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.5 8.5L10 12l3.5-3.5M4 15.5h12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <span id="devicePackageLabel">设备包</span>
+          </button>
+          <button class="topbar-button topbar-button-secondary" id="acceptanceBundleButton" type="button" disabled title="生成并下载自动验收包">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3.5h10v13H5zM7.5 7h5M7.5 10h5M7.5 13h3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+            <span>自动验收包</span>
+          </button>
+          <button class="topbar-button topbar-button-tertiary" id="exportButton" type="submit" form="configForm" disabled title="导出配置 JSON">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 3.5h8v13H6zM8.5 7h3M8.5 10h3M8.5 13h2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+            <span>配置 JSON</span>
+          </button>
+        </div>
         <div class="topbar-meta">
           <span class="status-chip status-chip-teal"><span class="status-dot"></span>本地目录</span>
           <span class="topbar-contract">OS v2 contract</span>
@@ -138,20 +152,6 @@
               </select>
               <p class="field-help" id="driverModeHelp">标准模板只导出接口，动作会保留为待实现占位。</p>
             </div>
-            <div class="bundle-actions">
-              <button class="primary-button bundle-button" id="devicePackageButton" type="button" disabled>
-                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.5 8.5L10 12l3.5-3.5M4 15.5h12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                <span id="devicePackageLabel">生成并下载设备包</span>
-              </button>
-              <button class="secondary-button bundle-button" id="acceptanceBundleButton" type="button" disabled>
-                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3.5h10v13H5zM7.5 7h5M7.5 10h5M7.5 13h3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                生成并下载自动验收包
-              </button>
-              <button class="tertiary-button" id="exportButton" type="submit" form="configForm" disabled>
-                导出配置 JSON
-              </button>
-            </div>
-            <p class="form-help">设备包会直接生成 OS 工程；选择 OPC UA 真实驱动后会同时打包标准协议点表和通信运行时，具体 NodeId 可在部署时注入。</p>
           </div>
         </aside>
       </main>

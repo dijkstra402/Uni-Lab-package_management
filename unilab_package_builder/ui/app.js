@@ -150,7 +150,8 @@ function renderSelected() {
 
 function renderDriverMode() {
   const isOpcUa = elements.driverMode.value === "opcua";
-  elements.devicePackageLabel.textContent = isOpcUa ? "生成并下载 OPC UA 设备包" : "生成并下载设备包";
+  elements.devicePackageLabel.textContent = isOpcUa ? "OPC UA 设备包" : "设备包";
+  elements.devicePackageButton.title = isOpcUa ? "生成并下载 OPC UA 真实设备包" : "生成并下载标准设备包";
   elements.driverModeHelp.textContent = isOpcUa
     ? "包含 OPC UA 通信运行时、标准协议点表和可执行的读写动作；部署时注入真实 NodeId。"
     : "标准模板只导出接口，动作会保留为待实现占位。";
